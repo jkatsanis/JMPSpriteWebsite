@@ -2,7 +2,7 @@
 import React from 'react';
 import { Link, Route, Switch } from 'react-router-dom';
 
-import Home from 'components/home'
+import Home from 'components/home/home'
 import Info from 'components/info'
 
 import './topbar.css'; // Import the CSS file for styling
