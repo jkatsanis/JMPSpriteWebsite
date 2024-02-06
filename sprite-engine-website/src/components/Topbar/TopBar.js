@@ -2,10 +2,10 @@
 import React from 'react';
 import { Link, Route, Switch } from 'react-router-dom';
 
-import Home from 'components/Home'
-import Info from 'components/Info'
+import Home from 'components/home'
+import Info from 'components/info'
 
-import './TopBar.css'; // Import the CSS file for styling
+import './topbar.css'; // Import the CSS file for styling
 
 function TopBar() {
   return (
