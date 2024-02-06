@@ -11,7 +11,7 @@ function TopBar() {
   return (
     <div>
       <div className="top-bar">
-        <div className="logo">My React App</div>
+        <div className="logo">SpriteEngine</div>
         <nav>
           <ul>
             <li><Link to="/">Home</Link></li>
