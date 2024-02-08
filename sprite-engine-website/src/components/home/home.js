@@ -23,7 +23,7 @@ function Home() {
         <div className="video-text">The C++ <br /> 2D Game Engine <br /> Of The Future.</div>
       </div>
 
-      <div style={{ height: '5rem' }}></div>
+      <div style={{ height: '3rem' }}></div>
         <div className="centered-div">
           <h1>Get started now</h1>
 
@@ -52,6 +52,9 @@ function Home() {
               description="Feel free to watch my youtube videos, I introduce the gameengine, introduce new functions and create devlogs."
               lin={youtube}/>
           </div>
+
+          <br/>
+          <h1>Interested? Download now</h1>
 
       </div>
 
