@@ -3,9 +3,9 @@ import React from 'react';
 import { Link, Route, Switch } from 'react-router-dom';
 
 import Home from 'components/home/home'
-import Info from 'components/info'
+import Info from 'components/Info'
 
-import './topbar.css'; 
+import './TopBar.css';
 
 function TopBar() {
   return (

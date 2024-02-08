@@ -15,11 +15,11 @@ export function CreateLink({ Link, left }) {
 
     console.log(left)   
 
-    if(Link.icon == "none")
+    if(Link.icon === "none")
     {  
         return (
             <div> 
-                <a href={Link.website} target="_blank">
+                <a href={Link.website} target="_blank" rel="noreferrer">
                     <div style={{ display: 'inline-block' }}>
                         <p  className="link "> {Link.content}</p>
                     </div>
@@ -30,7 +30,7 @@ export function CreateLink({ Link, left }) {
 
     return (
         <div> 
-            <a href={Link.website} target="_blank">
+            <a href={Link.website} target="_blank" rel="noreferrer">
                 <div style={{ display: 'inline-block' }}>
                     <img src={Link.icon} alt="Icon" style={{ width: 30, height: 30, marginLeft: left }} />
                     <p className="link-i">{Link.content}</p>
