@@ -1,5 +1,4 @@
-.link {
-    margin-left: 2.5rem;
-}
-  
+.separator {
+    border-top: 1px solid #ccc; /* Change color and thickness as needed */
+  }
   

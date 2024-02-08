@@ -1,16 +1,16 @@
 import React from 'react';
-import './home.css';
-import 'utils/general.css'
-import { Link, CreateLink } from "utils/util"
+import { Link, CreateLink } from "components/link/link"
 import LikeWindow from "components/likewindow/likewindow"
 
+import './home.css';
+import 'utils/general.css'
 
 function Home() {
 
-  let t = new Link("ressources/icons/github.png", "Github", "https://github.com/jkatsanis");
+  let t = new Link("none", "Github", "https://github.com/jkatsanis");
 
   return (
-    <div>
+    <div className="home-info">
       <div className="video-container">
         <video className="responsive-video" autoPlay loop muted>
           <source src="ressources/videos/intro.mp4" type="video/mp4" />
@@ -19,16 +19,22 @@ function Home() {
         <div className="video-text">The C++ <br /> 2D Game Engine <br /> Of The Future.</div>
       </div>
 
+
+
+
       <div style={{ height: '5rem' }}></div>
         <div className="centered-div">
           <h1>Get started now</h1>
-          <div style={{ height: '1rem' }}></div>
-          <CreateLink Link={t} />
+          <br/>
+          <div className="separator"></div>
+          <br/>
 
+
+          <div style={{ height: '1rem' }}></div>
           <LikeWindow
-            imageSrc="path/to/your/image.jpg"
-            title="Example Title"
-            description="Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+            imageSrc="ressources/pictures/githubcover.png"
+            title="Github"
+            description="Check out our github! It's very simple and straigforward, for any questions, navigate to the FAQ"
             lin={t}    />
 
       </div>

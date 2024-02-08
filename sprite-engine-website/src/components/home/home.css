@@ -26,7 +26,6 @@
   color: white; /* Text color */
   font-size: 50px; /* Text size */
   font-weight: bold; /* Text weight */
-  font-family: 'Arial', sans-serif; /* Specify font family */
   text-align: left; /* Text alignment */
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6); /* Add text shadow for contrast */
   /* Add any additional styles for the text */
@@ -36,3 +35,9 @@
   margin-left: 20%;
   margin-right: 20%;
 }
+
+.home-info 
+{
+  color: white;
+}
+

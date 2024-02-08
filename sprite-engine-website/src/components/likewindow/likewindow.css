@@ -1,10 +1,12 @@
 .like-window {
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    padding: 10px;
-    width: 200px;
-    margin: 10px;
+    border: 4px solid #000000;
+    border-radius: 10px;
+    width: 300px;
+    height: 400px;
     box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.2);
+    background-color: #171717;
+    color: white;
+    margin-bottom: 1rem;
 }
   
 .like-window img {
@@ -12,13 +14,20 @@
     border-radius: 5px;
   }
   
-  .like-window h2 {
-    font-size: 18px;
-    margin-top: 10px;
+  .like-window h2, .like-window p {
+    padding-left: 10px;
   }
+
+  .like-window h2 {
+    margin-top: 1rem;
+    font-size: 18px;
+    font-weight: bold; /* Optionally add font weight for emphasis */
+  }
+  
   
   .like-window p {
     font-size: 14px;
-    margin-top: 5px;
   }
+
+
   

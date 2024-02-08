@@ -1,8 +1,11 @@
 import React from 'react';
 import './likewindow.css'; // Import CSS for styling
  
-import { CreateLink } from "utils/util"
+import { CreateLink } from "components/link/link"
 
+/*
+    420 * 402 optimal window size
+*/
 const LikeWindow = ({ imageSrc, title, description, lin}) => {
 
   return (
@@ -11,7 +14,6 @@ const LikeWindow = ({ imageSrc, title, description, lin}) => {
       <h2>{title}</h2>
       <p>{description}</p>
       <CreateLink Link={lin} />
-      <p>oga</p>
     </div>
   );
 };
