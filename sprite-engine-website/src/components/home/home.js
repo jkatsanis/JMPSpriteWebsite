@@ -1,5 +1,7 @@
 import React from 'react';
-import './home.css'; // Import CSS file for styling
+import './home.css';
+import 'utils/general.css'
+import { Link } from "utils/util"
 
 function Home() {
   return (
@@ -9,16 +11,12 @@ function Home() {
           <source src="ressources/videos/intro.mp4" type="video/mp4" />
           Your browser does not support the video tag.
         </video>
-        <div className="video-text">The C++  <br/> 2D Game Engine <br/> Of The Future. 
-        </div>
+        <div className="video-text">The C++ <br /> 2D Game Engine <br /> Of The Future.</div>
       </div>
- 
-      <div className="general-info">
-        uga uga
-      </div>  
+
+      <Link icon="ressources/icons/github.png" content="Visit my GitHub" website="https://github.com/yourusername" />
 
     </div>
-
   );
 }
 
