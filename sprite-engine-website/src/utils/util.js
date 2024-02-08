@@ -1,11 +1,20 @@
-export function Link({ icon, content, website }) {
+export class Link {
+    constructor(icon, content, website) {
+      this.icon = icon;
+      this.content = content;
+      this.website = website;
+    }
+}
+
+export function CreateLink({ Link }) {
     return (
-      <div className="centered-div">
-        <h1>Get started now</h1>
-        <a href={website} target="_blank">
-          <img src={icon} alt="Icon" width="30" height="30"/>
-          <span className="link">{content}</span>
-        </a>
-      </div>
+        <div> 
+            <a href={Link.website} target="_blank">
+                <div style={{ display: 'inline-block' }}>
+                    <img src={Link.icon} alt="Icon" style={{ width: 30, height: 30 }} />
+                    <p className="link" style={{ display: 'inline-block', verticalAlign: 'top', marginLeft: '5px' }}>{Link.content}</p>
+                </div>
+            </a>
+        </div>
     );
-  }
+}
