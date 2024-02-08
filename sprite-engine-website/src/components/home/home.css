@@ -32,12 +32,12 @@
 }
 
 .centered-div {
-  margin-left: 20%;
-  margin-right: 20%;
+  display: flex;
+  flex-direction:column;
+  align-items: center;
 }
 
 .home-info 
 {
   color: white;
 }
-

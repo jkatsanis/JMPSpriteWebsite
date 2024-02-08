@@ -7,7 +7,9 @@ import 'utils/general.css'
 
 function Home() {
 
-  let t = new Link("none", "Github", "https://github.com/jkatsanis");
+  let website = new Link("ressources/icons/github.png", "Github", "https://github.com/jkatsanis");
+  let engine = new Link("ressources/icons/github.png", "Github", "https://github.com/jkatsanis/SpriteEngineUI");
+  const myLeftValue = 100;
 
   return (
     <div className="home-info">
@@ -25,17 +27,26 @@ function Home() {
       <div style={{ height: '5rem' }}></div>
         <div className="centered-div">
           <h1>Get started now</h1>
-          <br/>
+
           <div className="separator"></div>
-          <br/>
 
 
           <div style={{ height: '1rem' }}></div>
-          <LikeWindow
-            imageSrc="ressources/pictures/githubcover.png"
-            title="Github"
-            description="Check out our github! It's very simple and straigforward, for any questions, navigate to the FAQ"
-            lin={t}    />
+
+
+          <div className="like-windows-container">
+            <LikeWindow
+              imageSrc="ressources/pictures/githubcover.png"
+              title="Github-Website"
+              description="Check out our github! It's very simple and straigforward, for any questions, navigate to the FAQ"
+              lin={website}/>
+
+            <LikeWindow
+                imageSrc="ressources/pictures/githubcoverEngine.png"
+                title="Github-GameEngine"
+                description="This Project is a simple 2D Game Engine designed to be fully understand by one Person. It is written in pure C++, with the support of SFML & Imgui"
+                lin={engine}/>
+          </div>
 
       </div>
 

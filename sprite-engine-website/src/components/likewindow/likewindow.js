@@ -3,9 +3,6 @@ import './likewindow.css'; // Import CSS for styling
  
 import { CreateLink } from "components/link/link"
 
-/*
-    420 * 402 optimal window size
-*/
 const LikeWindow = ({ imageSrc, title, description, lin}) => {
 
   return (
@@ -13,7 +10,7 @@ const LikeWindow = ({ imageSrc, title, description, lin}) => {
       <img src={imageSrc} alt={title} />
       <h2>{title}</h2>
       <p>{description}</p>
-      <CreateLink Link={lin} />
+      <CreateLink Link={lin} left={10}/>
     </div>
   );
 };

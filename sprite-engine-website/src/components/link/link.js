@@ -11,7 +11,9 @@ export class Link {
 /*
     when link.icon is none it wont generate a img icon
 */
-export function CreateLink({ Link }) {
+export function CreateLink({ Link, left }) {
+
+    console.log(left)   
 
     if(Link.icon == "none")
     {  
@@ -30,7 +32,7 @@ export function CreateLink({ Link }) {
         <div> 
             <a href={Link.website} target="_blank">
                 <div style={{ display: 'inline-block' }}>
-                    <img src={Link.icon} alt="Icon" style={{ width: 30, height: 30 }} />
+                    <img src={Link.icon} alt="Icon" style={{ width: 30, height: 30, marginLeft: left }} />
                     <p className="link-i">{Link.content}</p>
                 </div>
             </a>

@@ -1,4 +1,6 @@
 .separator {
-    border-top: 1px solid #ccc; /* Change color and thickness as needed */
+    width: 50%; /* Set the width to fill the container */
+
+    border-top: 1px solid #ffffff; /* Change color and thickness as needed */
   }
   
