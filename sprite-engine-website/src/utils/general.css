@@ -1,0 +1,10 @@
+.separator {
+    width: 70rem; /* Set the width to 75% of the viewport width */
+    border-top: 1px solid #ffffff; /* Change color and thickness as needed */
+}
+
+.centered-div {
+    display: flex;
+    flex-direction:column;
+    align-items: center;
+  }
