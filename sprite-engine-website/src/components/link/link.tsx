@@ -1,21 +1,26 @@
 import "./link.css"
+import {createLinkProps, ILink} from "../../props";
+import React from "react";
 
-export class Link {
-    constructor(icon, content, website) {
-      this.icon = icon;
-      this.content = content;
-      this.website = website;
+
+export class Link implements ILink{
+    content: string;
+    icon: string | null;
+    website: string;
+    constructor(content: string, icon: string | null, website: string) {
+        this.content = content;
+        this.icon = icon;
+        this.website = website;
     }
 }
-
 /*
     when link.icon is none it wont generate a img icon
 */
-export function CreateLink({ Link, left }) {
+const CreateLink: React.FC<createLinkProps> = ({ Link, left }) => {
 
     console.log(left)   
-
-    if(Link.icon === "none")
+    console.log(Link.icon)
+    if(Link.icon === null)
     {  
         return (
             <div> 
@@ -39,3 +44,4 @@ export function CreateLink({ Link, left }) {
         </div>
     );
 }
+export default CreateLink;

@@ -1,19 +1,18 @@
 import React from 'react';
-import { Link, CreateLink } from "components/link/link"
-import LikeWindow from "components/likewindow/likewindow"
-
 import './home.css';
 import 'utils/general.css'
+import LikeWindow from "../likewindow/likewindow";
+import {Link} from "../link/link";
 
-function Home() {
+const Home: React.FC = () => {
 
-  let website = new Link("ressources/icons/github.png", "Github", "https://github.com/jkatsanis");
-  let engine = new Link("ressources/icons/github.png", "Github", "https://github.com/jkatsanis/SpriteEngineUI");
-  let youtube = new Link("ressources/icons/youtube.png", "Youtube", "https://www.youtube.com/channel/UCWihpyidnoBJ4G-V2TT6bVw")
-
+  const website = new Link("ressources/icons/github.png", "Github", "https://github.com/jkatsanis");
+  const engine = new Link("ressources/icons/github.png", "Github", "https://github.com/jkatsanis/SpriteEngineUI");
+  const youtube = new Link("ressources/icons/github.png", "Youtube", "https://www.youtube.com/channel/UCWihpyidnoBJ4G-V2TT6bVw")
   const myLeftValue = 100;
 
-  return (
+
+return (
     <div className="home-info">
       <div className="video-container">
         <video className="responsive-video" autoPlay loop muted>

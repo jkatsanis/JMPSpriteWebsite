@@ -1,13 +1,14 @@
 // src/components/TopBar.js
 import React from 'react';
-import { Link, Route, Switch } from 'react-router-dom';
+import {BrowserRouter, Link, Route, Routes} from 'react-router-dom';
 
-import Home from 'components/home/home'
-import Info from 'components/info'
+
 
 import './topbar.css';
+import Home from "../home/home";
+import Info from "../info";
 
-function TopBar() {
+const TopBar: React.FC = () => {
   return (
     <div>
       <div className="top-bar">
@@ -19,10 +20,7 @@ function TopBar() {
           </ul>
         </nav>
       </div>
-      <Switch>
-        <Route path="/" exact component={Home} />
-        <Route path="/info" component={Info} />
-      </Switch>
+        
     </div>
   );
 }
