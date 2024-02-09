@@ -4,9 +4,10 @@ import { Link, Route, Switch } from 'react-router-dom';
 
 import Home from 'components/home/home'
 import Info from 'components/info'
+import {Docu} from "components/docu/docu";
+import {Threads} from "components/threads/threads";
 
 import './topbar.css';
-import {Docu} from "components/docu/docu";
 
 function TopBar() {
   return (
@@ -18,6 +19,7 @@ function TopBar() {
             <li><Link to="/">Home</Link></li>
             <li><Link to="/info">Info</Link></li>
               <li><Link to="/docu">Docu</Link></li>
+                <li><Link to="/threads">Threads</Link></li>
           </ul>
         </nav>
       </div>
@@ -25,6 +27,7 @@ function TopBar() {
         <Route path="/" exact component={Home} />
         <Route path="/info" component={Info} />
           <Route path="/docu" component={Docu}/>
+            <Route path="/threads" component={Threads}/>
       </Switch>
     </div>
   );
