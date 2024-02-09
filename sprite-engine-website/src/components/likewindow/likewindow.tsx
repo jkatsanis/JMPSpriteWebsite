@@ -1,12 +1,17 @@
-import React from 'react';
+import React from 'react'; 
+import CreateLink, { Link } from "components/link/link";
 import './likewindow.css'; // Import CSS for styling
- 
-import CreateLink from "../link/link";
-import {LikeWindowProps} from "../../props";
+
+export interface LikeWindowProps
+{
+    imageSrc: string,
+    title: string,
+    description: string,
+    lin: Link | null
+}
 
 export default class LikeWindow extends React.Component<LikeWindowProps>
-{
-    
+{ 
     render()
     {
 

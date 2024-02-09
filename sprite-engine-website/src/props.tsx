@@ -1,18 +1,10 @@
-﻿export interface createLinkProps {
-    Link: ILink;
-    left: number;
-}
+﻿import { Link } from "@components/link/link"
+
 
 export interface LikeWindowProps
 {
     imageSrc: string,
     title: string,
     description: string,
-    lin: ILink | null
-}
-
-export interface ILink {
-    icon: string | null;
-    content: string;
-    website: string;
+    lin: Link | null
 }

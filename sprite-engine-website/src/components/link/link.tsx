@@ -1,10 +1,8 @@
-import "./link.css"
-import {createLinkProps, ILink} from "../../props";
 import React from "react";
-import { link } from "fs";
+import "./link.css"
 
 
-export class Link implements ILink{
+export class Link {
     content: string;
     icon: string | null;
     website: string;
@@ -14,10 +12,16 @@ export class Link implements ILink{
         this.website = website;
     }
 }
+
+export interface LinkProps {
+    Link: Link;
+    left: number;
+}
+
 /*
     when link.icon is none it wont generate a img icon
 */
-export default class CreateLink extends React.Component<createLinkProps>
+export default class CreateLink extends React.Component<LinkProps>
 {
     render()
     {

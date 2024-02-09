@@ -1,12 +1,9 @@
 // src/components/TopBar.js
 import React from 'react';
-import {BrowserRouter, Link, Route, Routes} from 'react-router-dom';
-
-
+import { Link } from 'react-router-dom';
 
 import './topbar.css';
-import Home from "../home/home";
-import Info from "../info";
+
 
 const TopBar: React.FC = () => {
   return (

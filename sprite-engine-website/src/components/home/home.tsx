@@ -94,7 +94,7 @@ return (
               description="The engine does obviously only support 2D. As the name is <SpriteEngine>,   thus only supporting sprites."
               lin={null}/>
           </div>
-          <br></br>
+          <br/>
       </div>
     </div>
 
