@@ -6,8 +6,7 @@ import Info from "./components/info";
 
 
 const App: React.FC = () => {
-    return (
-        
+    return (      
         <BrowserRouter>
             <TopBar/>
             <Routes>

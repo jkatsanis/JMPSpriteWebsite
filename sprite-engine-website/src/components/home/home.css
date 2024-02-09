@@ -31,12 +31,6 @@
   /* Add any additional styles for the text */
 }
 
-.centered-div {
-  display: flex;
-  flex-direction:column;
-  align-items: center;
-}
-
 .home-info 
 {
   color: white;

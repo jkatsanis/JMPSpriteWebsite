@@ -1,9 +1,8 @@
 import React from 'react';
+import LikeWindow from "../likewindow/likewindow";
+import CreateLink, { Link } from "../link/link";
 import './home.css';
 import 'utils/general.css'
-import LikeWindow from "../likewindow/likewindow";
-
-import CreateLink, { Link } from "../link/link";
 
 const Home: React.FC = () => {
 
