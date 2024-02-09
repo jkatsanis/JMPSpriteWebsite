@@ -6,6 +6,7 @@ import Home from 'components/home/home'
 import Info from 'components/info'
 
 import './topbar.css';
+import {Docu} from "components/docu/docu";
 
 function TopBar() {
   return (
@@ -16,12 +17,14 @@ function TopBar() {
           <ul>
             <li><Link to="/">Home</Link></li>
             <li><Link to="/info">Info</Link></li>
+              <li><Link to="/docu">Docu</Link></li>
           </ul>
         </nav>
       </div>
       <Switch>
         <Route path="/" exact component={Home} />
         <Route path="/info" component={Info} />
+          <Route path="/docu" component={Docu}/>
       </Switch>
     </div>
   );
