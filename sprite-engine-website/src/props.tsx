@@ -8,7 +8,7 @@ export interface LikeWindowProps
     imageSrc: string,
     title: string,
     description: string,
-    lin: ILink
+    lin: ILink | null
 }
 
 export interface ILink {

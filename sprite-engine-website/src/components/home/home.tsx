@@ -2,15 +2,18 @@ import React from 'react';
 import './home.css';
 import 'utils/general.css'
 import LikeWindow from "../likewindow/likewindow";
-import {Link} from "../link/link";
+
+import CreateLink, { Link } from "../link/link";
 
 const Home: React.FC = () => {
 
-  const website = new Link("ressources/icons/github.png", "Github", "https://github.com/jkatsanis");
-  const engine = new Link("ressources/icons/github.png", "Github", "https://github.com/jkatsanis/SpriteEngineUI");
-  const youtube = new Link("ressources/icons/github.png", "Youtube", "https://www.youtube.com/channel/UCWihpyidnoBJ4G-V2TT6bVw")
-  const myLeftValue = 100;
+  let website = new Link("ressources/icons/github.png", "Github", "https://github.com/jkatsanis");
+  let engine = new Link("ressources/icons/github.png", "Github", "https://github.com/jkatsanis/SpriteEngineUI");
+  let youtube = new Link("ressources/icons/youtube.png", "Youtube", "https://www.youtube.com/channel/UCWihpyidnoBJ4G-V2TT6bVw")
+  let Download = new Link("ressources/icons/download.png", "Download SpriteEngine x64 V. 1.0", "https://uga.com")
+  let OlderDownload = new Link("ressources/icons/download.png", "Download SpriteEngine x64 V. X", "https://uga.com")
 
+  const myLeftValue = 100;
 
 return (
     <div className="home-info">
@@ -55,9 +58,46 @@ return (
           <br/>
           <h1>Interested? Download now</h1>
 
-      </div>
 
+          <br/>
+          <div className="separator"></div>
+          <br/>
+
+          <h2>Newest version</h2>
+          <CreateLink Link={Download} left={10}></CreateLink>
+
+          <h2>Older versions</h2>
+          <CreateLink Link={OlderDownload} left={10}></CreateLink>
+
+          <div style={{ height: '1.5rem' }}></div>
+          <h1>General infos</h1>
+          <br/>
+          <div className="separator"></div>
+          <br/>
+
+          <div className="like-windows-container">
+            <LikeWindow
+              imageSrc="ressources/pictures/c++.png"
+              title="Programming language"
+              description="The entire engine is writting in pure C++ without any other languages. So the scripiting does also only work with C++"
+              lin={null}/>
+              
+            <LikeWindow
+              imageSrc="ressources/pictures/tools.png"
+              title="Tools used"
+              description="SFML is used for the rendering, imgui is used for the entire UI."
+              lin={null}/>
+
+          <LikeWindow
+              imageSrc="ressources/pictures/pixelgame.png"
+              title="2D"
+              description="The engine does obviously only support 2D. As the name is <SpriteEngine>,   thus only supporting sprites."
+              lin={null}/>
+          </div>
+          <br></br>
+      </div>
     </div>
+
   );
 }
 

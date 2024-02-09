@@ -1,13 +1,14 @@
 import "./link.css"
 import {createLinkProps, ILink} from "../../props";
 import React from "react";
+import { link } from "fs";
 
 
 export class Link implements ILink{
     content: string;
     icon: string | null;
     website: string;
-    constructor(content: string, icon: string | null, website: string) {
+    constructor(icon : string | null, content : string, website: string) {
         this.content = content;
         this.icon = icon;
         this.website = website;
@@ -16,32 +17,37 @@ export class Link implements ILink{
 /*
     when link.icon is none it wont generate a img icon
 */
-const CreateLink: React.FC<createLinkProps> = ({ Link, left }) => {
+export default class CreateLink extends React.Component<createLinkProps>
+{
+    render()
+    {
+        const ref : Link = this.props.Link;
 
-    console.log(left)   
-    console.log(Link.icon)
-    if(Link.icon === null)
-    {  
+        console.log(ref);
+
+        if(ref.icon === null)
+        {  
+            return (
+                <div> 
+                    <a href={ref.website} target="_blank" rel="noreferrer">
+                        <div style={{ display: 'inline-block' }}>
+                            <p  className="link "> {ref.content}</p>
+                        </div>
+                    </a>
+                </div>
+            );
+        }
+        
         return (
             <div> 
-                <a href={Link.website} target="_blank" rel="noreferrer">
+                <a href={ref.website} target="_blank" rel="noreferrer">
                     <div style={{ display: 'inline-block' }}>
-                        <p  className="link "> {Link.content}</p>
+                        <img src={ref.icon} alt="Icon" style={{ width: 30, height: 30, marginLeft: this.props.left }} />
+                        <p className="link-i">{ref.content}</p>
                     </div>
                 </a>
             </div>
         );
     }
-
-    return (
-        <div> 
-            <a href={Link.website} target="_blank" rel="noreferrer">
-                <div style={{ display: 'inline-block' }}>
-                    <img src={Link.icon} alt="Icon" style={{ width: 30, height: 30, marginLeft: left }} />
-                    <p className="link-i">{Link.content}</p>
-                </div>
-            </a>
-        </div>
-    );
 }
-export default CreateLink;
+

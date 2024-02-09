@@ -9,6 +9,18 @@ export default class LikeWindow extends React.Component<LikeWindowProps>
     
     render()
     {
+
+        if(this.props.lin === null)
+        {
+            return (
+                <div className="like-window">
+                    <img src={this.props.imageSrc} alt={this.props.title} />
+                    <h2>{this.props.title}</h2>
+                    <p>{this.props.description}</p>
+                </div>
+            );
+        }
+
         return (
             <div className="like-window">
                 <img src={this.props.imageSrc} alt={this.props.title} />

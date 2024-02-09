@@ -1,8 +1,8 @@
 # Conventions
 
 ### General
-- Folder [PascelCase] 
-- Files [PascelCase]
+- Folder [camelCase] 
+- Files [camelCase]
 
 ### Coding
 - Classes [PascelCase]
