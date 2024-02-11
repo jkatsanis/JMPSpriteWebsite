@@ -14,7 +14,7 @@ const App: React.FC = () => {
                 <Route path="/info" element={<Info/>}/>
             </Routes>
         </BrowserRouter>
-    );dsd
+    );
 }
 
 export default App;
