@@ -1,6 +1,7 @@
 import React from 'react';
 import LikeWindow from "../likewindow/likewindow";
 import CreateLink, { Link } from "../link/link";
+import Bottom from 'components/bottom/bottom';
 import './home.css';
 import 'utils/general.css'
 
@@ -12,9 +13,8 @@ const Home: React.FC = () => {
   let Download = new Link("ressources/icons/download.png", "Download SpriteEngine x64 V. 1.0", "https://uga.com")
   let OlderDownload = new Link("ressources/icons/download.png", "Download SpriteEngine x64 V. X", "https://uga.com")
 
-  const myLeftValue = 100;
-
 return (
+  <div>
     <div className="home-info">
       <div className="video-container">
         <video className="responsive-video" autoPlay loop muted>
@@ -31,9 +31,6 @@ return (
           <br/>
           <div className="separator"></div>
           <br/>
-
-
-
           <div className="like-windows-container">
             <LikeWindow
               imageSrc="ressources/pictures/githubcover.png"
@@ -56,8 +53,6 @@ return (
 
           <br/>
           <h1>Interested? Download now</h1>
-
-
           <br/>
           <div className="separator"></div>
           <br/>
@@ -96,6 +91,11 @@ return (
           <br/>
       </div>
     </div>
+
+    <Bottom/>
+
+
+  </div>
 
   );
 }

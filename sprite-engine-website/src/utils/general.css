@@ -8,3 +8,10 @@
     flex-direction:column;
     align-items: center;
   }
+
+.centered-div-content-left-70 {
+    width: 70rem; /* Set your desired width */
+    margin: 0 auto; /* Center the div horizontally */
+    text-align: left; /* Align content to the left */
+    padding: 20px; /* Optional: Add padding for spacing */
+}
