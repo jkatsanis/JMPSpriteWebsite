@@ -1,29 +1,30 @@
 /* src/components/Topbar.css */
+
 .top-bar {
-    background-color: #333; /* Dark gray background */
-    color: white;
-    padding: 10px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  
-  .logo {
-    font-size: 1.5rem;
-    font-weight: bold;
-  }
-  
-  nav ul {
-    list-style-type: none;
-    display: flex;
-  }
-  
-  nav ul li {
-    margin-right: 10px;
-  }
-  
-  nav ul li a {
-    text-decoration: none;
-    color: white;
-  }
-  
+  background-color: #333; /* Dark gray background */
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+nav ul {
+  list-style-type: none;
+  display: flex;
+}
+
+nav ul li {
+  margin-right: 20px;
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: white;
+  transition: color 0.3s; /* Smooth transition for color change */
+}
+
+nav ul li a:hover {
+  color: cyan; /* Change color to cyan on hover */
+  font-size: 0.97rem; /* Make the font size smaller on hover */
+}
