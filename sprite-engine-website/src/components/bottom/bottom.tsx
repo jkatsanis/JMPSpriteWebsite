@@ -19,7 +19,7 @@ export default class Bottom extends React.Component<BottomProps>
 
         return(
             <div className="bottom centered-div">
-                <div style={{ transform: "scale(0.7)" }}>
+                <div style={{ transform: "scale(0.85)" }}>
                     <div className="inline links">
                         <CreateLink Link={engine} left={10}></CreateLink>
                         <CreateLink Link={youtube} left={10}></CreateLink>
@@ -27,7 +27,7 @@ export default class Bottom extends React.Component<BottomProps>
                     </div>
         
                     <div className="copyright inline" style={{ marginBottom: "2rem" }}>
-                        &copy; 2024 SpriteEngine All rights reserverd.
+                        &copy; 2022-2024 SpriteEngine All rights reserverd.
                     </div>
                     <CreateLink Link={mit} left={0}></CreateLink>
                 </div>
