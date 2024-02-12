@@ -15,3 +15,15 @@
     text-align: left; /* Align content to the left */
     padding: 20px; /* Optional: Add padding for spacing */
 }
+
+.first-color {
+    background-color: #1E1E1E;
+}
+
+.second-color {
+    background-color: #262626;
+}
+
+.h-3 {
+    height: 3rem;
+}
