@@ -11,7 +11,7 @@ export function Threads(){
     );
 }
 
-export function ThreadCreateButton({threadName, threadDescription}){
+export function ThreadCreateButton({threadName, threadDescription}: {threadName: string, threadDescription: string}){
     const handleClick = () => {
         console.log(threadDescription);
     }

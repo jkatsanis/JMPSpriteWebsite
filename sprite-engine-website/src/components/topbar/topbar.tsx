@@ -14,6 +14,8 @@ const TopBar: React.FC = () => {
           <ul>
             <li><Link to="/">Home</Link></li>
             <li><Link to="/info">Info</Link></li>
+            <li><Link to="/docu">Documentation</Link></li>
+            <li><Link to="/threads">Threads</Link></li>
           </ul>
         </nav>
       </div>
