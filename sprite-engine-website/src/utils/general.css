@@ -8,3 +8,22 @@
     flex-direction:column;
     align-items: center;
   }
+
+.centered-div-content-left-70 {
+    width: 70rem; /* Set your desired width */
+    margin: 0 auto; /* Center the div horizontally */
+    text-align: left; /* Align content to the left */
+    padding: 20px; /* Optional: Add padding for spacing */
+}
+
+.first-color {
+    background-color: #1E1E1E;
+}
+
+.second-color {
+    background-color: #262626;
+}
+
+.h-3 {
+    height: 3rem;
+}

@@ -35,7 +35,7 @@ export default class CreateLink extends React.Component<LinkProps>
                 <div> 
                     <a href={ref.website} target="_blank" rel="noreferrer">
                         <div style={{ display: 'inline-block' }}>
-                            <p  className="link "> {ref.content}</p>
+                            <p className="link-i">{ref.content}</p>
                         </div>
                     </a>
                 </div>
