@@ -1,0 +1,31 @@
+#editor h5 {    
+    color: rgb(233, 166, 52);
+    margin-left: 1rem;
+    display: inline-block;
+    vertical-align: top;
+    width: 150px; /* Adjust width as needed */
+    margin-top: 1rem;
+}
+
+
+.description {
+    margin-top: 1rem;
+    margin-left: 100px;
+}
+
+
+img {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 15px;
+}
+
+a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
