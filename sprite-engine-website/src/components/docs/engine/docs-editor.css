@@ -1,21 +1,18 @@
-#editor h5 {
+#editor h5 {    
     color: rgb(233, 166, 52);
+    margin-left: 1rem;
+    display: inline-block;
+    vertical-align: top;
+    width: 150px; /* Adjust width as needed */
+    margin-top: 1rem;
 }
 
-hr {
-    border: none;
-    border-top: 1px solid #cccccc;
-    margin-top: 10px;
-    margin-bottom: 20px;
-}
 
 .description {
-    margin-left: 200px;
+    margin-top: 1rem;
+    margin-left: 100px;
 }
 
-.description p {
-    margin-bottom: 15px;
-}
 
 img {
     max-width: 100%;
@@ -31,3 +28,4 @@ a {
 a:hover {
     text-decoration: underline;
 }
+

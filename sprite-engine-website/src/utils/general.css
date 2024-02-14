@@ -36,3 +36,7 @@
 .space-2rem {
     margin-top: 2rem;
 }
+
+.inline > * {
+    display: inline-block; /* or inline-flex */
+}

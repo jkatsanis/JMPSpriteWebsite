@@ -4,11 +4,6 @@
     color: rgb(173, 170, 170);
 }
 
-/* Make CreateLink components inline */
-.inline > * {
-    display: inline-block; /* or inline-flex */
-}
-
 .links {
     margin-top: 1rem;
 }
