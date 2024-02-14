@@ -20,7 +20,7 @@ const Home: React.FC = () => {
         <div className="video-container">
           <video className="responsive-video" autoPlay loop muted>
             <source src="ressources/videos/intro.mp4" type="video/mp4" />
-            Your browser does not support the video tag.
+            Your browser does not support the video tag!.
           </video>
           <div className="video-text">The C++ <br /> 2D Game Engine <br /> Of The Future.</div>
 
