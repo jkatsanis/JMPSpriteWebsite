@@ -1,9 +1,23 @@
+/* Set the footer to fixed position at the bottom of the page */
 .bottom {
+    width: 100%;
     background-color: #101010;
-    text-align: center; /* Center align the content inside the .bottom container */
+    text-align: center;
     color: rgb(173, 170, 170);
+    height: 10rem;
+
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 10rem;            /* Footer height */
 }
 
+.wrapper {
+    position: relative;
+    min-height: 100vh;
+  }
+
+/* Additional styling for links inside the footer */
 .links {
     margin-top: 1rem;
 }

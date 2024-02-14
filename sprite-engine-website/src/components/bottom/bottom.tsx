@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import CreateLink, { Link } from "../link/link";
 
 import './bottom.css';
