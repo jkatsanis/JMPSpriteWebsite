@@ -3,7 +3,7 @@ import TopBar from './components/topbar/topbar';
 import {BrowserRouter, Route, Routes} from "react-router-dom";
 import Home from "./components/home/home";
 import Info from "./components/info";
-import Docu from "./components/docu/docu"
+import Docu from "./components/docs/documentation"
 import { Threads } from 'components/threads/threads';
 
 const App: React.FC = () => {

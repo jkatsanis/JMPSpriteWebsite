@@ -27,3 +27,11 @@
 .h-3 {
     height: 3rem;
 }
+
+.space-1rem {
+    margin-top: 1rem;
+}
+
+.space-2rem {
+    margin-top: 2rem;
+}

@@ -1,0 +1,26 @@
+
+details {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+summary {
+    font-weight: bold;
+    cursor: pointer;
+}
+
+
+/* doc.tsx */
+
+.docu-desc {
+    margin-left: 2rem;
+}
+
+/* syntax.tsx */
+
+.syntax {
+    border: 2px solid black;
+    margin-left: 2rem;
+    margin-right: 2rem;
+}

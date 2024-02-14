@@ -1,6 +1,6 @@
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import React from 'react';
-import './docu.css';
+import './documentation.css';
 
 const customCppStyle = {
     'comment': {
