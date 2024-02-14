@@ -41,7 +41,7 @@ interface SyntaxProps {
   
 
 
-  export default class Syntax extends React.Component<SyntaxProps> {
+export default class Syntax extends React.Component<SyntaxProps> {
     render() {
         return (
             <SyntaxHighlighter className="syntax" language="cpp" style={customCppStyle}>

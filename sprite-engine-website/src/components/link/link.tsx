@@ -27,8 +27,6 @@ export default class CreateLink extends React.Component<LinkProps>
     {
         const ref : Link = this.props.Link;
 
-        console.log(ref);
-
         if(ref.icon === null)
         {  
             return (

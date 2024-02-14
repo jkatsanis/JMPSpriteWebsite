@@ -1,4 +1,5 @@
 .separator {
+    margin: 2rem;
     width: 70rem; /* Set the width to 75% of the viewport width */
     border-top: 1px solid #ffffff; /* Change color and thickness as needed */
 }

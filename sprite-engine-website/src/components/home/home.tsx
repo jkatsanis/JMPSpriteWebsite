@@ -28,9 +28,7 @@ const Home: React.FC = () => {
         <div className='first-color'>
           <div className='centered-div'>
             <h1>Get started now</h1>
-            <br />
             <div className="separator"></div>
-            <br />
             <div className="like-windows-container">
               <LikeWindow
                 imageSrc="ressources/pictures/githubcover.png"
@@ -58,9 +56,7 @@ const Home: React.FC = () => {
           <div className='centered-div'>
             <br />
             <h1>Interested? Download now</h1>
-            <br />
             <div className="separator"></div>
-            <br />
 
             <h2>Newest version</h2>
             <CreateLink Link={Download} left={10}></CreateLink>
@@ -75,9 +71,7 @@ const Home: React.FC = () => {
           <div className='centered-div'>
             <div style={{ height: '1.5rem' }}></div>
             <h1>General infos</h1>
-            <br />
             <div className="separator"></div>
-            <br />
             <div className="like-windows-container">
               <LikeWindow
                 imageSrc="ressources/pictures/c++.png"
