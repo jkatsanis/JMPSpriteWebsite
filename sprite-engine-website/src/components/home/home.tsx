@@ -1,7 +1,8 @@
 import React from 'react';
 import LikeWindow from "../likewindow/likewindow";
 import CreateLink, { Link } from "../link/link";
-import Bottom from 'components/bottom/bottom';
+import { Page } from 'components/page';
+
 import './home.css';
 import 'utils/general.css';
 
@@ -14,7 +15,7 @@ const Home: React.FC = () => {
   let OlderDownload = new Link("ressources/icons/download.png", "Download SpriteEngine x64 V. X", "https://uga.com");
 
   return (
-    <div>
+    <Page>
       <div className="home-info">
         <div className="video-container">
           <video className="responsive-video" autoPlay loop muted>
@@ -22,6 +23,10 @@ const Home: React.FC = () => {
             Your browser does not support the video tag.
           </video>
           <div className="video-text">The C++ <br /> 2D Game Engine <br /> Of The Future.</div>
+
+          <button className='video-btn'>
+             <a href="#download-header" style={{color: 'white'}}>Download</a>
+          </button>
         </div>
 
         <div className='h-3' />
@@ -49,25 +54,10 @@ const Home: React.FC = () => {
                 lin={youtube} />
             </div>
           </div>
-          <div className='h-3' />
+          <div className='h-3'/>
         </div>
 
         <div className='second-color'>
-          <div className='centered-div'>
-            <br />
-            <h1>Interested? Download now</h1>
-            <div className="separator"></div>
-
-            <h2>Newest version</h2>
-            <CreateLink Link={Download} left={10}></CreateLink>
-
-            <h2>Older versions</h2>
-            <CreateLink Link={OlderDownload} left={10}></CreateLink>
-          </div>
-          <div className='h-3' />
-        </div>
-
-        <div className='first-color'>
           <div className='centered-div'>
             <div style={{ height: '1.5rem' }}></div>
             <h1>General infos</h1>
@@ -92,14 +82,27 @@ const Home: React.FC = () => {
                 lin={null} />
             </div>
           </div>
-          <div className='h-3' />
+          <div className='h-3'/>
         </div>
 
+        <div className='first-color'>
+          <div className='centered-div'>
+            <br />
+            <h1 id="download-header">Interested? Download now</h1>
+            <div className="separator"></div>
+
+            <h2>Newest version</h2>
+            <CreateLink Link={Download} left={10}></CreateLink>
+
+            <h2>Older versions</h2>
+            <CreateLink Link={OlderDownload} left={10}></CreateLink>
+          </div>
+        </div>
+
+        <div className='h-16' />
       </div>
 
-      <Bottom />
-
-    </div>
+    </Page>
   );
 }
 
