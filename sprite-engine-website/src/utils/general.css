@@ -25,6 +25,14 @@
     background-color: #262626;
 }
 
+.h-1 {
+    height: 1rem;
+}
+
+.h-2 {
+    height: 2rem;
+}
+
 .h-3 {
     height: 3rem;
 }

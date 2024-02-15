@@ -34,6 +34,7 @@ export class BigDocu extends React.Component<BigDocuProps> {
               {this.props.children}
             </div>
         </div>
+        <div className='h-1'/>
       </div>
     );
   }

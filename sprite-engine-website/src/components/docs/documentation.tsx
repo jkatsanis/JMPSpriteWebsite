@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import SearchComponent from './search';
-import EditorDocs from './engine/docs-editor';
+import EditorDocs, { handleClickEditor } from './engine/docs-editor';
 import { Page } from 'components/page';
+import LikeWindow from 'components/likewindow/likewindow';
 
 import 'components/bottom/bottom.css';
 import './documentation.css';
@@ -10,6 +11,7 @@ import 'utils/general.css';
 interface DocuProps {}
 
 const Docu: React.FC<DocuProps> = () => {
+
     return (
         <Page>
             <div className='docs'>
@@ -33,6 +35,27 @@ const Docu: React.FC<DocuProps> = () => {
 
                         <SearchComponent/>
                     
+                        <div className='h-3'/>
+                        <div className="like-windows-container">
+                            <LikeWindow
+                                imageSrc="ressources/pictures/c++.png"
+                                title="The editor"
+                                description="Delve into our 2D C++ engine and kickstart your game development journey with our easy guide and start creating your first game!"
+                                lin={null} 
+                                onClickCallback={handleClickEditor}/>
+                            <LikeWindow
+                                imageSrc="ressources/pictures/c++.png"
+                                title="Components"
+                                description="Explore the key components of our 2D C++ engine and ignite your creativity in game design!"
+                                lin={null}
+                                onClickCallback={null} />
+                            <LikeWindow
+                                imageSrc="ressources/pictures/c++.png"
+                                title="Namespace (spe::)"
+                                description="Experience the efficiency of our spe:: namespace and simplify your game development process with ease!"
+                                lin={null} 
+                                onClickCallback={null}/>
+                        </div>
                         <div className='h-3'/>
 
                         <EditorDocs/>
