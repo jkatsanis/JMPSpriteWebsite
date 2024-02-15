@@ -1,5 +1,4 @@
 import React from 'react';
-import Bottom from 'components/bottom/bottom';
 import SearchComponent from './search';
 import EditorDocs from './engine/docs-editor';
 import { Page } from 'components/page';
@@ -22,6 +21,7 @@ const Docu: React.FC<DocuProps> = () => {
                         <p>
                             Feel free to connect with us on Discord using the username <b>gameengine</b> for any queries or assistance. I'm always happy to help :=)
                         </p>
+                        <div className='h-3'/>
                         <h3>Welcome</h3>
                         <hr/>
                         <p>
@@ -68,10 +68,13 @@ const Docu: React.FC<DocuProps> = () => {
                         <details>
                             <summary>SpriteEngine namespace</summary>
                         </details>
+                        
                     </div>
                 </div>
             </div>
         </Page>
+
+        
     );
 };
 
