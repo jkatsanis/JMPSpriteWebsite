@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-import './documentation.css';
+import "components/docs/documentation"
 
 function search(searchText: string) {
     let filter, details, summary, i, j, txtValue;

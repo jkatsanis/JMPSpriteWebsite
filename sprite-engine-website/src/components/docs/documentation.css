@@ -46,6 +46,10 @@ details {
     background-color: #1b1a1a;
 }
 
+.content {
+    flex: 1; /* Allows content to take remaining space */
+}
+
 /* doc.tsx */
 
 .docu-desc {

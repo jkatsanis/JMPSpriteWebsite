@@ -5,15 +5,6 @@ import { BigDocu } from '../util/doc';
 import './docs-editor.css';
 import 'utils/general.css';
 
-export const handleClickEditor = () => {
-    // Scroll to the details section
-    const detailsSection = document.getElementById('editor');
-    if (detailsSection) {
-        detailsSection.scrollIntoView({ behavior: 'smooth' });
-        detailsSection.setAttribute("open", "true");
-    }
-};
-
 export default class EditorDocs extends React.Component {
 
     render() {

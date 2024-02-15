@@ -1,56 +1,72 @@
 import React, { useState } from 'react';
-import SearchComponent from './search';
+import SearchComponent from './navigation/search';
 import EditorDocs from './engine/docs-editor';
 import { Page } from 'components/page';
 import DocsComponent from './components/docs-components';
 import Namespace from './namespace/docs-namespace';
-import NavigationFrame from './navigation-frames';
+import NavigationFrame from './navigation/navigation-frames';
+import ContentTable from './navigation/content-table';
 
 import 'components/bottom/bottom.css';
 import './documentation.css';
 import 'utils/general.css';
 
+// Define your table of contents items
+const tableOfContentsItems = [
+  { id: 'editor-docs', title: 'Editor Docs' },
+  { id: 'docs-component', title: 'Docs Component' },
+  { id: 'namespace', title: 'Namespace' },
+];
+
+function collapse() {
+  let details = document.querySelectorAll('details');
+  details.forEach(function (details) {
+    details.removeAttribute('open');
+  });
+}
+
 interface DocuProps {}
 
 const Docu: React.FC<DocuProps> = () => {
+  return (
+    <Page>
+      <div className='docs'>
+        <ContentTable />
+        <div className='content'>
+          <div className='centered-div-content-left-70'>
+            <div>
+              <div className='h-3' />
+              <h3>Any questions?</h3>
+              <hr />
+              <p>
+                Feel free to connect with us on Discord using the username <b>gameengine</b> for any queries or assistance. I'm always happy to help :=)
+              </p>
+              <div className='h-3' />
+              <h3>Welcome</h3>
+              <hr />
+              <p>
+                Welcome to the SpriteEngine documentation! Whether you're a beginner or an experienced developer, this page is designed to provide you with comprehensive guides and references for utilizing the SpriteEngine in your 2D game development projects.
+              </p>
+              <div className='h-3' />
 
-    return (
-        <Page>
-            <div className='docs'>
-                <div className="centered-div-content-left-70">
-                    <div>
-                        <div className='h-3'/>                    
-                        <h3>Any questions?</h3>
-                        <hr/>
-                        <p>
-                            Feel free to connect with us on Discord using the username <b>gameengine</b> for any queries or assistance. I'm always happy to help :=)
-                        </p>
-                        <div className='h-3'/>
-                        <h3>Welcome</h3>
-                        <hr/>
-                        <p>
-                            Welcome to the SpriteEngine documentation! Whether you're a beginner or an experienced developer, 
-                            this page is designed to provide you with comprehensive guides and references for
-                            utilizing the SpriteEngine in your 2D game development projects.
-                        </p>
-                        <div className='h-3'/>                        
+              <SearchComponent />
+              <NavigationFrame />
 
-                        <SearchComponent/> 
-                        <NavigationFrame />
+              <div id='scroll-to-me' /> {/* This gets scrolled to from search component when pressing enter & focused */}
 
-                        <div id="scroll-to-me"/> {/* This gets scrolled to from search component when pressing enter & focused */}
+              <button className='collapse-btn default-btn' onClick={collapse}>
+                Collapse All
+              </button>
 
-                        <EditorDocs/>
-                        <DocsComponent />
-                        <Namespace />
-            
-                    </div>
-                </div>
+              <EditorDocs />
+              <DocsComponent />
+              <Namespace />
             </div>
-        </Page>
-
-        
-    );
+          </div>
+        </div>
+      </div>
+    </Page>
+  );
 };
 
 export default Docu;

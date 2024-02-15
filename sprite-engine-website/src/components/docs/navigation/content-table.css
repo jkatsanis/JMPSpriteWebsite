@@ -1,0 +1,24 @@
+.docs {
+    display: flex;
+  }
+  
+  .toc {
+    transform: scale(0.9);
+    margin-left: 1rem;
+    position: fixed;
+    flex: 0 0 auto; /* Fixes the width of the TOC */
+  }
+
+  li:hover {
+    text-decoration: underline;
+  }
+
+  .scroll {
+    font-size: 13px;
+    padding: 3px 3pxs;
+  }
+
+  .sep {
+        width: 20px; /* Adjust the width as needed */
+    background-color: white; /* Adjust the color as needed */
+  }

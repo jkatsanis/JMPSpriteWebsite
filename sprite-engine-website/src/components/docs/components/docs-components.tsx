@@ -2,7 +2,7 @@ import React from 'react';
 
 const DocsComponent: React.FC = () => {
     return (
-        <details>
+        <details id="components">
             <summary>Components</summary>
             <br />
             <details>

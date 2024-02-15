@@ -1,7 +1,14 @@
 import React from 'react';
 import LikeWindow from 'components/likewindow/likewindow';
 
-import { handleClickEditor } from './engine/docs-editor'; // This is the click when pressing the editor frame
+export const handleClickNavigationFrame = (item: string) => {
+    // Scroll to the details section
+    const detailsSection = document.getElementById(item);
+    if (detailsSection) {
+        detailsSection.scrollIntoView({ behavior: 'smooth' });
+        detailsSection.setAttribute("open", "true");
+    }
+};
 
 const NavigationFrame: React.FC = () => {
   return (
@@ -13,13 +20,13 @@ const NavigationFrame: React.FC = () => {
                 title="The editor"
                 description="Delve into our 2D C++ engine and kickstart your game development journey with our easy guide and start creating your first game!"
                 lin={null} 
-                onClickCallback={handleClickEditor}/>
+                onClickCallback={() => handleClickNavigationFrame("editor")}/>
             <LikeWindow
                 imageSrc="ressources/pictures/components.png"
                 title="Components"
                 description="Explore the key components of our 2D C++ engine and ignite your creativity in game design!"
                 lin={null}
-                onClickCallback={null} />
+                onClickCallback={() => handleClickNavigationFrame("components")}/>
             <LikeWindow
                 imageSrc="ressources/pictures/namespace.png"
                 title="Namespace (spe::)"
