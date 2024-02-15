@@ -22,15 +22,18 @@ const EditorDocs: React.FC = () => {
 
             <BigDocu title='Create'>
                 <p>
-                    All the sprites your scene has will be displayed in the editor. You can click on a sprite to
-                    select and edit it. You can learn more <a href="#inspector">here</a>.<br />
-                    To create a new sprite, right-click in the hierarchy window.
-                </p>
-                <img src="ressources/pictures/hierarchy-popup.PNG" alt="Hierarchy Popup" />
-                <p>
-                    A popup will appear; hover over the create button and click on the "Sprite" menu item.<br />
-                    A Sprite will spawn in the hierarchy window and in the game window. You can set the spawn position to the camera center, 
-                    it spawns by default at coordinates (0/0).
+                    <p>
+                        All the sprites your scene has will be displayed in the editor. You can click on a sprite to
+                        select and edit it. You can learn more <a href="#inspector">here</a>.<br />
+                        To create a new sprite, right-click in the hierarchy window.
+                    </p>
+                    <img src="ressources/pictures/hierarchy-popup.PNG" alt="Hierarchy Popup" />
+                    <p>
+                        A popup will appear; hover over the create button and click on the "Sprite" menu item.<br />
+                        A Sprite will spawn in the hierarchy window and in the game window. You can set the spawn position to the camera center, 
+                        it spawns by default at coordinates (0/0).
+                    </p>
+                    <br/>
                 </p>
             </BigDocu>
 

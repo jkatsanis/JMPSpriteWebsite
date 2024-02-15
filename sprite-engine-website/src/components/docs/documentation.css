@@ -3,6 +3,7 @@ details {
     border: 1px solid #ccc;
     border-radius: 5px;
     padding: 10px;
+    transition: transform 0.3s ease;
 }
 
 summary {
@@ -35,6 +36,14 @@ details {
 
 .docs h1 {
     text-align: center ;
+}
+
+details:hover {
+    transform: scale(1.005);
+}
+
+details {
+    background-color: #1b1a1a;
 }
 
 /* doc.tsx */
