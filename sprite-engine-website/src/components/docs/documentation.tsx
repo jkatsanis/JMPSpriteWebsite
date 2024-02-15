@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import SearchComponent from './search';
-import EditorDocs, { handleClickEditor } from './engine/docs-editor';
+import EditorDocs from './engine/docs-editor';
 import { Page } from 'components/page';
-import LikeWindow from 'components/likewindow/likewindow';
+import DocsComponent from './components/docs-components';
+import Namespace from './namespace/docs-namespace';
+import NavigationFrame from './navigation-frames';
 
 import 'components/bottom/bottom.css';
 import './documentation.css';
@@ -33,65 +35,15 @@ const Docu: React.FC<DocuProps> = () => {
                         </p>
                         <div className='h-3'/>                        
 
-                        <SearchComponent/>
-                    
-                        <div className='h-3'/>
-                        <div className="like-windows-container">
-                            <LikeWindow
-                                imageSrc="ressources/pictures/c++.png"
-                                title="The editor"
-                                description="Delve into our 2D C++ engine and kickstart your game development journey with our easy guide and start creating your first game!"
-                                lin={null} 
-                                onClickCallback={handleClickEditor}/>
-                            <LikeWindow
-                                imageSrc="ressources/pictures/c++.png"
-                                title="Components"
-                                description="Explore the key components of our 2D C++ engine and ignite your creativity in game design!"
-                                lin={null}
-                                onClickCallback={null} />
-                            <LikeWindow
-                                imageSrc="ressources/pictures/c++.png"
-                                title="Namespace (spe::)"
-                                description="Experience the efficiency of our spe:: namespace and simplify your game development process with ease!"
-                                lin={null} 
-                                onClickCallback={null}/>
-                        </div>
-                        <div className='h-3'/>
+                        <SearchComponent/> 
+                        <NavigationFrame />
+
+                        <div id="scroll-to-me"/> {/* This gets scrolled to from search component when pressing enter & focused */}
 
                         <EditorDocs/>
-
-                        <details>
-                            <summary>Components</summary>
-                            <br/>
-                            <details>
-                                <summary>Collider</summary>
-                            </details>
-
-                            <details>
-                                <summary>Animation</summary>
-                            </details>
-
-                            <details>
-                                <summary>Prefab</summary>
-                            </details>
-
-                            <details>
-                                <summary>Transform</summary>    
-                            </details>
-
-                            <details>
-                                <summary>Sprite Renderer</summary>
-                            </details>
-
-                            <details>
-                                <summary>Physics</summary>
-                            </details>
-                        </details>
-
-                        <details>
-                            <summary>SpriteEngine namespace</summary>
-                        </details>
-                        
+                        <DocsComponent />
+                        <Namespace />
+            
                     </div>
                 </div>
             </div>

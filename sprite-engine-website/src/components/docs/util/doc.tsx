@@ -1,6 +1,6 @@
 import React, { ReactNode } from 'react';
 import Syntax from "./syntax";
-import './documentation.css';
+import '../documentation.css';
 import 'utils/general.css'
 
 interface DocuProps {

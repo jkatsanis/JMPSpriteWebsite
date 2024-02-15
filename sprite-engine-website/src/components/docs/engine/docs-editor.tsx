@@ -1,6 +1,6 @@
 import React from 'react';
 import IconText from 'components/icontext';
-import { BigDocu } from '../doc';
+import { BigDocu } from '../util/doc';
 
 import './docs-editor.css';
 import 'utils/general.css';
