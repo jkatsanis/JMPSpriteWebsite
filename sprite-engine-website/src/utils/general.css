@@ -16,11 +16,22 @@
     align-items: center;
   }
 
-.centered-div-content-left-70 {
-    width: 70rem; /* Set your desired width */
+.centered-div-content-left-70, .centered-div-content-left-50, .centered-div-content-left-60 {
     margin: 0 auto; /* Center the div horizontally */
     text-align: left; /* Align content to the left */
     padding: 20px; /* Optional: Add padding for spacing */
+}
+
+.centered-div-content-left-50 {
+    width: 50rem; 
+}
+
+.centered-div-content-left-70 {
+    width: 70rem; /* Set your desired width */
+}
+
+.centered-div-content-left-60 {
+    width: 60rem; /* Set your desired width */
 }
 
 .first-color {

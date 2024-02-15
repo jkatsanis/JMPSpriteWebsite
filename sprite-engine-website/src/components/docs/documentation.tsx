@@ -33,7 +33,7 @@ const Docu: React.FC<DocuProps> = () => {
       <div className='docs'>
         <ContentTable />
         <div className='content'>
-          <div className='centered-div-content-left-70'>
+          <div className='centered-div-content-left-60'>
             <div>
               <div className='h-3' />
               <h3>Any questions?</h3>
