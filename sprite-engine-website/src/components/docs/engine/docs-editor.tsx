@@ -2,7 +2,6 @@ import React from 'react';
 import IconText from 'components/icontext';
 import { BigDocu } from '../util/doc';
 
-import './docs-editor.css';
 import 'utils/general.css';
 
 export default class EditorDocs extends React.Component {

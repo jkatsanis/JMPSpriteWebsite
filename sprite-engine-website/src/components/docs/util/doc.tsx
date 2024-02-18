@@ -1,7 +1,9 @@
 import React, { ReactNode } from 'react';
 import Syntax from "./syntax";
+
 import '../documentation.css';
 import 'utils/general.css'
+import './doc.css'
 
 interface DocuProps {
   children: string;
@@ -27,11 +29,12 @@ interface BigDocuProps {
 export class BigDocu extends React.Component<BigDocuProps> {
   render() {
     return (
-      <div className="content-in-details">
-        <div className="section second-color">
+      <div className='big-docu'>
+        <div className="second-color">
             <h5>{this.props.title}</h5>
             <div className="description">
               {this.props.children}
+              <br/>
             </div>
         </div>
         <div className='h-1'/>

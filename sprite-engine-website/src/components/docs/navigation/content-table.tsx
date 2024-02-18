@@ -13,33 +13,35 @@ const scrollToTop = () => {
 
 const ContentTable: React.FC = () => {
   return (
-    <div className='toc'>
-        <button className="default-btn scroll" onClick={scrollToTop}>Scroll up</button>
-        <li onClick={() => handleClickNavigationFrame("editor")}>
-            Editor            
-        </li>
-        <li onClick={() => handleClickNavigationFrame("components")}>
-            Components
-        </li>
-        <ul>
-          <li>Physicsbody</li>
-          <li>Animator</li>
-          <li>Collider</li>
-          <li>Light</li>
-          <li>Prefab</li>
-          <li>Transform</li>
-          <li>Sprite Renderer</li>
-        </ul> 
-        <div style={{marginTop: '-1rem'}}>
-          <li>
-            spe::
+    <div>
+      <button className="default-btn scroll" onClick={scrollToTop}>^</button>
+      <div className='toc'>
+          <li onClick={() => handleClickNavigationFrame("editor")}>
+              Editor            
+          </li>
+          <li onClick={() => handleClickNavigationFrame("components")}>
+              Components
           </li>
           <ul>
-            <li>Sprite</li>
+            <li>Physicsbody</li>
+            <li>Animator</li>
             <li>Collider</li>
-            <li>Physics</li>
-          </ul>
-        </div>
+            <li>Light</li>
+            <li>Prefab</li>
+            <li>Transform</li>
+            <li>Sprite Renderer</li>
+          </ul> 
+          <div style={{marginTop: '-1rem'}}>
+            <li>
+              spe::
+            </li>
+            <ul>
+              <li>Sprite</li>
+              <li>Collider</li>
+              <li>Physics</li>
+            </ul>
+          </div>
+    </div>
   </div>
   );
 };

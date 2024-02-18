@@ -1,6 +1,6 @@
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import React from 'react';
-import '../documentation.css';
+import './syntax.css'
 
 const customCppStyle = {
     'comment': {
@@ -28,7 +28,7 @@ const customCppStyle = {
       color: '#4EC9B0', // Dark theme object color
     },
     'pre[class*="language-"]': {
-      backgroundColor: '#262626', // Dark theme background color
+      backgroundColor: '#1E1E1E', // Dark theme background color
       padding: '20px', // Default padding
       borderRadius: '5px', // Default border radius
     },
@@ -42,9 +42,10 @@ interface SyntaxProps {
 
 
 export default class Syntax extends React.Component<SyntaxProps> {
+  
     render() {
         return (
-            <SyntaxHighlighter className="syntax" language="cpp" style={customCppStyle}>
+          <SyntaxHighlighter className="syntax" language="cpp" style={customCppStyle}>
             {this.props.code}
           </SyntaxHighlighter>
         )

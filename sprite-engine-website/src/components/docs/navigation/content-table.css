@@ -7,6 +7,7 @@
     margin-left: 1rem;
     position: fixed;
     flex: 0 0 auto; /* Fixes the width of the TOC */
+    z-index: 999;
   }
 
   li:hover {
@@ -14,11 +15,18 @@
   }
 
   .scroll {
-    font-size: 13px;
-    padding: 3px 3pxs;
+    font-size: 35px;
+    padding: 0px 0px;
+    width: 50px;
+    height: 50px;
+    
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 999;
   }
 
   .sep {
-        width: 20px; /* Adjust the width as needed */
+    width: 20px; /* Adjust the width as needed */
     background-color: white; /* Adjust the color as needed */
   }
