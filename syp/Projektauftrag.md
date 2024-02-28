@@ -1,4 +1,4 @@
-# Projektauftrag Highscore
+# Projektauftrag SpriteEngine-Website
 
 ## Auftraggeber
 Professor Aitenbichler
@@ -16,7 +16,7 @@ Nicht definiert
 Heute - 7. Juli
 
 ## Risiken 
-Sensible Daten von Spielern dürfen nicht geleaked werden. Ein nicht definiertes Budget könnte zu Ressourcenknappheit führen. Trolls könnten Threads und Issues spamen und so die Datenbank überfordern
+Sensible Daten von Usern dürfen nicht geleaked werden. Ein nicht definiertes Budget könnte zu Ressourcenknappheit führen. Trolls könnten Threads und Issues spamen und so die Datenbank überfordern
 
 ## Machbarkeit
 Dieses Projekt ist umsetzbar, da es keine komplexen Schnittstellen besitzt und auch keine technischen Schwierigkeiten.

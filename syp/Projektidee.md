@@ -5,6 +5,10 @@
 - HTML, CSS, REACT (Frontent)
 - JS, TS, Expreess (Backend)
 
+
+## Ist Zustand
+Ein alter Prototyp (siehe Github) hilft uns diese Website besser und lebhafter zu designen. 
+
 ## Soll Zustand 
 Eine website die Anfängern bis Experten hilft die SpriteEngine einfach zu benützen. Es ist möglich Diskussionen zu starten, issues zu erstellen und mit den Ersteller direkt zu schreiben.
 
