@@ -3,3 +3,15 @@
     margin-right: 2rem;
     margin-bottom: 4rem;
 }
+
+.highlight {
+    color: green;
+}
+
+.box {
+    background-color: #1F1F1F;
+    padding: 15px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
