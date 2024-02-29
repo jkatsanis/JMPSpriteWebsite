@@ -16,10 +16,10 @@ const ContentTable: React.FC = () => {
     <div>
       <button className="default-btn scroll" onClick={scrollToTop}>^</button>
       <div className='toc'>
-          <li onClick={() => handleClickNavigationFrame("editor")}>
+          <li onClick={() => handleClickNavigationFrame("editor", 0)}>
               Editor            
           </li>
-          <li onClick={() => handleClickNavigationFrame("components")}>
+          <li onClick={() => handleClickNavigationFrame("components", 0)}>
               Components
           </li>
           <ul>
@@ -36,7 +36,7 @@ const ContentTable: React.FC = () => {
               spe::
             </li>
             <ul>
-              <li>Sprite</li>
+              <li onClick={() => handleClickNavigationFrame("sprite-docs", 0)}>Sprite</li>
               <li>Collider</li>
               <li>Physics</li>
             </ul>

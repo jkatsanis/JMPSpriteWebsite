@@ -6,11 +6,11 @@ class SpriteClass extends React.Component {
   render() {
 
     return (
-      <details>
+      <details id="sprite-docs">
         <summary>Sprite</summary>
         <hr/>
         <BigDocu title='Properties'>
-          <p>
+          <div>
               <p>
                 The name of the sprite. It's unique so you can't have duplicats
               </p>
@@ -20,48 +20,54 @@ class SpriteClass extends React.Component {
                 The tag of the sprite, multiple sprites can have the same tag, so you can get a specifc group of sprites.
               </p>
               <Syntax code="std::string Tag;"></Syntax>
-          </p>
+          </div>
         </BigDocu>
 
+
         <BigDocu title='Components'>
-          <p>The sprite renderer component.</p>
-          <Syntax code="spe::SpriteRenderer SpriteRenderer;"></Syntax>
+          <div>
+            <p>The sprite renderer component.</p>
+            <Syntax code="spe::SpriteRenderer SpriteRenderer;"></Syntax>
 
-          <p>The box collider component.</p>
-          <Syntax code="spe::BoxCollider Collider;"></Syntax>
+            <p>The box collider component.</p>
+            <Syntax code="spe::BoxCollider Collider;"></Syntax>
 
-          <p>The physics body component.</p>
-          <Syntax code="spe::PhysicsBody Physicsbody;"></Syntax>
+            <p>The physics body component.</p>
+            <Syntax code="spe::PhysicsBody Physicsbody;"></Syntax>
 
-          <p>The transform component.</p>
-          <Syntax code="spe::Transform Transform;"></Syntax>
+            <p>The transform component.</p>
+            <Syntax code="spe::Transform Transform;"></Syntax>
 
-          <p>The animator component.</p>
-          <Syntax code="spe::Animator Animator;"></Syntax>
+            <p>The animator component.</p>
+            <Syntax code="spe::Animator Animator;"></Syntax>
 
-          <p>The prefab component.</p>
-          <Syntax code="spe::Prefab Prefab;"></Syntax>
+            <p>The prefab component.</p>
+            <Syntax code="spe::Prefab Prefab;"></Syntax>
 
-          <p>The light component.</p>
-          <Syntax code="spe::Light Light;"></Syntax>
+            <p>The light component.</p>
+            <Syntax code="spe::Light Light;"></Syntax>
+          </div>
         </BigDocu>
 
         <BigDocu title='Constructor'>
-          <p>Default constructor for Sprite class.</p>
-          <Syntax code="Sprite();"></Syntax>
+          <div>
+            <p>Default constructor for Sprite class.</p>
+            <Syntax code="Sprite();"></Syntax>
 
-          <p>Constructor with parameters for Sprite class.</p>
-          <Syntax code="Sprite(std::string name, spe::Vector2 spawnPosition, std::string path, spe::LightRepository&amp; lightrepo);"></Syntax>
+            <p>Constructor with parameters for Sprite class.</p>
+            <Syntax code="Sprite(std::string name, spe::Vector2 spawnPosition, std::string path, spe::LightRepository&amp; lightrepo);"></Syntax>
 
-          <p>Copy constructor for Sprite class.</p>
-          <Syntax code="Sprite(spe::Sprite&amp; rhs);"></Syntax>
+            <p>Copy constructor for Sprite class.</p>
+            <Syntax code="Sprite(spe::Sprite&amp; rhs);"></Syntax>
 
-          <p>Destructor for Sprite class.</p>
-          <Syntax code="~Sprite();"></Syntax>
+            <p>Destructor for Sprite class.</p>
+            <Syntax code="~Sprite();"></Syntax>
+          </div>
         </BigDocu>
 
         <BigDocu title='Functions'>
-            <p>Sets the ID of the sprite.</p>
+          <div>
+          <p>Sets the ID of the sprite.</p>
             <Syntax code="void SetId(const int32_t id) noexcept;"></Syntax>
 
             <p>Gets the sprite.</p>
@@ -114,7 +120,8 @@ class SpriteClass extends React.Component {
 
             <p>Gets the path of the texture file.</p>
             <Syntax code="const std::string&amp; getPathOfTextureFile() const;"></Syntax>
-        </BigDocu>
+          </div>
+        </BigDocu>  
 
       </details>
     );

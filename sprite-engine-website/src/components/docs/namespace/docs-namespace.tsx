@@ -4,7 +4,7 @@ import SpriteClass from './sprite-class';
 
 const Namespace: React.FC = () => {
   return (
-    <details>
+    <details id='spe'>
       <summary>SpriteEngine namespace</summary>
       <br/>
 

@@ -23,10 +23,8 @@ class Syntax extends React.Component<SyntaxProps> {
 
     let content = code;
 
-    // Keep track of highlighted class names
     let highlighted: { [key: string]: boolean } = {};
 
-    // Loop through the classes and dynamically highlight the words
     for (let i = 0; i < classes.length; i++) {
       let className = classes[i].name;
       let classColor = classes[i].color;
@@ -46,14 +44,11 @@ class Syntax extends React.Component<SyntaxProps> {
       });
     }
 
-    // Wrap the modified content in a box
     return '<div class="box">' + content + '</div>';
   }
 
   render() {
     let highlight = this.codeHighlight(this.props.code);
-
-    console.log(highlight + "\n");
 
     return (
       <div dangerouslySetInnerHTML={{ __html: highlight }} />
