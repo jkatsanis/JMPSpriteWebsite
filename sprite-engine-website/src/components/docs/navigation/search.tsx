@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-import './documentation.css';
+import "components/docs/documentation"
 
 function search(searchText: string) {
     let filter, details, summary, i, j, txtValue;
@@ -37,12 +37,37 @@ function search(searchText: string) {
 }
 
 const SearchComponent: React.FC = () => {
+
+    const handleEnterPress = (event: KeyboardEvent) => {
+        if (event.key === 'Enter') {
+          console.log('Enter key pressed');
+            
+          const isInputFocused = document.activeElement === document.getElementById('feature-searcher');
+
+          if(isInputFocused)
+          {
+            const detailsSection = document.getElementById('scroll-to-me');
+            if (detailsSection) {
+                detailsSection.scrollIntoView({ behavior: 'smooth' });
+            }
+          }
+        }
+      };
+
     const [searchText, setSearchText] = useState<string>('');
+    const isInputFocused = document.getElementById('feature-searcher');
 
     useEffect(() => {
         search(searchText);
     }, [searchText]);
 
+    useEffect(() => {
+        document.addEventListener('keypress', handleEnterPress);
+        return () => {
+          document.removeEventListener('keypress', handleEnterPress);
+        };
+      }, []); // Empty dependency array to ensure effect runs only once
+    
     return (
         <div className="search-bar">
             <input  
@@ -53,6 +78,7 @@ const SearchComponent: React.FC = () => {
                 placeholder="Search for docs..."
             />
         </div>
+
     );
 }
 

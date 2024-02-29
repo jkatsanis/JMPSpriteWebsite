@@ -1,0 +1,32 @@
+.docs {
+    display: flex;
+  }
+  
+  .toc {
+    transform: scale(0.9);
+    margin-left: 1rem;
+    position: fixed;
+    flex: 0 0 auto; /* Fixes the width of the TOC */
+    z-index: 999;
+  }
+
+  li:hover {
+    text-decoration: underline;
+  }
+
+  .scroll {
+    font-size: 35px;
+    padding: 0px 0px;
+    width: 50px;
+    height: 50px;
+    
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 999;
+  }
+
+  .sep {
+    width: 20px; /* Adjust the width as needed */
+    background-color: white; /* Adjust the color as needed */
+  }

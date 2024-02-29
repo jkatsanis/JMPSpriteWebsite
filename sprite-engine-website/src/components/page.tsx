@@ -1,5 +1,6 @@
 import React, { ReactNode } from 'react';
 import Bottom from './bottom/bottom';
+import "utils/general.css"
 
 interface PageProps {
     children: ReactNode;
@@ -12,6 +13,7 @@ interface PageProps {
             <div className='wrapper'>
                 <div>
                     {this.props.children}
+                    <div className='h-3'/>
                     <Bottom />
                 </div>
             </div>

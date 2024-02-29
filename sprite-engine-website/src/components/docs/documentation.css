@@ -37,16 +37,21 @@ details {
     text-align: center ;
 }
 
+details:hover {
+    background-color: #141313;
+}
+
+details {
+    background-color: #1b1a1a;
+}
+
+.content {
+    flex: 1; /* Allows content to take remaining space */
+}
+
 /* doc.tsx */
 
 .docu-desc {
     margin-left: 2rem;
 }
 
-/* syntax.tsx */
-
-.syntax {
-    border: 2px solid black;
-    margin-left: 2rem;
-    margin-right: 2rem;
-}

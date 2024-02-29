@@ -53,11 +53,10 @@
 
   position: absolute;
   top: 50%;
-  left: 40%;
+  left: 50%;
 }
 
 /* Adjust hover effect for smoother scaling */
 .video-btn:hover {
   transform: scale(1.05); /* Slightly reduce scaling for smoother effect */
 }
-

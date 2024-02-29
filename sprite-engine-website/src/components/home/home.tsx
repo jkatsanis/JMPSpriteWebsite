@@ -5,6 +5,7 @@ import { Page } from 'components/page';
 
 import './home.css';
 import 'utils/general.css';
+import "components/likewindow/likewindow.css"
 
 const Home: React.FC = () => {
 
@@ -20,7 +21,7 @@ const Home: React.FC = () => {
         <div className="video-container">
           <video className="responsive-video" autoPlay loop muted>
             <source src="ressources/videos/intro.mp4" type="video/mp4" />
-            Your browser does not support the video tag.
+            Your browser does not support the video tag!.
           </video>
           <div className="video-text">The C++ <br /> 2D Game Engine <br /> Of The Future.</div>
 
@@ -39,19 +40,22 @@ const Home: React.FC = () => {
                 imageSrc="ressources/pictures/githubcover.png"
                 title="Github-Website"
                 description="Check out our github! It's very simple and straigforward, for any questions, navigate to the FAQ"
-                lin={website} />
+                lin={website} 
+                onClickCallback={null}/>
 
               <LikeWindow
                 imageSrc="ressources/pictures/githubcoverEngine.png"
                 title="Github-GameEngine"
                 description="This Project is a simple 2D Game Engine designed to be fully understand by one Person. It is written in pure C++, with the support of SFML & Imgui"
-                lin={engine} />
+                lin={engine} 
+                onClickCallback={null}/>
 
               <LikeWindow
                 imageSrc="ressources/pictures/youtubecover.png"
                 title="Youtube"
                 description="Feel free to watch my youtube videos, I introduce the gameengine, introduce new functions and create devlogs."
-                lin={youtube} />
+                lin={youtube} 
+                onClickCallback={null}/>
             </div>
           </div>
           <div className='h-3'/>
@@ -67,19 +71,22 @@ const Home: React.FC = () => {
                 imageSrc="ressources/pictures/c++.png"
                 title="Programming language"
                 description="The entire engine is writting in pure C++ without any other languages. So the scripiting does also only work with C++"
-                lin={null} />
+                lin={null} 
+                onClickCallback={null}/>
 
               <LikeWindow
                 imageSrc="ressources/pictures/tools.png"
                 title="Tools used"
                 description="SFML is used for the rendering, imgui is used for the entire UI."
-                lin={null} />
+                lin={null} 
+                onClickCallback={null}/>
 
               <LikeWindow
                 imageSrc="ressources/pictures/pixelgame.png"
                 title="2D"
                 description="The engine does obviously only support 2D. As the name is <SpriteEngine>,   thus only supporting sprites."
-                lin={null} />
+                lin={null}
+                onClickCallback={null} />
             </div>
           </div>
           <div className='h-3'/>
@@ -98,8 +105,6 @@ const Home: React.FC = () => {
             <CreateLink Link={OlderDownload} left={10}></CreateLink>
           </div>
         </div>
-
-        <div className='h-16' />
       </div>
 
     </Page>
