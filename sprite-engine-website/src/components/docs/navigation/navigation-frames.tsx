@@ -2,7 +2,6 @@ import React from 'react';
 import LikeWindow from 'components/likewindow/likewindow';
 
 export const handleClickNavigationFrame = (item: string, count: number) => {
-
     const openParentDetails = (element: HTMLElement | null) => {
         while (element && element.tagName !== 'DETAILS') {
             element = element.parentElement;
