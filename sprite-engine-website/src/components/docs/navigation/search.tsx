@@ -1,73 +1,30 @@
 import React, { useState, useEffect } from 'react';
+import "components/docs/documentation";
 
-import "components/docs/documentation"
 
-function search(searchText: string) {
-    let filter, details, summary, i, j, txtValue;
-    filter = searchText.toLowerCase();
-    
-    details = document.getElementsByTagName('details');
-    
-    for (i = 0; i < details.length; i++) {
-        summary = details[i].getElementsByTagName('summary')[0];
-        txtValue = summary.textContent?.toLowerCase() || summary.innerText.toLowerCase();
-    
-        if (txtValue.includes(filter)) {
-            details[i].style.display = '';
-        } else {
-            let childrenSummaries = details[i].querySelectorAll('summary');
-            let foundInChildren = false;
-            for (j = 0; j < childrenSummaries.length; j++) {
-                let childTxtValue = childrenSummaries[j].textContent?.toLowerCase() || childrenSummaries[j].innerText.toLowerCase();
-                if (childTxtValue.includes(filter)) {
-                    foundInChildren = true;
-                    break;
-                }
-            }
-    
-            if (foundInChildren) {
-                details[i].style.display = '';
-                details[i].open = true; // Open the details element
-            } else {
-                details[i].style.display = 'none';
-                details[i].open = false; // Close the details element
-            }
-        }
-    }
+
+
+interface SearchProps {
+    handleEnterPress: (event: KeyboardEvent) => void;
+    search: (searchText: string) => void;
 }
 
-const SearchComponent: React.FC = () => {
-
-    const handleEnterPress = (event: KeyboardEvent) => {
-        if (event.key === 'Enter') {
-          console.log('Enter key pressed');
-            
-          const isInputFocused = document.activeElement === document.getElementById('feature-searcher');
-
-          if(isInputFocused)
-          {
-            const detailsSection = document.getElementById('scroll-to-me');
-            if (detailsSection) {
-                detailsSection.scrollIntoView({ behavior: 'smooth' });
-            }
-          }
-        }
-      };
-
+const SearchComponent: React.FC<SearchProps> = (props) => {
     const [searchText, setSearchText] = useState<string>('');
-    const isInputFocused = document.getElementById('feature-searcher');
 
     useEffect(() => {
-        search(searchText);
+        props.search(searchText);
     }, [searchText]);
 
     useEffect(() => {
-        document.addEventListener('keypress', handleEnterPress);
+
+        document.addEventListener('keypress', props.handleEnterPress);
+        
         return () => {
-          document.removeEventListener('keypress', handleEnterPress);
+            document.removeEventListener('keypress', props.handleEnterPress);
         };
-      }, []); // Empty dependency array to ensure effect runs only once
-    
+    }, []); 
+
     return (
         <div className="search-bar">
             <input  
@@ -78,7 +35,6 @@ const SearchComponent: React.FC = () => {
                 placeholder="Search for docs..."
             />
         </div>
-
     );
 }
 

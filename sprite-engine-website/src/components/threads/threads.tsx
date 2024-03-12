@@ -1,23 +1,68 @@
-import react from 'react';
+import React from 'react';
 import './threads.css';
+import { Page } from 'components/page';
+import 'utils/general.css'
+import { Question } from './model';
+import { Account } from './model'
+
+let question: Question[] = [];
+
+let acc: Account = {
+    name: "Manfred",
+    password: "123OGa"
+};
+
+question.push(new Question(acc, "How do i get bitches?", "Hello i am 8 and i cant get bitches lmfao"));
+
 
 export function Threads(){
+
     return(
-        <div className="mainBack">
-            <h1 className="headerChange">Threads</h1>
-            <p>Threads are the most important part of the SpriteEngine. They are used to run the game loop, which is the main loop of the game. The game loop is responsible for updating the game state and rendering the game world. In this tutorial, we will learn how to create and manage threads in the SpriteEngine.</p>
-            <ThreadCreateButton threadName="Thread" threadDescription="Thread Description" />
-        </div>
+        <Page>
+            <div className='centered-div-content-left-70'>
+                <RenderCommonQuestions/>
+            </div>
+        </Page>
     );
 }
 
-export function ThreadCreateButton({threadName, threadDescription}: {threadName: string, threadDescription: string}){
-    const handleClick = () => {
-        console.log(threadDescription);
-    }
-    return(
+
+export class RenderCommonQuestions extends React.Component {
+    render() {
+      return (
         <div>
-            <button className="buttonChange" title={threadName} onClick={handleClick}>{threadDescription}</button>
+         <h1 className='common'>Common Questions: </h1>
+         <div className='h-2'/>
+
+
+            {question.map((question) => (
+                <RenderQuestion question={question}/>
+            ))}
+
         </div>
-    );
+      );
+    }
+}
+
+interface QuestionProps 
+{
+    question: Question;
+}
+
+export class RenderQuestion extends React.Component<QuestionProps> {
+
+    render() 
+    {
+        return (
+            <div className='question'>
+                <div className='inline'>
+                    <p className='question-p'>{this.props.question.title}</p>
+                    <p className='question-counter'>#{this.props.question.questionNumber}</p>
+                </div>
+                <p className='question-btm-info'>{this.props.question.author.name}</p>
+            </div>
+
+        );
+    }
+
 }
