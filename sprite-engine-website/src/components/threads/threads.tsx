@@ -1,11 +1,14 @@
-import React from 'react';
 import './threads.css';
 import { Page } from 'components/page';
 import 'utils/general.css'
 import { Question } from './model';
 import { Account } from './model'
+import { RenderCommonQuestions } from './question';
+import SearchComponent from 'components/search';
 
-let question: Question[] = [];
+import { handleThreadsEnterClick, searchThreads } from './search-threads';
+
+export let question: Question[] = [];
 
 let acc: Account = {
     name: "Manfred",
@@ -20,49 +23,21 @@ export function Threads(){
     return(
         <Page>
             <div className='centered-div-content-left-70'>
+                <h1 className='common'>Rules: </h1>
+                <br/>
+                <tr>
+                    <li>Please stay respectful and do not provocate (how tf do you write this) other members. </li>
+                    <li>Do not spam questions</li>
+                    <li>Try to find a question similar before creating your own</li>
+                </tr>
+
+                <div className='h-2'/>
+                <SearchComponent handleEnterPress={handleThreadsEnterClick} search={searchThreads} searchFor='Search for threads...'/>
+                <div className='h-2'/>
+
                 <RenderCommonQuestions/>
             </div>
         </Page>
     );
 }
 
-
-export class RenderCommonQuestions extends React.Component {
-    render() {
-      return (
-        <div>
-         <h1 className='common'>Common Questions: </h1>
-         <div className='h-2'/>
-
-
-            {question.map((question) => (
-                <RenderQuestion question={question}/>
-            ))}
-
-        </div>
-      );
-    }
-}
-
-interface QuestionProps 
-{
-    question: Question;
-}
-
-export class RenderQuestion extends React.Component<QuestionProps> {
-
-    render() 
-    {
-        return (
-            <div className='question'>
-                <div className='inline'>
-                    <p className='question-p'>{this.props.question.title}</p>
-                    <p className='question-counter'>#{this.props.question.questionNumber}</p>
-                </div>
-                <p className='question-btm-info'>{this.props.question.author.name}</p>
-            </div>
-
-        );
-    }
-
-}

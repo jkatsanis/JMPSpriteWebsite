@@ -3,8 +3,12 @@
 }
 
 .question {
-    background-color: hsl(0, 0%, 8%);
+    background-color: hsl(0, 0%, 7%);
     border-radius: 5px;
+}
+
+.question:hover {
+    background-color: hsl(0, 0%, 1%);
 }
 
 .question-p {

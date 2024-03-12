@@ -1,12 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import "components/docs/documentation";
 
-
-
-
 interface SearchProps {
     handleEnterPress: (event: KeyboardEvent) => void;
     search: (searchText: string) => void;
+    searchFor: string;
 }
 
 const SearchComponent: React.FC<SearchProps> = (props) => {
@@ -32,7 +30,7 @@ const SearchComponent: React.FC<SearchProps> = (props) => {
                 id="feature-searcher"
                 value={searchText}
                 onChange={(e) => setSearchText(e.target.value)}
-                placeholder="Search for docs..."
+                placeholder={props.searchFor}
             />
         </div>
     );
