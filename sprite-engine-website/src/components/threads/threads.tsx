@@ -1,23 +1,43 @@
-import react from 'react';
 import './threads.css';
+import { Page } from 'components/page';
+import 'utils/general.css'
+import { Question } from './model';
+import { Account } from './model'
+import { RenderCommonQuestions } from './question';
+import SearchComponent from 'components/search';
+
+import { handleThreadsEnterClick, searchThreads } from './search-threads';
+
+export let question: Question[] = [];
+
+let acc: Account = {
+    name: "Manfred",
+    password: "123OGa"
+};
+
+question.push(new Question(acc, "How do i get bitches?", "Hello i am 8 and i cant get bitches lmfao"));
+
 
 export function Threads(){
+
     return(
-        <div className="mainBack">
-            <h1 className="headerChange">Threads</h1>
-            <p>Threads are the most important part of the SpriteEngine. They are used to run the game loop, which is the main loop of the game. The game loop is responsible for updating the game state and rendering the game world. In this tutorial, we will learn how to create and manage threads in the SpriteEngine.</p>
-            <ThreadCreateButton threadName="Thread" threadDescription="Thread Description" />
-        </div>
+        <Page>
+            <div className='centered-div-content-left-70'>
+                <h1 className='common'>Rules: </h1>
+                <br/>
+                <tr>
+                    <li>Please stay respectful and do not provocate (how tf do you write this) other members. </li>
+                    <li>Do not spam questions</li>
+                    <li>Try to find a question similar before creating your own</li>
+                </tr>
+
+                <div className='h-2'/>
+                <SearchComponent handleEnterPress={handleThreadsEnterClick} search={searchThreads} searchFor='Search for threads...'/>
+                <div className='h-2'/>
+
+                <RenderCommonQuestions/>
+            </div>
+        </Page>
     );
 }
 
-export function ThreadCreateButton({threadName, threadDescription}: {threadName: string, threadDescription: string}){
-    const handleClick = () => {
-        console.log(threadDescription);
-    }
-    return(
-        <div>
-            <button className="buttonChange" title={threadName} onClick={handleClick}>{threadDescription}</button>
-        </div>
-    );
-}

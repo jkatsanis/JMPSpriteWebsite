@@ -1,3 +1,29 @@
-.headerChange{
-    text-align:center;
+.common {
+    text-decoration: underline;
+}
+
+.question {
+    background-color: hsl(0, 0%, 7%);
+    border-radius: 5px;
+}
+
+.question:hover {
+    background-color: hsl(0, 0%, 1%);
+}
+
+.question-p {
+    padding: 1rem;
+}
+
+.question-counter {
+   margin-left: 50rem; 
+}
+
+.question-btm-info {
+    color: grey;
+    font-size: small;
+
+    margin-top: -2rem;
+    margin-left: 1rem;;
+    height: 2rem;
 }

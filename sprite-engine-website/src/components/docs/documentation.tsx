@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import SearchComponent from './navigation/search';
+import SearchComponent from '../search';
 import EditorDocs from './engine/docs-editor';
 import { Page } from 'components/page';
 import DocsComponent from './components/docs-components';
@@ -7,23 +7,12 @@ import Namespace from './namespace/docs-namespace';
 import NavigationFrame from './navigation/navigation-frames';
 import ContentTable from './navigation/content-table';
 
+import { handleEnterPress, search, collapse } from './navigation/search-docs';
+
 import 'components/bottom/bottom.css';
 import './documentation.css';
 import 'utils/general.css';
 
-// Define your table of contents items
-const tableOfContentsItems = [
-  { id: 'editor-docs', title: 'Editor Docs' },
-  { id: 'docs-component', title: 'Docs Component' },
-  { id: 'namespace', title: 'Namespace' },
-];
-
-function collapse() {
-  let details = document.querySelectorAll('details');
-  details.forEach(function (details) {
-    details.removeAttribute('open');
-  });
-}
 
 interface DocuProps {}
 
@@ -49,7 +38,7 @@ const Docu: React.FC<DocuProps> = () => {
               </p>
               <div className='h-3' />
 
-              <SearchComponent />
+              <SearchComponent handleEnterPress={handleEnterPress} search={search} searchFor='Search for docs...'/>
               <NavigationFrame />
 
               <div id='scroll-to-me' /> {/* This gets scrolled to from search component when pressing enter & focused */}

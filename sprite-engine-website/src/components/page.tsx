@@ -1,6 +1,7 @@
 import React, { ReactNode } from 'react';
 import Bottom from './bottom/bottom';
 import "utils/general.css"
+import { Account } from './threads/model';
 
 interface PageProps {
     children: ReactNode;
