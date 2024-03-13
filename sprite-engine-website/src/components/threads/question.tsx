@@ -3,6 +3,8 @@ import React from 'react';
 import { Question } from './model';
 import { question } from './threads'
 
+import './question.css'
+
 export class RenderCommonQuestions extends React.Component {
     render() {
       return (
