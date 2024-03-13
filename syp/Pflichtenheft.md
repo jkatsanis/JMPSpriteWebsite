@@ -7,10 +7,16 @@ Wir wollen eine Website erstellen die Benutzern es vereinfacht die SpriteEngine 
 Ein alter Prototyp (siehe Github) hilft uns diese Website besser und lebhafter zu designen. 
 
 ## Zielssetzung
-Eine website die Anfängern bis Experten hilft die SpriteEngine einfach zu benützen (z.b mithilfe von Docs). Es ist möglich Diskussionen zu starten, issues zu erstellen und mit den Ersteller direkt zu schreiben.
+Das Ziel dieses Projekts ist es, eine benutzerfreundliche Website zu entwickeln, die es Benutzern erleichtert, die SpriteEngine zu verwenden und ein umfassendes Verständnis darüber zu erlangen, was mit der Engine möglich ist. Dies wird umgesetzt mit Docs & Threads.
 
 ## Anforderungen
-Eine Website die kein Kalender oder Fitnesshelfer ist und eine möglichst Sinnvolle Aufgabe erfüllt.
+- Benutzerfreundlichkeit
+- Login System sowie die Sicherheit
+- Dokumentation
+- Tutorials
+- Minispiele
+- Threads-Management
+- Documentation des SpriteEngine quellcode
 
 ## Tools 
 VS Code & Webstorm
@@ -38,7 +44,10 @@ Express
 Wir haben uns für das Wasserfallprozessmodul entschieden da wir am Anfang eine Anforderung haben und dann unser Projekt ausarbeiten. Am Schluss wird dann alles überprüft um nachzusehen ob alle Anforderungen erfüllt wurden.
 
 ## Kriterienkatalog
-K.o kriterium: Login system MUSS erstellt werden 
+- Login System
+    - Das Login-System muss sicher sein und angemessene Maßnahmen zum Schutz der Benutzerdaten implementieren
+- Benutzerfreundlichkeit
+    - Die Benutzeroberfläche muss intuitiv und benutzerfreundlich sein, um eine einfache Navigation und Interaktion zu ermöglichen, das ist vorallem sehr wichtig beim Docs lesen oder Issues suchen. 
 
 ## Mengengerüst
 - Anzahl aktiver user: 0-1
