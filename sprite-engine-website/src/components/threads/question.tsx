@@ -1,5 +1,5 @@
 import React from 'react';
-import { NavigateFunction, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 
 import { Question } from './model';
 import { threadRepo } from './thread-repository';
@@ -54,9 +54,19 @@ export const ThreadPage: React.FC = () => {
   // Now you can use the id parameter as needed
   console.log("ID:", id);
 
+  if(typeof id != 'string')
+  {
+    return <div>Bruh this shit </div>;
+  }
+    let number:number = parseInt(id);
+    const question: Question = threadRepo.fetch(number);
+
+  
+
   return (
     <div>
       I got clicked lil nigga
+      <p>{question.text}</p>
     </div>
   );
 };

@@ -18,6 +18,19 @@ export class ThreadRepository
 
         this.questions.push(new Question(acc, "How do i get bitches?", "Hello i am 8 and i cant get bitches lmfao"));
     }
+
+    fetch(id: number) : Question
+    {
+        for(let i = 0; i < this.questions.length; i++)
+        {
+            if(id === this.questions[i].questionNumber)
+            {
+                return this.questions[i];
+            }
+        }
+
+        return null!;
+    }
 };
 
 export let threadRepo:ThreadRepository = new ThreadRepository();
