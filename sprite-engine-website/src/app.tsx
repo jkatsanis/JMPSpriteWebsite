@@ -5,6 +5,7 @@ import Home from "./components/home/home";
 import Info from "./components/info";
 import Docu from "./components/docs/documentation"
 import { Threads } from 'components/threads/threads';
+import { ThreadPage } from 'components/threads/question';
 
 const App: React.FC = () => {
     return (      
@@ -16,7 +17,7 @@ const App: React.FC = () => {
                 <Route path="/docu" element={<Docu/>}/>
                 <Route path="/docu" element={<Docu/>}/>
                 <Route path="/threads" element={<Threads/>}/>
-
+                <Route path="/threads/:id" element={<ThreadPage/>} />
             </Routes>
         </BrowserRouter>
     );
