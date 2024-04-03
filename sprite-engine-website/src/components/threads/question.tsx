@@ -5,6 +5,8 @@ import { Question } from './model';
 import { threadRepo } from './thread-repository';
 import { useNavigate } from 'react-router-dom';
 
+import './question.css'
+
 export class RenderCommonQuestions extends React.Component {
     render() {
       return (
