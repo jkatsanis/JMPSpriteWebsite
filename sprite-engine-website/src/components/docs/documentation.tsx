@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import SearchComponent from '../search';
+import SearchComponent from '../../utils/search/search';
 import EditorDocs from './engine/docs-editor';
 import { Page } from 'components/page';
 import DocsComponent from './components/docs-components';
@@ -38,7 +38,7 @@ const Docu: React.FC<DocuProps> = () => {
               </p>
               <div className='h-3' />
 
-              <SearchComponent handleEnterPress={handleEnterPress} search={search} searchFor='Search for docs...'/>
+              <SearchComponent id="feature-searcher" handleEnterPress={handleEnterPress} search={search} searchFor='Search for docs...'/>
               <NavigationFrame />
 
               <div id='scroll-to-me' /> {/* This gets scrolled to from search component when pressing enter & focused */}

@@ -1,0 +1,18 @@
+.search-bar {
+    background-color: #f2f2f2; /* Light grey background color */
+    border-radius: 5px; /* Rounded corners */
+    padding: 10px; /* Padding around the input */
+    width: 200px; /* Adjusted width */
+}
+
+.search-bar input[type="text"] {
+    border: none; /* No border */
+    background-color: transparent; /* Transparent background */
+    font-size: 16px; /* Font size */
+    color: #333; /* Text color */
+    outline: none; /* No outline */
+}
+
+.search-bar input[type="text"]::placeholder {
+    color: #999; /* Placeholder color */
+}

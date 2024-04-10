@@ -1,24 +1,31 @@
 {
-  "exclude": [ "public" ],
-  "include": [
-    "index.d.ts",
-    "app.ts",
-    "routes/*.ts",
-    "repos/*.ts",
-    "src/*.ts",
-    "src/*.tsx",
-    "src/**/*.ts",
-    "src/**/*.tsx"
-    ],
   "compilerOptions": {
-    "target": "es6",                    /* Set the JavaScript language version for emitted JavaScript and include compatible library declarations. */
-    "module": "commonjs",               /* Specify what module code is generated. */
-    "moduleResolution": "node",         /* Specify how TypeScript looks up a file from a given module specifier. */
-    "esModuleInterop": true,            /* Emit additional JavaScript to ease support for importing CommonJS modules. This enables `allowSyntheticDefaultImports` for type compatibility. */
-    "strict": true,                     /* Enable all strict type-checking options. */
-    "jsx": "react"
+    "target": "es5",
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
+    "baseUrl": "src",
+    "paths": {
+      "@components/*": ["components/*"],
+      "@utils/*": ["utils/*"]
+    },
+    "allowJs": true,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "noFallthroughCasesInSwitch": true,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": true,
+    "jsx": "react-jsx"
   },
-  "ts-node": {
-    "preferTsExts": true
-  }
+  "include": [
+    "src"
+  ]
 }

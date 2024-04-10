@@ -1,8 +1,8 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
 
-import { Question } from './model';
-import { threadRepo } from './thread-repository';
+import { Question } from '../logic/model';
+import { threadRepo } from '../logic/thread-repository';
 import { useNavigate } from 'react-router-dom';
 
 import './question.css'
@@ -31,12 +31,12 @@ interface QuestionProps
 export const RenderQuestion: React.FC<QuestionProps> = ({ question }) => {
     const navigate = useNavigate();
   
-    const navigateToHello = () => {
-      navigate('/threads/1');
+    const navigateToQuestion = (question: number) => {
+      navigate(`/threads/${question}`);
     };
   
     return (
-      <div className='question' onClick={navigateToHello}>
+      <div className='question' onClick={() => navigateToQuestion(question.questionNumber)}>
         <div className='inline'>
           <p className='question-p'>{question.title}</p>
           <p className='question-counter'>#{question.questionNumber}</p>
@@ -67,7 +67,6 @@ export const ThreadPage: React.FC = () => {
 
   return (
     <div>
-      I got clicked lil nigga
       <p>{question.text}</p>
     </div>
   );

@@ -5,7 +5,7 @@ import Home from "./components/home/home";
 import Info from "./components/info";
 import Docu from "./components/docs/documentation"
 import { Threads } from 'components/threads/threads';
-import { ThreadPage } from 'components/threads/question';
+import { ThreadPage } from 'components/threads/ui/question';
 
 const App: React.FC = () => {
     return (      

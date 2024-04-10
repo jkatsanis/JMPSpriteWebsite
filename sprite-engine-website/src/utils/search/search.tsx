@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import "components/docs/documentation";
+import "./search.css"
 
 interface SearchProps {
     handleEnterPress: (event: KeyboardEvent) => void;
     search: (searchText: string) => void;
     searchFor: string;
+    id:string;
 }
 
 const SearchComponent: React.FC<SearchProps> = (props) => {
@@ -27,7 +28,7 @@ const SearchComponent: React.FC<SearchProps> = (props) => {
         <div className="search-bar">
             <input  
                 type="text"
-                id="feature-searcher"
+                id={props.id}
                 value={searchText}
                 onChange={(e) => setSearchText(e.target.value)}
                 placeholder={props.searchFor}
