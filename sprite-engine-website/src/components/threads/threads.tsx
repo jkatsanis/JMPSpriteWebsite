@@ -1,7 +1,7 @@
 import './threads.css';
 import { Page } from 'components/page';
 import 'utils/general.css'
-import { RenderCommonQuestions } from './ui/question';
+import { RenderCommonQuestions } from './ui/common-questions';
 import SearchComponent from 'utils/search/search';
 import { handleThreadsEnterClick, searchThreads } from './logic/search-threads';
 
@@ -21,7 +21,8 @@ export function Threads(){
                 <div className='h-2'/>
                 <SearchComponent id='question-searcher' handleEnterPress={handleThreadsEnterClick} search={searchThreads} searchFor='Search for threads...'/>
                 <div className='h-2'/>
-                <RenderCommonQuestions/>
+                
+                <RenderCommonQuestions/> 
                 <div id="scroll-to-me"></div>
 
             </div>

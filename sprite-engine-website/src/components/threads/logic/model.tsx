@@ -10,7 +10,6 @@ export enum Label {
 
   
 export class Question {
-    static s_count: number = 0;
     labels: Label[];
     author: Account;
     title: string;
@@ -18,14 +17,13 @@ export class Question {
     timesClicked: number;
     questionNumber: number;
 
-    constructor(author: Account, title: string, text: string) {
+    constructor(author: Account, title: string, text: string, count: number) {
         this.author = author;
         this.labels = [];
         this.text = text;
         this.title = title;
         this.timesClicked = 0;
-        Question.s_count++;
-        this.questionNumber = Question.s_count;
+        this.questionNumber = count;
         console.log("Jeee", author);
     }
 

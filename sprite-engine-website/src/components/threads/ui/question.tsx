@@ -7,22 +7,6 @@ import { useNavigate } from 'react-router-dom';
 
 import './question.css'
 
-export class RenderCommonQuestions extends React.Component {
-    render() {
-      return (
-        <div>
-            <h1 className='common'>Common Questions: </h1>
-            <div className='h-2'/>
-
-            {threadRepo.questions.map((question, index) => (
-                <RenderQuestion key={index} question={question}/>
-            ))}
-
-        </div>
-      );
-    }
-}
-
 interface QuestionProps 
 {
     question: Question;
@@ -47,9 +31,7 @@ export const RenderQuestion: React.FC<QuestionProps> = ({ question }) => {
   };
 
 
-export const ThreadPage: React.FC = () => {
-
-    
+export const ThreadPage: React.FC = () => { 
   // Get the route parameters
   const { id } = useParams<{ id: string }>();
 

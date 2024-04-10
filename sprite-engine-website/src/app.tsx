@@ -6,6 +6,7 @@ import Info from "./components/info";
 import Docu from "./components/docs/documentation"
 import { Threads } from 'components/threads/threads';
 import { ThreadPage } from 'components/threads/ui/question';
+import { AddQuestionModal } from 'components/threads/ui/new-question/new-question';
 
 const App: React.FC = () => {
     return (      
@@ -18,6 +19,7 @@ const App: React.FC = () => {
                 <Route path="/docu" element={<Docu/>}/>
                 <Route path="/threads" element={<Threads/>}/>
                 <Route path="/threads/:id" element={<ThreadPage/>} />
+                <Route path='/threads/new' element={<AddQuestionModal/>} />
             </Routes>
         </BrowserRouter>
     );

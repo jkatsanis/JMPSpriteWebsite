@@ -84,12 +84,12 @@
 
 .default-btn {
     color: white;
-    font-size: 16px; /* Adjust font size for better readability */
+    font-size: 14px; /* Adjust font size for better readability */
     font-weight: bold;
     text-align: center; /* Center align text */
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
     background-color: #7f8c8d;
-    padding: 12px 24px; /* Increase padding for better touch/click area */
+    padding: 10px 20px; /* Increase padding for better touch/click area */
     border: none;
     border-radius: 5px;
     cursor: pointer;
