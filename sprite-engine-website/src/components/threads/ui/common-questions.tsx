@@ -2,11 +2,11 @@ import React from 'react';
 
 import { threadRepo } from '../logic/thread-repository';
 import { RenderQuestion } from './question';
+import { NewQuestionButton } from './new-question/new-question';
 
 import "./question.css"
 import "utils/general.css"
 import "./new-question/new-question.css"
-import { NewQuestionButton } from './new-question/new-question';
 
 export class RenderCommonQuestions extends React.Component {
     render() {
@@ -19,11 +19,11 @@ export class RenderCommonQuestions extends React.Component {
             </div>
             <div className='h-2'/>
 
-            {threadRepo.questions.map((question, index) => (
+            {threadRepo.getQuestions().map((question, index) => (
                 <RenderQuestion key={index} question={question}/>
             ))}
 
-        </div>
+        </div>  
       );
     }
 }

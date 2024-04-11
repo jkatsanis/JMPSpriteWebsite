@@ -2,6 +2,8 @@
 .question {
     background-color: hsl(0, 0%, 7%);
     border-radius: 5px;
+    width: 70rem;
+    position: relative; 
 }
 
 .question:hover {
@@ -13,7 +15,9 @@
 }
 
 .question-counter {
-   margin-left: 50rem; 
+    position: absolute;
+    right: 1rem;
+    top: 1rem;
 }
 
 .question-btm-info {

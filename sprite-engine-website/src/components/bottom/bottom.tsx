@@ -4,12 +4,7 @@ import CreateLink, { Link } from "../link/link";
 import './bottom.css';
 import 'utils/general.css';
 
-interface BottomProps
-{
-
-}
-
-export default class Bottom extends React.Component<BottomProps>
+export default class Bottom extends React.Component
 {
     render()
     {
