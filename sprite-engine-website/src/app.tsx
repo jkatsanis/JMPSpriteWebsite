@@ -1,12 +1,12 @@
 import React from 'react';
-import TopBar from './components/topbar/topbar';
+import TopBar from 'frontend/components/topbar/topbar';
 import {BrowserRouter, Route, Routes} from "react-router-dom";
-import Home from "./components/home/home";
-import Info from "./components/info";
-import Docu from "./components/docs/documentation"
-import { Threads } from 'components/threads/threads';
-import { ThreadPage } from 'components/threads/ui/page-question';
-import { AddQuestionModal } from 'components/threads/ui/new-question/new-question';
+import Home from 'frontend/components/home/home';
+import Info from 'frontend/components/info';
+import Docu from 'frontend/components/docs/documentation';
+import { Threads } from 'frontend/components/threads/threads';
+import { ThreadPage } from 'frontend/components/threads/ui/page-question';
+import { AddQuestionModal } from 'frontend/components/threads/ui/new-question/new-question';
 
 const App: React.FC = () => {
     return (      
