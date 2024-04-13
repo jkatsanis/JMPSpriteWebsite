@@ -1,10 +1,10 @@
 import React from 'react';
 
 import { threadRepo } from '../logic/thread-repository';
-import { RenderQuestion } from './question';
+import { RenderQuestion } from './item-question/question';
 import { NewQuestionButton } from './new-question/new-question';
 
-import "./question.css"
+import "./item-question/question.css"
 import "utils/general.css"
 import "./new-question/new-question.css"
 

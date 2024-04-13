@@ -8,8 +8,10 @@ export default class Bottom extends React.Component
 {
     render()
     {
-        let engine = new Link("ressources/icons/github.png", "Github", "https://github.com/jkatsanis/SpriteEngineUI");
-        let youtube = new Link("ressources/icons/youtube.png", "Youtube", "https://www.youtube.com/channel/UCWihpyidnoBJ4G-V2TT6bVw")
+        let baseUrl = "http://localhost:3000//"; 
+
+        let engine = new Link(baseUrl + "ressources/icons/github.png", "Github", "https://github.com/jkatsanis/SpriteEngineUI");
+        let youtube = new Link(baseUrl + "ressources/icons/youtube.png", "Youtube", "https://www.youtube.com/channel/UCWihpyidnoBJ4G-V2TT6bVw")
         let mit = new Link(null, "MIT License", "https://github.com/jkatsanis/SpriteEngineUI?tab=MIT-1-ov-file")
 
         return(

@@ -33,6 +33,7 @@ const AddQuestionModal: React.FC = () => {
   };
 
   const checkSubmit = () => {
+    let retur = false;
     if (content === "") {        
       if (!alertContent) {    
         let newElement = getElement();
@@ -43,10 +44,11 @@ const AddQuestionModal: React.FC = () => {
 
         setContentAlert(true);
       }
-      return false;
+      retur = true;
     }
     if (title === "") {  
       if (!alertTitle) {
+        console.log("ugaa")
         let newElement = getElement();
         newElement.textContent = "You need to enter a title!";
 
@@ -54,6 +56,10 @@ const AddQuestionModal: React.FC = () => {
         element!.insertAdjacentElement("afterend", newElement);
         setTitleAlert(true);
       }
+      retur = true;
+    }
+    if(retur)
+    {
       return false;
     }
     return true;
