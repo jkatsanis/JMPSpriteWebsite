@@ -11,18 +11,15 @@ import 'frontend/utils/general.css';
 const TopBar: React.FC = () => {
 
   let name = "Account";
-  let pic = `${PATH_TO_ACCOUNT_FOLDER}/accounts/icons/`;
+  let pic = `${PATH_TO_ACCOUNT_FOLDER}/accounts/icons/`; //  uga uga sache
   if(threadRepo.active_account !== null)
   {
     name = threadRepo.active_account.name;
-    pic += threadRepo.active_account.picture;
+    pic = threadRepo.active_account.picture;
   }
   else {
     pic += "default.png"
   }
-
-  console.log(pic);
-
   
   return (
     <div>

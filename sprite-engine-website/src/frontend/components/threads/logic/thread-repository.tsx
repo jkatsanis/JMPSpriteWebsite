@@ -10,15 +10,24 @@ export class ThreadRepository
 
     constructor()
     {
-        let acc: Account = {
-            name: "Manfred",
-            password: "123OGa",
-            picture: "Manfred.png"
-        };
+        let acc: Account = new Account("Manfred", "123Oga", "Manfred.png");
+
 
         this.addQuestion(acc, "How to?", "I cant do i t idj");
 
-        this.active_account = acc; // For test porpuses
+        this.active_account = acc;
+    }
+
+    getQuestion(title: string): Question {
+        for(let i = 0; i < this.m_questions.length; i++)
+        {
+            if(this.m_questions[i].title === title)
+            {
+                return this.m_questions[i];
+            }
+        }
+
+        return null!;
     }
 
     getQuestions(): Question[] 
@@ -30,7 +39,6 @@ export class ThreadRepository
     {
         this.m_count++;
         this.m_questions.push(new Question(acc, title, content, this.m_count));
-        console.log(this.m_questions);
     }
 
     fetch(id: number) : Question

@@ -1,7 +1,15 @@
-export interface Account {
+import { PATH_TO_ACCOUNT_FOLDER } from "macros";
+
+export class Account {
     password: string;
     name: string;
     picture: string;
+
+    constructor(name: string, password: string, picture: string) {
+        this.password = password;
+        this.name = name;
+        this.picture = `${PATH_TO_ACCOUNT_FOLDER}/accounts/icons/${picture}`;
+    }
 }
 
 export enum Label {
@@ -9,6 +17,17 @@ export enum Label {
     Sprite = 'SPRITE'
 }
 
+export class Comment 
+{
+    author: Account;
+    content: string;
+
+    constructor(author: Account, content: string)
+    {
+        this.author = author;
+        this.content = content;
+    }
+}
   
 export class Question {
     labels: Label[];
@@ -17,6 +36,7 @@ export class Question {
     text: string;
     timesClicked: number;
     questionNumber: number;
+    comments: Comment[];
 
     constructor(author: Account, title: string, text: string, count: number) {
         this.author = author;
@@ -25,7 +45,7 @@ export class Question {
         this.title = title;
         this.timesClicked = 0;
         this.questionNumber = count;
-        console.log("Jeee", author);
+        this.comments = [];
     }
 
     addLabel(label: Label): void {

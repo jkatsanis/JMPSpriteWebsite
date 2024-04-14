@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 
 interface QuestionBluePrintProps {
-    submit : (title: string, content: string) => void;
+    submit: (title: string, content: string) => void;
     cancel: () => void;
     qTitle: string;
     enterTitle: boolean;
@@ -22,96 +21,92 @@ const QuestionBluePrint: React.FC<QuestionBluePrintProps> = (props) => {
         setContent(event.target.value);
     };
 
-
     const getElement = () => {
         let newElement = document.createElement("p");
         newElement.classList.add("alert-color");
     
         return newElement;
-      };
-    
+    };
 
-    const checkSubmit = () =>
-    {
+    const checkSubmit = () => {
         let retur = false;
         if (content === "") {        
-          if (!alertContent) {    
-            let newElement = getElement();
-            newElement.textContent = "You need to enter a content!";
+            if (!alertContent) {    
+                let newElement = getElement();
+                newElement.textContent = "You need to enter a content!";
     
-            let element = document.getElementById("content-input");
-            element!.insertAdjacentElement("afterend", newElement);
+                let element = document.getElementById("content-input");
+                element!.insertAdjacentElement("afterend", newElement);
     
-            setContentAlert(true);
-          }
-          retur = true;
+                setContentAlert(true);
+            }
+            retur = true;
         }
         if (props.enterTitle && title === "") {  
-          if (!alertTitle) {
-            console.log("ugaa")
-            let newElement = getElement();
-            newElement.textContent = "You need to enter a title!";
+            if (!alertTitle) {
+                console.log("ugaa")
+                let newElement = getElement();
+                newElement.textContent = "You need to enter a title!";
     
-            let element = document.getElementById("title-input");
-            element!.insertAdjacentElement("afterend", newElement);
-            setTitleAlert(true);
-          }
-          retur = true;
+                let element = document.getElementById("title-input");
+                element!.insertAdjacentElement("afterend", newElement);
+                setTitleAlert(true);
+            }
+            retur = true;
         }
-        if(retur)
-        {
-          return false;
+        if(retur) {
+            return false;
         }
         return true;
     };
 
-    const onSumbit = () => {
-        if(checkSubmit())
-        {
+    const onSubmit = () => {
+        if (checkSubmit()) {
             props.submit(title, content);
         }
-    }
+        setContent("");
+        setContent("");
+    };
 
     const onCancel = () => {
         props.cancel();
-    }
+    };
 
     return (
         <div>
-                <h2 style={{ marginBottom: '20px' }}>{props.qTitle}</h2>
+            <h2 style={{ marginBottom: '20px' }}>{props.qTitle}</h2>
 
-                {props.enterTitle && (
-                    <div className="form-group" id="title-input">
-                        <input
-                            id="title"
-                            type="text"
-                            className="form-control"
-                            placeholder="Enter the title"
-                            value={title}
-                            onChange={handleTitleChange}
-                        />
-                        <br/>
-                    </div>
-                    
-                )}
-                
-                <div className="form-group" id="content-input">
-                    <textarea
-                        id="content"
-                        style={{ height: '200px' }}
+            {props.enterTitle && (
+                <div className="form-group" id="title-input">
+                    <input
+                        id="title"
+                        type="text"
                         className="form-control"
-                        placeholder="Enter the content"
-                        value={content}
-                        onChange={handleContentChange}
+                        placeholder="Enter the title"
+                        value={title}
+                        onChange={handleTitleChange}
                     />
+                    <br/>
                 </div>
-                <div className='h-1'/>
-                <div className='inline'>
-                    <button className="default-btn" onClick={onSumbit}>Submit</button>
-                    <button className='default-btn' style={{marginLeft: 10}} onClick={onCancel}>Cancel</button>
-                </div>
+            )}
+                
+            <div className="form-group" id="content-input">
+                <textarea
+                    id="content"
+                    style={{ height: '200px' }}
+                    className="form-control"
+                    placeholder="Enter the content"
+                    value={content}
+                    onChange={handleContentChange}
+                />
+            </div>
+            <div className='h-1'/>
+            <div className='inline'>
+                <button className="default-btn" onClick={onSubmit}>Submit</button>
+                <button className='default-btn' style={{marginLeft: 10}} onClick={onCancel}>Cancel</button>
+            </div>
         </div>
     );
-}
+};
 
 export default QuestionBluePrint;
