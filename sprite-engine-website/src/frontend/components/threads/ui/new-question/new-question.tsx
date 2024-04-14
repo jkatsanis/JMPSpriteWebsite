@@ -5,117 +5,32 @@ import { threadRepo } from 'frontend/components/threads/logic/thread-repository'
 
 import "./new-question.css";
 import "frontend/utils/general.css";
+import QuestionBluePrint from 'frontend/components/question/question-bp';
 
 const AddQuestionModal: React.FC = () => {
   const navigate = useNavigate();
-  const [title, setTitle] = useState('');
-  const [content, setContent] = useState('');
-  const [alertTitle, setTitleAlert] = useState(false);
-  const [alertContent, setContentAlert] = useState(false);
 
   const navigateTo = () => {
     navigate(`/threads`);
   };  
 
-  const handleTitleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setTitle(event.target.value);
-  };
+  const submit = (title: string, content: string) => {
+    console.log("actual submit");
 
-  const handleContentChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
-    setContent(event.target.value);
-  };
-
-  const getElement = () => {
-    let newElement = document.createElement("p");
-    newElement.classList.add("alert-color");
-
-    return newElement;
-  };
-
-  const checkSubmit = () => {
-    let retur = false;
-    if (content === "") {        
-      if (!alertContent) {    
-        let newElement = getElement();
-        newElement.textContent = "You need to enter a content!";
-
-        let element = document.getElementById("content-input");
-        element!.insertAdjacentElement("afterend", newElement);
-
-        setContentAlert(true);
-      }
-      retur = true;
-    }
-    if (title === "") {  
-      if (!alertTitle) {
-        console.log("ugaa")
-        let newElement = getElement();
-        newElement.textContent = "You need to enter a title!";
-
-        let element = document.getElementById("title-input");
-        element!.insertAdjacentElement("afterend", newElement);
-        setTitleAlert(true);
-      }
-      retur = true;
-    }
-    if(retur)
+    if(threadRepo.active_account === null)
     {
-      return false;
+      throw new Error("Why tf is it 0??");
     }
-    return true;
-  };
 
-  const handleSubmit = () => {
-    if (checkSubmit()) {
-      console.log("actual submit");
+    threadRepo.addQuestion(threadRepo.active_account!, title, content);
 
-      if(threadRepo.active_account === null)
-      {
-        throw new Error("Why tf is it 0??");
-      }
-  
-      threadRepo.addQuestion(threadRepo.active_account!, title, content);
-  
-      navigateTo(); // Navigating to the default site
-    }
-  };
-
-  const handleCancel = () => {
-    navigateTo();
-  };
+    navigateTo(); // Navigating to the default site
+  }
 
   return (
     <Page>
       <div className='centered-div-content-left-70'>
-        <h2 style={{ marginBottom: '20px' }}>Add a New Question</h2>
-
-        <div className="form-group" id="title-input">
-          <label htmlFor="title">Title:</label>
-          <input
-            id="title"
-            type="text"
-            className="form-control"
-            placeholder="Enter the title"
-            value={title}
-            onChange={handleTitleChange}
-          />
-        </div>
-        <div className="form-group" id="content-input">
-          <label htmlFor="content">Content:</label>
-          <textarea
-            id="content"
-            style={{ height: '200px' }}
-            className="form-control"
-            placeholder="Enter the content"
-            value={content}
-            onChange={handleContentChange}
-          />
-        </div>
-        <div className='h-1'/>
-        <div className='inline'>
-          <button className="default-btn" onClick={handleSubmit}>Submit</button>
-          <button className='default-btn' style={{marginLeft: 10}} onClick={handleCancel}>Cancel</button>
-        </div>
+        <QuestionBluePrint enterTitle={true} qTitle='Add a new question' submit={submit} cancel={navigateTo}/>        
       </div>
     </Page>
   );
