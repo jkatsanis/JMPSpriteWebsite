@@ -23,15 +23,17 @@ export const ThreadPage: React.FC = () => {
 
   return (
     <Page>
-      <div className='question-container'>
-        <div className='profile-info'>
-          <img src={pic} alt="Profile Picture" className="profile-picture" />
-          <h3>{question.author.name}</h3>
+      <div className='centered-div-content-left-70'>
+        <div className='profile-container'>
+          <div className='profile-info inline'>
+              <img src={pic} alt="Profile Picture" className="profile-picture" />
+              <h3 className='profile-author' style={{marginLeft: '0.5rem'}}>{question.author.name}</h3>
+          </div>
         </div>
-        <div className='question-content'>
-          <div className='centered-div-content-left-70'>
-            <h1>{question.title}</h1>
-            <p>{question.text}</p>
+        <div className='question-container'>
+          <div className='question-content'>
+              <h1>{question.title}</h1>
+              <p>{question.text}</p>
           </div>
         </div>
       </div>
