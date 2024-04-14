@@ -28,3 +28,15 @@ nav ul li a:hover {
   color: rgb(233, 166, 52);
   font-size: 0.97rem; /* Make the font size smaller on hover */
 }
+
+.link-i-a:hover {
+  color: rgb(233, 166, 52);
+  font-size: 0.97rem; /* Make the font size smaller on hover */
+  text-decoration: underline;
+}
+
+.link-i-a {
+  vertical-align: top;
+  display: inline-block;  
+  margin-left: 0.5rem;
+}

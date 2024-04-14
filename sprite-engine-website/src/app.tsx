@@ -5,7 +5,7 @@ import Home from 'frontend/components/home/home';
 import Info from 'frontend/components/info';
 import Docu from 'frontend/components/docs/documentation';
 import { Threads } from 'frontend/components/threads/threads';
-import { ThreadPage } from 'frontend/components/threads/ui/page-question';
+import { ThreadPage } from 'frontend/components/threads/ui/page-question/page-question';
 import { AddQuestionModal } from 'frontend/components/threads/ui/new-question/new-question';
 
 const App: React.FC = () => {

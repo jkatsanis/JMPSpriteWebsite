@@ -2,27 +2,33 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { threadRepo } from 'frontend/components/threads/logic/thread-repository';
-import IconText from '../icontext';
+
+import { PATH_TO_ACCOUNT_FOLDER } from 'macros';
 
 import './topbar.css';
 import 'frontend/utils/general.css';
 
-
 const TopBar: React.FC = () => {
 
-  let pic = "ressources/account/icons";
-  if(threadRepo.active_account?.picture !== null)
+  let name = "Account";
+  let pic = `${PATH_TO_ACCOUNT_FOLDER}/accounts/icons/`;
+  if(threadRepo.active_account !== null)
   {
-    pic = threadRepo.active_account!.picture;
+    name = threadRepo.active_account.name;
+    pic += threadRepo.active_account.picture;
+  }
+  else {
+    pic += "default.png"
   }
 
-  const defaultImage = require('../../../backend/accounts/icons/default.png');
+  console.log(pic);
+
   
   return (
     <div>
       <div className="top-bar">
-        <div className=''>
-            
+      <div className='h-1'/>
+        <div className=''>        
             <div className='centered-div'>
               <div style={{marginTop: '0.5rem'}}></div>
                 <nav>
@@ -33,8 +39,8 @@ const TopBar: React.FC = () => {
                   <li><Link to="/threads">Threads</Link></li>
                   <li>
                     <div>
-                      <img style={{ width: 25, height: 25 }} src={defaultImage} alt="Icon"/>
-                      <p className="link-i">Account</p>
+                      <img style={{ width: 25, height: 25 }} src={pic} alt="Icon"/>
+                      <p className="link-i-a">{name}</p>
                     </div>
                   </li>
                 </ul>
