@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { Comment } from '../threads/logic/model';
 
 import "./image-importer.css"
 
@@ -14,12 +13,11 @@ class ImageData {
 }
 
 interface ImageImporterProps {
-  onImageSubmit: (images: ImageData[]) => void;
+  images: ImageData[];
+  setImages: React.Dispatch<React.SetStateAction<ImageData[]>>; 
 }
 
 const ImageImporter: React.FC<ImageImporterProps> = (props) => {
-  const [selectedImages, setSelectedImages] = useState<ImageData[]>([]);
-
   const handleImageChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const files = event.target.files;
     if (files) {
@@ -30,8 +28,7 @@ const ImageImporter: React.FC<ImageImporterProps> = (props) => {
         reader.onload = (e) => {
           imagesArray.push(new ImageData(file.name, e.target!.result));
           if (imagesArray.length === files.length) {
-            setSelectedImages(imagesArray);
-            props.onImageSubmit(imagesArray);
+            props.setImages(imagesArray);
           }
         };
         reader.readAsDataURL(file);
@@ -42,7 +39,7 @@ const ImageImporter: React.FC<ImageImporterProps> = (props) => {
   return (
     <div>
       <div className='inline'>
-        {selectedImages.map((image, index) => (
+        {props.images.map((image, index) => (
           <div key={index}>
             <p className='image-item'>{image.name}</p>
           </div>
