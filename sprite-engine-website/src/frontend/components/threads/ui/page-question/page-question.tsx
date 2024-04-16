@@ -3,8 +3,8 @@ import { Page } from 'frontend/components/page';
 import { useNavigate, useParams } from 'react-router-dom';
 import { threadRepo } from '../../logic/thread-repository';
 import { Question } from '../../logic/model';
-import { PATH_TO_ACCOUNT_FOLDER } from 'macros';
 import { Comment } from '../../logic/model';
+import { ImageData } from '../../logic/model';
 
 import 'frontend/utils/general.css';
 import './page-question.css';
@@ -29,12 +29,17 @@ export const ThreadPage: React.FC = () => {
     return <div>Bruh this shit</div>;
   }
 
-  const addComment = (title:string, content: string) => {
+  const addComment = (title:string, content: string, images: ImageData[]|null) => {
     if (threadRepo.active_account === null) {
       console.log("[ERROR] You gotta have an account");
       return;
     }
     const newComment: Comment = new Comment(threadRepo.active_account, content);
+    if(images !== null)
+    {
+        newComment.selectedImages = images
+    }
+    
     const updatedComments: Comment[] = [...comments, newComment];
     setComments(updatedComments);
   };
@@ -52,11 +57,19 @@ export const ThreadPage: React.FC = () => {
           <div className='question-content'>
             <h1>{question.title}</h1>
             <p>{question.text}</p>
+            {question && question.selectedImages && question.selectedImages.map((image, index) => (
+                <details className='image-details'>
+                  <summary>
+                    {image.name}
+                  </summary>
+                  <img className='question-image' src={image.data as string}/>
+                </details>
+            ))}
           </div>
         </div>
         <br/>
 
-        {comments.map((comment, index) => (
+        {comments && comments.map((comment, index) => (
           <div key={index}>
             <div className='profile-container'>
               <div className='profile-info inline'>
@@ -67,9 +80,16 @@ export const ThreadPage: React.FC = () => {
             <div className='question-container'>
               <div className='question-content'>
                 <p>{comment.content}</p>
+                {comment && comment.selectedImages && comment.selectedImages.map((image, index) => (
+                <details className='image-details'>
+                  <summary>
+                    {image.name}
+                  </summary>
+                  <img className='question-image' src={image.data as string}/>
+                </details>
+                ))}
               </div>
             </div>
-            <br/>
           </div>
         ))}
 

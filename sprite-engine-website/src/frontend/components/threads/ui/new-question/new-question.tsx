@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Page } from 'frontend/components/page';
 import { threadRepo } from 'frontend/components/threads/logic/thread-repository';
+import { ImageData } from '../../logic/model';
 
 import "./new-question.css";
 import "frontend/utils/general.css";
@@ -14,17 +15,17 @@ const AddQuestionModal: React.FC = () => {
     navigate(`/threads`);
   };  
 
-  const submit = (title: string, content: string) => {
-    console.log("actual submit");
+  const submit = (title: string, content: string, images: ImageData[]) => {
+    console.log("actual submit ");
 
     if(threadRepo.active_account === null)
     {
       throw new Error("Why tf is it 0??");
     }
 
-    threadRepo.addQuestion(threadRepo.active_account!, title, content);
+    threadRepo.addQuestion(threadRepo.active_account!, title, content, images);
 
-    navigateTo(); // Navigating to the default site
+    navigateTo(); 
   }
 
   return (
@@ -44,9 +45,7 @@ const NewQuestionButton: React.FC = () => {
   };
 
   return (
-    <div>
-      <button className='new-question default-btn' onClick={navigateToQuestion}>Add Question</button>
-    </div>
+      <button style={{marginLeft: '35rem'}} className='default-btn' onClick={navigateToQuestion}>Add Question</button>
   );
 };
 

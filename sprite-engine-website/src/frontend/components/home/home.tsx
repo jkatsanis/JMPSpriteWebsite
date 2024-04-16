@@ -1,6 +1,6 @@
 import React from 'react';
 import LikeWindow from "../likewindow/likewindow";
-import CreateLink, { Link } from "../link/link";
+import CreateLink, { Link } from "../icon/link";
 import { Page } from 'frontend/components/page';
 
 import './home.css';

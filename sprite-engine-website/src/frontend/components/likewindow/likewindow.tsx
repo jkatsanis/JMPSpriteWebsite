@@ -1,5 +1,5 @@
 import React from 'react'; 
-import CreateLink, { Link } from "frontend/components/link/link";
+import CreateLink, { Link } from "frontend/components/icon/link";
 import './likewindow.css'; // Import CSS for styling
 
 interface LikeWindowProps {

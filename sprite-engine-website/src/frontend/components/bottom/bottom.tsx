@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import CreateLink, { Link } from "../link/link";
+import CreateLink, { Link } from "../icon/link";
 
 import { PATH_TO_RESSOURCES } from 'macros';
 

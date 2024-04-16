@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
+import ImageImporter from '../importer/image-importer';
+import { ImageData } from '../threads/logic/model';
 
 interface QuestionBluePrintProps {
-    submit: (title: string, content: string) => void;
+    submit: (title: string, content: string, images: ImageData[]) => void;
     cancel: () => void;
     qTitle: string;
     enterTitle: boolean;
@@ -12,6 +14,7 @@ const QuestionBluePrint: React.FC<QuestionBluePrintProps> = (props) => {
     const [content, setContent] = useState('');
     const [alertTitle, setTitleAlert] = useState(false);
     const [alertContent, setContentAlert] = useState(false);
+    const [images, setImages] = useState<ImageData[]>([]);
 
     const handleTitleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         setTitle(event.target.value);
@@ -62,15 +65,20 @@ const QuestionBluePrint: React.FC<QuestionBluePrintProps> = (props) => {
 
     const onSubmit = () => {
         if (checkSubmit()) {
-            props.submit(title, content);
+            props.submit(title, content, images);
         }
         setContent("");
-        setContent("");
+        setTitle("");
+        setImages(null!);
     };
 
     const onCancel = () => {
         props.cancel();
     };
+
+    const onImageSubmit = (images: ImageData[]) => {
+        setImages(images);
+    }
 
     return (
         <div>
@@ -101,7 +109,9 @@ const QuestionBluePrint: React.FC<QuestionBluePrintProps> = (props) => {
                 />
             </div>
             <div className='h-1'/>
-            <div className='inline'>
+
+            <ImageImporter onImageSubmit={onImageSubmit}/>
+            <div className='inline' style={{marginTop: '-1.5rem'}}>
                 <button className="default-btn" onClick={onSubmit}>Submit</button>
                 <button className='default-btn' style={{marginLeft: 10}} onClick={onCancel}>Cancel</button>
             </div>

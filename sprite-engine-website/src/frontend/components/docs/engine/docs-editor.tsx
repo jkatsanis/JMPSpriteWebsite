@@ -1,5 +1,5 @@
 import React from 'react';
-import IconText from 'frontend/components/icontext';
+import IconText from 'frontend/components/icon/icontext';
 import { BigDocu } from '../util/doc';
 
 import 'frontend/utils/general.css';

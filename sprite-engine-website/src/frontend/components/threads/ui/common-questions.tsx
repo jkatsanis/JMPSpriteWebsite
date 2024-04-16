@@ -18,11 +18,6 @@ export class RenderCommonQuestions extends React.Component {
               <NewQuestionButton/>
             </div>
             <div className='h-2'/>
-
-            {threadRepo.getQuestions().map((question, index) => (
-                <RenderQuestion key={index} question={question}/>
-            ))}
-
         </div>  
       );
     }

@@ -1,5 +1,5 @@
 import React from 'react';
-import "frontend/components/link/link.css"
+import "./link.css"
 
 interface IconTextProps {
     iconPath: string;

@@ -35,3 +35,20 @@
     background-color: hsl(0, 0%, 8%);
 }
 
+.image-details {
+    font-size: 12px;
+    background-color: grey;
+    padding: 8px;
+    border-radius: 5px;
+    margin-right: 1rem;
+    border: none;
+}
+
+.image-details:hover {
+    background-color: rgb(115, 115, 115);
+}
+
+.question-image {
+    margin-top: 1rem;
+    border-radius: 5px;
+}

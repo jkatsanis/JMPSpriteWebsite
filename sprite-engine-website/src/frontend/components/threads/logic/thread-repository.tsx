@@ -1,5 +1,6 @@
 import { Question } from "./model";
 import { Account } from "./model";
+import { ImageData } from "./model";
 
 export class ThreadRepository 
 {
@@ -13,7 +14,7 @@ export class ThreadRepository
         let acc: Account = new Account("Manfred", "123Oga", "Manfred.png");
 
 
-        this.addQuestion(acc, "How to?", "I cant do i t idj");
+        this.addQuestion(acc, "How to?", "I cant do i t idj", null);
 
         this.active_account = acc;
     }
@@ -35,10 +36,15 @@ export class ThreadRepository
         return this.m_questions;
     }
 
-    addQuestion(acc:Account, title:string, content:string)
+    addQuestion(acc:Account, title:string, content:string, images:ImageData[]|null)
     {
         this.m_count++;
-        this.m_questions.push(new Question(acc, title, content, this.m_count));
+        let question = new Question(acc, title, content, this.m_count);
+        if(images !== null)
+        {
+            question.selectedImages = images;
+        }
+        this.m_questions.push(question);
     }
 
     fetch(id: number) : Question
