@@ -1,5 +1,6 @@
 import React, { useRef, useState } from "react";
 import { Page } from "../page";
+import "./projects.css"; // Stil-Datei importieren
 
 const ProjectsDisplay: React.FC = () => {
     const nameRef = useRef<HTMLInputElement>(null);
@@ -20,15 +21,12 @@ const ProjectsDisplay: React.FC = () => {
         const projectFile = fileRef.current?.files?.[0] || null;
 
         if (projectName && projectDescription && projectFile) {
-            // Create a new project object
             const newProject: Project = {
                 name: projectName,
                 description: projectDescription,
                 file: projectFile
             };
-            // Add the new project to the projects array
             setProjects([...projects, newProject]);
-            // Reset form fields
             if (nameRef.current) nameRef.current.value = "";
             if (descriptionRef.current) descriptionRef.current.value = "";
             if (fileRef.current) fileRef.current.value = "";
@@ -38,7 +36,7 @@ const ProjectsDisplay: React.FC = () => {
     return (
         <Page>
             <form onSubmit={handleSubmit}>
-                <div>
+                <div className="form-group">
                     <label htmlFor="name">Name:</label>
                     <input
                         type="text"
@@ -47,7 +45,7 @@ const ProjectsDisplay: React.FC = () => {
                         required
                     />
                 </div>
-                <div>
+                <div className="form-group">
                     <label htmlFor="description">Description:</label>
                     <input
                         type="text"
@@ -56,7 +54,7 @@ const ProjectsDisplay: React.FC = () => {
                         required
                     />
                 </div>
-                <div>
+                <div className="form-group">
                     <label htmlFor="file">Upload ZIP file:</label>
                     <input
                         type="file"
@@ -66,7 +64,7 @@ const ProjectsDisplay: React.FC = () => {
                         required
                     />
                 </div>
-                <button type="submit">Upload</button>
+                <button type="submit" className="btn">Upload</button>
             </form>
             <h2>Uploaded Projects</h2>
             <ul>
