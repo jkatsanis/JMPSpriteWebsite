@@ -1,0 +1,38 @@
+
+details {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+summary {
+    font-weight: bold;
+    cursor: pointer;
+}
+
+details {
+    margin-bottom: 1.2rem;
+}
+
+.docs h1 {
+    text-align: center ;
+}
+
+details:hover {
+    background-color: #141313;
+}
+
+details {
+    background-color: #1b1a1a;
+}
+
+.content {
+    flex: 1; /* Allows content to take remaining space */
+}
+
+/* doc.tsx */
+
+.docu-desc {
+    margin-left: 2rem;
+}
+

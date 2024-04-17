@@ -1,0 +1,103 @@
+.separator {
+    margin: 2rem;
+    width: 70rem; /* Set the width to 75% of the viewport width */
+    border-top: 1px solid #ffffff; /* Change color and thickness as needed */
+}
+
+.v-separator {
+    margin: 2rem;
+    height: 70rem; /* Set the width to 75% of the viewport width */
+    border-top: 1px solid #ffffff; /* Change color and thickness as needed */
+}
+
+.centered-div {
+    display: flex;
+    flex-direction:column;
+    align-items: center;
+  }
+
+.centered-div-content-left-70, .centered-div-content-left-50, .centered-div-content-left-60 {
+    margin: 0 auto; /* Center the div horizontally */
+    text-align: left; /* Align content to the left */
+    padding: 20px; /* Optional: Add padding for spacing */
+}
+
+.centered-div-content-left-50 {
+    width: 50rem; 
+}
+
+.centered-div-content-left-70 {
+    width: 70rem; /* Set your desired width */
+}
+
+.centered-div-content-left-60 {
+    width: 60rem; /* Set your desired width */
+}
+
+.first-color {
+    background-color: #1E1E1E;
+}
+
+.second-color {
+    background-color: #262626;
+}
+
+.h-1 {
+    height: 1rem;
+}
+
+.h-2 {
+    height: 2rem;
+}
+
+.h-3 {
+    height: 3rem;
+}
+
+.h-6 {
+    height: 6rem;
+}
+
+.h-12 {
+    height: 12rem;
+}
+
+.h-14 {
+    height: 14rem;
+}
+
+.h-16 {
+    height: 16rem;
+}
+
+.space-1rem {
+    margin-top: 1rem;
+}
+
+.space-2rem {
+    margin-top: 2rem;
+}
+
+.inline > * {
+    display: inline-block; /* or inline-flex */
+}
+
+.default-btn {
+    color: white;
+    font-size: 14px; /* Adjust font size for better readability */
+    font-weight: bold;
+    text-align: center; /* Center align text */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+    background-color: #7f8c8d;
+    padding: 10px 20px; /* Increase padding for better touch/click area */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    overflow: hidden; /* Ensure overflow is hidden for child elements */
+    margin-bottom: 2rem;
+  
+}
+.default-btn:hover {
+    transform: scale(1.01) ;
+}
