@@ -9,6 +9,7 @@ export class AccountRepository{
         else{
             this.accounts = new Map<number, Account>();
         }
+        console.log("uga");
         this.currentId = 0;
     }
 
