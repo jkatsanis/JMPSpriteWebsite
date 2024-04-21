@@ -26,10 +26,6 @@ export function Threads(){
                 
                 <RenderCommonQuestions/> 
                 <div id="scroll-to-me"></div>
-
-                {threadRepo.getQuestions().map((question, index) => (
-                <RenderQuestion key={index} question={question}/>
-            ))}
             </div>
         </Page>
     );

@@ -57,11 +57,8 @@ const QuestionBluePrint: React.FC<QuestionBluePrintProps> = (props) => {
             }
             retur = true;
         }
-        if(retur) {
-            return false;
-        }
-        return true;
-    };
+        return !retur;
+    };  
 
     const onSubmit = () => {
         if (checkSubmit()) {
