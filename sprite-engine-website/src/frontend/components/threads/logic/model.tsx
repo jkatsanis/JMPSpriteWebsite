@@ -1,5 +1,13 @@
 import { PATH_TO_ACCOUNT_FOLDER } from "macros";
 
+export const LabelColors: { [key: string]: string } = {
+    Bug: 'green',
+    Feature: 'brown',
+    UI: 'blue',
+    Editor: 'purple',
+    // Add more labels and their colors here
+};
+
 export class Account {
     password: string;
     name: string;
@@ -10,11 +18,6 @@ export class Account {
         this.name = name;
         this.picture = `${PATH_TO_ACCOUNT_FOLDER}/accounts/icons/${picture}`;
     }
-}
-
-export enum Label {
-    Graphic = 'GRAPHIC',
-    Sprite = 'SPRITE'
 }
 
 export class ImageData {
@@ -42,7 +45,7 @@ export class Comment
 }
   
 export class Question {
-    labels: Label[];
+    labels: string[];
     author: Account;
     title: string;
     text: string;
@@ -63,11 +66,11 @@ export class Question {
         this.selectedImages = [];
     }
 
-    addLabel(label: Label): void {
+    addLabel(label: string): void {
         this.labels.push(label);
     }
 
-    removeLabel(label: Label): void {
+    removeLabel(label: string): void {
         const index = this.labels.indexOf(label);
         if (index !== -1) {
             this.labels.splice(index, 1);

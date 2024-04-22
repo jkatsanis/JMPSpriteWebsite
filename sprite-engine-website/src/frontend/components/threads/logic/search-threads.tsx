@@ -5,7 +5,6 @@ export function handleThreadsEnterClick(event: KeyboardEvent)
           
         const isInputFocused = document.activeElement === document.getElementById('question-searcher');
     
-        console.log(isInputFocused)
         if(isInputFocused)
         {
           const detailsSection = document.getElementById('scroll-to-me');
@@ -37,8 +36,6 @@ export function searchThreads(text: string)
 
         txtValue = summary.textContent.toLowerCase() || summary.textContent?.toLowerCase();
         txtValue += cnter.textContent;
-
-        console.log(txtValue);
 
         if (txtValue.includes(filter)) {
             question.style.display = '';

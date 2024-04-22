@@ -1,10 +1,11 @@
 import React from 'react';
+import { FilterContent } from './filter-content';
 
 interface FilterPopupProps {
-  onCloseClick: () => void;
+  updateFilter: () => void;
 }
 
-export const FilterPopup: React.FC<FilterPopupProps> = ({ onCloseClick }) => {
+export const FilterPopup: React.FC<FilterPopupProps> = ({ updateFilter }) => {
   return (
     <div
       style={{
@@ -14,14 +15,15 @@ export const FilterPopup: React.FC<FilterPopupProps> = ({ onCloseClick }) => {
         backgroundColor: '#333333',
         padding: '1rem',
         zIndex: 9999, // Ensure the popup is above other elements
-        width: '12rem',
+        width: '15rem',
+        borderRadius: '7px'
       }}
     >
-      {/* Popup content */}
+      {/* Popup content 
       <button style={{ left: '10rem', position: 'absolute' }} onClick={onCloseClick}>
         X
-      </button>
-      <p>UGAAAAAAAAA</p>
+      </button>*/}
+      <FilterContent updateFilter={updateFilter}/>
     </div>
   );
 };

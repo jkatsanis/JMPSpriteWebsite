@@ -1,13 +1,19 @@
 import React, { useState } from 'react';
 import { FilterPopup } from './filter-popup';
 
-const FilterQuestionButton = () => {
+
+interface FilterComponentProps {
+  updateFilter: () => void;
+}
+
+export const FilterQuestionButton: React.FC<FilterComponentProps> = ({ updateFilter }) => {
   // State to manage the visibility of the popup
   const [isPopupOpen, setIsPopupOpen] = useState(false);
 
   // Function to handle button click and toggle popup visibility
   const onClick = () => {
     setIsPopupOpen(!isPopupOpen);
+    updateFilter();
   };
   
 
@@ -21,7 +27,7 @@ const FilterQuestionButton = () => {
         Filter
       </button>
       {isPopupOpen && (
-	  	<FilterPopup onCloseClick={onClick}/>
+	  	<FilterPopup updateFilter={updateFilter}/>
       )}
     </>
   );

@@ -95,9 +95,9 @@
     cursor: pointer;
     transition: transform 0.3s ease;
     overflow: hidden; /* Ensure overflow is hidden for child elements */
-    margin-bottom: 2rem;
-  
 }
+
+
 .default-btn:hover {
     transform: scale(1.01) ;
 }

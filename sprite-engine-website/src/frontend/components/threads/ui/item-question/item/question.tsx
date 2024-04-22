@@ -1,5 +1,5 @@
 import React from 'react';
-import { Question } from '../../logic/model';
+import { Question } from '../../../logic/model';
 import { useNavigate } from 'react-router-dom';
 
 import './question.css'

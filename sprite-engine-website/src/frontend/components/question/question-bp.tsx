@@ -104,6 +104,7 @@ const QuestionBluePrint: React.FC<QuestionBluePrintProps> = (props) => {
             <div className='h-1'/>
 
             <ImageImporter images={images} setImages={setImages}/> {/* Pass setImages function */}
+            <div className='h-2'/>
             <div className='inline' style={{marginTop: '-1.5rem'}}>
                 <button className="default-btn" onClick={onSubmit}>Submit</button>
                 <button className='default-btn' style={{marginLeft: 10}} onClick={onCancel}>Cancel</button>

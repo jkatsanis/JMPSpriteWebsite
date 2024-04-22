@@ -46,6 +46,7 @@ const Docu: React.FC<DocuProps> = () => {
               <button className='collapse-btn default-btn' onClick={collapse}>
                 Collapse All
               </button>
+              <div className='h-2'/>
 
               <EditorDocs />
               <DocsComponent />
