@@ -2,6 +2,10 @@ GET {{baseUrl}}/api/accounts
 
 ###
 
+GET {{baseUrl}}
+
+###
+
 POST {{baseUrl}}/api/accounts
 Content-Type: application/json
 

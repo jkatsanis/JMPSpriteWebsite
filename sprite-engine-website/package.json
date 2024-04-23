@@ -1,6 +1,7 @@
 {
   "name": "sprite-engine-website-ts",
   "version": "0.1.0",
+  "proxy": "http://localhost:5000",
   "private": true,
   "dependencies": {
     "@emotion/react": "^11.11.3",
@@ -29,7 +30,9 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "startserver": "tsx server.ts"
+    "startserver": "tsx server.ts",
+    "compilereact": "npx tsc --jsx preserve -t es2020 --noEmit false"
+
   },
   "eslintConfig": {
     "extends": [
