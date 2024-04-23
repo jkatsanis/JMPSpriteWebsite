@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import { LabelColors } from '../../logic/model';
-import { filterRepo } from '../../logic/filter-repository';
+import { LabelColors } from 'frontend/components/threads/logic/model';
+import { filterRepo } from 'frontend/components/threads/logic/filter-repository';
+import LabelRenderer from './label/labels-renderer';
 
 import "./filter-content.css";
 
@@ -71,13 +72,9 @@ export const FilterContent: React.FC<FilterContentProps> = ({updateFilter}) => {
                 </select>
             </div>
             <div>
-                <div className='inline'>
-                    {selectedItems.map((item, index) => (
-                        <p key={index} className='label-item' style={{ backgroundColor: LabelColors[item] }}>{item}</p>
-                    ))}
-                </div>
+                <LabelRenderer selectedItems={selectedItems}/>
             </div>
-            <button className='default-btn' style={{ marginLeft: '8.5rem' }} onClick={handleReset}>Reset</button>
+            <button className='default-btn' style={{ marginLeft: '8.5rem', fontSize: '0.8rem' }} onClick={handleReset}>Reset</button>
         </div>
     );
 };

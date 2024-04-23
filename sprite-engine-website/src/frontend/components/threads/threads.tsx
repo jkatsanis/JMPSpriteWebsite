@@ -3,7 +3,7 @@ import { Page } from 'frontend/components/page';
 import 'frontend/utils/general.css'
 import SearchComponent from 'frontend/utils/search/search';
 import { handleThreadsEnterClick, searchThreads } from './logic/search-threads';
-import RenderQuestions from './ui/item-question/list/questions';
+import RenderQuestions from './ui/item-question/questions';
 
 export function Threads(){
 

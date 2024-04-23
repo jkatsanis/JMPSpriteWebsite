@@ -7,6 +7,7 @@
     margin-left: 1rem;
     width: 8rem;
     border: none; /* Remove border */
+    font-size: 0.8rem;
 }
 
 .label-selector {
@@ -15,12 +16,3 @@
     height: 2.5rem;
 }
   
-.label-selector option {
-    font-size: 1rem;
-}
-
-.label-item {
-    border-radius: 5px;
-    padding: 0.35rem;
-    margin-right: 0.5rem;
-}

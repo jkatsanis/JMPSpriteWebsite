@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { FilterPopup } from './filter-popup';
 
-
 interface FilterComponentProps {
   updateFilter: () => void;
 }
