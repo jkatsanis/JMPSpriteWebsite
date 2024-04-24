@@ -10,7 +10,6 @@ POST {{baseUrl}}/api/accounts
 Content-Type: application/json
 
 {
-  "id": 1,
   "userName": "example_user",
   "email": "user@example.com",
   "password": "example_password",

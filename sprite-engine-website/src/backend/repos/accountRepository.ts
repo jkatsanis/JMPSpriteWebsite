@@ -3,42 +3,47 @@ import { open, Database } from "sqlite";
 
 export class AccountRepository {
     private dbPath: string;
-    private currentId: number;
 
     constructor(dbPath: string) {
-
-        this.currentId = 0;
         this.dbPath = dbPath;
     }
 
-    public async getAccountById(id: number): Promise<Account|undefined>{
-        return await DB.select("SELECT * FROM accounts", this.dbPath);
+    public async getAccountByUsername(username: string): Promise<Account|undefined>{
+        return await DB.select(`SELECT * FROM accounts WHERE userName = '${username}'`, this.dbPath);
     }
 
     public async getAllAccounts() {
         return await DB.selectAll("SELECT * FROM accounts", this.dbPath)
     }
 
-    public async deleteAccountById(id: number): Promise<boolean> {
-        const deleteStatement = `
-        DELETE FROM accounts WHERE id = ${id}
-        `;
-        const result = await DB.run(deleteStatement, this.dbPath);
-        if (result === undefined){
+    public async deleteAccountByUsername(username: string): Promise<boolean> {
+        if (await this.getAccountByUsername(username) === undefined){
             return false;
         }
-        return result.count > 0;
-
+        const deleteStatement = `
+        DELETE FROM accounts WHERE userName = '${username}'
+        `;
+        await DB.run(deleteStatement, this.dbPath);
+        return true;
     }
 
     public async addAccount(account: Account): Promise<void> {
         const insertStatement = `
-        INSERT INTO accounts (id, userName, email, password, picture) 
-        VALUES (${account.id}, '${account.userName}', '${account.email}', '${account.password}', '${account.picture}')
+        INSERT INTO accounts (userName, email, password, picture) 
+        VALUES ('${account.userName}', '${account.email}', '${account.password}', '${account.picture}')
         `;
         await DB.run(insertStatement, this.dbPath);
-        this.currentId++;
     }
+    public async updateAccount(account: Account): Promise<boolean> {
+        if (await this.getAccountByUsername(account.userName) === undefined) {return false;}
+        const insertStatement = `
+        REPLACE INTO accounts (userName, email, password, picture) 
+        VALUES ('${account.userName}', '${account.email}', '${account.password}', '${account.picture}')
+        `;
+        await DB.run(insertStatement, this.dbPath);
+        return true;
+    }
+
 }
 export class DB {
     public static async createDBConnectionReadOnly(dbFileName: string): Promise<Database> {
@@ -87,7 +92,6 @@ export class DB {
     }
 }
 export interface Account{
-    id  : number;
     userName: string;
     email: string;
     password: string;

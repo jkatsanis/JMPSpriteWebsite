@@ -10,8 +10,9 @@ const accountRepo = new AccountRepository("./data/accounts.sqlite");
 const StatusCodes = {
     OK: 200,
     CREATED: 201,
+    NO_CONTENT: 204,
     BAD_REQUEST: 400,
-    NOT_FOUND: 404,
+    NOT_FOUND: 404
 };
 
 accountRouter.get("/", (req, res) => {
@@ -19,32 +20,49 @@ accountRouter.get("/", (req, res) => {
     res.send(accountRepo.getAllAccounts());
 });
 
-accountRouter.get("/:id", async(req, res) => {
-    const parsedId = parseInt(req.params.id);
-    if (!isNaN(parsedId)){
+accountRouter.get("/:username", async(req, res) => {
+    const username = req.params.username;
+    const repoReply = await accountRepo.getAccountByUsername(username);
+    if (repoReply !== undefined){
         res.status(StatusCodes.OK);
-        res.send(accountRepo.getAccountById(parseInt(req.params.id)));
+        res.send(repoReply);
+        return;
     }
     res.sendStatus(StatusCodes.BAD_REQUEST);
 });
-accountRouter.delete("/:id", async(req, res) => {
-    const parsedId = parseInt(req.params.id);
-    if (!isNaN(parsedId)){
-        if (!await accountRepo.deleteAccountById(parseInt(req.params.id))){
+accountRouter.delete("/:username", async(req, res) => {
+    const username = req.params.username;
+        if (!await accountRepo.deleteAccountByUsername(username)){
             res.sendStatus(StatusCodes.NOT_FOUND);
+            return;
         }
         res.sendStatus(StatusCodes.OK);
-    }
-    res.sendStatus(StatusCodes.BAD_REQUEST);
+        return;
 });
 accountRouter.post("/", async (req, res) => {
-    const { id, userName, email, password, picture } = req.body;
+    const userName = req.body.userName;
+    const email = req.body.email;
+    const password = req.body.password;
+    const picture = req.body.picture;
     await accountRepo.addAccount(new class implements Account{
-        id = id;
         userName = userName;
         email = email;
         password = password;
         picture = picture;
     });
     res.sendStatus(StatusCodes.CREATED);
+});
+accountRouter.patch("/", async (req, res) => {
+    const userName = req.body.userName;
+    const email = req.body.email;
+    const password = req.body.password;
+    const picture = req.body.picture;
+
+    await accountRepo.updateAccount(new class implements Account{
+        userName = userName;
+        email = email;
+        password = password;
+        picture = picture;
+    });
+    res.sendStatus(StatusCodes.OK);
 });
