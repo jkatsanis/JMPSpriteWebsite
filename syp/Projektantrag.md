@@ -1,11 +1,11 @@
-Projektantrag
+# Projektantrag
 Projektname:
 SpriteEngine-Website
 
-Projektbeschreibung:
+## Projektbeschreibung:
 Das Projekt zielt darauf ab, eine interaktive und benutzerfreundliche Website zu entwickeln, die es den Benutzern erleichtert, die SpriteEngine zu verwenden und ein umfassendes Verständnis darüber zu erlangen, was mit der Engine möglich ist. Die Website wird verschiedene Funktionen wie Dokumentation, Tutorials, Minispiele, Forum und Thread-Management bieten, um den Benutzern ein ganzheitliches Erlebnis zu bieten. Das Projekt wird in mehreren Phasen unter Verwendung von Tools wie React, CSS, TypeScript und Express durchgeführt.
 
-Projektziele:
+## Projektziele:
 Entwicklung einer intuitiven Benutzeroberfläche für eine einfache Navigation und Interaktion.
 Implementierung eines sicheren Login-Systems zum Schutz der Benutzerdaten.
 Erstellung einer umfassenden Dokumentation und Tutorials zur SpriteEngine.
@@ -14,7 +14,7 @@ Aufbau eines Forums für Benutzer, um Fragen zu stellen, Threads zu erstellen un
 Umsetzung eines effektiven Threads-Managements mit Filter-, Such- und Bewertungsfunktionen.
 Bereitstellung einer Schnittstelle zur Dokumentation des SpriteEngine-Quellcodes.
 
-Projektphasen:
+## Projektphasen:
 Planung und Entwurf (bis 13.03): Erstellung eines Pflichtenhefts und Mockups für die Website.
 Setup der Serverinfrastruktur (bis 30.03): Einrichtung eines Servers und der erforderlichen Backend-Infrastruktur.
 Implementierung der Grundfunktionen (bis 7.04): Entwicklung der Basisfunktionen wie Login, Dokumentation, Forum und Thread-Erstellung.
