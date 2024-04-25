@@ -41,6 +41,7 @@ export const ThreadPage: React.FC = () => {
     }
     
     const updatedComments: Comment[] = [...comments, newComment];
+    question.comments.push(newComment);
     setComments(updatedComments);
   };
 

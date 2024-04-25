@@ -1,11 +1,9 @@
 import './threads.css';
 import { Page } from 'frontend/components/page';
 import 'frontend/utils/general.css'
-import { RenderCommonQuestions } from './ui/common-questions';
 import SearchComponent from 'frontend/utils/search/search';
 import { handleThreadsEnterClick, searchThreads } from './logic/search-threads';
-import { threadRepo } from './logic/thread-repository';
-import { RenderQuestion } from './ui/item-question/question';
+import RenderQuestions from './ui/item-question/questions';
 
 export function Threads(){
 
@@ -24,12 +22,8 @@ export function Threads(){
                 <SearchComponent id='question-searcher' handleEnterPress={handleThreadsEnterClick} search={searchThreads} searchFor='Search for threads...'/>
                 <div className='h-2'/>
                 
-                <RenderCommonQuestions/> 
+                <RenderQuestions/> 
                 <div id="scroll-to-me"></div>
-
-                {threadRepo.getQuestions().map((question, index) => (
-                <RenderQuestion key={index} question={question}/>
-            ))}
             </div>
         </Page>
     );

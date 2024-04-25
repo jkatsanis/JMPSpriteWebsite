@@ -45,7 +45,7 @@ const NewQuestionButton: React.FC = () => {
   };
 
   return (
-      <button style={{marginLeft: '35rem'}} className='default-btn' onClick={navigateToQuestion}>Add Question</button>
+    <button className='default-btn' style={{marginLeft: '1rem', padding: '0.5rem 1rem'}} onClick={navigateToQuestion}>Add Question</button>
   );
 };
 
