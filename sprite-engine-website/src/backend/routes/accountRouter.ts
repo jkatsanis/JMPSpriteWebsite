@@ -5,7 +5,7 @@ import { STATUS_CODES } from "http";
 
 export const accountRouter = Router();
 
-const accountRepo = new AccountRepository(undefined);
+const accountRepo = new AccountRepository("./data/accounts.sqlite");
 
 const StatusCodes = {
     OK: 200,
@@ -19,7 +19,7 @@ accountRouter.get("/", (req, res) => {
     res.send(accountRepo.getAllAccounts());
 });
 
-accountRouter.get("/:id", (req, res) => {
+accountRouter.get("/:id", async(req, res) => {
     const parsedId = parseInt(req.params.id);
     if (!isNaN(parsedId)){
         res.status(StatusCodes.OK);
@@ -27,21 +27,20 @@ accountRouter.get("/:id", (req, res) => {
     }
     res.sendStatus(StatusCodes.BAD_REQUEST);
 });
-accountRouter.delete("/:id", (req, res) => {
+accountRouter.delete("/:id", async(req, res) => {
     const parsedId = parseInt(req.params.id);
     if (!isNaN(parsedId)){
-        if (!accountRepo.deleteAccountById(parseInt(req.params.id))){
+        if (!await accountRepo.deleteAccountById(parseInt(req.params.id))){
             res.sendStatus(StatusCodes.NOT_FOUND);
         }
         res.sendStatus(StatusCodes.OK);
     }
     res.sendStatus(StatusCodes.BAD_REQUEST);
 });
-accountRouter.post("/", (req, res) => {
-    const { firstName, lastName, userName, email, password, picture } = req.body;
-    accountRepo.addAccount(new class implements Account{
-        firstName = firstName;
-        lastName = lastName;
+accountRouter.post("/", async (req, res) => {
+    const { id, userName, email, password, picture } = req.body;
+    await accountRepo.addAccount(new class implements Account{
+        id = id;
         userName = userName;
         email = email;
         password = password;

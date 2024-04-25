@@ -7,6 +7,7 @@ import Docu from 'frontend/components/docs/documentation';
 import { Threads } from 'frontend/components/threads/threads';
 import { ThreadPage } from 'frontend/components/threads/ui/page-question/page-question';
 import { AddQuestionModal } from 'frontend/components/threads/ui/new-question/new-question';
+import ProjectsDisplay from "./frontend/components/projects/projectsDisplay";
 
 const App: React.FC = () => {
     return (      
@@ -17,6 +18,7 @@ const App: React.FC = () => {
                 <Route path="/info" element={<Info/>}/>
                 <Route path="/docu" element={<Docu/>}/>
                 <Route path="/docu" element={<Docu/>}/>
+                <Route path="/projects" element={<ProjectsDisplay/>}/>
                 <Route path="/threads" element={<Threads/>}/>
                 <Route path="/threads/:id" element={<ThreadPage/>} />
                 <Route path='/threads/new' element={<AddQuestionModal/>} />
