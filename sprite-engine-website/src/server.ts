@@ -1,7 +1,7 @@
 import cors from "cors";
 import express from "express";
-import {accountRouter} from "./src/backend/routes/accountRouter";
-import {threadRouter} from "./src/backend/routes/threadRouter";
+import {accountRouter} from "./backend/routes/accountRouter";
+import {threadRouter} from "./backend/routes/threadRouter";
 
 const server = express();
 
