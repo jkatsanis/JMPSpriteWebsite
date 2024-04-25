@@ -2,13 +2,21 @@ GET {{baseUrl}}/api/accounts
 
 ###
 
+GET {{baseUrl}}/api/accounts/example_user
+
+###
+
 POST {{baseUrl}}/api/accounts
 Content-Type: application/json
 
 {
-  "id": 1,
-  "userName": "example_user",
-  "email": "user@example.com",
+  "userName": "example_user2",
+  "email": "user2@example.com",
   "password": "example_password",
   "picture": "example_picture.jpg"
 }
+
+###
+
+DELETE {{baseUrl}}/api/accounts/example_user
+
