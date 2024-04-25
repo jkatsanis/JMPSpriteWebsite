@@ -1,6 +1,7 @@
 import { Question } from "./model";
 import { Account } from "./model";
 import { ImageData } from "./model";
+import { Label } from "./model";
 
 export class ThreadRepository 
 {
@@ -13,8 +14,12 @@ export class ThreadRepository
     {
         let acc: Account = new Account("Manfred", "123Oga", "Manfred.png");
 
+        this.addQuestionWithLabels(acc, "saugew", "I cant do i t idj", null, [ Label.Bug, Label.Editor ]);
 
-        this.addQuestion(acc, "How to?", "I cant do i t idj", null);
+        
+        this.addQuestionWithLabels(new Account("Ugafred", "123Oga", "Manfred.png"), "How to?", "I cant do i t idj", null, [ Label.Feature, Label.Editor ]);
+
+
 
         this.active_account = acc;
     }
@@ -47,6 +52,22 @@ export class ThreadRepository
         this.m_questions.push(question);
     }
 
+    addQuestionWithLabels(acc:Account, title:string, content:string, images:ImageData[]|null, labels: Label[])
+    {
+        this.addQuestion(acc, title, content, images);
+        for(let i = 0; i < labels.length; i++)
+        {
+            this.addLabelToQuestion(this.m_count, labels[i]);
+        }
+    }
+
+    addLabelToQuestion(questionNumber: number, label: string): void {
+        const question = this.fetch(questionNumber);
+        if (question) {
+            question.labels.push(label);
+        }
+    }
+    
     fetch(id: number) : Question
     {
         for(let i = 0; i < this.m_questions.length; i++)

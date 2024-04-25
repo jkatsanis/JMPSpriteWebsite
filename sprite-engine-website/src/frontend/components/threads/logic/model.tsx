@@ -1,5 +1,12 @@
 import { PATH_TO_ACCOUNT_FOLDER } from "macros";
 
+export enum Label {
+    Bug = 'Bug',
+    Feature = 'Feature',
+    UI = 'UI',
+    Editor = 'Editor'
+    // Add more labels here
+}
 export const LabelColors: { [key: string]: string } = {
     Bug: 'green',
     Feature: 'brown',

@@ -15,13 +15,14 @@ export class QuestionSearchLogic extends React.Component<QuestionSearchLogicProp
        for (let key = 0; key < filterRepo.labels.length; key++) {
             const label = filterRepo.labels[key];
             if (!question.labels.includes(label)) {
-                console.log("Wutt");
                 return false;
             }
         }
-
-
-        console.log(filterRepo.labels);
+        if(filterRepo.account !== ""
+            && !question.author.name.includes(filterRepo.account))
+        {
+            return false;
+        }
         
         return true;
     }
