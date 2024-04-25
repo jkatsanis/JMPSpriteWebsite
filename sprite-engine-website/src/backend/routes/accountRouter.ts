@@ -28,7 +28,7 @@ accountRouter.get("/:username", async(req, res) => {
         res.send(repoReply);
         return;
     }
-    res.sendStatus(StatusCodes.BAD_REQUEST);
+    res.sendStatus(StatusCodes.NOT_FOUND);
 });
 accountRouter.delete("/:username", async(req, res) => {
     const username = req.params.username;
@@ -44,6 +44,10 @@ accountRouter.post("/", async (req, res) => {
     const email = req.body.email;
     const password = req.body.password;
     const picture = req.body.picture;
+    if (userName === null || email === null || password === null){
+        res.sendStatus(StatusCodes.BAD_REQUEST);
+        return;
+    }
     await accountRepo.addAccount(new class implements Account{
         userName = userName;
         email = email;
@@ -57,6 +61,11 @@ accountRouter.patch("/", async (req, res) => {
     const email = req.body.email;
     const password = req.body.password;
     const picture = req.body.picture;
+
+    if (userName === null || email === null || password === null){
+        res.sendStatus(StatusCodes.BAD_REQUEST);
+        return;
+    }
 
     await accountRepo.updateAccount(new class implements Account{
         userName = userName;

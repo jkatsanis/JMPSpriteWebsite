@@ -18,7 +18,7 @@ export class AccountRepository {
 
     public async deleteAccountByUsername(username: string): Promise<boolean> {
         if (await this.getAccountByUsername(username) === undefined){
-            return false;
+            return true;
         }
         const deleteStatement = `
         DELETE FROM accounts WHERE userName = '${username}'
@@ -69,26 +69,25 @@ export class DB {
         return db;
     }
 
-    public static async selectAll(selectStaement: string, dbFileName: string): Promise<any> {
+    public static async selectAll(selectStatement: string, dbFileName: string): Promise<any> {
         const db = await DB.createDBConnectionReadOnly(dbFileName);
-        const selected : Account[] = await db.all<Account[]>(selectStaement);
+        const selected : Account[] = await db.all<Account[]>(selectStatement);
         await db.close();
 
         return selected;
     }
-    public static async select(selectStaement: string, dbFileName: string): Promise<any> {
+    public static async select(selectStatement: string, dbFileName: string): Promise<any> {
         const db = await DB.createDBConnectionReadOnly(dbFileName);
-        const selected : Account | undefined = await db.get<Account>(selectStaement);
+        const selected : Account | undefined = await db.get<Account>(selectStatement);
         await db.close();
 
         return selected;
     }
-    public static async run(statement: string, dbFileName: string): Promise<{ count: number }|undefined> {
+    public static async run(statement: string, dbFileName: string): Promise<void>{
         const db = await DB.createDBConnectionReadWrite(dbFileName);
         await db.run(statement);
-        const result = await db.get<{ count: number }>(statement);
         await db.close();
-        return result;
+        return;
     }
 }
 export interface Account{
