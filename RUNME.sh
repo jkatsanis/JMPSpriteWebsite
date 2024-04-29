@@ -1,2 +1,2 @@
 cd  sprite-engine-website
-npm install
+npm install --force

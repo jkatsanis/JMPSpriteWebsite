@@ -23,6 +23,6 @@
   },
   "include": [
     "src",
-    "src/server.ts"
+    "src/backend/server.ts"
   ]
 }

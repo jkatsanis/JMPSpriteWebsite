@@ -20,7 +20,6 @@ export class ThreadRepository
         this.addQuestionWithLabels(new Account("Ugafred", "123Oga", "Manfred.png"), "How to?", "I cant do i t idj", null, [ Label.Feature, Label.Editor ]);
 
 
-
         this.active_account = acc;
     }
 

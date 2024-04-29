@@ -3,5 +3,5 @@ A Website
 
 
 ### How to build
-- npm install
+- npm install --force
 - npm start

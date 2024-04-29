@@ -1,4 +1,4 @@
-import { PATH_TO_ACCOUNT_FOLDER } from "macros";
+import { PATH_TO_ACCOUNT_FOLDER } from "frontend/macros";
 
 export enum Label {
     Bug = 'Bug',
@@ -23,7 +23,7 @@ export class Account {
     constructor(name: string, password: string, picture: string) {
         this.password = password;
         this.name = name;
-        this.picture = `${PATH_TO_ACCOUNT_FOLDER}/accounts/icons/${picture}`;
+        this.picture = picture;
     }
 }
 

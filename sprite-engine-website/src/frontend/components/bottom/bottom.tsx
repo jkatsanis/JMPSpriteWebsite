@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import CreateLink, { Link } from "../icon/link";
 
-import { PATH_TO_RESSOURCES } from 'macros';
+import { PATH_TO_RESSOURCES } from 'frontend/macros';
 
 import './bottom.css';
 import 'frontend/utils/general.css'

@@ -25,7 +25,7 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "react-scripts build && tsx src/server.ts",
+    "start": "react-scripts build && tsx src/backend/server.ts",
 
     "build": "react-scripts build",
     "test": "react-scripts test",

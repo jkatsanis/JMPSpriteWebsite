@@ -3,7 +3,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { threadRepo } from 'frontend/components/threads/logic/thread-repository';
 
-import { PATH_TO_ACCOUNT_FOLDER } from 'macros';
+import { PATH_TO_ACCOUNT_FOLDER } from 'frontend/macros';
 
 import './topbar.css';
 import 'frontend/utils/general.css';
@@ -15,7 +15,7 @@ const TopBar: React.FC = () => {
   if(threadRepo.active_account !== null)
   {
     name = threadRepo.active_account.name;
-    pic = threadRepo.active_account.picture;
+    pic += threadRepo.active_account.picture;
   }
   else {
     pic += "default.png"
