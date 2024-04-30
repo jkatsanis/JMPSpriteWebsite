@@ -1,5 +1,4 @@
-import { Database as Driver, OPEN_CREATE, OPEN_READONLY, OPEN_READWRITE } from "sqlite3";
-import { open, Database } from "sqlite";
+import {Account, DB} from "../model";
 
 export class AccountRepository {
     private dbPath: string;
@@ -44,55 +43,4 @@ export class AccountRepository {
         return true;
     }
 
-}
-export class DB {
-    public static async createDBConnectionReadOnly(dbFileName: string): Promise<Database> {
-        const db = await open({
-            filename: `./${dbFileName}`,
-            driver: Driver,
-            mode: OPEN_READONLY
-        });
-
-        await db.run('PRAGMA foreign_keys = ON');
-
-        return db;
-    }
-    public static async createDBConnectionReadWrite(dbFileName: string): Promise<Database> {
-        const db = await open({
-            filename: `./${dbFileName}`,
-            driver: Driver,
-            mode: OPEN_READWRITE
-        });
-
-        await db.run('PRAGMA foreign_keys = ON');
-
-        return db;
-    }
-
-    public static async selectAll(selectStatement: string, dbFileName: string): Promise<any> {
-        const db = await DB.createDBConnectionReadOnly(dbFileName);
-        const selected : Account[] = await db.all<Account[]>(selectStatement);
-        await db.close();
-
-        return selected;
-    }
-    public static async select(selectStatement: string, dbFileName: string): Promise<any> {
-        const db = await DB.createDBConnectionReadOnly(dbFileName);
-        const selected : Account | undefined = await db.get<Account>(selectStatement);
-        await db.close();
-
-        return selected;
-    }
-    public static async run(statement: string, dbFileName: string): Promise<void>{
-        const db = await DB.createDBConnectionReadWrite(dbFileName);
-        await db.run(statement);
-        await db.close();
-        return;
-    }
-}
-export interface Account{
-    userName: string;
-    email: string;
-    password: string;
-    picture: string;
 }

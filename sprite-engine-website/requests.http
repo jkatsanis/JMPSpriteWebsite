@@ -2,7 +2,7 @@ GET {{baseUrl}}/api/accounts
 
 ###
 
-GET {{baseUrl}}/api/accounts/example_user
+GET {{baseUrl}}/api/accounts/example_user1
 
 ###
 
