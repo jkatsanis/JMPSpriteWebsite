@@ -1,23 +1,19 @@
 import Router from "express";
 import {AccountRepository} from "../repos/accountRepository";
-import {Account} from "../repos/accountRepository";
+import {Account} from "../model";
 import { STATUS_CODES } from "http";
+import {StatusCodes} from "../model";
 
 export const accountRouter = Router();
 
-const accountRepo = new AccountRepository("./data/accounts.sqlite");
+export const accountRepo = new AccountRepository("./data/accounts.sqlite");
 
-const StatusCodes = {
-    OK: 200,
-    CREATED: 201,
-    NO_CONTENT: 204,
-    BAD_REQUEST: 400,
-    NOT_FOUND: 404
-};
 
-accountRouter.get("/", (req, res) => {
+
+accountRouter.get("/", async (req, res) => {
     res.status(StatusCodes.OK);
-    res.send(accountRepo.getAllAccounts());
+    res.send(await accountRepo.getAllAccounts());
+    return;
 });
 
 accountRouter.get("/:username", async(req, res) => {
@@ -32,12 +28,12 @@ accountRouter.get("/:username", async(req, res) => {
 });
 accountRouter.delete("/:username", async(req, res) => {
     const username = req.params.username;
-        if (!await accountRepo.deleteAccountByUsername(username)){
-            res.sendStatus(StatusCodes.NOT_FOUND);
-            return;
-        }
-        res.sendStatus(StatusCodes.OK);
+    if (!await accountRepo.deleteAccountByUsername(username)){
+        res.sendStatus(StatusCodes.NOT_FOUND);
         return;
+    }
+    res.sendStatus(StatusCodes.OK);
+    return;
 });
 accountRouter.post("/", async (req, res) => {
     const userName = req.body.userName;
@@ -48,12 +44,15 @@ accountRouter.post("/", async (req, res) => {
         res.sendStatus(StatusCodes.BAD_REQUEST);
         return;
     }
-    await accountRepo.addAccount(new class implements Account{
+    if (!await accountRepo.addAccount(new class implements Account{
         userName = userName;
         email = email;
         password = password;
         picture = picture;
-    });
+    })){
+        res.sendStatus(StatusCodes.BAD_REQUEST);
+        return;
+    }
     res.sendStatus(StatusCodes.CREATED);
 });
 accountRouter.patch("/", async (req, res) => {

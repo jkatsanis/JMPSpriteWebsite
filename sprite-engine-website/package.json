@@ -30,7 +30,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "startserver": "tsx server.ts",
+    "startserver": "tsx src/backend/server.ts",
     "compilereact": "npx tsc --jsx preserve -t es2020 --noEmit false"
   },
   "eslintConfig": {

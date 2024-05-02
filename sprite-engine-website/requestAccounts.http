@@ -1,8 +1,8 @@
-GET {{baseUrl}}/api/accounts
+GET {{baseUrl}}/api/accounts/
 
 ###
 
-GET {{baseUrl}}/api/accounts/example_user
+GET {{baseUrl}}/api/accounts/example_user2
 
 ###
 
@@ -18,5 +18,5 @@ Content-Type: application/json
 
 ###
 
-DELETE {{baseUrl}}/api/accounts/example_user
+DELETE {{baseUrl}}/api/accounts/example_user2
 
