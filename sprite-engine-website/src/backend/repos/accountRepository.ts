@@ -26,12 +26,16 @@ export class AccountRepository {
         return true;
     }
 
-    public async addAccount(account: Account): Promise<void> {
+    public async addAccount(account: Account): Promise<boolean> {
+        if (await this.getAccountByUsername(account.userName) !== undefined){
+            return false;
+        }
         const insertStatement = `
         INSERT INTO accounts (userName, email, password, picture) 
         VALUES ('${account.userName}', '${account.email}', '${account.password}', '${account.picture}')
         `;
         await DB.run(insertStatement, this.dbPath);
+        return true;
     }
     public async updateAccount(account: Account): Promise<boolean> {
         if (await this.getAccountByUsername(account.userName) === undefined) {return false;}

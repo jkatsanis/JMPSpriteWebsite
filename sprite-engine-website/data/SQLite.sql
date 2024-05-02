@@ -9,7 +9,8 @@ CREATE TABLE accounts (
 
 CREATE TABLE threads (
     id INT PRIMARY KEY,
-    author INT NOT NULL,
+    author VARCHAR(40) NOT NULL,
+    title VARCHAR(40) NOT NULL,
     labels VARCHAR(100),
     content VARCHAR(4000) NOT NULL
 );
@@ -18,7 +19,7 @@ CREATE TABLE comments (
     id INT PRIMARY KEY,
     threadId INT NOT NULL,
     parentCommentId INT,
-    author INT NOT NULL,
+    author VARCHAR(40) NOT NULL,
     content VARCHAR(4000) NOT NULL
 );
 

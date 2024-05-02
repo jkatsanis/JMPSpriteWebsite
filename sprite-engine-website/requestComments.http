@@ -1,0 +1,49 @@
+GET {{baseUrl}}/api/questions/comments
+
+###
+
+GET {{baseUrl}}/api/questions/comment/1
+
+###
+
+GET {{baseUrl}}/api/questions/comment/2
+
+###
+
+GET {{baseUrl}}/api/questions/comments/example_user1
+
+###
+
+POST {{baseUrl}}/api/questions/comment
+Content-Type: application/json
+
+{
+  "id": 1,
+  "threadId": 1,
+  "parentCommentId": null,
+  "author": "example_user1",
+  "content": "ugauga"
+}
+
+###
+
+POST {{baseUrl}}/api/questions/comment
+Content-Type: application/json
+
+{
+  "id": 2,
+  "threadId": 1,
+  "parentCommentId": 1,
+  "author": "example_user2",
+  "content": "ugauga"
+}
+
+###
+
+DELETE {{baseUrl}}/api/questions/comment/1
+
+###
+
+DELETE {{baseUrl}}/api/questions/comment/2
+
+

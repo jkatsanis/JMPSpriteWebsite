@@ -46,6 +46,13 @@ export class DB {
         return;
     }
 }
+export const StatusCodes = {
+    OK: 200,
+    CREATED: 201,
+    NO_CONTENT: 204,
+    BAD_REQUEST: 400,
+    NOT_FOUND: 404
+};
 export interface Account{
     userName: string;
     email: string;
@@ -62,6 +69,7 @@ export interface ThreadComment {
 export interface Thread{
     id: number;
     labels: string;
+    title: string
     author: string;
     content: string;
 }

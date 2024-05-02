@@ -1,0 +1,32 @@
+GET {{baseUrl}}/api/questions/threads
+
+###
+
+GET {{baseUrl}}/api/questions/thread/2
+
+###
+
+GET {{baseUrl}}/api/questions/threads/example_user1
+
+###
+
+POST {{baseUrl}}/api/questions/thread
+Content-Type: application/json
+
+{
+  "id": 2,
+  "author": "example_user1",
+  "title": "Question2",
+  "labels": "Issue, Bug",
+  "content": "ugauga"
+}
+
+###
+
+DELETE {{baseUrl}}/api/questions/thread/1
+
+###
+
+DELETE {{baseUrl}}/api/questions/threads/comments/example_user1
+
+
