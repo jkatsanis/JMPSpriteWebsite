@@ -8,6 +8,10 @@ const ProjectsDisplay: React.FC = () => {
     const fileRef = useRef<HTMLInputElement>(null);
     const [projects, setProjects] = useState<Project[]>([]);
 
+    const [filename, setFilename] = useState("");
+
+
+
     interface Project {
         name: string;
         description: string;
@@ -76,6 +80,20 @@ const ProjectsDisplay: React.FC = () => {
                     </li>
                 ))}
             </ul>
+
+            <h1>File Upload</h1>
+            <form action="api/projects/upload" method="POST" encType="multipart/form-data">
+                <input type="file" name="file" required />
+                <button type="submit">Upload</button>
+            </form>
+
+            <form onSubmit={(e)=>{
+                e.preventDefault();
+                window.location.href = `api/projects/${filename}`;
+            }}>
+                <input type="text" name="filename" required onChange={(e) => setFilename(e.target.value)} />
+                <button type="submit">Upload</button>
+            </form>
         </Page>
     );
 };

@@ -23,6 +23,7 @@
   },
   "include": [
     "src",
-    "src/backend/server.ts"
+    "src/backend/server.ts",
+    "src/backend/multerUpload.ts"
   ]
 }
