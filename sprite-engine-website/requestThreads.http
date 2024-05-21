@@ -14,7 +14,7 @@ POST {{baseUrl}}/api/questions/thread
 Content-Type: application/json
 
 {
-  "id": 2,
+  "id": 1,
   "author": "example_user1",
   "title": "Question2",
   "labels": "Issue, Bug",

@@ -8,6 +8,8 @@ import { Threads } from 'frontend/components/threads/threads';
 import { ThreadPage } from 'frontend/components/threads/ui/page-question/page-question';
 import { AddQuestionModal } from 'frontend/components/threads/ui/new-question/new-question';
 import ProjectsDisplay from "./frontend/components/projects/projectsDisplay";
+import Login from "./frontend/components/login/login";
+import Callback from "./frontend/components/callback/callback";
 
 const App: React.FC = () => {
     return (      
@@ -20,6 +22,8 @@ const App: React.FC = () => {
                 <Route path="/docu" element={<Docu/>}/>
                 <Route path="/projects" element={<ProjectsDisplay/>}/>
                 <Route path="/threads" element={<Threads/>}/>
+                <Route path="/login" element={<Login/>}/>
+                <Route path="/callback" element={<Callback/>}/>
                 <Route path="/threads/:id" element={<ThreadPage/>} />
                 <Route path='/threads/new' element={<AddQuestionModal/>} />
             </Routes>

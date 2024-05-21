@@ -9,25 +9,25 @@ export class ThreadRepository {
     }
 
     public async getAllThreads() : Promise<Thread[] | undefined>{
-        return await DB.selectAll("SELECT * FROM threads", this.dbPathThreads)
+        return await DB.selectAll<Thread>("SELECT * FROM threads", this.dbPathThreads)
     }
     public async getAllComments(): Promise<ThreadComment[] | undefined>{
-        return await DB.selectAll("SELECT * FROM comments", this.dbPathComments);
+        return await DB.selectAll<ThreadComment>("SELECT * FROM comments", this.dbPathComments);
     }
     public async getAllThreadsByUsername(username : string) : Promise<Thread[] | undefined>{
-        return await DB.selectAll(`SELECT * FROM threads WHERE author = '${username}'`, this.dbPathThreads)
+        return await DB.selectAll<Thread>(`SELECT * FROM threads WHERE author = '${username}'`, this.dbPathThreads)
     }
     public async getAllCommentsByUsername(username : string) : Promise<ThreadComment[] | undefined>{
-        return await DB.selectAll(`SELECT * FROM comments WHERE author = '${username}'`, this.dbPathComments)
+        return await DB.selectAll<ThreadComment>(`SELECT * FROM comments WHERE author = '${username}'`, this.dbPathComments)
     }
     public async getThreadById(threadId: number): Promise<Thread | undefined> {
-        return await DB.select(`SELECT * FROM threads WHERE id = '${threadId}'`, this.dbPathThreads)
+        return await DB.select<Thread>(`SELECT * FROM threads WHERE id = '${threadId}'`, this.dbPathThreads)
     }
     public async getCommentById(CommentId: number): Promise<ThreadComment | undefined> {
-        return await DB.select(`SELECT * FROM comments WHERE id = '${CommentId}'`, this.dbPathComments)
+        return await DB.select<ThreadComment>(`SELECT * FROM comments WHERE id = '${CommentId}'`, this.dbPathComments)
     }
     public async getCommentsFromThread(threadId: number) : Promise<ThreadComment[] | undefined> {
-        return await DB.selectAll(`SELECT * FROM comments WHERE threadId = '${threadId}'`, this.dbPathComments)
+        return await DB.selectAll<ThreadComment>(`SELECT * FROM comments WHERE threadId = '${threadId}'`, this.dbPathComments)
     }
 
     public async deleteThreadsAndCommentsByUsername(username: string): Promise<boolean> {
@@ -88,7 +88,7 @@ export class ThreadRepository {
         return true
     }
     public async getCommentsFromParent(parentId: number) : Promise<ThreadComment[] | undefined>{
-        return await DB.selectAll(`SELECT * FROM comments WHERE parentCommentId = '${parentId}'`, this.dbPathComments);
+        return await DB.selectAll<ThreadComment>(`SELECT * FROM comments WHERE parentCommentId = '${parentId}'`, this.dbPathComments);
     }
     public async addThread(thread: Thread): Promise<boolean> {
         if (await this.getThreadById(thread.id) !== undefined){

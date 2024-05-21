@@ -35,6 +35,7 @@ const TopBar: React.FC = () => {
                   <li><Link to="/docu">Documentation</Link></li>
                   <li><Link to="/threads">Threads</Link></li>
                   <li><Link to="/projects">Projects</Link></li>
+                  <li><Link to="/login">Login</Link></li>
                   <li>
                     <div>
                       <img style={{ width: 25, height: 25 }} src={pic} alt="Icon"/>
