@@ -20,5 +20,5 @@ Eine website die Anfängern bis Experten hilft die SpriteEngine einfach zu benü
 ## Meilensteine
 - Website aufsetzen - basic Projektstruktur
 - Statische sachen wie docs erstelle
-- Login system 
+- Callback system 
 - Darauf threads & issues

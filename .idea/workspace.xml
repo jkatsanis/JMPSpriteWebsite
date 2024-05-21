@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="18d4081c-bdeb-4494-bffc-c42f562230a5" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/sprite-engine-website/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/sprite-engine-website/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sprite-engine-website/data/comments.sqlite" beforeDir="false" afterPath="$PROJECT_DIR$/sprite-engine-website/data/comments.sqlite" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sprite-engine-website/data/threads.sqlite" beforeDir="false" afterPath="$PROJECT_DIR$/sprite-engine-website/data/threads.sqlite" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sprite-engine-website/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/sprite-engine-website/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sprite-engine-website/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/sprite-engine-website/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sprite-engine-website/public/ressources/plan.md" beforeDir="false" afterPath="$PROJECT_DIR$/sprite-engine-website/public/ressources/plan.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sprite-engine-website/requestThreads.http" beforeDir="false" afterPath="$PROJECT_DIR$/sprite-engine-website/requestThreads.http" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sprite-engine-website/src/backend/model.ts" beforeDir="false" afterPath="$PROJECT_DIR$/sprite-engine-website/src/backend/model.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sprite-engine-website/src/backend/repos/accountRepository.ts" beforeDir="false" afterPath="$PROJECT_DIR$/sprite-engine-website/src/backend/repos/accountRepository.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sprite-engine-website/src/backend/repos/threadRepository.ts" beforeDir="false" afterPath="$PROJECT_DIR$/sprite-engine-website/src/backend/repos/threadRepository.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/syp/Pflichtenheft.md" beforeDir="false" afterPath="$PROJECT_DIR$/syp/Pflichtenheft.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/syp/Projektantrag.md" beforeDir="false" afterPath="$PROJECT_DIR$/syp/Projektantrag.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/syp/Projektidee.md" beforeDir="false" afterPath="$PROJECT_DIR$/syp/Projektidee.md" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="TypeScript File" />
+        <option value="CSS File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="HttpClientSelectedEnvironments">
+    <file url="file://$PROJECT_DIR$/sprite-engine-website/requestAccounts.http" environment="baseUrl" />
+    <file url="file://$PROJECT_DIR$/sprite-engine-website/requestThreads.http" environment="baseUrl" />
+    <file url="file://$PROJECT_DIR$/sprite-engine-website/requestComments.http" environment="baseUrl" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2foZqfyTMV37Jz0kFUFcOGulWxT" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "C:/htl_Leonding/3bhif/web/SEWebsite",
+    "list.type.of.created.stylesheet": "CSS",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs.jest.jest_package": "C:/htl_Leonding/3bhif/web/SEWebsite/JMPSpriteWebsite/sprite-engine-website/node_modules/react-scripts",
+    "nodejs_package_manager_path": "npm",
+    "rest.client.default.execution.environment": "baseUrl",
+    "settings.editor.selected.configurable": "reference.settings.ide.settings.new.ui",
+    "ts.external.directory.path": "C:\\Users\\hpass\\AppData\\Local\\JetBrains\\Toolbox\\apps\\WebStorm\\ch-0\\223.8836.27\\plugins\\javascript-impl\\jsLanguageServicesImpl\\external",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\htl_Leonding\3bhif\web\SEWebsite\JMPSpriteWebsite\sprite-engine-website\src\frontend\components" />
+      <recent name="C:\htl_Leonding\3bhif\web\SEWebsite\JMPSpriteWebsite\sprite-engine-website" />
+      <recent name="C:\htl_Leonding\3bhif\web\SEWebsite\JMPSpriteWebsite\sprite-engine-website\src\backend\repos" />
+    </key>
+  </component>
+  <component name="RunManager" selected="HTTP Request.requestComments | #5">
+    <configuration name="requestComments | #2" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$PROJECT_DIR$/sprite-engine-website/requestComments.http" index="2" requestIdentifier="#2" runType="Run single request">
+      <method v="2" />
+    </configuration>
+    <configuration name="requestComments | #5" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$PROJECT_DIR$/sprite-engine-website/requestComments.http" index="5" requestIdentifier="#5" runType="Run single request">
+      <method v="2" />
+    </configuration>
+    <configuration name="requestThreads | #4" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$PROJECT_DIR$/sprite-engine-website/requestThreads.http" index="4" requestIdentifier="#4" runType="Run single request">
+      <method v="2" />
+    </configuration>
+    <configuration name="DB class (1)" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
+      <node-interpreter value="project" />
+      <node-options value="" />
+      <jest-package value="$PROJECT_DIR$/sprite-engine-website/node_modules/react-scripts" />
+      <working-dir value="$PROJECT_DIR$/sprite-engine-website" />
+      <envs />
+      <scope-kind value="SUITE" />
+      <test-file value="$PROJECT_DIR$/sprite-engine-website/tests/DB.test.ts" />
+      <test-names>
+        <test-name value="DB class" />
+      </test-names>
+      <method v="2" />
+    </configuration>
+    <configuration name="DB.test.ts" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
+      <node-interpreter value="project" />
+      <node-options value="" />
+      <jest-package value="$PROJECT_DIR$/sprite-engine-website/node_modules/react-scripts" />
+      <working-dir value="$PROJECT_DIR$/sprite-engine-website" />
+      <envs />
+      <scope-kind value="TEST_FILE" />
+      <test-file value="$PROJECT_DIR$/sprite-engine-website/tests/DB.test.ts" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="HTTP Request.requestComments | #5" />
+        <item itemvalue="HTTP Request.requestThreads | #4" />
+        <item itemvalue="HTTP Request.requestComments | #2" />
+        <item itemvalue="Jest.DB.test.ts" />
+        <item itemvalue="Jest.DB class (1)" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="18d4081c-bdeb-4494-bffc-c42f562230a5" name="Changes" comment="" />
+      <created>1714469584112</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1714469584112</updated>
+      <workItem from="1714469587979" duration="3315000" />
+      <workItem from="1714484725291" duration="4421000" />
+      <workItem from="1714593471918" duration="302000" />
+      <workItem from="1714630241191" duration="17007000" />
+      <workItem from="1715091868529" duration="482000" />
+      <workItem from="1715092366472" duration="741000" />
+      <workItem from="1715165481908" duration="66000" />
+      <workItem from="1715165739834" duration="5034000" />
+      <workItem from="1715756727905" duration="6580000" />
+      <workItem from="1715839934973" duration="14986000" />
+      <workItem from="1716278875845" duration="8129000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+    <option name="exactExcludedFiles">
+      <list>
+        <option value="$PROJECT_DIR$/sprite-engine-website/src/reportWebVitals.js" />
+      </list>
+    </option>
+  </component>
+</project>

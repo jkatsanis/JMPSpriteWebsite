@@ -15,7 +15,7 @@ Das Ziel dieses Projekts ist es, eine benutzerfreundliche Website zu entwickeln,
 ## Anforderungen
 
 - Benutzerfreundlichkeit
-- Login System sowie die Sicherheit
+- Callback System sowie die Sicherheit
 - Dokumentation
 - Tutorials
 - Minispiele
@@ -44,7 +44,7 @@ Express
 ## Features
 
 - Docs
-- Login System um Threads / Kommentare zu erstellen
+- Callback System um Threads / Kommentare zu erstellen
 - Forum
 - Projects: Man kann Projekte runter laden und hochladen.
 - Tutorials: Videos, Guide, Auto-Guide
@@ -58,8 +58,8 @@ Wir haben uns für das Wasserfallprozessmodul entschieden da wir am Anfang eine 
 
 ## Kriterienkatalog
 
-- Login System
-  - Das Login-System muss sicher sein und angemessene Maßnahmen zum Schutz der Benutzerdaten implementieren
+- Callback System
+  - Das Callback-System muss sicher sein und angemessene Maßnahmen zum Schutz der Benutzerdaten implementieren
 - Benutzerfreundlichkeit
   - Die Benutzeroberfläche muss intuitiv und benutzerfreundlich sein, um eine einfache Navigation und Interaktion zu ermöglichen, das ist vorallem sehr wichtig beim Docs lesen oder Issues suchen.
 

@@ -25,16 +25,17 @@ export class DB {
         return db;
     }
 
-    public static async selectAll(selectStatement: string, dbFileName: string): Promise<any> {
+    public static async selectAll<T>(selectStatement: string, dbFileName: string): Promise<T[]> {
         const db = await DB.createDBConnectionReadOnly(dbFileName);
-        const selected : any[] = await db.all<any[]>(selectStatement);
+        const selected: T[] = await db.all<T[]>(selectStatement);
         await db.close();
 
         return selected;
     }
-    public static async select(selectStatement: string, dbFileName: string): Promise<any> {
+
+    public static async select<T>(selectStatement: string, dbFileName: string): Promise<T | undefined> {
         const db = await DB.createDBConnectionReadOnly(dbFileName);
-        const selected : any = await db.get<any>(selectStatement);
+        const selected: T | undefined = await db.get<T>(selectStatement);
         await db.close();
 
         return selected;

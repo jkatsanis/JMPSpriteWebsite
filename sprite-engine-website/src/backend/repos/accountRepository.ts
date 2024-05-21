@@ -8,11 +8,11 @@ export class AccountRepository {
     }
 
     public async getAccountByUsername(username: string): Promise<Account|undefined>{
-        return await DB.select(`SELECT * FROM accounts WHERE userName = '${username}'`, this.dbPath);
+        return await DB.select<Account>(`SELECT * FROM accounts WHERE userName = '${username}'`, this.dbPath);
     }
 
     public async getAllAccounts() {
-        return await DB.selectAll("SELECT * FROM accounts", this.dbPath)
+        return await DB.selectAll<Account>("SELECT * FROM accounts", this.dbPath)
     }
 
     public async deleteAccountByUsername(username: string): Promise<boolean> {
