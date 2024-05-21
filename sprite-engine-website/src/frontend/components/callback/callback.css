@@ -1,0 +1,77 @@
+.callback-page {
+    font-family: Arial, sans-serif;
+    max-width: 400px;
+    margin: 50px auto;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background-color: #424242;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.login-options {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.btn {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.btn.github {
+    background-color: #333;
+    color: white;
+}
+
+.btn.github:hover {
+    background-color: #555;
+}
+
+.btn.keycloak {
+    background-color: #0052cc;
+    color: white;
+}
+
+.btn.keycloak:hover {
+    background-color: #003a99;
+}
+
+.login-form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group label {
+    margin-bottom: 5px;
+}
+
+.form-group input {
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.btn[type="submit"] {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.btn[type="submit"]:hover {
+    background-color: #45a049;
+}
