@@ -2,8 +2,8 @@ import { Question } from "./model";
 import { Account } from "./model";
 import { ImageData } from "./model";
 import { Label } from "./model";
-
 import { URL } from "frontend/macros";
+import { bFetch } from "frontend/utils/general";
 
 export class ThreadRepository 
 {
@@ -62,16 +62,9 @@ export class ThreadRepository
             labels = ""; 
             author = acc.name;
         };
-
-        console.log(object);
-
-        await fetch(url, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(object)
-            }).then(res => console.log(res));
+  
+        const postResponse = await bFetch(url, 'POST', object);
+        console.log("P: "+  postResponse);
     }
 
     addQuestionWithLabels(acc:Account, title:string, content:string, images:ImageData[]|null, labels: Label[])
