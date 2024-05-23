@@ -15,7 +15,7 @@ const AddQuestionModal: React.FC = () => {
     navigate(`/threads`);
   };  
 
-  const submit = (title: string, content: string, images: ImageData[]) => {
+  const submit = async (title: string, content: string, images: ImageData[]) => {
     console.log("actual submit ");
 
     if(threadRepo.active_account === null)
@@ -23,7 +23,7 @@ const AddQuestionModal: React.FC = () => {
       throw new Error("Why tf is it 0??");
     }
 
-    threadRepo.addQuestion(threadRepo.active_account!, title, content, images);
+    await threadRepo.addQuestion(threadRepo.active_account!, title, content, images);
 
     navigateTo(); 
   }

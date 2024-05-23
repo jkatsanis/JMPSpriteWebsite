@@ -57,7 +57,7 @@ export const ThreadPage: React.FC = () => {
         <div className='question-container'>
           <div className='question-content'>
             <h1>{question.title}</h1>
-            <p>{question.text}</p>
+            <p>{question.content}</p>
             {question && question.selectedImages && question.selectedImages.map((image, index) => (
                 <details className='image-details'>
                   <summary>

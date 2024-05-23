@@ -55,20 +55,20 @@ export class Question {
     labels: string[];
     author: Account;
     title: string;
-    text: string;
+    content: string;
     selectedImages: ImageData[];
     timesClicked: number;
-    questionNumber: number;
+    id: number;
     comments: Comment[];
 
 
     constructor(author: Account, title: string, text: string, count: number) {
         this.author = author;
         this.labels = [];
-        this.text = text;
+        this.content = text;
         this.title = title;
         this.timesClicked = 0;
-        this.questionNumber = count;
+        this.id = count;
         this.comments = [];
         this.selectedImages = [];
     }

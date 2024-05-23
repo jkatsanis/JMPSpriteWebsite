@@ -3,6 +3,8 @@ import { Account } from "./model";
 import { ImageData } from "./model";
 import { Label } from "./model";
 
+import { URL } from "frontend/macros";
+
 export class ThreadRepository 
 {
     private m_count: number = 0;
@@ -40,7 +42,7 @@ export class ThreadRepository
         return this.m_questions;
     }
 
-    addQuestion(acc:Account, title:string, content:string, images:ImageData[]|null)
+    async addQuestion(acc:Account, title:string, content:string, images:ImageData[]|null)
     {
         this.m_count++;
         let question = new Question(acc, title, content, this.m_count);
@@ -49,6 +51,27 @@ export class ThreadRepository
             question.selectedImages = images;
         }
         this.m_questions.push(question);
+
+        let url = URL + "/api/questions/thread";
+        let id = this.m_count;
+
+        let object = new class { 
+            id = id;
+            content = content;
+            title = title;
+            labels = ""; 
+            author = acc.name;
+        };
+
+        console.log(object);
+
+        await fetch(url, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(object)
+            }).then(res => console.log(res));
     }
 
     addQuestionWithLabels(acc:Account, title:string, content:string, images:ImageData[]|null, labels: Label[])
@@ -71,7 +94,7 @@ export class ThreadRepository
     {
         for(let i = 0; i < this.m_questions.length; i++)
         {
-            if(id === this.m_questions[i].questionNumber)
+            if(id === this.m_questions[i].id)
             {
                 return this.m_questions[i];
             }
