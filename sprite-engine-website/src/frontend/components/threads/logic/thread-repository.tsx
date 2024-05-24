@@ -1,21 +1,19 @@
+import { accountRepo } from "./account-repository";
 import { Question } from "./model";
 import { Account } from "./model";
 import { ImageData } from "./model";
 import { Label } from "./model";
 import { URL } from "frontend/macros";
 import { bFetch } from "frontend/utils/general";
+import { Log } from "frontend/utils/general";
 
 export class ThreadRepository 
 {
     private m_count: number = 0;
     private m_questions: Question[] = [];
 
-    constructor() {
-        this.initialize();
-    }
-
-    private async initialize() {
-
+    public async initialize() {
+        await accountRepo.init(); // initing account repo
         await this.readQuestionsFromDB();
     }
 
@@ -40,10 +38,26 @@ export class ThreadRepository
     {
         let url = URL + "/api/questions/threads";
 
-        let threads = await bFetch(url, "GET");
+        let threads:any[] = await bFetch(url, "GET");
 
+        for(let i = 0; i < threads.length; i++)
+        {
+            const t = threads[i];
 
-        console.log(threads);
+            let acc:Account = accountRepo.getAccountByName(t.author);
+
+            if(acc === null)
+            {
+                Log.log("[ERROR] Accounts was null!");
+                continue;
+            }
+             
+            const thread:Question = new Question(acc, t.title, t.content, t.id);
+
+            this.m_questions.push(thread);
+        }
+
+        console.log(this.m_questions);
     }
 
     async addQuestion(acc:Account, title:string, content:string, images:ImageData[]|null)
@@ -67,8 +81,7 @@ export class ThreadRepository
             author = acc.name;
         };
   
-        const postResponse = await bFetch(url, 'POST', object);
-        console.log("P: "+  postResponse);
+        await bFetch(url, 'POST', object);
     }
 
     addQuestionWithLabels(acc:Account, title:string, content:string, images:ImageData[]|null, labels: Label[])

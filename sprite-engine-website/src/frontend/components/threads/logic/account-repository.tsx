@@ -13,10 +13,9 @@ export class AccountRepository
         this.url = URL + "/api/accounts";
         this.accounts = [];
         this.active_account = null;
-        this.init();
     }
 
-    async init()
+    public async init()
     {
         let acc: Account = new Account("Manfred", "123Oga", "Manfred.png", "Manfred@gmail.com");
         this.active_account = acc;
@@ -51,6 +50,24 @@ export class AccountRepository
 
         await bFetch(this.url, "POST", obj);
     }
+
+    getAccounts() : Account[]
+    {
+        return this.accounts;
+    }
+
+    getAccountByName(name: string) : Account
+    {
+        for(let i = 0; i < this.accounts.length; i++)
+        {
+            if(name === this.accounts[i].name)
+            {
+                return this.accounts[i];
+            }
+        }
+
+        return null!;
+    }
 }
 
-export let accountRepo = new AccountRepository();
+export let accountRepo = new AccountRepository(); // Gets inited in threadRepo

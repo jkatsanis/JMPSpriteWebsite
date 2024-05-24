@@ -19,3 +19,11 @@ export async function bFetch<T>(url: string, method: string, data?: any): Promis
         return null!;
     }
 }
+
+export class Log
+{
+    public static log(msg: string)
+    {
+        console.log(msg);
+    }
+}
