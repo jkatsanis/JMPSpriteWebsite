@@ -22,4 +22,3 @@ CREATE TABLE comments (
     author VARCHAR(40) NOT NULL,
     content VARCHAR(4000) NOT NULL
 );
-

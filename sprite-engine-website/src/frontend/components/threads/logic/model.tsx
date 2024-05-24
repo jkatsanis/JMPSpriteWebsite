@@ -19,11 +19,13 @@ export class Account {
     password: string;
     name: string;
     picture: string;
+    email: string;
 
-    constructor(name: string, password: string, picture: string) {
+    constructor(name: string, password: string, picture: string, email: string) {
         this.password = password;
         this.name = name;
         this.picture = picture;
+        this.email = email;
     }
 }
 

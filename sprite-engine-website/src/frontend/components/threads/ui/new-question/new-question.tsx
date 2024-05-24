@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { Page } from 'frontend/components/page';
 import { threadRepo } from 'frontend/components/threads/logic/thread-repository';
 import { ImageData } from '../../logic/model';
+import { accountRepo } from '../../logic/account-repository';
 
 import "./new-question.css";
 import "frontend/utils/general.css";
@@ -17,13 +18,13 @@ const AddQuestionModal: React.FC = () => {
 
   const submit = async (title: string, content: string, images: ImageData[]) => {
     console.log("actual submit ");
-
-    if(threadRepo.active_account === null)
+    
+    if(accountRepo.active_account === null)
     {
       throw new Error("Why tf is it 0??");
     }
 
-    await threadRepo.addQuestion(threadRepo.active_account!, title, content, images);
+    await threadRepo.addQuestion(accountRepo.active_account!, title, content, images);
 
     navigateTo(); 
   }

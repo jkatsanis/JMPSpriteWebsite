@@ -1,8 +1,7 @@
 // src/components/TopBar.js
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { threadRepo } from 'frontend/components/threads/logic/thread-repository';
-
+import { accountRepo } from '../threads/logic/account-repository';
 import { PATH_TO_ACCOUNT_FOLDER } from 'frontend/macros';
 
 import './topbar.css';
@@ -12,10 +11,10 @@ const TopBar: React.FC = () => {
 
   let name = "Account";
   let pic = `${PATH_TO_ACCOUNT_FOLDER}/accounts/icons/`; //  uga uga sache
-  if(threadRepo.active_account !== null)
+  if(accountRepo.active_account !== null)
   {
-    name = threadRepo.active_account.name;
-    pic += threadRepo.active_account.picture;
+    name = accountRepo.active_account.name;
+    pic += accountRepo.active_account.picture;
   }
   else {
     pic += "default.png"

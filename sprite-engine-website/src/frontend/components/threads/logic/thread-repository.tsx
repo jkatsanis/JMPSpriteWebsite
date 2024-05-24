@@ -10,19 +10,13 @@ export class ThreadRepository
     private m_count: number = 0;
     private m_questions: Question[] = [];
 
-    public active_account: Account | null;
+    constructor() {
+        this.initialize();
+    }
 
-    constructor()
-    {
-        let acc: Account = new Account("Manfred", "123Oga", "Manfred.png");
+    private async initialize() {
 
-        this.addQuestionWithLabels(acc, "saugew", "I cant do i t idj", null, [ Label.Bug, Label.Editor ]);
-
-        
-        this.addQuestionWithLabels(new Account("Ugafred", "123Oga", "Manfred.png"), "How to?", "I cant do i t idj", null, [ Label.Feature, Label.Editor ]);
-
-
-        this.active_account = acc;
+        await this.readQuestionsFromDB();
     }
 
     getQuestion(title: string): Question {
@@ -40,6 +34,16 @@ export class ThreadRepository
     getQuestions(): Question[] 
     {
         return this.m_questions;
+    }
+
+    async readQuestionsFromDB()
+    {
+        let url = URL + "/api/questions/threads";
+
+        let threads = await bFetch(url, "GET");
+
+
+        console.log(threads);
     }
 
     async addQuestion(acc:Account, title:string, content:string, images:ImageData[]|null)

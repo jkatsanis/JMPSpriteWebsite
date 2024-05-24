@@ -5,6 +5,7 @@ import { threadRepo } from '../../logic/thread-repository';
 import { Question } from '../../logic/model';
 import { Comment } from '../../logic/model';
 import { ImageData } from '../../logic/model';
+import { accountRepo } from '../../logic/account-repository';
 
 import 'frontend/utils/general.css';
 import './page-question.css';
@@ -30,11 +31,11 @@ export const ThreadPage: React.FC = () => {
   }
 
   const addComment = (title:string, content: string, images: ImageData[]|null) => {
-    if (threadRepo.active_account === null) {
+    if (accountRepo.active_account === null) {
       console.log("[ERROR] You gotta have an account");
       return;
     }
-    const newComment: Comment = new Comment(threadRepo.active_account, content);
+    const newComment: Comment = new Comment(accountRepo.active_account, content);
     if(images !== null)
     {
         newComment.selectedImages = images
