@@ -39,7 +39,7 @@ const Login: React.FC = () => {
 
     return (
         <div className="login-page">
-            <h1>Login</h1>
+            <h1 className="login-h">Login</h1>
             <div className="login-options">
                 <button className="btn github" onClick={handleGithubLogin}>
                     Login with GitHub

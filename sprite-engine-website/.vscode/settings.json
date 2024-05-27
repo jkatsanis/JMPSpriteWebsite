@@ -1,0 +1,11 @@
+{
+    "sqltools.connections": [
+        {
+            "previewLimit": 50,
+            "driver": "SQLite",
+            "name": "Threads",
+            "database": "${workspaceFolder:sprite-engine-website}/data/threads.sqlite"
+        }
+    ],
+    "sqltools.useNodeRuntime": true
+}

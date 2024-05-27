@@ -12,10 +12,19 @@ export async function bFetch<T>(url: string, method: string, data?: any): Promis
 
     try {
         const response = await fetch(url, options);
-        const responseData = await response.json();
-        return responseData as T;
+        if (!response.ok) {
+            throw new Error(`Failed to fetch: ${response.statusText}`);
+        }
+        const contentType = response.headers.get('content-type');
+        if (contentType && contentType.includes('application/json')) {
+            return await response.json() as T;
+        } else {
+            // Handle non-JSON responses here
+            // For example, return response.text() for text responses
+            throw new Error('Unexpected response format');
+        }
     } catch (error) {
-        console.log('[Error:]', error);
+        console.error('[Error:]', error);
         return null!;
     }
 }

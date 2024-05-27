@@ -11,8 +11,22 @@ export class ThreadRepository
 {
     private m_count: number = 0;
     private m_questions: Question[] = [];
+    public inited:boolean;
+    private m_thread_url;
+
+    constructor()
+    {
+        this.m_thread_url = URL + "/api/questions";
+        this.inited = false;
+    }
 
     public async initialize() {
+        if(this.inited)
+        {
+            Log.log("[ERROR] Why second init");
+            return;
+        }
+        this.inited = true;
         await accountRepo.init(); // initing account repo
         await this.readQuestionsFromDB();
     }
@@ -36,7 +50,7 @@ export class ThreadRepository
 
     async readQuestionsFromDB()
     {
-        let url = URL + "/api/questions/threads";
+        let url = this.m_thread_url + "/threads";
 
         let threads:any[] = await bFetch(url, "GET");
 
@@ -48,16 +62,26 @@ export class ThreadRepository
 
             if(acc === null)
             {
+                this.removeThread(t.id);
                 Log.log("[ERROR] Accounts was null!");
                 continue;
             }
              
             const thread:Question = new Question(acc, t.title, t.content, t.id);
 
+            this.m_count++;
             this.m_questions.push(thread);
         }
 
         console.log(this.m_questions);
+    }
+
+    async removeThread(id: number)
+    {
+        let url = this.m_thread_url + "/thread/" + id;
+        this.m_questions = this.m_questions.filter(thread => thread.id !== id);
+
+        await bFetch(url, 'DELETE');
     }
 
     async addQuestion(acc:Account, title:string, content:string, images:ImageData[]|null)
@@ -80,6 +104,8 @@ export class ThreadRepository
             labels = ""; 
             author = acc.name;
         };
+
+        console.log(object);
   
         await bFetch(url, 'POST', object);
     }

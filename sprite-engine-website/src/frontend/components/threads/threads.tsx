@@ -6,15 +6,19 @@ import SearchComponent from 'frontend/utils/search/search';
 import { handleThreadsEnterClick, searchThreads } from './logic/search-threads';
 import RenderQuestions from './ui/item-question/questions';
 import { threadRepo } from './logic/thread-repository';
-import { Question } from './logic/model';
 
 export function Threads() {
-    const [questions, setQuestions] = useState<Question[]>([]);
+    const [state, setState] = useState(0);  // Initialize state
 
     useEffect(() => {
         const fetchQuestions = async () => {
-            await threadRepo.initialize();
-            setQuestions(threadRepo.getQuestions());
+
+            console.log(threadRepo.inited);
+            if (!threadRepo.inited) 
+            {
+                await threadRepo.initialize();
+                setState(prevState => prevState + 1);  
+            }
         };
 
         fetchQuestions();

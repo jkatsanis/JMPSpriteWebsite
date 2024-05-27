@@ -22,3 +22,6 @@ CREATE TABLE comments (
     author VARCHAR(40) NOT NULL,
     content VARCHAR(4000) NOT NULL
 );
+
+INSERT INTO threads (id, author, title, labels, content) VALUES
+(2, 'Alice', 'Discussion about AI', 'AI, Machine Learning', 'This thread is about the latest advancements in AI and machine learning.');

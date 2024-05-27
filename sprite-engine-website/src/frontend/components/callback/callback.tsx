@@ -44,7 +44,7 @@ const Callback: React.FC = () => {
 
     return (
         <div className="callback-page">
-            <h1>Logged In!</h1>
+            <h1 className="login-h">Logged In!</h1>
         </div>
     );
 };
