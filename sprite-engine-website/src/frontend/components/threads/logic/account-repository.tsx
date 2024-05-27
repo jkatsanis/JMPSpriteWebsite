@@ -70,4 +70,4 @@ export class AccountRepository
     }
 }
 
-export let accountRepo = new AccountRepository(); // Gets inited in threadRepo
+export let accountRepo = new AccountRepository();

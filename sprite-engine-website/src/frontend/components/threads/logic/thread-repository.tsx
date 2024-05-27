@@ -11,24 +11,15 @@ export class ThreadRepository
 {
     private m_count: number = 0;
     private m_questions: Question[] = [];
-    public inited:boolean;
     private m_thread_url;
 
     constructor()
     {
         this.m_thread_url = URL + "/api/questions";
-        this.inited = false;
     }
 
     public async initialize() {
-        if(this.inited)
-        {
-            Log.log("[ERROR] Why second init");
-            return;
-        }
-        this.inited = true;
-        await accountRepo.init(); // initing account repo
-        await this.readQuestionsFromDB();
+           await this.readQuestionsFromDB();
     }
 
     getQuestion(title: string): Question {
@@ -72,8 +63,6 @@ export class ThreadRepository
             this.m_count++;
             this.m_questions.push(thread);
         }
-
-        console.log(this.m_questions);
     }
 
     async removeThread(id: number)
