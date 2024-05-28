@@ -6,18 +6,16 @@ import { PATH_TO_ACCOUNT_FOLDER } from 'frontend/macros';
 
 import './topbar.css';
 import 'frontend/utils/general.css';
+import { getOriginalPicturePath } from 'frontend/utils/general';
 
 const TopBar: React.FC = () => {
 
   let name = "Account";
-  let pic = `${PATH_TO_ACCOUNT_FOLDER}/accounts/icons/`; //  uga uga sache
+  let pic = "default.png";
   if(accountRepo.active_account !== null)
   {
     name = accountRepo.active_account.name;
-    pic += accountRepo.active_account.picture;
-  }
-  else {
-    pic += "default.png"
+    pic = getOriginalPicturePath(accountRepo.active_account.picture);
   }
   
   return (

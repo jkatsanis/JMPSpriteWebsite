@@ -82,6 +82,19 @@
     display: inline-block; /* or inline-flex */
 }
 
+.default-btn-np {
+    color: white;
+    font-size: 14px; /* Adjust font size for better readability */
+    font-weight: bold;
+    text-align: center; /* Center align text */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+    background-color: #7f8c8d;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
 .default-btn {
     color: white;
     font-size: 14px; /* Adjust font size for better readability */
@@ -94,7 +107,6 @@
     border-radius: 5px;
     cursor: pointer;
     transition: transform 0.3s ease;
-    overflow: hidden; /* Ensure overflow is hidden for child elements */
 }
 
 

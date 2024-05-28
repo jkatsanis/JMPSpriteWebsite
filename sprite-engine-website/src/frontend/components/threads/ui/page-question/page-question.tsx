@@ -10,6 +10,8 @@ import { accountRepo } from '../../logic/account-repository';
 import 'frontend/utils/general.css';
 import './page-question.css';
 import QuestionBluePrint from 'frontend/components/question/question-bp';
+import ContributorsRenderer from './contributers';
+import { getOriginalPicturePath } from 'frontend/utils/general';
 
 export const ThreadPage: React.FC = () => {
   const navigate = useNavigate();
@@ -22,7 +24,7 @@ export const ThreadPage: React.FC = () => {
       let number: number = parseInt(id);
       const fetchedQuestion: Question = threadRepo.fetch(number);
       setQuestion(fetchedQuestion);
-      setComments(fetchedQuestion.comments);
+      setComments(fetchedQuestion.getComments());
     }
   }, [id]);
 
@@ -42,19 +44,27 @@ export const ThreadPage: React.FC = () => {
     }
     
     const updatedComments: Comment[] = [...comments, newComment];
-    question.comments.push(newComment);
+    question.addComment(newComment);
     setComments(updatedComments);
   };
 
   return (
     <Page>
       <div className='centered-div-content-left-70'>
-        <div className='profile-container'>
-          <div className='profile-info inline'>
-            <img src={question.author.picture} alt="Profile Picture" className="profile-picture" />
-            <h3 className='profile-author' style={{ marginLeft: '0.5rem' }}>{question.author.name}</h3>
+        <div className='inline'>
+          <div className='profile-container'>
+            <div className='profile-info inline'>
+              <img src={getOriginalPicturePath(question.author.picture)} alt="Profile Picture" className="profile-picture" />
+              <h3 className='profile-author' style={{ marginLeft: '0.5rem' }}>{question.author.name}</h3>
+            </div>
           </div>
+          { 
+            accountRepo.active_account &&
+            accountRepo.active_account.name === question.author.name && 
+            <button className='thread-delete-btn default-btn-np'>Delete</button> 
+          }
         </div>
+  
         <div className='question-container'>
           <div className='question-content'>
             <h1>{question.title}</h1>
@@ -70,6 +80,8 @@ export const ThreadPage: React.FC = () => {
           </div>
         </div>
         <br/>
+
+        { question && <ContributorsRenderer contributers={question.contributers}/> }
 
         {comments && comments.map((comment, index) => (
           <div key={index}>

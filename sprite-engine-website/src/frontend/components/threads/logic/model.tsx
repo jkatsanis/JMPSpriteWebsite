@@ -61,7 +61,9 @@ export class Question {
     selectedImages: ImageData[];
     timesClicked: number;
     id: number;
-    comments: Comment[];
+    contributers: Account[];
+
+    private m_comments: Comment[];
 
 
     constructor(author: Account, title: string, text: string, count: number) {
@@ -71,8 +73,26 @@ export class Question {
         this.title = title;
         this.timesClicked = 0;
         this.id = count;
-        this.comments = [];
+        this.m_comments = [];
         this.selectedImages = [];
+        this.contributers = [];
+
+        this.contributers.push(author);
+    }
+
+    addComment(comment: Comment)
+    {
+        this.m_comments.push(comment);
+        this.contributers.push(comment.author);
+    }   
+
+    loadContributers()
+    {
+        this.contributers.push(this.author);
+        for(let i = 0; i < this.m_comments.length; i++)
+        {
+            this.contributers.push(this.m_comments[i].author);
+        }
     }
 
     addLabel(label: string): void {
@@ -84,5 +104,10 @@ export class Question {
         if (index !== -1) {
             this.labels.splice(index, 1);
         }
+    }
+
+    getComments() : Comment[]
+    {
+        return this.m_comments;
     }
 }

@@ -1,3 +1,13 @@
+import { URL } from "frontend/macros";
+import { PATH_TO_ACCOUNT_FOLDER } from "frontend/macros";
+
+function handleResponse(responseData: string) {
+    if (responseData === "Bad Request") {
+        const stack = new Error("Bad Request");
+        throw stack;
+    }
+}
+
 export async function bFetch<T>(url: string, method: string, data?: any): Promise<T> {
     const options: RequestInit = {
         method: method.toUpperCase(),
@@ -22,15 +32,12 @@ export async function bFetch<T>(url: string, method: string, data?: any): Promis
             responseData = await response.text();
         }
 
-        if(responseData === "Bad Request")
-        {
-            Log.log("[ERROR] Bad Request!");
-        }
+        handleResponse(responseData);
 
         return responseData as T;
-    } catch (error) {
-        Log.log("[ERROR] " + error);
-        throw error!;
+    } catch (error: any) {
+        Log.log("[ERROR] " + (error as Error).message);
+        return error.message;
     }
 }
 
@@ -40,4 +47,14 @@ export class Log
     {
         console.log(msg);
     }
+}
+
+export function getOriginalPath(path: string) : string
+{
+    return URL + "/" + path;
+}
+
+export function getOriginalPicturePath(path: string) : string
+{
+    return `${PATH_TO_ACCOUNT_FOLDER}/accounts/icons/` + path;
 }

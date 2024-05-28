@@ -19,7 +19,9 @@ export class ThreadRepository
     }
 
     public async initialize() {
-           await this.readQuestionsFromDB();
+        await this.readQuestionsFromDB();
+
+        console.log(this.m_questions);
     }
 
     getQuestion(title: string): Question {
