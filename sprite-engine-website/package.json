@@ -31,7 +31,8 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "startserver": "tsx src/backend/server.ts",
-    "compilereact": "npx tsc --jsx preserve -t es2020 --noEmit false"
+    "compilereact": "npx tsc --jsx preserve -t es2020 --noEmit false",
+    "react": "react-scripts start"
   },
   "eslintConfig": {
     "extends": [

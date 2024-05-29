@@ -18,7 +18,7 @@ const RenderQuestions = () => {
   return (
     <div>
       <div className='inline'>
-        <h1 className='common'>Common Questions: </h1>
+        <h1 className='common'>Questions: </h1>
         <div style={{ position: 'relative', left: '32rem' }}>
           <FilterQuestionButton updateFilter={updateFilter}/>
           <NewQuestionButton />
