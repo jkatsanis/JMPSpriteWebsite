@@ -1,6 +1,8 @@
 import React, {useEffect, useState} from "react";
 import "./login.css";
 
+
+const CLIENT_ID = "Ov23liMuRhXSWfALO4cu";
 const Login: React.FC = () => {
     const [rerender, setRerender] = useState(false);
     /*useEffect(() => {
@@ -25,7 +27,7 @@ const Login: React.FC = () => {
         }
     }, []);*/
     const handleGithubLogin = () => {
-        window.location.assign("https://github.com/login/oauth/authorize?client_id=" + process.env.REACT_APP_GITHUB_CLIENT_ID);
+        window.location.assign("https://github.com/login/oauth/authorize?client_id=" + CLIENT_ID);
     };
 
     const handleLogin = (e: React.FormEvent<HTMLFormElement>) => {

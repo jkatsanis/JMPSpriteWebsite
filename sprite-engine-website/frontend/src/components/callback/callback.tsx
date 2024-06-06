@@ -1,8 +1,10 @@
-import React, {useEffect, useState} from "react";
+import React, { useEffect, useState } from "react";
 import "./callback.css";
 
 const Callback: React.FC = () => {
     const [rerender, setRerender] = useState(false);
+    const [countdown, setCountdown] = useState(3); // Initialize countdown state
+
     useEffect(() => {
         const queryString = window.location.search;
         const urlParams = new URLSearchParams(queryString);
@@ -17,34 +19,34 @@ const Callback: React.FC = () => {
                 return response.json();
             }).then((data) => {
                 console.log(data);
-                if (data.access_token){
+                if (data.access_token) {
                     localStorage.setItem("accessToken", data.access_token);
                     console.log("yes");
-                    setRerender(!rerender)
+                    setRerender(!rerender);
                 }
-            })
+            });
         }
-    }, []);
-    const handleGithubLogin = () => {
-        window.location.assign("https://github.com/login/oauth/authorize?client_id=" + process.env.REACT_APP_GITHUB_CLIENT_ID);
-    };
+    }, [rerender]);
 
-    const handleKeycloakLogin = () => {
-        window.location.assign("https://auth.htl-leonding.ac.at/realms/htl-leonding/protocol/openid-connect/auth?client_id=htlleonding-service");
-    };
+    useEffect(() => {
+        // Countdown logic
+        const intervalId = setInterval(() => {
+            setCountdown((prevCountdown) => prevCountdown - 1);
+        }, 1000);
 
-    const handleLogin = (e: React.FormEvent<HTMLFormElement>) => {
-        e.preventDefault();
-        // Handle username and password login
-        const username = (e.target as any).username.value;
-        const password = (e.target as any).password.value;
-        console.log("Username:", username, "Password:", password);
-        // Add login logic here
-    };
+        // Redirect when countdown reaches 0
+        if (countdown === 0) {
+            window.location.href = "threads";
+        }
+
+        // Cleanup interval on component unmount
+        return () => clearInterval(intervalId);
+    }, [countdown]);
 
     return (
         <div className="callback-page">
-            <h1 className="login-h">Logged In!</h1>
+            <h1>Logged In!</h1>
+            <p>Redirecting in {countdown}...</p> {/* Display countdown */}
         </div>
     );
 };
