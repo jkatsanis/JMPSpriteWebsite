@@ -76,7 +76,7 @@ const TopBar: React.FC = () => {
                   {isLoggedIn && !loading && (
                       <li>
                         <img className="profile-pic" src={pic} alt="Icon" />
-                        <p className="link-i-a">{name}</p>
+                        <div className="link-i-a">{name}</div>
                       </li>
                   )}
                   {isLoggedIn && !loading && (

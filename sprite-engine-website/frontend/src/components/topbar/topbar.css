@@ -32,13 +32,9 @@ nav ul li a:hover {
   vertical-align: top;
   display: inline-block;
   margin-left: 0.5rem;
-  transition: color 0.3s, font-size 0.3s; /* Smooth transition for color and font size */
 }
 
-.link-i-a:hover {
-  color: rgb(233, 166, 52);
-  font-size: 1.1rem; /* Make the font size bigger on hover */
-}
+
 
 .profile {
   display: flex;
@@ -52,13 +48,8 @@ nav ul li a:hover {
   border-radius: 50%; /* Make the image round */
 }
 
-
-.dropdown-content {
-
-}
-
-.dropdown:hover .dropdown-content {
-  display: block;
+.account-prev{
+  margin: auto 10px;
 }
 
 .logout-button {
