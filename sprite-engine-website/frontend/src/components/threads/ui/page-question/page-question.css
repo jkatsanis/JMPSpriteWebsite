@@ -30,6 +30,7 @@
 }
 
 .profile-container {
+    margin-top: 1rem;   
     border-radius: 5px;
     display: inline-block; /* Adjusts width based on content */
     background-color: hsl(0, 0%, 8%);

@@ -12,13 +12,24 @@ export class ThreadRepository
     private m_count: number = 0;
     private m_questions: Question[] = [];
     private m_thread_url;
+    private m_inited:boolean;
 
     constructor()
     {
+        this.m_inited = false;
         this.m_thread_url = URL + "/api/questions";
     }
 
-    public async initialize() {
+    public async initialize() : Promise<void>
+    {
+        if(this.m_inited)
+        {
+            Log.log("[REPO] Account repo already inited");
+            return;
+        }
+    
+        this.m_inited = true;
+            
         await this.readQuestionsFromDB();
 
         console.log(this.m_questions);
@@ -55,7 +66,7 @@ export class ThreadRepository
 
             if(acc === null)
             {
-                this.removeThread(t.id);
+                // this.removeThread(t.id);
                 Log.log("[ERROR] Accounts was null!");
                 continue;
             }

@@ -1,4 +1,3 @@
-import { PATH_TO_ACCOUNT_FOLDER } from "macros";
 
 export enum Label {
     Bug = 'Bug',
@@ -77,13 +76,25 @@ export class Question {
         this.selectedImages = [];
         this.contributers = [];
 
-        this.contributers.push(author);
+        this.addContributer(author);
+    }
+
+
+    addContributer(author: Account)
+    {
+            const authorExists = this.contributers.some(existingAuthor => existingAuthor.name === author.name);
+
+            if (!authorExists) {
+                this.contributers.push(author);
+            }
     }
 
     addComment(comment: Comment)
     {
         this.m_comments.push(comment);
-        this.contributers.push(comment.author);
+
+        this.addContributer(comment.author);
+
     }   
 
     loadContributers()
@@ -91,7 +102,7 @@ export class Question {
         this.contributers.push(this.author);
         for(let i = 0; i < this.m_comments.length; i++)
         {
-            this.contributers.push(this.m_comments[i].author);
+            this.addContributer(this.m_comments[i].author);
         }
     }
 

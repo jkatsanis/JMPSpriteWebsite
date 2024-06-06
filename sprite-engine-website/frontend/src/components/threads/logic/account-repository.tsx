@@ -1,6 +1,7 @@
 import { Account } from "./model";
 import { bFetch } from "utils/general";
 import { URL } from "macros";
+import { Log } from "utils/general";
 
 export class AccountRepository
 {
@@ -9,20 +10,32 @@ export class AccountRepository
     public active_account: Account | null;
     private url: string;
 
+    private m_inited:boolean;
+
     constructor() {
         this.url = URL + "/api/accounts";
         this.accounts = [];
         this.active_account = null;
+        this.m_inited = false;
     }
 
-    public async init()
+    public async init() : Promise<void>
     {
+        if(this.m_inited)
+        {
+            Log.log("[REPO] Account repo already inited");
+            return;
+        }
+
+        this.m_inited = true;
+
         let acc: Account = new Account("Manfred", "123Oga", "Manfred.png", "Manfred@gmail.com");
         this.active_account = acc;
 
         await this.addAccount(acc);
 
         await this.readAccountsFromDB();
+        console.log(this.accounts);
     }
 
     async readAccountsFromDB()

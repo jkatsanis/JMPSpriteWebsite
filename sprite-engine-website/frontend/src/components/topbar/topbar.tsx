@@ -5,7 +5,7 @@ import { accountRepo } from '../threads/logic/account-repository';
 
 import './topbar.css';
 import 'utils/general.css';
-import { getOriginalPicturePath } from 'utils/general';
+import { getOriginalPath } from 'utils/general';
 
 const TopBar: React.FC = () => {
 
@@ -14,8 +14,10 @@ const TopBar: React.FC = () => {
   if(accountRepo.active_account !== null)
   {
     name = accountRepo.active_account.name;
-    pic = getOriginalPicturePath(accountRepo.active_account.picture);
+    pic = getOriginalPath("icons/" + accountRepo.active_account.picture);
   }
+
+  console.log(pic);
   
   return (
     <div>

@@ -1,0 +1,10 @@
+{
+    "sqltools.connections": [
+        {
+            "previewLimit": 50,
+            "driver": "SQLite",
+            "name": "Wtf",
+            "database": "${workspaceFolder:sprite-engine-website}/backend/data/threads.sqlite"
+        }
+    ]
+}
