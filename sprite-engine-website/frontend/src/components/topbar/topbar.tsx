@@ -57,7 +57,6 @@ const TopBar: React.FC = () => {
     name = accountRepo.active_account!.name;
     pic = accountRepo.active_account!.picture;
   }
-
   return (
       <div>
         <div className="top-bar">

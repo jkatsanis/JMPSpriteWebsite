@@ -11,7 +11,7 @@ import 'utils/general.css';
 import './page-question.css';
 import QuestionBluePrint from 'components/question/question-bp';
 import ContributorsRenderer from './contributers';
-import { getOriginalPicturePath } from 'utils/general';
+import { getOriginalPath } from 'utils/general';
 
 export const ThreadPage: React.FC = () => {
   const navigate = useNavigate();
@@ -54,7 +54,7 @@ export const ThreadPage: React.FC = () => {
         <div className='inline'>
           <div className='profile-container'>
             <div className='profile-info inline'>
-              <img src={getOriginalPicturePath(question.author.picture)} alt="Profile Picture" className="profile-picture" />
+              <img src={getOriginalPath("icons/" + question.author.picture)} alt="Profile Picture" className="profile-picture" />
               <h3 className='profile-author' style={{ marginLeft: '0.5rem' }}>{question.author.name}</h3>
             </div>
           </div>

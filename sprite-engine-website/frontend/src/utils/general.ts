@@ -1,5 +1,4 @@
 import { URL } from "macros";
-import { PATH_TO_ACCOUNT_FOLDER } from "macros";
 
 function handleResponse(responseData: string) {
     if (responseData === "Bad Request") {
@@ -52,9 +51,4 @@ export class Log
 export function getOriginalPath(path: string) : string
 {
     return URL + "/" + path;
-}
-
-export function getOriginalPicturePath(path: string) : string
-{
-    return `${PATH_TO_ACCOUNT_FOLDER}/accounts/icons/` + path;
 }
