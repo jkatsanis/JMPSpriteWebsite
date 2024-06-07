@@ -32,12 +32,6 @@ nav ul li a:hover {
   vertical-align: top;
   display: inline-block;
   margin-left: 0.5rem;
-  transition: color 0.3s, font-size 0.3s; /* Smooth transition for color and font size */
-}
-
-.link-i-a:hover {
-  color: rgb(233, 166, 52);
-  font-size: 1.1rem; /* Make the font size bigger on hover */
 }
 
 .profile {
@@ -47,25 +41,24 @@ nav ul li a:hover {
 }
 
 .profile-pic {
+  margin-bottom: 0;
   width: 25px;
   height: 25px;
   border-radius: 50%; /* Make the image round */
 }
 
-
-.dropdown-content {
-
-}
-
-.dropdown:hover .dropdown-content {
-  display: block;
+.account-prev{
+  background-color: #242424;
+  padding: 0.5rem;
+  border-radius: 2.5rem;
 }
 
 .logout-button {
+  margin-left: 0.5rem;
   background-color: #ff4d4d; /* Red background */
   color: white; /* White text */
   border: none;
-  border-radius: 4px;
+  border-radius: 2.5rem;
   cursor: pointer;
   transition: background-color 0.3s, transform 0.3s;
 }
@@ -74,3 +67,8 @@ nav ul li a:hover {
   background-color: #ff1a1a; /* Darker red on hover */
   transform: scale(1.05); /* Slightly increase size on hover */
 }
+
+.profile-li{
+  margin: auto 10px;
+}
+

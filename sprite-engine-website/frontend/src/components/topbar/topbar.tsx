@@ -73,16 +73,13 @@ const TopBar: React.FC = () => {
                   <li><Link to="/projects">Projects</Link></li>
                   {!isLoggedIn && <li><Link to="/login">Login</Link></li>}
                   {isLoggedIn && !loading && (
-                      <li>
+                      <li className="account-prev">
                         <img className="profile-pic" src={pic} alt="Icon" />
-                        <p className="link-i-a">{name}</p>
-                      </li>
-                  )}
-                  {isLoggedIn && !loading && (
-                      <li>
+                        <div className="link-i-a">{name}</div>
                         <button className="logout-button" onClick={logout}>Logout</button>
                       </li>
                   )}
+
                 </ul>
               </nav>
             </div>
