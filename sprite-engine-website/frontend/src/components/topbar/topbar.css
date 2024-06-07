@@ -34,8 +34,6 @@ nav ul li a:hover {
   margin-left: 0.5rem;
 }
 
-
-
 .profile {
   display: flex;
   align-items: center;
@@ -50,14 +48,17 @@ nav ul li a:hover {
 }
 
 .account-prev{
-  margin: auto 10px;
+  background-color: #242424;
+  padding: 0.5rem;
+  border-radius: 2.5rem;
 }
 
 .logout-button {
+  margin-left: 0.5rem;
   background-color: #ff4d4d; /* Red background */
   color: white; /* White text */
   border: none;
-  border-radius: 4px;
+  border-radius: 2.5rem;
   cursor: pointer;
   transition: background-color 0.3s, transform 0.3s;
 }
@@ -70,3 +71,4 @@ nav ul li a:hover {
 .profile-li{
   margin: auto 10px;
 }
+
