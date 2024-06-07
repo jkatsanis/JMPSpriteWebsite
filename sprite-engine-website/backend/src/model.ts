@@ -59,6 +59,7 @@ export interface Account{
     email: string;
     password: string;
     picture: string;
+    SWEAccessToken: string | null
 }
 export interface ThreadComment {
     id: number;

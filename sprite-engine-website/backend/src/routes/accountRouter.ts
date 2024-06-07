@@ -2,28 +2,46 @@ import Router from "express";
 import {AccountRepository} from "../repos/accountRepository";
 import {Account} from "../model";
 import {StatusCodes} from "../model";
+import {v4 as uuidv4} from 'uuid';
 
 export const accountRouter = Router();
 
 export const accountRepo = new AccountRepository("./data/accounts.sqlite");
 
+accountRouter.post("/login", async(req, res) => {
 
-
-accountRouter.get("/", async (req, res) => {
-    res.status(StatusCodes.OK);
-    res.send(await accountRepo.getAllAccounts());
+    if (req.headers.username && !Array.isArray(req.headers.username) && req.headers.password && !Array.isArray(req.headers.password)){
+        const username : string = req.headers.username;
+        const password : string = req.headers.password;
+        const user = await accountRepo.getAccountByUsername(username);
+        if (user) {
+            if (username === user?.userName && password === user.password) {
+                let SEWAccessToken = uuidv4();
+                await accountRepo.updateSEWAccessToken(SEWAccessToken, username);
+                res.status(StatusCodes.OK)
+                res.send(await accountRepo.getAccountByUsername(username));
+                return;
+            }
+        }
+    }
+    res.sendStatus(StatusCodes.BAD_REQUEST);
     return;
 });
-
-accountRouter.get("/:username", async(req, res) => {
-    const username = req.params.username;
-    const repoReply = await accountRepo.getAccountByUsername(username);
-    if (repoReply !== undefined){
-        res.status(StatusCodes.OK);
-        res.send(repoReply);
-        return;
+accountRouter.post("/loginWithToken", async(req, res) => {
+    if (req.headers.username && !Array.isArray(req.headers.username) && req.headers.SWEAccessToken && !Array.isArray(req.headers.SWEAccessToken)){
+        const username : string = req.headers.username;
+        const token : string = req.headers.SWEAccessToken;
+        const user = await accountRepo.getAccountByUsername(username);
+        if (user) {
+            if (username === user?.userName && token === user.SWEAccessToken) {
+                res.status(StatusCodes.OK)
+                res.send(await accountRepo.getAccountByUsername(username));
+                return;
+            }
+        }
     }
-    res.sendStatus(StatusCodes.NOT_FOUND);
+    res.sendStatus(StatusCodes.BAD_REQUEST);
+    return;
 });
 accountRouter.delete("/:username", async(req, res) => {
     const username = req.params.username;
@@ -48,6 +66,7 @@ accountRouter.post("/", async (req, res) => {
         email = email;
         password = password;
         picture = picture;
+        SWEAccessToken = null;
     })){
         res.sendStatus(StatusCodes.BAD_REQUEST);
         return;
@@ -70,6 +89,7 @@ accountRouter.patch("/", async (req, res) => {
         email = email;
         password = password;
         picture = picture;
+        SWEAccessToken = null;
     });
     res.sendStatus(StatusCodes.OK);
 });

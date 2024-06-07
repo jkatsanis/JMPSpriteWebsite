@@ -17,11 +17,6 @@ export class AccountRepository
 
     public async init()
     {
-        let acc: Account = new Account("Manfred", "123Oga", "Manfred.png", "Manfred@gmail.com");
-        this.active_account = acc;
-
-        await this.addAccount(acc);
-
         await this.readAccountsFromDB();
     }
 
