@@ -65,7 +65,7 @@ export class Question {
     private m_comments: Comment[];
 
 
-    constructor(author: Account, title: string, text: string, count: number) {
+    constructor(author: Account, title: string, text: string, count: number, lbls: string[]) {
         this.author = author;
         this.labels = [];
         this.content = text;
@@ -75,7 +75,7 @@ export class Question {
         this.m_comments = [];
         this.selectedImages = [];
         this.contributers = [];
-
+        this.labels = lbls;
         this.addContributer(author);
     }
 

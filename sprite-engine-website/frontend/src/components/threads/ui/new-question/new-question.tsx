@@ -17,12 +17,11 @@ const AddQuestionModal: React.FC = () => {
     navigate(`/threads`);
   };  
 
-  const submit = async (title: string, content: string, images: ImageData[]) => {    
+  const submit = async (title: string, content: string, images: ImageData[], labels: string[]) => {    
     if(accountRepo.active_account === null)
     {
       throw new Error("Why tf is it 0??");
     }
-    let labels: Label[] = [];
     
     await threadRepo.addQuestion(accountRepo.active_account!, title, content, images, labels);
 

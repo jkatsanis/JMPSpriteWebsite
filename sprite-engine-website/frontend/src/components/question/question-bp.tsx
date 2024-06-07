@@ -5,7 +5,7 @@ import LabelRenderer from 'components/threads/ui/item-question/filter/label/labe
 import { LabelAdder } from 'components/threads/ui/item-question/filter/label/label-adder';
 
 interface QuestionBluePrintProps {
-    submit: (title: string, content: string, images: ImageData[]) => void;
+    submit: (title: string, content: string, images: ImageData[], label: string[]) => void;
     cancel: () => void;
     qTitle: string;
     enterTitle: boolean;
@@ -72,7 +72,7 @@ const QuestionBluePrint: React.FC<QuestionBluePrintProps> = (props) => {
 
     const onSubmit = () => {
         if (checkSubmit()) {
-            props.submit(title, content, images);
+            props.submit(title, content, images, selectedItems);
         }
         setContent("");
         setTitle("");

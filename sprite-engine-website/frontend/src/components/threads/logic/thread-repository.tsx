@@ -32,7 +32,18 @@ export class ThreadRepository
         await accRepo.init();
         await this.readQuestionsFromDB();
 
-        console.log(this.m_questions);
+        this.getHighestCount();
+    }
+
+    getHighestCount()
+    {
+        for(let q of this.m_questions)
+        {
+            if(q.id > this.m_count)
+            {
+                this.m_count = q.id + 1;
+            }
+        }
     }
 
     getQuestion(title: string): Question {
@@ -63,7 +74,9 @@ export class ThreadRepository
             const t = threads[i];
 
             let acc:Account = accountRepo.getAccountByName(t.author);
-            let labels = t.labels;
+            let labels: string = t.labels;
+
+            
 
             if(acc === null)
             {
@@ -72,7 +85,7 @@ export class ThreadRepository
                 continue;
             }
              
-            const thread:Question = new Question(acc, t.title, t.content, t.id);
+            const thread:Question = new Question(acc, t.title, t.content, t.id, labels.split(';'));
 
             this.m_count++;
             this.m_questions.push(thread);
@@ -87,10 +100,10 @@ export class ThreadRepository
         await bFetch(url, 'DELETE');
     }
 
-    async addQuestion(acc:Account, title:string, content:string, images:ImageData[]|null, labels: Label[])
+    async addQuestion(acc:Account, title:string, content:string, images:ImageData[]|null, labels: string[])
     {
         this.m_count++;
-        let question = new Question(acc, title, content, this.m_count);
+        let question = new Question(acc, title, content, this.m_count, labels);
         if(images !== null)
         {
             question.selectedImages = images;
@@ -107,6 +120,8 @@ export class ThreadRepository
                 labelStr += ";";
             }
         }
+
+        console.log(labelStr);
         
         let object = new class { 
             id = id;
