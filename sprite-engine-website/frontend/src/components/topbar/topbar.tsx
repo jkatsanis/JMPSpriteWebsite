@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { accountRepo } from '../threads/logic/account-repository';
 import './topbar.css';
-import {PATH_TO_ACCOUNT_FOLDER} from "../../macros";
+
 // Define the user data interface
 interface User {
   login: string;
@@ -48,7 +48,7 @@ const TopBar: React.FC = () => {
   }
 
   let name = "Account";
-  let pic = `${PATH_TO_ACCOUNT_FOLDER}/accounts/icons/default.png`;
+  let pic = `icons/default.png`;
 
   if (user) {
     name = user.login;
