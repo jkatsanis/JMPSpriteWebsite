@@ -43,6 +43,7 @@ nav ul li a:hover {
 }
 
 .profile-pic {
+  margin-bottom: 0;
   width: 25px;
   height: 25px;
   border-radius: 50%; /* Make the image round */
@@ -64,4 +65,8 @@ nav ul li a:hover {
 .logout-button:hover {
   background-color: #ff1a1a; /* Darker red on hover */
   transform: scale(1.05); /* Slightly increase size on hover */
+}
+
+.profile-li{
+  margin: auto 10px;
 }
