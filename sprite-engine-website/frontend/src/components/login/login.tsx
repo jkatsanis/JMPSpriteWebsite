@@ -1,5 +1,7 @@
 import React, {useEffect, useState} from "react";
 import "./login.css";
+import {accountRepo} from "components/threads/logic/account-repository";
+import {Account} from "components/threads/logic/model";
 
 
 const CLIENT_ID = "Ov23liMuRhXSWfALO4cu";
@@ -30,13 +32,29 @@ const Login: React.FC = () => {
         window.location.assign("https://github.com/login/oauth/authorize?client_id=" + CLIENT_ID);
     };
 
-    const handleLogin = (e: React.FormEvent<HTMLFormElement>) => {
+    const handleLogin = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        // Handle username and password login
         const username = (e.target as any).username.value;
         const password = (e.target as any).password.value;
         console.log("Username:", username, "Password:", password);
-        // Add login logic here
+
+        await fetch("http://localhost:5000/loginWithToken", {
+            method: "POST",
+            headers: {
+                "username": username,
+                "password": password
+            }
+        }).then((response) => {
+            if (response.status === 200){
+                console.log("wrong username or password");
+            }
+            return response.json();
+        }).then((data) => {
+            accountRepo.active_account = new Account(data.name, data.password, data.picture, data.email)
+            localStorage.removeItem("accessToken");
+            localStorage.setItem("SEWAccessToken", data.SWEAccessToken)
+            localStorage.setItem("loggedInUsername", data.SWEAccessToken)
+        });
     };
 
     return (

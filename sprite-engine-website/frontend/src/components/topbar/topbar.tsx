@@ -14,7 +14,7 @@ const TopBar: React.FC = () => {
   const [user, setUser] = useState<User | null>(null);
   const [loading, setLoading] = useState(true);
 
-  const isLoggedIn = localStorage.getItem("accessToken") !== null;
+  const isLoggedIn = localStorage.getItem("accessToken") !== null || accountRepo.active_account !== null;
 
   useEffect(() => {
     async function fetchUserData() {
@@ -37,12 +37,17 @@ const TopBar: React.FC = () => {
         setLoading(false);
       }
     }
-    fetchUserData();
+    console.log(isLoggedIn);
+    if (localStorage.getItem("accessToken") !== null){
+      fetchUserData();
+    }
   }, [isLoggedIn]);
 
   async function logout() {
     if (isLoggedIn) {
       localStorage.removeItem("accessToken");
+      accountRepo.active_account = null;
+      setUser(null);
     }
     window.location.reload();
   }

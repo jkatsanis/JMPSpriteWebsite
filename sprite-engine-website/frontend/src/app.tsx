@@ -12,6 +12,7 @@ import Login from "./components/login/login";
 import Callback from "./components/callback/callback";
 import { accountRepo } from 'components/threads/logic/account-repository';
 import { threadRepo } from 'components/threads/logic/thread-repository';
+import {Account} from "components/threads/logic/model";
 
 const App: React.FC = () => {
     const [isInitialized, setIsInitialized] = useState(false);
@@ -23,7 +24,26 @@ const App: React.FC = () => {
             setIsInitialized(true);
         };
 
+        const autoLogin = async () => {
+            const SWEAccessToken = localStorage.getItem("SWEAccessToken");
+            const username = localStorage.getItem("loggedInUsername");
+            if (SWEAccessToken !== null && username !== null){
+                await fetch("http://localhost:5000/loginWithToken", {
+                    method: "POST",
+                    headers: {
+                        "SWEAccessToken": SWEAccessToken,
+                        "username": username
+                    }
+                }).then((response)=> {
+                    return response.json();
+                }).then((data) => {
+                    accountRepo.active_account = new Account(data.name, data. password, data.picture, data.email)
+                });
+            }
+        };
+
         initRepos();
+        autoLogin();
     }, []);
 
     if (!isInitialized) {
