@@ -29,10 +29,6 @@ export class AccountRepository
 
         this.m_inited = true;
 
-        let acc: Account = new Account("Manfred", "123Oga", "Manfred.png", "Manfred@gmail.com");
-        this.active_account = acc;
-
-        await this.addAccount(acc);
         await this.readAccountsFromDB();
     }
 
