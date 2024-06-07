@@ -3,7 +3,9 @@ import multer from "multer";
 import fs from "fs";
 import {multerConf} from "../multerUpload";
 import * as path from "path";
+import {ProjectRepository} from "../repos/projectRepository";
 export const projectRouter = express.Router();
+const projectRepo = new ProjectRepository("../backend/data/projects.sqlite");
 
 projectRouter.use(multerConf.single('file'))
 // Set up a route for file uploads

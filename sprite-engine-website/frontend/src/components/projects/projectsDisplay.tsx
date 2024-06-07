@@ -2,6 +2,8 @@ import React, { useRef, useState } from "react";
 import { Page } from "../page";
 import "./projects.css"; // Stil-Datei importieren
 import { URL } from "../../macros";
+import * as punycode from "punycode";
+import {ReactJSXElementAttributesProperty} from "@emotion/react/types/jsx-namespace";
 
 interface Project {
     name: string;
@@ -15,25 +17,12 @@ const ProjectsDisplay: React.FC = () => {
     const fileRef = useRef<HTMLInputElement>(null);
     const [projects, setProjects] = useState<Project[]>([]);
     const [filename, setFilename] = useState("");
+    const titleRef = useRef<HTMLInputElement>(null);
 
-    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    const onSub = async (e: React.FormEvent<HTMLFormElement>) =>{
         e.preventDefault();
-        const projectName = nameRef.current?.value || "";
-        const projectDescription = descriptionRef.current?.value || "";
-        const projectFile = fileRef.current?.files?.[0] || null;
-        if (projectName && projectDescription && projectFile) {
-            const newProject: Project = {
-                name: projectName,
-                description: projectDescription,
-                file: projectFile
-            };
-            setProjects([...projects, newProject]);
-            if (nameRef.current) nameRef.current.value = "";
-            if (descriptionRef.current) descriptionRef.current.value = "";
-            if (fileRef.current) fileRef.current.value = "";
-        }
-    };
 
+    }
     const handleDownload = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         try {
@@ -61,8 +50,10 @@ const ProjectsDisplay: React.FC = () => {
     return (
         <Page>
             <h1>File Upload</h1>
-            <form action={uploadURL} method="POST" encType="multipart/form-data" onSubmit={handleSubmit}>
+            <form action={uploadURL} method="POST" encType="multipart/form-data" onSubmit={onSub}>
                 <input type="file" name="file" ref={fileRef} required />
+                <input type="text" name="Title" ref={titleRef}/>
+                <input type="text" name="description" ref={descriptionRef}/>
                 <button type="submit">Upload</button>
             </form>
 
