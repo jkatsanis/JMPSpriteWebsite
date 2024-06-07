@@ -33,7 +33,6 @@ export class AccountRepository
         this.active_account = acc;
 
         await this.addAccount(acc);
-    
         await this.readAccountsFromDB();
     }
 

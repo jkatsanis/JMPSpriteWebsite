@@ -14,7 +14,14 @@ export class AccountRepository {
     public async getAllAccounts() {
         return await DB.selectAll<Account>("SELECT * FROM accounts", this.dbPath)
     }
-
+    public async updateSEWAccessToken(token: string, username: string){
+        if (await this.getAccountByUsername(username) === undefined) {return false;}
+        const insertStatement = `
+        UPDATE accounts SET SEWAccessToken = '${token}' WHERE userName = '${username}';
+        `;
+        await DB.run(insertStatement, this.dbPath);
+        return true;
+    }
     public async deleteAccountByUsername(username: string): Promise<boolean> {
         if (await this.getAccountByUsername(username) === undefined){
             return true;
@@ -31,8 +38,8 @@ export class AccountRepository {
             return false;
         }
         const insertStatement = `
-        INSERT INTO accounts (userName, email, password, picture) 
-        VALUES ('${account.userName}', '${account.email}', '${account.password}', '${account.picture}')
+        INSERT INTO accounts (userName, email, password, picture, SEWAccessToken) 
+        VALUES ('${account.userName}', '${account.email}', '${account.password}', '${account.picture}', null)
         `;
         await DB.run(insertStatement, this.dbPath);
         return true;
@@ -40,8 +47,8 @@ export class AccountRepository {
     public async updateAccount(account: Account): Promise<boolean> {
         if (await this.getAccountByUsername(account.userName) === undefined) {return false;}
         const insertStatement = `
-        REPLACE INTO accounts (userName, email, password, picture) 
-        VALUES ('${account.userName}', '${account.email}', '${account.password}', '${account.picture}')
+        REPLACE INTO accounts (userName, email, password, picture, SEWAccessToken) 
+        VALUES ('${account.userName}', '${account.email}', '${account.password}', '${account.picture}', null)
         `;
         await DB.run(insertStatement, this.dbPath);
         return true;
