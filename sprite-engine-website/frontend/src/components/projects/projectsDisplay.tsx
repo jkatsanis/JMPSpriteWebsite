@@ -4,6 +4,7 @@ import "./projects.css"; // Stil-Datei importieren
 import { URL } from "../../macros";
 import * as punycode from "punycode";
 import {ReactJSXElementAttributesProperty} from "@emotion/react/types/jsx-namespace";
+//import {ProjectRepository} from "../../../../backend/src/repos/projectRepository";
 
 interface Project {
     name: string;
@@ -42,7 +43,7 @@ const ProjectsDisplay: React.FC = () => {
 
     const onSub = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault(); // Verhindert das Standardverhalten des Formulars
-
+        //let repo = new ProjectRepository("../../../../backend/data/projects.sqlite");
         if (fileRef.current?.files?.length) {
             const file = fileRef.current.files[0];
             const title = titleRef.current?.value;
@@ -52,6 +53,8 @@ const ProjectsDisplay: React.FC = () => {
             formData.append('file', file);
             formData.append('Title', title || '');
             formData.append('description', description || '');
+
+            //await repo.insertProject({id: 1, description: description || '', owner: 'admin', title: title || ''});
 
             try {
                 const response = await fetch(uploadURL, {
