@@ -9,16 +9,15 @@ interface User {
   login: string;
   avatar_url: string;
 }
+export const isLoggedIn = localStorage.getItem("accessToken") != null || localStorage.getItem("SEWAccessToken") != null;
 
 const TopBar: React.FC = () => {
   const [user, setUser] = useState<User | null>(null);
   const [loading, setLoading] = useState(true);
 
-  const isLoggedIn = localStorage.getItem("accessToken") !== null || accountRepo.active_account !== null;
-
   useEffect(() => {
     async function fetchUserData() {
-      if (isLoggedIn) {
+      if (isLoggedIn && localStorage.getItem("accessToken") !== undefined) {
         try {
           const response = await fetch("http://localhost:5000/getUserData", {
             method: "GET",
@@ -62,6 +61,7 @@ const TopBar: React.FC = () => {
     name = accountRepo.active_account!.name;
     pic = accountRepo.active_account!.picture;
   }
+
   return (
       <div>
         <div className="top-bar">
@@ -77,14 +77,13 @@ const TopBar: React.FC = () => {
                   <li><Link to="/threads">Threads</Link></li>
                   <li><Link to="/projects">Projects</Link></li>
                   {!isLoggedIn && <li><Link to="/login">Login</Link></li>}
-                  {isLoggedIn && !loading && (
+                  {isLoggedIn && (
                       <li className="account-prev">
                         <img className="profile-pic" src={pic} alt="Icon" />
                         <div className="link-i-a">{name}</div>
                         <button className="logout-button" onClick={logout}>Logout</button>
                       </li>
                   )}
-
                 </ul>
               </nav>
             </div>

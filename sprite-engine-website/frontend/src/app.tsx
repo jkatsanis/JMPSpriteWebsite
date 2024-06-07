@@ -13,6 +13,7 @@ import Callback from "./components/callback/callback";
 import { accountRepo } from 'components/threads/logic/account-repository';
 import { threadRepo } from 'components/threads/logic/thread-repository';
 import {Account} from "components/threads/logic/model";
+import Register from "components/register/register";
 
 const App: React.FC = () => {
     const [isInitialized, setIsInitialized] = useState(false);
@@ -28,7 +29,7 @@ const App: React.FC = () => {
             const SWEAccessToken = localStorage.getItem("SWEAccessToken");
             const username = localStorage.getItem("loggedInUsername");
             if (SWEAccessToken !== null && username !== null){
-                await fetch("http://localhost:5000/loginWithToken", {
+                await fetch("http://localhost:5000/api/accounts/loginWithToken", {
                     method: "POST",
                     headers: {
                         "SWEAccessToken": SWEAccessToken,
@@ -63,6 +64,7 @@ const App: React.FC = () => {
                 <Route path="/callback" element={<Callback />} />
                 <Route path="/threads/:id" element={<ThreadPage />} />
                 <Route path="/threads/new" element={<AddQuestionModal />} />
+                <Route path="/register" element={<Register/>} />
             </Routes>
         </BrowserRouter>
     );
