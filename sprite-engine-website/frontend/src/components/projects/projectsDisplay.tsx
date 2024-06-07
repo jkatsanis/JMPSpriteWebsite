@@ -1,29 +1,26 @@
 import React, { useRef, useState } from "react";
 import { Page } from "../page";
 import "./projects.css"; // Stil-Datei importieren
+import { URL } from "../../macros";
+
+interface Project {
+    name: string;
+    description: string;
+    file: File | null;
+}
 
 const ProjectsDisplay: React.FC = () => {
     const nameRef = useRef<HTMLInputElement>(null);
     const descriptionRef = useRef<HTMLInputElement>(null);
     const fileRef = useRef<HTMLInputElement>(null);
     const [projects, setProjects] = useState<Project[]>([]);
-
     const [filename, setFilename] = useState("");
-
-
-
-    interface Project {
-        name: string;
-        description: string;
-        file: File | null;
-    }
 
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         const projectName = nameRef.current?.value || "";
         const projectDescription = descriptionRef.current?.value || "";
         const projectFile = fileRef.current?.files?.[0] || null;
-
         if (projectName && projectDescription && projectFile) {
             const newProject: Project = {
                 name: projectName,
@@ -37,62 +34,41 @@ const ProjectsDisplay: React.FC = () => {
         }
     };
 
+    const handleDownload = async (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+        try {
+            const response = await fetch(`${URL}/api/projects/${filename}`);
+            if (!response.ok) {
+                throw new Error('File not found');
+            }
+            // Convert response to blob and create a download link
+            const blob = await response.blob();
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = filename; // Set the file name for download
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+        } catch (error) {
+            console.error('Error downloading file:');
+            // Handle error (e.g., display error message to user)
+        }
+    };
+
+    let uploadURL = `${URL}/api/projects/upload`;
+
     return (
         <Page>
-            <form onSubmit={handleSubmit}>
-                <div className="form-group">
-                    <label htmlFor="name">Name:</label>
-                    <input
-                        type="text"
-                        id="name"
-                        ref={nameRef}
-                        required
-                    />
-                </div>
-                <div className="form-group">
-                    <label htmlFor="description">Description:</label>
-                    <input
-                        type="text"
-                        id="description"
-                        ref={descriptionRef}
-                        required
-                    />
-                </div>
-                <div className="form-group">
-                    <label htmlFor="file">Upload ZIP file:</label>
-                    <input
-                        type="file"
-                        id="file"
-                        accept=".zip"
-                        ref={fileRef}
-                        required
-                    />
-                </div>
-                <button type="submit" className="btn">Upload</button>
-            </form>
-            <h2>Uploaded Projects</h2>
-            <ul>
-                {projects.map((project, index) => (
-                    <li key={index}>
-                        <strong>Name:</strong> {project.name},{" "}
-                        <strong>Description:</strong> {project.description},{" "}
-                        <strong>File:</strong> {project.file?.name}
-                    </li>
-                ))}
-            </ul>
-
             <h1>File Upload</h1>
-            <form action="api/projects/upload" method="POST" encType="multipart/form-data">
-                <input type="file" name="file" required />
+            <form action={uploadURL} method="POST" encType="multipart/form-data" onSubmit={handleSubmit}>
+                <input type="file" name="file" ref={fileRef} required />
                 <button type="submit">Upload</button>
             </form>
 
-            <form onSubmit={(e)=>{
-                e.preventDefault();
-                window.location.href = `api/projects/${filename}`;
-            }}>
+            <form onSubmit={handleDownload}>
                 <input type="text" name="filename" required onChange={(e) => setFilename(e.target.value)} />
-                <button type="submit">Upload</button>
+                <button type="submit">Download</button>
             </form>
         </Page>
     );

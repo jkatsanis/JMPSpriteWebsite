@@ -4,20 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="18d4081c-bdeb-4494-bffc-c42f562230a5" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/sprite-engine-website/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/sprite-engine-website/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sprite-engine-website/data/comments.sqlite" beforeDir="false" afterPath="$PROJECT_DIR$/sprite-engine-website/data/comments.sqlite" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sprite-engine-website/data/threads.sqlite" beforeDir="false" afterPath="$PROJECT_DIR$/sprite-engine-website/data/threads.sqlite" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sprite-engine-website/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/sprite-engine-website/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sprite-engine-website/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/sprite-engine-website/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sprite-engine-website/public/ressources/plan.md" beforeDir="false" afterPath="$PROJECT_DIR$/sprite-engine-website/public/ressources/plan.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sprite-engine-website/requestThreads.http" beforeDir="false" afterPath="$PROJECT_DIR$/sprite-engine-website/requestThreads.http" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sprite-engine-website/src/backend/model.ts" beforeDir="false" afterPath="$PROJECT_DIR$/sprite-engine-website/src/backend/model.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sprite-engine-website/src/backend/repos/accountRepository.ts" beforeDir="false" afterPath="$PROJECT_DIR$/sprite-engine-website/src/backend/repos/accountRepository.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sprite-engine-website/src/backend/repos/threadRepository.ts" beforeDir="false" afterPath="$PROJECT_DIR$/sprite-engine-website/src/backend/repos/threadRepository.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/syp/Pflichtenheft.md" beforeDir="false" afterPath="$PROJECT_DIR$/syp/Pflichtenheft.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/syp/Projektantrag.md" beforeDir="false" afterPath="$PROJECT_DIR$/syp/Projektantrag.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/syp/Projektidee.md" beforeDir="false" afterPath="$PROJECT_DIR$/syp/Projektidee.md" afterDir="false" />
+    <list default="true" id="18d4081c-bdeb-4494-bffc-c42f562230a5" name="Changes" comment="removed old stuff">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sprite-engine-website/frontend/src/components/projects/projectsDisplay.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/sprite-engine-website/frontend/src/components/projects/projectsDisplay.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,14 +24,13 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="HttpClientSelectedEnvironments">
-    <file url="file://$PROJECT_DIR$/sprite-engine-website/requestAccounts.http" environment="baseUrl" />
-    <file url="file://$PROJECT_DIR$/sprite-engine-website/requestThreads.http" environment="baseUrl" />
-    <file url="file://$PROJECT_DIR$/sprite-engine-website/requestComments.http" environment="baseUrl" />
-  </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "customColor": "",
+  "associatedIndex": 3
+}]]></component>
   <component name="ProjectId" id="2foZqfyTMV37Jz0kFUFcOGulWxT" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -55,6 +43,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "feature/projects",
     "last_opened_file_path": "C:/htl_Leonding/3bhif/web/SEWebsite",
     "list.type.of.created.stylesheet": "CSS",
     "node.js.detected.package.eslint": "true",
@@ -65,7 +54,7 @@
     "nodejs_package_manager_path": "npm",
     "rest.client.default.execution.environment": "baseUrl",
     "settings.editor.selected.configurable": "reference.settings.ide.settings.new.ui",
-    "ts.external.directory.path": "C:\\Users\\hpass\\AppData\\Local\\JetBrains\\Toolbox\\apps\\WebStorm\\ch-0\\223.8836.27\\plugins\\javascript-impl\\jsLanguageServicesImpl\\external",
+    "ts.external.directory.path": "C:\\paul\\HTL_Leonding\\3.Klasse\\WMC\\JMPSpriteWebsite\\sprite-engine-website\\frontend\\node_modules\\typescript\\lib",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -88,7 +77,6 @@
     </configuration>
     <configuration name="DB class (1)" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
       <node-interpreter value="project" />
-      <node-options value="" />
       <jest-package value="$PROJECT_DIR$/sprite-engine-website/node_modules/react-scripts" />
       <working-dir value="$PROJECT_DIR$/sprite-engine-website" />
       <envs />
@@ -101,7 +89,6 @@
     </configuration>
     <configuration name="DB.test.ts" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
       <node-interpreter value="project" />
-      <node-options value="" />
       <jest-package value="$PROJECT_DIR$/sprite-engine-website/node_modules/react-scripts" />
       <working-dir value="$PROJECT_DIR$/sprite-engine-website" />
       <envs />
@@ -138,7 +125,17 @@
       <workItem from="1715756727905" duration="6580000" />
       <workItem from="1715839934973" duration="14986000" />
       <workItem from="1716278875845" duration="8129000" />
+      <workItem from="1717747766151" duration="4339000" />
     </task>
+    <task id="LOCAL-00001" summary="removed old stuff">
+      <option name="closed" value="true" />
+      <created>1717750995187</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1717750995187</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -148,5 +145,9 @@
         <option value="$PROJECT_DIR$/sprite-engine-website/src/reportWebVitals.js" />
       </list>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="removed old stuff" />
+    <option name="LAST_COMMIT_MESSAGE" value="removed old stuff" />
   </component>
 </project>
