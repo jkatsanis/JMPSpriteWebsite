@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import ImageImporter from '../importer/image-importer';
 import { ImageData } from '../threads/logic/model';
 import LabelRenderer from 'components/threads/ui/item-question/filter/label/labels-renderer';
-import { LabelColors } from '../threads/logic/model';
+import { LabelAdder } from 'components/threads/ui/item-question/filter/label/label-adder';
 
 interface QuestionBluePrintProps {
     submit: (title: string, content: string, images: ImageData[]) => void;
@@ -13,26 +13,18 @@ interface QuestionBluePrintProps {
 }
 
 const QuestionBluePrint: React.FC<QuestionBluePrintProps> = (props) => {
-    const [render, reRender] = useState(false);
     const [title, setTitle] = useState('');
     const [content, setContent] = useState('');
     const [alertTitle, setTitleAlert] = useState(false);
     const [alertContent, setContentAlert] = useState(false);
     const [images, setImages] = useState<ImageData[]>([]);
-    const [selectedValue, setSelectedValue] = useState<string | undefined>();
     const [selectedItems, setSelectedItems] = useState<string[]>([]);
 
-    const labelsList: string[] = Object.keys(LabelColors);
 
-    const handleSelectionChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
-        const newValue = event.target.value;
-        if (newValue && !selectedItems.includes(newValue)) {
-            setSelectedItems([...selectedItems, newValue]);
-
-            reRender(!render);
-        }
-        setSelectedValue("");
-    };
+    const onLabelAdd = (label: string) =>
+    {
+        setSelectedItems([...selectedItems, label]);
+    }
 
     const handleTitleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         setTitle(event.target.value);
@@ -125,20 +117,7 @@ const QuestionBluePrint: React.FC<QuestionBluePrintProps> = (props) => {
                 <ImageImporter images={images} setImages={setImages}/>
                 <div style={{marginLeft: 10}}/>
                 {props.isMainPage && (
-                    <div className='inline'>
-                    <select
-                        className='label-selector label-selection-qbp'
-                        id="selectionList"
-                        name="selectionList"
-                        value={selectedValue}
-                        onChange={handleSelectionChange}
-                    >
-                        <option value="">Labels: </option>
-                        {labelsList.map((label, index) => (
-                            <option key={index} value={label}>{label}</option>
-                        ))}
-                    </select>
-                </div>
+                    <LabelAdder onChange={onLabelAdd}/>
                 )}
 
        

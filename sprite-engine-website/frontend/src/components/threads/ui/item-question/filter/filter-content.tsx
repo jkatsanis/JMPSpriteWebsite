@@ -3,8 +3,6 @@ import { LabelColors } from 'components/threads/logic/model';
 import { filterRepo } from 'components/threads/logic/filter-repository';
 import LabelRenderer from './label/labels-renderer';
 
-import "./filter-content.css";
-
 interface FilterContentProps {
     updateFilter: () => void;
 }
