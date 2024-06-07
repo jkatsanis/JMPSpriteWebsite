@@ -5,9 +5,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="18d4081c-bdeb-4494-bffc-c42f562230a5" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sprite-engine-website/backend/src/routes/projectRouter.ts" beforeDir="false" afterPath="$PROJECT_DIR$/sprite-engine-website/backend/src/routes/projectRouter.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sprite-engine-website/backend/src/server.ts" beforeDir="false" afterPath="$PROJECT_DIR$/sprite-engine-website/backend/src/server.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/sprite-engine-website/frontend/src/components/projects/projectsDisplay.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/sprite-engine-website/frontend/src/components/projects/projectsDisplay.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -45,7 +42,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "main",
+    "git-widget-placeholder": "feature/projects",
     "last_opened_file_path": "C:/htl_Leonding/3bhif/web/SEWebsite",
     "list.type.of.created.stylesheet": "CSS",
     "node.js.detected.package.eslint": "true",
@@ -127,7 +124,7 @@
       <workItem from="1715756727905" duration="6580000" />
       <workItem from="1715839934973" duration="14986000" />
       <workItem from="1716278875845" duration="8129000" />
-      <workItem from="1717747766151" duration="2976000" />
+      <workItem from="1717747766151" duration="3147000" />
     </task>
     <servers />
   </component>

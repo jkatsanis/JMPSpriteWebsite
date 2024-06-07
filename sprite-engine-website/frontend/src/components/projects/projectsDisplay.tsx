@@ -40,48 +40,6 @@ const ProjectsDisplay: React.FC = () => {
 
     return (
         <Page>
-            <form onSubmit={handleSubmit}>
-                <div className="form-group">
-                    <label htmlFor="name">Name:</label>
-                    <input
-                        type="text"
-                        id="name"
-                        ref={nameRef}
-                        required
-                    />
-                </div>
-                <div className="form-group">
-                    <label htmlFor="description">Description:</label>
-                    <input
-                        type="text"
-                        id="description"
-                        ref={descriptionRef}
-                        required
-                    />
-                </div>
-                <div className="form-group">
-                    <label htmlFor="file">Upload ZIP file:</label>
-                    <input
-                        type="file"
-                        id="file"
-                        accept=".zip"
-                        ref={fileRef}
-                        required
-                    />
-                </div>
-                <button type="submit" className="btn">Upload</button>
-            </form>
-            <h2>Uploaded Projects</h2>
-            <ul>
-                {projects.map((project, index) => (
-                    <li key={index}>
-                        <strong>Name:</strong> {project.name},{" "}
-                        <strong>Description:</strong> {project.description},{" "}
-                        <strong>File:</strong> {project.file?.name}
-                    </li>
-                ))}
-            </ul>
-
             <h1>File Upload</h1>
             <form action="http://localhost:5000/api/projects/upload" method="POST" encType="multipart/form-data">
                 <input type="file" name="file" required />
