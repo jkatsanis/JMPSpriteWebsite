@@ -5,6 +5,7 @@ import {threadRouter} from "./routes/threadRouter";
 import * as process from "process";
 import {STATUS_CODES} from "http";
 import {StatusCodes} from "./model";
+import {projectRouter} from "./routes/projectRouter";
 
 const path = require('path');
 
@@ -21,6 +22,7 @@ server.use(express.static("build"));
 
 server.use("/api/accounts", accountRouter);
 server.use("/api/questions", threadRouter);
+server.use("/api/projects", projectRouter);
 
 server.get("/getGithubAccessToken", async (req, res)=> {
     const params = "?client_id=" + process.env.REACT_APP_GITHUB_CLIENT_ID + "&client_secret=" + process.env.REACT_APP_GITHUB_CLIENT_SECRET + "&code=" + req.query.code;

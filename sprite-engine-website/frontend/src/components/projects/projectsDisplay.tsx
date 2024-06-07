@@ -1,6 +1,7 @@
 import React, { useRef, useState } from "react";
 import { Page } from "../page";
 import "./projects.css"; // Stil-Datei importieren
+import {URL} from "../../macros";
 
 const ProjectsDisplay: React.FC = () => {
     const nameRef = useRef<HTMLInputElement>(null);
@@ -82,7 +83,7 @@ const ProjectsDisplay: React.FC = () => {
             </ul>
 
             <h1>File Upload</h1>
-            <form action="api/projects/upload" method="POST" encType="multipart/form-data">
+            <form action="http://localhost:5000/api/projects/upload" method="POST" encType="multipart/form-data">
                 <input type="file" name="file" required />
                 <button type="submit">Upload</button>
             </form>
@@ -92,7 +93,7 @@ const ProjectsDisplay: React.FC = () => {
                 window.location.href = `api/projects/${filename}`;
             }}>
                 <input type="text" name="filename" required onChange={(e) => setFilename(e.target.value)} />
-                <button type="submit">Upload</button>
+                <button type="submit">Download</button>
             </form>
         </Page>
     );
