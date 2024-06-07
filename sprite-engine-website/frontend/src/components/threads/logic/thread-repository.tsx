@@ -63,6 +63,7 @@ export class ThreadRepository
             const t = threads[i];
 
             let acc:Account = accountRepo.getAccountByName(t.author);
+            let labels = t.labels;
 
             if(acc === null)
             {
@@ -86,7 +87,7 @@ export class ThreadRepository
         await bFetch(url, 'DELETE');
     }
 
-    async addQuestion(acc:Account, title:string, content:string, images:ImageData[]|null)
+    async addQuestion(acc:Account, title:string, content:string, images:ImageData[]|null, labels: Label[])
     {
         this.m_count++;
         let question = new Question(acc, title, content, this.m_count);
@@ -99,26 +100,25 @@ export class ThreadRepository
         let url = URL + "/api/questions/thread";
         let id = this.m_count;
 
+        let labelStr = "";
+        for (let i = 0; i < labels.length; i++) {
+            labelStr += labels[i];
+            if (i !== labels.length - 1) {
+                labelStr += ";";
+            }
+        }
+        
         let object = new class { 
             id = id;
             content = content;
             title = title;
-            labels = ""; 
+            labels = labelStr; 
             author = acc.name;
         };
 
         console.log(object);
   
         await bFetch(url, 'POST', object);
-    }
-
-    addQuestionWithLabels(acc:Account, title:string, content:string, images:ImageData[]|null, labels: Label[])
-    {
-        this.addQuestion(acc, title, content, images);
-        for(let i = 0; i < labels.length; i++)
-        {
-            this.addLabelToQuestion(this.m_count, labels[i]);
-        }
     }
 
     addLabelToQuestion(questionNumber: number, label: string): void {
