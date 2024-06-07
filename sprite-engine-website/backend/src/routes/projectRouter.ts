@@ -12,6 +12,7 @@ projectRouter.use(multerConf.single('file'))
 projectRouter.post('/upload', (req, res) => {
     // Handle the uploaded file
     console.log("upload");
+
     res.json({ message: 'File uploaded successfully!' });
 });
 

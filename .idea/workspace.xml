@@ -5,12 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="18d4081c-bdeb-4494-bffc-c42f562230a5" name="Changes" comment="everything working again (finally)">
-      <change afterPath="$PROJECT_DIR$/sprite-engine-website/backend/data/projects.sqlite" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sprite-engine-website/backend/src/repos/projectRepository.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sprite-engine-website/backend/src/model.ts" beforeDir="false" afterPath="$PROJECT_DIR$/sprite-engine-website/backend/src/model.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/sprite-engine-website/backend/src/routes/projectRouter.ts" beforeDir="false" afterPath="$PROJECT_DIR$/sprite-engine-website/backend/src/routes/projectRouter.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sprite-engine-website/frontend/src/components/projects/project.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sprite-engine-website/backend/uploads/tmp.zip" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/sprite-engine-website/frontend/src/components/projects/projectsDisplay.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/sprite-engine-website/frontend/src/components/projects/projectsDisplay.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -32,10 +29,10 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "customColor": "",
-  "associatedIndex": 3
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;customColor&quot;: &quot;&quot;,
+  &quot;associatedIndex&quot;: 3
+}</component>
   <component name="ProjectId" id="2foZqfyTMV37Jz0kFUFcOGulWxT" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -59,7 +56,7 @@
     "nodejs_package_manager_path": "npm",
     "rest.client.default.execution.environment": "baseUrl",
     "settings.editor.selected.configurable": "reference.settings.ide.settings.new.ui",
-    "ts.external.directory.path": "C:\\paul\\HTL_Leonding\\3.Klasse\\WMC\\JMPSpriteWebsite\\sprite-engine-website\\frontend\\node_modules\\typescript\\lib",
+    "ts.external.directory.path": "C:\\Users\\paula\\OneDrive\\Documents\\paulSave\\paul\\HTL_Leonding\\WMC\\3.klasse1\\JMPSpriteWebsite\\sprite-engine-website\\frontend\\node_modules\\typescript\\lib",
     "vue.rearranger.settings.migration": "true"
   },
   "keyToStringList": {
@@ -133,6 +130,7 @@
       <workItem from="1715839934973" duration="14986000" />
       <workItem from="1716278875845" duration="8129000" />
       <workItem from="1717747766151" duration="10270000" />
+      <workItem from="1717790392209" duration="2794000" />
     </task>
     <task id="LOCAL-00001" summary="removed old stuff">
       <option name="closed" value="true" />

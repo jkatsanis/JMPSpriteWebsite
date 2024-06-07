@@ -18,11 +18,6 @@ const ProjectsDisplay: React.FC = () => {
     const [projects, setProjects] = useState<Project[]>([]);
     const [filename, setFilename] = useState("");
     const titleRef = useRef<HTMLInputElement>(null);
-
-    const onSub = async (e: React.FormEvent<HTMLFormElement>) =>{
-        e.preventDefault();
-
-    }
     const handleDownload = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         try {
@@ -42,6 +37,37 @@ const ProjectsDisplay: React.FC = () => {
         } catch (error) {
             console.error('Error downloading file:');
             // Handle error (e.g., display error message to user)
+        }
+    };
+
+    const onSub = async (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault(); // Verhindert das Standardverhalten des Formulars
+
+        if (fileRef.current?.files?.length) {
+            const file = fileRef.current.files[0];
+            const title = titleRef.current?.value;
+            const description = descriptionRef.current?.value;
+
+            const formData = new FormData();
+            formData.append('file', file);
+            formData.append('Title', title || '');
+            formData.append('description', description || '');
+
+            try {
+                const response = await fetch(uploadURL, {
+                    method: 'POST',
+                    body: formData,
+                });
+
+                if (!response.ok) {
+                    throw new Error('Error uploading file');
+                }
+
+                // Handle successful upload (e.g., update state, display success message)
+            } catch (error) {
+                console.error('Error uploading file:', error);
+                // Handle error (e.g., display error message to user)
+            }
         }
     };
 
