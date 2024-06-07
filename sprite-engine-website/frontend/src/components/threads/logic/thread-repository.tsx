@@ -32,7 +32,18 @@ export class ThreadRepository
         await accRepo.init();
         await this.readQuestionsFromDB();
 
-        console.log(this.m_questions);
+        this.getHighestCount();
+    }
+
+    getHighestCount()
+    {
+        for(let q of this.m_questions)
+        {
+            if(q.id > this.m_count)
+            {
+                this.m_count = q.id + 1;
+            }
+        }
     }
 
     getQuestion(title: string): Question {
@@ -63,6 +74,9 @@ export class ThreadRepository
             const t = threads[i];
 
             let acc:Account = accountRepo.getAccountByName(t.author);
+            let labels: string = t.labels;
+
+            
 
             if(acc === null)
             {
@@ -71,7 +85,7 @@ export class ThreadRepository
                 continue;
             }
              
-            const thread:Question = new Question(acc, t.title, t.content, t.id);
+            const thread:Question = new Question(acc, t.title, t.content, t.id, labels.split(';'));
 
             this.m_count++;
             this.m_questions.push(thread);
@@ -86,10 +100,10 @@ export class ThreadRepository
         await bFetch(url, 'DELETE');
     }
 
-    async addQuestion(acc:Account, title:string, content:string, images:ImageData[]|null)
+    async addQuestion(acc:Account, title:string, content:string, images:ImageData[]|null, labels: string[])
     {
         this.m_count++;
-        let question = new Question(acc, title, content, this.m_count);
+        let question = new Question(acc, title, content, this.m_count, labels);
         if(images !== null)
         {
             question.selectedImages = images;
@@ -99,26 +113,27 @@ export class ThreadRepository
         let url = URL + "/api/questions/thread";
         let id = this.m_count;
 
+        let labelStr = "";
+        for (let i = 0; i < labels.length; i++) {
+            labelStr += labels[i];
+            if (i !== labels.length - 1) {
+                labelStr += ";";
+            }
+        }
+
+        console.log(labelStr);
+        
         let object = new class { 
             id = id;
             content = content;
             title = title;
-            labels = ""; 
+            labels = labelStr; 
             author = acc.name;
         };
 
         console.log(object);
   
         await bFetch(url, 'POST', object);
-    }
-
-    addQuestionWithLabels(acc:Account, title:string, content:string, images:ImageData[]|null, labels: Label[])
-    {
-        this.addQuestion(acc, title, content, images);
-        for(let i = 0; i < labels.length; i++)
-        {
-            this.addLabelToQuestion(this.m_count, labels[i]);
-        }
     }
 
     addLabelToQuestion(questionNumber: number, label: string): void {

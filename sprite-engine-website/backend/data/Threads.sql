@@ -10,4 +10,4 @@ CREATE TABLE threads (
 );
 
 INSERT INTO threads (id, author, title, labels, content) VALUES
-(2, 'Manfred', 'Why ist the engine so shit', 'Bug, Feature', 'Man i can do everything here');
+(2, 'Manfred', 'Why ist the engine so shit', 'Bug;Feature', 'Man i can do everything here');

@@ -1,12 +1,15 @@
 import React, { useState } from 'react';
 import ImageImporter from '../importer/image-importer';
 import { ImageData } from '../threads/logic/model';
+import LabelRenderer from 'components/threads/ui/item-question/filter/label/labels-renderer';
+import { LabelAdder } from 'components/threads/ui/item-question/filter/label/label-adder';
 
 interface QuestionBluePrintProps {
-    submit: (title: string, content: string, images: ImageData[]) => void;
+    submit: (title: string, content: string, images: ImageData[], label: string[]) => void;
     cancel: () => void;
     qTitle: string;
     enterTitle: boolean;
+    isMainPage: boolean;
 }
 
 const QuestionBluePrint: React.FC<QuestionBluePrintProps> = (props) => {
@@ -15,6 +18,13 @@ const QuestionBluePrint: React.FC<QuestionBluePrintProps> = (props) => {
     const [alertTitle, setTitleAlert] = useState(false);
     const [alertContent, setContentAlert] = useState(false);
     const [images, setImages] = useState<ImageData[]>([]);
+    const [selectedItems, setSelectedItems] = useState<string[]>([]);
+
+
+    const onLabelAdd = (label: string) =>
+    {
+        setSelectedItems([...selectedItems, label]);
+    }
 
     const handleTitleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         setTitle(event.target.value);
@@ -62,7 +72,7 @@ const QuestionBluePrint: React.FC<QuestionBluePrintProps> = (props) => {
 
     const onSubmit = () => {
         if (checkSubmit()) {
-            props.submit(title, content, images);
+            props.submit(title, content, images, selectedItems);
         }
         setContent("");
         setTitle("");
@@ -103,12 +113,29 @@ const QuestionBluePrint: React.FC<QuestionBluePrintProps> = (props) => {
             </div>
             <div className='h-1'/>
 
-            <ImageImporter images={images} setImages={setImages}/> {/* Pass setImages function */}
+            <div className='inline'>
+                <ImageImporter images={images} setImages={setImages}/>
+                <div style={{marginLeft: 10}}/>
+                {props.isMainPage && (
+                    <LabelAdder onChange={onLabelAdd}/>
+                )}
+
+       
+
+                <div style={{marginLeft: 10}}/>
+                {props.isMainPage && (
+                    <LabelRenderer selectedItems={selectedItems} />
+                )}
+
+
+            </div>
+      
             <div className='h-2'/>
             <div className='inline' style={{marginTop: '-1.5rem'}}>
                 <button className="default-btn" onClick={onSubmit}>Submit</button>
                 <button className='default-btn' style={{marginLeft: 10}} onClick={onCancel}>Cancel</button>
             </div>
+
         </div>
     );
 };

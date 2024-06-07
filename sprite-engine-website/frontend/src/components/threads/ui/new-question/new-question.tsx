@@ -4,6 +4,7 @@ import { Page } from 'components/page';
 import { threadRepo } from 'components/threads/logic/thread-repository';
 import { ImageData } from '../../logic/model';
 import { accountRepo } from '../../logic/account-repository';
+import { Label } from '../../logic/model';
 
 import "./new-question.css";
 import "utils/general.css";
@@ -16,13 +17,13 @@ const AddQuestionModal: React.FC = () => {
     navigate(`/threads`);
   };  
 
-  const submit = async (title: string, content: string, images: ImageData[]) => {    
+  const submit = async (title: string, content: string, images: ImageData[], labels: string[]) => {    
     if(accountRepo.active_account === null)
     {
       throw new Error("Why tf is it 0??");
     }
-
-    await threadRepo.addQuestion(accountRepo.active_account!, title, content, images);
+    
+    await threadRepo.addQuestion(accountRepo.active_account!, title, content, images, labels);
 
     navigateTo(); 
   }
@@ -30,7 +31,7 @@ const AddQuestionModal: React.FC = () => {
   return (
     <Page>
       <div className='centered-div-content-left-70'>
-        <QuestionBluePrint enterTitle={true} qTitle='Add a new question' submit={submit} cancel={navigateTo}/>        
+        <QuestionBluePrint enterTitle={true} qTitle='Add a new question' submit={submit} cancel={navigateTo} isMainPage={true}/>        
       </div>
     </Page>
   );

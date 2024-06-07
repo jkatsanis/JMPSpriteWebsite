@@ -23,7 +23,7 @@ export const FilterPopup: React.FC<FilterPopupProps> = ({ updateFilter }) => {
       <button style={{ left: '10rem', position: 'absolute' }} onClick={onCloseClick}>
         X
       </button>*/}
-      <FilterContent updateFilter={updateFilter}/>
+      <FilterContent updateFilter={updateFilter}  />
     </div>
   );
 };
