@@ -18,9 +18,7 @@ const App: React.FC = () => {
 
     useEffect(() => {
         const initRepos = async () => {
-            await accountRepo.init().then(async function(){
-                await threadRepo.initialize();
-            });
+            await threadRepo.initialize(accountRepo);
 
             setIsInitialized(true);
         };

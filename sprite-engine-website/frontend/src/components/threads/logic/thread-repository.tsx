@@ -1,4 +1,4 @@
-import { accountRepo } from "./account-repository";
+import { AccountRepository, accountRepo } from "./account-repository";
 import { Question } from "./model";
 import { Account } from "./model";
 import { ImageData } from "./model";
@@ -20,7 +20,7 @@ export class ThreadRepository
         this.m_thread_url = URL + "/api/questions";
     }
 
-    public async initialize() : Promise<void>
+    public async initialize(accRepo: AccountRepository) : Promise<void>
     {
         if(this.m_inited)
         {
@@ -29,7 +29,7 @@ export class ThreadRepository
         }
     
         this.m_inited = true;
-            
+        await accRepo.init();
         await this.readQuestionsFromDB();
 
         console.log(this.m_questions);
