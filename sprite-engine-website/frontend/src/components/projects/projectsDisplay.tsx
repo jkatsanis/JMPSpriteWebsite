@@ -6,17 +6,10 @@ import * as punycode from "punycode";
 import {ReactJSXElementAttributesProperty} from "@emotion/react/types/jsx-namespace";
 //import {ProjectRepository} from "../../../../backend/src/repos/projectRepository";
 
-interface Project {
-    name: string;
-    description: string;
-    file: File | null;
-}
-
 const ProjectsDisplay: React.FC = () => {
     const nameRef = useRef<HTMLInputElement>(null);
     const descriptionRef = useRef<HTMLInputElement>(null);
     const fileRef = useRef<HTMLInputElement>(null);
-    const [projects, setProjects] = useState<Project[]>([]);
     const [filename, setFilename] = useState("");
     const titleRef = useRef<HTMLInputElement>(null);
     const handleDownload = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -48,10 +41,10 @@ const ProjectsDisplay: React.FC = () => {
             const file = fileRef.current.files[0];
             const title = titleRef.current?.value;
             const description = descriptionRef.current?.value;
+            const pro = {name: title || '', description: description || '', file: file};
 
             const formData = new FormData();
-            formData.append('file', file);
-            formData.append('Title', title || '');
+            formData.append('title', title || '');
             formData.append('description', description || '');
 
             //await repo.insertProject({id: 1, description: description || '', owner: 'admin', title: title || ''});
@@ -79,9 +72,9 @@ const ProjectsDisplay: React.FC = () => {
     return (
         <Page>
             <h1>File Upload</h1>
-            <form action={uploadURL} method="POST" encType="multipart/form-data" onSubmit={onSub}>
+            <form action={uploadURL} method="POST" encType="multipart/form-data">
                 <input type="file" name="file" ref={fileRef} required />
-                <input type="text" name="Title" ref={titleRef}/>
+                <input type="text" name="title" ref={titleRef}/>
                 <input type="text" name="description" ref={descriptionRef}/>
                 <button type="submit">Upload</button>
             </form>
