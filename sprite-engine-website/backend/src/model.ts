@@ -75,3 +75,11 @@ export interface Thread{
     author: string;
     content: string;
 }
+
+export interface Project{
+    id:number;
+    owner:string;
+    title:string,
+    description:string;
+    filename:string;
+}

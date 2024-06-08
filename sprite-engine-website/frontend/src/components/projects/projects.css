@@ -1,6 +1,12 @@
 .form-group {
     margin-bottom: 1rem;
 }
+.project{
+    margin-bottom: 1rem;
+    padding: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
 /*
 label {
     display: block;
