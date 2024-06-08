@@ -4,8 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="18d4081c-bdeb-4494-bffc-c42f562230a5" name="Changes" comment="removed old stuff">
+    <list default="true" id="18d4081c-bdeb-4494-bffc-c42f562230a5" name="Changes" comment="fast alles geht">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sprite-engine-website/backend/data/projects.sqlite" beforeDir="false" afterPath="$PROJECT_DIR$/sprite-engine-website/backend/data/projects.sqlite" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/sprite-engine-website/frontend/src/components/projects/projectsDisplay.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/sprite-engine-website/frontend/src/components/projects/projectsDisplay.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -16,8 +17,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="TypeScript File" />
         <option value="CSS File" />
+        <option value="TypeScript File" />
       </list>
     </option>
   </component>
@@ -27,37 +28,42 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "customColor": "",
-  "associatedIndex": 3
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;customColor&quot;: &quot;&quot;,
+  &quot;associatedIndex&quot;: 3
+}</component>
   <component name="ProjectId" id="2foZqfyTMV37Jz0kFUFcOGulWxT" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "feature/projects",
-    "last_opened_file_path": "C:/htl_Leonding/3bhif/web/SEWebsite",
-    "list.type.of.created.stylesheet": "CSS",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs.jest.jest_package": "C:/htl_Leonding/3bhif/web/SEWebsite/JMPSpriteWebsite/sprite-engine-website/node_modules/react-scripts",
-    "nodejs_package_manager_path": "npm",
-    "rest.client.default.execution.environment": "baseUrl",
-    "settings.editor.selected.configurable": "reference.settings.ide.settings.new.ui",
-    "ts.external.directory.path": "C:\\paul\\HTL_Leonding\\3.Klasse\\WMC\\JMPSpriteWebsite\\sprite-engine-website\\frontend\\node_modules\\typescript\\lib",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;feature/projects&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/paula/OneDrive/Documents/paulSave/paul/HTL_Leonding/WMC/3.klasse1/JMPSpriteWebsite/sprite-engine-website/backend/data/projects.sqlite&quot;,
+    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs.jest.jest_package&quot;: &quot;C:/paul/HTL_Leonding/3.Klasse/WMC/JMPSpriteWebsite/sprite-engine-website/backend/node_modules/react-scripts&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;rest.client.default.execution.environment&quot;: &quot;baseUrl&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;C:\\Users\\paula\\OneDrive\\Documents\\paulSave\\paul\\HTL_Leonding\\WMC\\3.klasse1\\JMPSpriteWebsite\\sprite-engine-website\\frontend\\node_modules\\typescript\\lib&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  },
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;sqlite&quot;
+    ]
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\htl_Leonding\3bhif\web\SEWebsite\JMPSpriteWebsite\sprite-engine-website\src\frontend\components" />
@@ -65,7 +71,7 @@
       <recent name="C:\htl_Leonding\3bhif\web\SEWebsite\JMPSpriteWebsite\sprite-engine-website\src\backend\repos" />
     </key>
   </component>
-  <component name="RunManager" selected="HTTP Request.requestComments | #5">
+  <component name="RunManager" selected="Jest.DB.test.ts (1)">
     <configuration name="requestComments | #2" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$PROJECT_DIR$/sprite-engine-website/requestComments.http" index="2" requestIdentifier="#2" runType="Run single request">
       <method v="2" />
     </configuration>
@@ -75,34 +81,31 @@
     <configuration name="requestThreads | #4" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$PROJECT_DIR$/sprite-engine-website/requestThreads.http" index="4" requestIdentifier="#4" runType="Run single request">
       <method v="2" />
     </configuration>
-    <configuration name="DB class (1)" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
+    <configuration name="DB.test.ts (1)" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
       <node-interpreter value="project" />
-      <jest-package value="$PROJECT_DIR$/sprite-engine-website/node_modules/react-scripts" />
-      <working-dir value="$PROJECT_DIR$/sprite-engine-website" />
-      <envs />
-      <scope-kind value="SUITE" />
-      <test-file value="$PROJECT_DIR$/sprite-engine-website/tests/DB.test.ts" />
-      <test-names>
-        <test-name value="DB class" />
-      </test-names>
-      <method v="2" />
-    </configuration>
-    <configuration name="DB.test.ts" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
-      <node-interpreter value="project" />
-      <jest-package value="$PROJECT_DIR$/sprite-engine-website/node_modules/react-scripts" />
-      <working-dir value="$PROJECT_DIR$/sprite-engine-website" />
+      <jest-package value="$PROJECT_DIR$/sprite-engine-website/backend/node_modules/react-scripts" />
+      <working-dir value="$PROJECT_DIR$/sprite-engine-website/backend" />
       <envs />
       <scope-kind value="TEST_FILE" />
-      <test-file value="$PROJECT_DIR$/sprite-engine-website/tests/DB.test.ts" />
+      <test-file value="$PROJECT_DIR$/sprite-engine-website/backend/tests/DB.test.ts" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Tests in tests/" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
+      <node-interpreter value="project" />
+      <jest-package value="$PROJECT_DIR$/sprite-engine-website/backend/node_modules/react-scripts" />
+      <working-dir value="$PROJECT_DIR$/sprite-engine-website/backend" />
+      <envs />
+      <scope-kind value="DIRECTORY" />
+      <test-directory value="$PROJECT_DIR$/sprite-engine-website/backend/tests" />
       <method v="2" />
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Jest.DB.test.ts (1)" />
+        <item itemvalue="Jest.Tests in tests/" />
         <item itemvalue="HTTP Request.requestComments | #5" />
         <item itemvalue="HTTP Request.requestThreads | #4" />
         <item itemvalue="HTTP Request.requestComments | #2" />
-        <item itemvalue="Jest.DB.test.ts" />
-        <item itemvalue="Jest.DB class (1)" />
       </list>
     </recent_temporary>
   </component>
@@ -125,7 +128,14 @@
       <workItem from="1715756727905" duration="6580000" />
       <workItem from="1715839934973" duration="14986000" />
       <workItem from="1716278875845" duration="8129000" />
-      <workItem from="1717747766151" duration="4339000" />
+      <workItem from="1717747766151" duration="10270000" />
+      <workItem from="1717790392209" duration="3136000" />
+      <workItem from="1717793634610" duration="5000" />
+      <workItem from="1717793646939" duration="72000" />
+      <workItem from="1717793727775" duration="24000" />
+      <workItem from="1717793758803" duration="519000" />
+      <workItem from="1717794302354" duration="1412000" />
+      <workItem from="1717844842408" duration="11851000" />
     </task>
     <task id="LOCAL-00001" summary="removed old stuff">
       <option name="closed" value="true" />
@@ -135,7 +145,47 @@
       <option name="project" value="LOCAL" />
       <updated>1717750995187</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="everything working again (finally)">
+      <option name="closed" value="true" />
+      <created>1717752260099</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1717752260099</updated>
+    </task>
+    <task id="LOCAL-00003" summary="worked on more">
+      <option name="closed" value="true" />
+      <created>1717795692282</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1717795692282</updated>
+    </task>
+    <task id="LOCAL-00004" summary="die projekte werden in einer datenbank gespeichert">
+      <option name="closed" value="true" />
+      <created>1717856760602</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1717856760602</updated>
+    </task>
+    <task id="LOCAL-00005" summary="boaaaaaaaaaaaah">
+      <option name="closed" value="true" />
+      <created>1717860773832</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1717860773832</updated>
+    </task>
+    <task id="LOCAL-00006" summary="fast alles geht">
+      <option name="closed" value="true" />
+      <created>1717863696705</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1717863696705</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -148,6 +198,11 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="removed old stuff" />
-    <option name="LAST_COMMIT_MESSAGE" value="removed old stuff" />
+    <MESSAGE value="everything working again (finally)" />
+    <MESSAGE value="worked on more" />
+    <MESSAGE value="die projekte werden in einer datenbank gespeichert" />
+    <MESSAGE value="boaaaaaaaaaaaah" />
+    <MESSAGE value="fast alles geht" />
+    <option name="LAST_COMMIT_MESSAGE" value="fast alles geht" />
   </component>
 </project>
