@@ -22,15 +22,17 @@ const ProjectsDisplay: React.FC = () => {
     const titleRef = useRef<HTMLInputElement>(null);
 
     const fetchProjects = async () => {
+        setIsLoading(true);
         try {
             const response = await fetch(`${URL}/api/projects`);
             if (!response.ok) {
                 throw new Error('Error fetching projects');
             }
             const data:Project[] = await response.json();
-            console.log(data);
             setProject(data);
-            console.log(projects);
+            console.log(data);
+            console.log("projects",projects);
+            setIsLoading(false);
         } catch (error) {
             console.error('Error fetching projects:', error);
         }
@@ -42,7 +44,6 @@ const ProjectsDisplay: React.FC = () => {
     useEffect(() => {
         fetchProjects().then(() => console.log(projects)).then(() => setIsLoading(false));
     }, []);
-    //console.log(projects);
     const handleDownload = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         try {
@@ -134,13 +135,13 @@ const ProjectsDisplay: React.FC = () => {
                 <input type="text" name="filename" required onChange={(e) => setFilename(e.target.value)} />
                 <button type="submit">Download</button>
             </form>
-            //TODO: Display all projects
             <h1>Projects</h1>
             {isLoading ? (
                 <p>Loading...</p>
             ) : (
                 projects.map((project) => (
                     <div key={project.id} className="project">
+                        <h6>{project.owner}</h6>
                         <h5>{project.title}</h5>
                         <a>{project.description}</a>
                         <button onClick={() => handleDownload2(project.filename)}>Download</button>
