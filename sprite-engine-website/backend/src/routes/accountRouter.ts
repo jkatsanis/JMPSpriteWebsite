@@ -52,6 +52,19 @@ accountRouter.delete("/:username", async(req, res) => {
     res.sendStatus(StatusCodes.OK);
     return;
 });
+accountRouter.post("/updatePicture", async (req, res) => {
+    const userName = req.body.userName;
+    const picture = req.body.picture;
+    if (userName === null || picture === null){
+        res.sendStatus(StatusCodes.BAD_REQUEST);
+        return;
+    }
+    if (!await accountRepo.updatePicture(picture, userName)){
+        res.sendStatus(StatusCodes.BAD_REQUEST);
+        return;
+    }
+    res.sendStatus(StatusCodes.CREATED);
+});
 accountRouter.post("/", async (req, res) => {
     const userName = req.body.userName;
     const email = req.body.email;

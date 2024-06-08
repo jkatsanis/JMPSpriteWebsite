@@ -21,7 +21,7 @@ const Callback: React.FC = () => {
                 console.log(data);
                 if (data.access_token) {
                     localStorage.setItem("accessToken", data.access_token);
-                    localStorage.removeItem("LoggedInUsername");
+                    localStorage.removeItem("loggedInUsername");
                     localStorage.removeItem("SEWAccessToken");
 
                     setRerender(!rerender);
