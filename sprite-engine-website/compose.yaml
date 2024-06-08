@@ -1,0 +1,37 @@
+﻿services:
+  web:
+    build: "./frontend/"
+    ports:
+      - "8080:8080"
+    links:
+        - api
+    networks:
+      - back-tier
+      - front-tier
+      
+  api:
+    build: "./backend/"
+    env_file:
+      - ./backend/.env
+    volumes:
+      - db-data:/app/data/
+    networks:
+      - back-tier
+    expose:
+        - "5000"
+    depends_on:
+      - sqlite
+  
+  sqlite:
+    container_name: sqlite-container
+    image: nouchka/sqlite3:latest
+    volumes:
+      - db-data:/app/data/
+    restart: always
+
+volumes:
+    db-data:
+
+networks:
+  back-tier: {}
+  front-tier: {}

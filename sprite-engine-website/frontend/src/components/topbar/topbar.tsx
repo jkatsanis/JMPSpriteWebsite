@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { accountRepo } from '../threads/logic/account-repository';
 import './topbar.css';
 import {Account} from "components/threads/logic/model";
+import config from "../../config";
 
 // Define the user data interface
 interface User {
@@ -19,7 +20,7 @@ const TopBar: React.FC = () => {
   useEffect(() => {
     async function fetchUserData() {
         try {
-          const response = await fetch("http://localhost:5000/getUserData", {
+          const response = await fetch(config.externalAddress + "/getUserData", {
             method: "GET",
             headers: {
               "Authorization": "Bearer " + localStorage.getItem("accessToken")
@@ -37,7 +38,7 @@ const TopBar: React.FC = () => {
       const SEWAccessToken = localStorage.getItem("SEWAccessToken");
       const username = localStorage.getItem("loggedInUsername");
       if (SEWAccessToken !== null && username !== null){
-        await fetch("http://localhost:5000/api/accounts/loginWithToken", {
+        await fetch(config.externalAddress + "/api/accounts/loginWithToken", {
           method: "POST",
           headers: {
             "SEWAccessToken": SEWAccessToken,

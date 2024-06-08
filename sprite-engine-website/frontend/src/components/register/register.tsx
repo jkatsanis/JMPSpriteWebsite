@@ -3,6 +3,7 @@ import "./register.css";
 import { accountRepo } from "components/threads/logic/account-repository";
 import { Account } from "components/threads/logic/model";
 import {isLoggedIn} from "components/topbar/topbar";
+import config from "../../config";
 
 const CLIENT_ID = "Ov23liMuRhXSWfALO4cu";
 
@@ -10,7 +11,7 @@ export async function login(username: string, password: string): Promise<boolean
     if (isLoggedIn){
         alert("already logged in");
     }
-    await fetch("http://localhost:5000/api/accounts/login", {
+    await fetch(config.externalAddress + "/api/accounts/login", {
         method: "POST",
         headers: {
             "username": username,
@@ -46,8 +47,6 @@ const Register: React.FC = () => {
             alert("Passwords do not match");
             return;
         }
-
-        try {
             const account : Account = {
                 name,
                 password,
@@ -56,16 +55,17 @@ const Register: React.FC = () => {
             };
             await accountRepo.addAccount(account);
             if (picture !== null){
-                //TODO upload picture logic
-
-                //TODO update picture path
+                let imageData = new FormData();
+                imageData.append('avatar', picture);
+                await fetch(config.externalAddress + "/api/avatars/"+ name,{
+                    method: "PUT",
+                    body: imageData
+                })
             }
             alert("Registration successful");
             setRerender(!rerender);
             await login(name, password);
-        } catch (error) {
-            alert("Registration failed");
-        }
+            window.location.assign(config.address)
     };
 
     return (

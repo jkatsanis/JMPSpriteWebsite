@@ -75,3 +75,9 @@ export interface Thread{
     author: string;
     content: string;
 }
+export interface Picture{
+    id: number;
+    path: string;
+    user: string;
+    threadId: number;
+}
