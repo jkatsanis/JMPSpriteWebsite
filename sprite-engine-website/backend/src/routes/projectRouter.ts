@@ -16,13 +16,19 @@ projectRouter.post('/upload', (req, res) => {
     console.log(req.body);
     const newProject: Project = {
         id: 3, // Replace with your own logic to generate a unique ID
-        owner: 'owner', // Replace with your own logic to get the authenticated user's username
+        owner: 'sauger', // Replace with your own logic to get the authenticated user's username
         title: req.body.title,
         description: req.body.description
     };
     console.log(newProject.title);
     projectRepo.insertProject(newProject);
     //res.json({ message: 'File uploaded successfully!' });
+});
+
+projectRouter.get('/', async (req, res) => {
+    const projects = await projectRepo.getAllProjects();
+    console.log(projects);
+    res.json(projects);
 });
 
 projectRouter.get('/:filename', (req, res) => {

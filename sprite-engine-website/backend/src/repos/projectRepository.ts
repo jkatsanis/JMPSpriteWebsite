@@ -7,7 +7,7 @@ export class ProjectRepository {
     }
 
     public async getAllProjects(){
-        return await DB.select<Project>(`SELECT * FROM projects`, this.dbPath);
+        return await DB.selectAll<Project>(`SELECT * FROM projects`, this.dbPath);
     }
 
     public async getProject(id:number){

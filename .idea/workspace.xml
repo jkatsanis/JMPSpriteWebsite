@@ -4,15 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="18d4081c-bdeb-4494-bffc-c42f562230a5" name="Changes" comment="worked on more">
+    <list default="true" id="18d4081c-bdeb-4494-bffc-c42f562230a5" name="Changes" comment="die projekte werden in einer datenbank gespeichert">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/sprite-engine-website/backend/data/projects.sqlite" beforeDir="false" afterPath="$PROJECT_DIR$/sprite-engine-website/backend/data/projects.sqlite" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sprite-engine-website/backend/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/sprite-engine-website/backend/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sprite-engine-website/backend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/sprite-engine-website/backend/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/sprite-engine-website/backend/src/repos/projectRepository.ts" beforeDir="false" afterPath="$PROJECT_DIR$/sprite-engine-website/backend/src/repos/projectRepository.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/sprite-engine-website/backend/src/routes/projectRouter.ts" beforeDir="false" afterPath="$PROJECT_DIR$/sprite-engine-website/backend/src/routes/projectRouter.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sprite-engine-website/backend/uploads/tmp.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sprite-engine-website/frontend/src/components/projects/project.tsx" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/sprite-engine-website/frontend/src/components/projects/projectsDisplay.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/sprite-engine-website/frontend/src/components/projects/projectsDisplay.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -141,7 +137,7 @@
       <workItem from="1717793727775" duration="24000" />
       <workItem from="1717793758803" duration="519000" />
       <workItem from="1717794302354" duration="1412000" />
-      <workItem from="1717844842408" duration="3511000" />
+      <workItem from="1717844842408" duration="7493000" />
     </task>
     <task id="LOCAL-00001" summary="removed old stuff">
       <option name="closed" value="true" />
@@ -167,7 +163,15 @@
       <option name="project" value="LOCAL" />
       <updated>1717795692282</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="die projekte werden in einer datenbank gespeichert">
+      <option name="closed" value="true" />
+      <created>1717856760602</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1717856760602</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -182,6 +186,7 @@
     <MESSAGE value="removed old stuff" />
     <MESSAGE value="everything working again (finally)" />
     <MESSAGE value="worked on more" />
-    <option name="LAST_COMMIT_MESSAGE" value="worked on more" />
+    <MESSAGE value="die projekte werden in einer datenbank gespeichert" />
+    <option name="LAST_COMMIT_MESSAGE" value="die projekte werden in einer datenbank gespeichert" />
   </component>
 </project>
