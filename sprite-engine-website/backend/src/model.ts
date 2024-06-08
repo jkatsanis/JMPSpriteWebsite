@@ -80,4 +80,5 @@ export interface Project{
     owner:string;
     title:string,
     description:string;
+    filename:string;
 }

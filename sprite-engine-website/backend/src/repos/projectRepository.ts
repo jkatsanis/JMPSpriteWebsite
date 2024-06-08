@@ -15,6 +15,6 @@ export class ProjectRepository {
     }
 
     public async insertProject(pro: Project) {
-        return await DB.run(`INSERT INTO projects (owner, title, description) VALUES ('${pro.owner}', '${pro.title}', '${pro.description}')`, this.dbPath);
+        return await DB.run(`INSERT INTO projects (owner, title, description,filename) VALUES ('${pro.owner}', '${pro.title}', '${pro.description}', '${pro.filename}')`, this.dbPath);
     }
 }

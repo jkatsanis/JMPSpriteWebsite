@@ -11,6 +11,7 @@ interface Project {
     owner: string;
     title: string;
     description: string;
+    filename: string;
 }
 
 const ProjectsDisplay: React.FC = () => {
@@ -26,8 +27,10 @@ const ProjectsDisplay: React.FC = () => {
             if (!response.ok) {
                 throw new Error('Error fetching projects');
             }
-            const data = await response.json();
+            const data:Project[] = await response.json();
+            console.log(data);
             setProject(data);
+            console.log(projects);
         } catch (error) {
             console.error('Error fetching projects:', error);
         }
@@ -62,9 +65,9 @@ const ProjectsDisplay: React.FC = () => {
         }
     };
 
-    const handleDownload2 = async (projectId: number) => {
+    const handleDownload2 = async (filename: string) => {
         try {
-            const response = await fetch(`${URL}/api/projects/${projectId}`);
+            const response = await fetch(`${URL}/api/projects/${filename}`);
             if (!response.ok) {
                 throw new Error('File not found');
             }
@@ -73,7 +76,7 @@ const ProjectsDisplay: React.FC = () => {
             const url = window.URL.createObjectURL(blob);
             const a = document.createElement('a');
             a.href = url;
-            a.download = `project_${projectId}`; // Set the file name for download
+            a.download = `project_${filename}`; // Set the file name for download
             document.body.appendChild(a);
             a.click();
             document.body.removeChild(a);
@@ -137,10 +140,10 @@ const ProjectsDisplay: React.FC = () => {
                 <p>Loading...</p>
             ) : (
                 projects.map((project) => (
-                    <div key={project.id}>
-                        <h2>{project.title}</h2>
+                    <div key={project.id} className="project">
+                        <h5>{project.title}</h5>
                         <a>{project.description}</a>
-                        <button onClick={() => handleDownload2(project.id)}>Download</button>
+                        <button onClick={() => handleDownload2(project.filename)}>Download</button>
                     </div>
                 ))
             )}

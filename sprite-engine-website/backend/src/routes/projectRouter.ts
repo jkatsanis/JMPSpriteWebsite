@@ -13,14 +13,13 @@ projectRouter.use(multerConf.single('file'))
 projectRouter.post('/upload', (req, res) => {
     // Handle the uploaded file
     console.log("upload");
-    console.log(req.body);
     const newProject: Project = {
         id: 3, // Replace with your own logic to generate a unique ID
         owner: 'sauger', // Replace with your own logic to get the authenticated user's username
         title: req.body.title,
-        description: req.body.description
+        description: req.body.description,
+        filename: req.file!.filename
     };
-    console.log(newProject.title);
     projectRepo.insertProject(newProject);
     //res.json({ message: 'File uploaded successfully!' });
 });
