@@ -18,11 +18,11 @@ export const RenderQuestion: React.FC<QuestionProps> = ({ question }) => {
     };
   
     return (
-      <div className='question' onClick={() => navigateToQuestion(question.id)}>
+      <div className='question' onClick={() => navigateToQuestion(question.getId())}>
         <div className='inline'>
           <p className='question-p'>{question.title}</p>
           <LabelRenderer selectedItems={question.labels}/>
-          <p className='question-counter'>#{question.id}</p>
+          <p className='question-counter'>#{question.getId()}</p>
         </div>
         <p className='question-btm-info'>{question.author.name}</p>
       </div>
