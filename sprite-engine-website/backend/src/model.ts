@@ -76,6 +76,13 @@ export interface Thread{
     content: string;
 }
 
+export interface Picture{
+    id: number;
+    path: string;
+    user: string;
+    threadId: number;
+}
+
 export interface Project{
     id:number;
     owner:string;

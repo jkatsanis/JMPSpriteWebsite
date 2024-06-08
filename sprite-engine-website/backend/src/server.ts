@@ -6,23 +6,27 @@ import * as process from "process";
 import {STATUS_CODES} from "http";
 import {StatusCodes} from "./model";
 import {projectRouter} from "./routes/projectRouter";
+import config from "./config";
+import dotenv from "dotenv"
+import {avatarRouter} from "./routes/avatarRouter";
 
 const path = require('path');
-
+dotenv.config();
 const server = express();
 
-require('dotenv').config();
 
 //process.env.SECRET_KEY
 
 server.use(cors());
 server.use(express.json());
 
-server.use(express.static("build"));
+server.use(express.static("public"));
 
 server.use("/api/accounts", accountRouter);
 server.use("/api/questions", threadRouter);
 server.use("/api/projects", projectRouter);
+server.use("/api/avatars", avatarRouter)
+
 
 server.get("/getGithubAccessToken", async (req, res)=> {
     const params = "?client_id=" + process.env.REACT_APP_GITHUB_CLIENT_ID + "&client_secret=" + process.env.REACT_APP_GITHUB_CLIENT_SECRET + "&code=" + req.query.code;
@@ -60,6 +64,7 @@ server.get('*', (req, res) => {
     res.sendFile(path.join(__dirname,'..','..', 'build', 'index.html'));
 });
 
-server.listen(5000, () => {
-    console.log("Server running on port 5000");
+server.listen(config.port, () => {
+    console.log(`Server is running at ${config.address}`);
+    console.log(`External Server is running at ${config.externalAddress}`);
 });
