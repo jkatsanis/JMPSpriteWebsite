@@ -137,7 +137,7 @@ const ProjectsDisplay: React.FC = () => {
             </form>
             <h1>Projects</h1>
             {isLoading ? (
-                <p>Loading..</p>
+                <p>Loading...</p>
             ) : (
                 projects.map((project) => (
                     <div key={project.id} className="project">
