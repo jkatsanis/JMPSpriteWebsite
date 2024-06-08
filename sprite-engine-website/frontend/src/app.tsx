@@ -19,9 +19,7 @@ const App: React.FC = () => {
 
     useEffect(() => {
         const initRepos = async () => {
-            await threadRepo.initialize();
-
-            setIsInitialized(true);
+            await threadRepo.initialize(setIsInitialized);
         };
 
         const autoLogin = async () => {

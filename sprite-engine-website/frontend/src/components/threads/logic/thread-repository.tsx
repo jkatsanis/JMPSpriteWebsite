@@ -13,25 +13,34 @@ export class ThreadRepository
     private m_questions: Question[] = [];
     private m_thread_url;
     private m_inited:boolean;
+    private m_reading: boolean;
 
     constructor()
     {
+        this.m_reading = false;
         this.m_inited = false;
         this.m_thread_url = URL + "/api/questions";
     }
 
-    public async initialize() : Promise<void>
+    public async initialize(setInit: (val: boolean) => void) : Promise<void>
     {
         if(this.m_inited)
         {
-            Log.log("[REPO] Account repo already inited");
-            return;
-        }
-    
-        this.m_inited = true;
+            Log.log("[REPO] Thread repo already inited");
 
-        await this.readQuestionsFromDB();
+            this.m_questions = [];
+            this.m_count = 0;
+        }
+
+        this.m_inited = true;
+        
+        console.log("DEM");
+        console.log(this.m_questions);
+
+        await this.readQuestionsFromDB(setInit);
         this.getHighestCount();
+
+        console.log(this.m_questions);
     }
 
     getHighestCount()
@@ -62,8 +71,13 @@ export class ThreadRepository
         return this.m_questions;
     }
 
-    async readQuestionsFromDB()
+    async readQuestionsFromDB(setInit: (val: boolean) => void)
     {
+        if(this.m_reading)
+        {
+            return true;
+        }
+        this.m_reading = true;
         let url = this.m_thread_url + "/threads";
 
         let threads:any[] = await bFetch(url, "GET");
@@ -89,6 +103,8 @@ export class ThreadRepository
             this.m_count++;
             this.m_questions.push(thread);
         }
+        setInit(true);
+        this.m_reading = false;
     }
 
     async removeThread(id: number)
