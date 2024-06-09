@@ -59,7 +59,7 @@ export class Question {
     content: string;
     selectedImages: ImageData[];
     timesClicked: number;
-    id: number;
+    private id: number;
     contributers: Account[];
 
     private m_comments: Comment[];
@@ -77,6 +77,11 @@ export class Question {
         this.contributers = [];
         this.labels = lbls;
         this.addContributer(author);
+    }
+
+    getId() : number
+    {
+        return this.id;
     }
 
 

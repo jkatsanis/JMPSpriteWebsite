@@ -3,6 +3,7 @@ import {AccountRepository} from "../repos/accountRepository";
 import {Account} from "../model";
 import {StatusCodes} from "../model";
 import {v4 as uuidv4} from 'uuid';
+import { STATUS_CODES } from "http";
 
 export const accountRouter = Router();
 
@@ -27,6 +28,22 @@ accountRouter.post("/login", async(req, res) => {
     res.sendStatus(StatusCodes.BAD_REQUEST);
     return;
 });
+
+accountRouter.get("/picture/:username",  async(req, res) => {
+    const username = req.params.username;
+
+    const acc: Account | undefined = await accountRepo.getAccountByUsername(username);
+
+    if(acc === undefined)
+    {
+        res.sendStatus(StatusCodes.BAD_REQUEST);
+        return;
+    }
+
+    res.status(StatusCodes.OK); 
+    res.send(acc.picture);
+});
+
 accountRouter.post("/loginWithToken", async(req, res) => {
     console.log(req.headers.username);
     console.log(req.headers.sewaccesstoken);

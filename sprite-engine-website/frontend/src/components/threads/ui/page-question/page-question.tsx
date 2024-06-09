@@ -12,12 +12,15 @@ import './page-question.css';
 import QuestionBluePrint from 'components/question/question-bp';
 import ContributorsRenderer from './contributers';
 import { getOriginalPath } from 'utils/general';
+import LabelRenderer from '../item-question/filter/label/labels-renderer';
+import { LabelAdder } from '../item-question/filter/label/label-adder';
 
 export const ThreadPage: React.FC = () => {
   const navigate = useNavigate();
   const { id } = useParams<{ id: string }>();
   const [question, setQuestion] = useState<Question | null>(null);
   const [comments, setComments] = useState<Comment[]>([]);
+  const [selectedItems, setSelectedItems] = useState<string[]>([]);
 
   useEffect(() => {
     if (typeof id === 'string') {
@@ -40,12 +43,17 @@ export const ThreadPage: React.FC = () => {
     const newComment: Comment = new Comment(accountRepo.active_account, content);
     if(images !== null)
     {
-        newComment.selectedImages = images
+      newComment.selectedImages = images
     }
     
     const updatedComments: Comment[] = [...comments, newComment];
     question.addComment(newComment);
     setComments(updatedComments);
+  };
+
+  const handleSelectionChange = (label: string) => {
+    setSelectedItems([...selectedItems, label]);
+    question.addLabel(label);
   };
 
   return (
@@ -81,6 +89,17 @@ export const ThreadPage: React.FC = () => {
         </div>
         <br/>
 
+        <div className='inline'>
+          { 
+            accountRepo.active_account &&
+            accountRepo.active_account.name === question.author.name && 
+            <div style={{marginLeft: '-1rem', width: '7rem'}}>
+              <LabelAdder onChange={handleSelectionChange}/>
+            </div>        
+          }
+          <LabelRenderer selectedItems={question.labels} />
+        </div>
+
         { question && <ContributorsRenderer contributers={question.contributers}/> }
 
         {comments && comments.map((comment, index) => (
@@ -106,7 +125,6 @@ export const ThreadPage: React.FC = () => {
             </div>
           </div>
         ))}
-
         <br />
         <QuestionBluePrint enterTitle={false} qTitle='Add a Comment' submit={addComment} cancel={() => navigate(`/threads`)} isMainPage={false} />
       </div>

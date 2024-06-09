@@ -5,16 +5,12 @@ import { Log } from "utils/general";
 
 export class AccountRepository
 {
-    private accounts: Account[];
-
     public active_account: Account | null;
     private url: string;
 
-    private m_inited:boolean;
 
     constructor() {
         this.url = URL + "/api/accounts";
-        this.accounts = [];
         this.active_account = null;
         this.m_inited = false;
     }
@@ -58,22 +54,15 @@ export class AccountRepository
         await bFetch(this.url, "POST", obj);
     }
 
-    getAccounts() : Account[]
-    {
-        return this.accounts;
-    }
+    async getAccountByName(name: string) : Promise<Account>
+    {      
+        const acc = await bFetch(this.url + "/picture/" + name, "GET");
+        
+        // Need to do shit
 
-    getAccountByName(name: string) : Account
-    {
-        for(let i = 0; i < this.accounts.length; i++)
-        {
-            if(name === this.accounts[i].name)
-            {
-                return this.accounts[i];
-            }
-        }
+        const account: Account = new Account(name, "Manfred.png", "123", "123");
 
-        return null!;
+        return account;
     }
 }
 
