@@ -51,7 +51,7 @@ const Register: React.FC = () => {
                 name,
                 password,
                 email,
-                picture: "default.png"
+                picture: "http://localhost:5000/avatars/default.webp"
             };
             await accountRepo.addAccount(account);
             if (picture !== null){

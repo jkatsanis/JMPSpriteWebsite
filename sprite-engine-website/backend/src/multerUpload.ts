@@ -40,7 +40,6 @@ export const multerConfPicture = multer(
             console.log("checkMimeType", checkMimeType);
             if (checkMimeType) {
                 return callback(null, true)
-
             } else {
                 callback(new Error(": Failed to convert the image to WebP format."));
             }
