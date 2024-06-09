@@ -58,14 +58,10 @@ export class Comment
         this.id = Comment.s_commentId;
         Comment.s_commentId++;
     }
-
-    getId() : number {
-        return this.id;
-    }
-    
-    setId(id: number)
+   
+    getId() : number
     {
-        this.id = id;
+        return this.id;
     }
 }
   
@@ -112,20 +108,19 @@ export class Question {
         }
     }
 
+    setComments(comments: Comment[])
+    {
+        this.m_comments = comments;
+    }
+
     async addCommentToDB(comment: Comment, parentcommentId: number)
     {
         let sThreadId = this.id;
-        let sId = parentcommentId + 1;
         let sAuthor = comment.author.name;
         let sContent = comment.content;
-
-        if(parentcommentId === -1)
-        {
-            sId = 1;
-        }
         
         let object = new class {
-            id = sId;
+            id = comment.getId();
             threadId = sThreadId; 
             parentCommentId = parentcommentId;
             author = sAuthor;
@@ -149,14 +144,6 @@ export class Question {
 
         await this.addCommentToDB(comment, parentcommentId);
 
-        if(this.m_comments.length === 0)
-        {
-            comment.setId(1);
-        }
-        else 
-        {
-            comment.setId(parentcommentId + 1);
-        }
         this.m_comments.push(comment);
         this.addContributer(comment.author);
     }   

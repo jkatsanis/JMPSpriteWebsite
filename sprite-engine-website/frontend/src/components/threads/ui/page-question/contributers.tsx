@@ -17,8 +17,8 @@ class ContributorsRenderer extends Component<ContributorsRendererProps> {
             <div>
                 <div className='contributer-box'>
                     <h6>Contributers to this page</h6>
-                    { contributers && contributers.map((contributer, idx) => (
-                        <p>{contributer.name}</p>
+                    { contributers && contributers.map((contributer, key) => (
+                        <p key={key}>{contributer.name}</p>
                     )) }
                 </div>
             </div>
