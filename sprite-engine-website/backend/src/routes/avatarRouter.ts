@@ -48,7 +48,7 @@ avatarRouter.put("/:username", multerConfPicture.single('avatar'), async (req, r
     //TODO post picture into database
     await accountRepo.updatePicture(config.address + "/avatars/" + username + ".webp", username);
 
-    res.json(user);
+    res.json(imagePath);
 })
 
 export async function convertToWebp(file: string, deleteOld: boolean,outName:string|null = null): Promise<string | null> {
@@ -63,7 +63,7 @@ export async function convertToWebp(file: string, deleteOld: boolean,outName:str
         if (deleteOld) {
             await fs.unlinkSync(file)
         }
-        return newFile;
+        return newFile.split("public").at(-1)!.slice(1);
     } else {
         console.error(`Failed to convert file ${file} to WebP: ${result}`);
         return null;

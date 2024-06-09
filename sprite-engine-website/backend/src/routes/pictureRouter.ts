@@ -1,6 +1,6 @@
 import Router from "express"
 import {ThreadRepository} from "../repos/threadRepository";
-import {Picture, StatusCodes, Thread, ThreadComment} from "../model";
+import {DB, Picture, StatusCodes, Thread, ThreadComment} from "../model";
 import {accountRepo, accountRouter} from "./accountRouter";
 import {multerConf, multerConfPicture} from "../multerUpload";
 import path from "path";
@@ -8,9 +8,12 @@ import fs from "fs";
 import {projectRouter} from "./projectRouter";
 import config from "../config";
 import {threadRepo} from "./threadRouter";
+import {convertToWebp} from "./avatarRouter";
+import {v4 as uuidv4} from 'uuid';
 
 export const avatarRouter = Router();
 
+const dbPath = "./data/accounts.sqlite"
 export const publicPath = path.join(__dirname, '../../public/')
 
 export const getUserPath = (username: string) => {
@@ -39,45 +42,20 @@ avatarRouter.put("/:threadId/picture", multerConfPicture.single('picture'), asyn
     fs.mkdirSync(getThreadPicturePath(), {recursive: true});
     fs.mkdirSync(getThreadPicturePath() + "/"+ threadId);
     const threadPath = getThreadPicturePath() + "/"+ threadId + "/";
-    const pictureDir = threadPath + req.file.filename;
+    const uuid = uuidv4();
+    const pictureDir = threadPath + uuid;
     fs.renameSync(req.file.path, pictureDir ); //copy from temp dir to avatar path
-    const imagePath = await convertToWebp(pictureDir, true, threadId);
+    const imagePath = await convertToWebp(pictureDir, true);
 
     if (!imagePath) {
         res.sendStatus(StatusCodes.BAD_REQUEST); // TODO: should test this
         return;
     }
 
-    //TODO post picture into database
-    await accountRepo.updatePicture(config.address + "/threads/" + threadId + ".webp", threadId);
+    const insertString  = `INSERT INTO pictures values('${uuid}', '${threadId}', '${imagePath}')`;
 
-    res.json(thread);
-})
+    await DB.run(insertString, dbPath);
 
-export async function convertToWebp(file: string, deleteOld: boolean,outName:string|null = null): Promise<string | null> {
+    res.json(imagePath);
+});
 
-    const bp = 10;
-    const webp = require('webp-converter');
-    const newFile =  outName ? `${path.dirname(file)}/${outName}.webp` : `${removeLast(file, ".")}.webp`;
-    await webp.cwebp(file, `${newFile}`, "-q 80"); // TODO: switched to webp.cwebp(), but result equals "".
-    const result = fs.existsSync(newFile);
-
-    if(result){
-        if (deleteOld) {
-            await fs.unlinkSync(file)
-        }
-        return newFile;
-    } else {
-        console.error(`Failed to convert file ${file} to WebP: ${result}`);
-        return null;
-    }
-}
-
-export function removeLast(str:string, substring:string) {
-    const index = str.lastIndexOf(substring);
-    if (index === -1) {
-        // The substring was not found in the string
-        return str;
-    }
-    return str.slice(0, index);
-}
