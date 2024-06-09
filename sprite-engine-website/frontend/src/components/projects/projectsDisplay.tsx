@@ -37,6 +37,7 @@ const ProjectsDisplay: React.FC = () => {
             console.error('Error fetching projects:', error);
         }
     };
+    const [render, setRender] = useState(false);
     const [projects, setProject] = useState([] as Project[]);
     //projects = [{id: 1, owner: 'admin', title: 'saug', description: 'oger'}];
     const [isLoading, setIsLoading] = useState(true);
