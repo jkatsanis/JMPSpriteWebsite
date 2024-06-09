@@ -57,3 +57,15 @@
 .thread-delete-btn {
     margin-left: 55rem;
 }
+
+.vote-pos {
+    position: relative;
+    left: 8rem; /* Adjust as needed */
+    top: -3.5rem; /* Adjust as needed */
+}
+
+.comments-container {
+    position: relative; 
+    left: 0; 
+    top: -5rem; 
+}

@@ -6,6 +6,7 @@ import { Label } from "./model";
 import { URL } from "macros";
 import { bFetch } from "utils/general";
 import { Log } from "utils/general";
+import { Comment } from "./model";
 
 export class ThreadRepository 
 {
@@ -34,13 +35,8 @@ export class ThreadRepository
 
         this.m_inited = true;
         
-        console.log("DEM");
-        console.log(this.m_questions);
-
         await this.readQuestionsFromDB(setInit);
         this.getHighestCount();
-
-        console.log(this.m_questions);
     }
 
     getHighestCount()
@@ -87,9 +83,7 @@ export class ThreadRepository
             const t = threads[i];
 
             let acc:Account = await accountRepo.getAccountByName(t.author);
-            let labels: string = t.labels;
-
-            
+            let labels: string = t.labels;      
 
             if(acc === null)
             {
@@ -99,12 +93,45 @@ export class ThreadRepository
             }
              
             const thread:Question = new Question(acc, t.title, t.content, t.id, labels.split(';'));
+            await this.readComments(thread, acc);
 
             this.m_count++;
             this.m_questions.push(thread);
         }
         setInit(true);
         this.m_reading = false;
+    }
+
+    async readComments(thread: Question, author: Account)
+    {
+        const server = URL + "/api/questions/thread/comments/" + thread.getId();
+        let comments: any[] = await bFetch(server, "GET");
+
+        // Bubble sort implementation
+        for (let i = 0; i < comments.length - 1; i++) {
+            for (let j = 0; j < comments.length - i - 1; j++) {
+                if (comments[j].parentCommentId > comments[j + 1].parentCommentId) {
+                    // Swap comments[j] and comments[j + 1]
+                    let temp = comments[j];
+                    comments[j] = comments[j + 1];
+                    comments[j + 1] = temp;
+                }
+            }
+        }
+        
+        let threadComments: Comment[] = [];
+
+        for(let comment of comments)
+        {
+            if(comment.content === undefined)
+            {
+                continue;
+            }
+            let threadComment = new Comment(author, comment.content);
+            threadComments.push(threadComment);
+        }
+
+        thread.setComments(threadComments);
     }
 
     async removeThread(id: number)
@@ -135,8 +162,6 @@ export class ThreadRepository
                 labelStr += ";";
             }
         }
-
-        console.log(labelStr);
         
         let object = new class { 
             id = id;
@@ -145,20 +170,11 @@ export class ThreadRepository
             labels = labelStr; 
             author = acc.name;
         };
-
-        console.log(object);
   
         await bFetch(url, 'POST', object);
     }
-
-    addLabelToQuestion(questionNumber: number, label: string): void {
-        const question = this.fetch(questionNumber);
-        if (question) {
-            question.labels.push(label);
-        }
-    }
     
-    fetch(id: number) : Question
+    getByID(id: number) : Question
     {
         for(let i = 0; i < this.m_questions.length; i++)
         {

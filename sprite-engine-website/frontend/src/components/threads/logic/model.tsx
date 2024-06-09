@@ -1,3 +1,5 @@
+import { bFetch } from "utils/general";
+import { URL } from "macros";
 
 export enum Label {
     Bug = 'Bug',
@@ -40,15 +42,26 @@ export class ImageData {
 
 export class Comment 
 {
+    static s_commentId: number = 1;
+
     author: Account;
     content: string;
     selectedImages: ImageData[];
+
+    private id: number;
 
     constructor(author: Account, content: string)
     {
         this.author = author;
         this.content = content;
         this.selectedImages = [];
+        this.id = Comment.s_commentId;
+        Comment.s_commentId++;
+    }
+   
+    getId() : number
+    {
+        return this.id;
     }
 }
   
@@ -61,7 +74,7 @@ export class Question {
     timesClicked: number;
     private id: number;
     contributers: Account[];
-
+    public votes: number;
     private m_comments: Comment[];
 
 
@@ -76,6 +89,7 @@ export class Question {
         this.selectedImages = [];
         this.contributers = [];
         this.labels = lbls;
+        this.votes = 0;
         this.addContributer(author);
     }
 
@@ -87,19 +101,51 @@ export class Question {
 
     addContributer(author: Account)
     {
-            const authorExists = this.contributers.some(existingAuthor => existingAuthor.name === author.name);
+        const authorExists = this.contributers.some(existingAuthor => existingAuthor.name === author.name);
 
-            if (!authorExists) {
-                this.contributers.push(author);
-            }
+        if (!authorExists) {
+            this.contributers.push(author);
+        }
     }
 
-    addComment(comment: Comment)
+    setComments(comments: Comment[])
     {
+        this.m_comments = comments;
+    }
+
+    async addCommentToDB(comment: Comment, parentcommentId: number)
+    {
+        let sThreadId = this.id;
+        let sAuthor = comment.author.name;
+        let sContent = comment.content;
+        
+        let object = new class {
+            id = comment.getId();
+            threadId = sThreadId; 
+            parentCommentId = parentcommentId;
+            author = sAuthor;
+            content = sContent;
+        }
+
+        console.log(object);
+
+        const server = URL + "/api/questions/comment";
+        await bFetch(server, "POST", object);
+    }
+
+    async addComment(comment: Comment)
+    {
+        let parentcommentId = -1;
+
+        if(this.m_comments.length !== 0)
+        {
+            parentcommentId = this.m_comments[this.m_comments.length - 1].getId();;
+        } 
+
+        await this.addCommentToDB(comment, parentcommentId);
+
         this.m_comments.push(comment);
-
         this.addContributer(comment.author);
-
     }   
 
     loadContributers()
@@ -111,8 +157,43 @@ export class Question {
         }
     }
 
-    addLabel(label: string): void {
+    getLabelString() : string 
+    {
+        let str = "";
+        for(let i = 0; i < this.labels.length; i++)
+        {
+            if(i === this.labels.length - 1)
+            {
+                str += this.labels[i];
+            }
+            else {
+                str += this.labels[i] + ";";
+            }
+        }
+
+        return str;
+    }
+
+    async addLabel(label: string): Promise<void> {
         this.labels.push(label);
+        let server = URL + "/api/questions/thread";
+
+
+        let sID = this.id;
+        let sContent = this.content;
+        let sTitle = this.title;
+        let sLabels = this.getLabelString();
+        let sAccName = this.author.name;
+
+        let object = new class { 
+            id = sID;
+            content = sContent;
+            title = sTitle;
+            labels = sLabels;
+            author = sAccName;
+        };
+
+        await bFetch(server, "PATCH", object);
     }
 
     removeLabel(label: string): void {

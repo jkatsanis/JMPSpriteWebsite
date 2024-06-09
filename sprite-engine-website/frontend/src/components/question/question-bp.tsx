@@ -117,7 +117,7 @@ const QuestionBluePrint: React.FC<QuestionBluePrintProps> = (props) => {
                 <ImageImporter images={images} setImages={setImages}/>
                 <div style={{marginLeft: 10}}/>
                 {props.isMainPage && (
-                    <LabelAdder onChange={onLabelAdd}/>
+                    <LabelAdder onChange={onLabelAdd} presentItems={selectedItems}/>
                 )}
 
        

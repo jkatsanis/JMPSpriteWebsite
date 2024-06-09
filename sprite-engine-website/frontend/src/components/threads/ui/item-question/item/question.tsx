@@ -22,6 +22,7 @@ export const RenderQuestion: React.FC<QuestionProps> = ({ question }) => {
         <div className='inline'>
           <p className='question-p'>{question.title}</p>
           <LabelRenderer selectedItems={question.labels}/>
+          <p>{question.votes}</p>
           <p className='question-counter'>#{question.getId()}</p>
         </div>
         <p className='question-btm-info'>{question.author.name}</p>

@@ -5,6 +5,13 @@
             "driver": "SQLite",
             "name": "Wtf",
             "database": "${workspaceFolder:sprite-engine-website}/backend/data/threads.sqlite"
+        },
+        {
+            "previewLimit": 50,
+            "driver": "SQLite",
+            "name": "Comments",
+            "database": "${workspaceFolder:sprite-engine-website}/backend/data/comments.sqlite"
         }
-    ]
+    ],
+    "sqltools.useNodeRuntime": true
 }

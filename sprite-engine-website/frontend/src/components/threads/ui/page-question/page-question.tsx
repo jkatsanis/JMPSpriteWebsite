@@ -2,10 +2,9 @@ import React, { useState, useEffect } from 'react';
 import { Page } from 'components/page';
 import { useNavigate, useParams } from 'react-router-dom';
 import { threadRepo } from '../../logic/thread-repository';
-import { Question } from '../../logic/model';
-import { Comment } from '../../logic/model';
-import { ImageData } from '../../logic/model';
+import { Question, Comment, ImageData } from '../../logic/model';
 import { accountRepo } from '../../logic/account-repository';
+import VoteComponent from './vote/vote';
 
 import 'utils/general.css';
 import './page-question.css';
@@ -24,8 +23,8 @@ export const ThreadPage: React.FC = () => {
 
   useEffect(() => {
     if (typeof id === 'string') {
-      let number: number = parseInt(id);
-      const fetchedQuestion: Question = threadRepo.fetch(number);
+      const number: number = parseInt(id);
+      const fetchedQuestion: Question = threadRepo.getByID(number);
       setQuestion(fetchedQuestion);
       setComments(fetchedQuestion.getComments());
     }
@@ -35,17 +34,16 @@ export const ThreadPage: React.FC = () => {
     return <div>Bruh this shit</div>;
   }
 
-  const addComment = (title:string, content: string, images: ImageData[]|null) => {
+  const addComment = (title: string, content: string, images: ImageData[] | null) => {
     if (accountRepo.active_account === null) {
       console.log("[ERROR] You gotta have an account");
       return;
     }
     const newComment: Comment = new Comment(accountRepo.active_account, content);
-    if(images !== null)
-    {
-      newComment.selectedImages = images
+    if (images !== null) {
+      newComment.selectedImages = images;
     }
-    
+
     const updatedComments: Comment[] = [...comments, newComment];
     question.addComment(newComment);
     setComments(updatedComments);
@@ -56,77 +54,83 @@ export const ThreadPage: React.FC = () => {
     question.addLabel(label);
   };
 
+  const deleteThread = () => {
+    threadRepo.removeThread(question.getId());
+    navigate("/threads");
+  };
+
   return (
     <Page>
-      <div className='centered-div-content-left-70'>
-        <div className='inline'>
-          <div className='profile-container'>
-            <div className='profile-info inline'>
+      <div className="centered-div-content-left-70">
+        <div className="inline">
+          <div className="profile-container">
+            <div className="profile-info inline">
               <img src={getOriginalPath("icons/" + question.author.picture)} alt="Profile Picture" className="profile-picture" />
-              <h3 className='profile-author' style={{ marginLeft: '0.5rem' }}>{question.author.name}</h3>
+              <h3 className="profile-author" style={{ marginLeft: '0.5rem' }}>{question.author.name}</h3>
             </div>
           </div>
-          { 
-            accountRepo.active_account &&
-            accountRepo.active_account.name === question.author.name && 
-            <button className='thread-delete-btn default-btn-np'>Delete</button> 
-          }
+          {accountRepo.active_account && accountRepo.active_account.name === question.author.name && (
+            <button className="thread-delete-btn default-btn-np" onClick={deleteThread}>
+              Delete
+            </button>
+          )}
         </div>
-  
-        <div className='question-container'>
-          <div className='question-content'>
+
+        <div className="question-container">
+          <div className="question-content">
             <h1>{question.title}</h1>
             <p>{question.content}</p>
-            {question && question.selectedImages && question.selectedImages.map((image, index) => (
-                <details className='image-details'>
-                  <summary>
-                    {image.name}
-                  </summary>
-                  <img className='question-image' src={image.data as string}/>
-                </details>
+            {question.selectedImages && question.selectedImages.map((image, index) => (
+              <details className="image-details" key={index}>
+                <summary>{image.name}</summary>
+                <img className="question-image" src={image.data as string} />
+              </details>
             ))}
           </div>
         </div>
-        <br/>
+        <br />
 
-        <div className='inline'>
-          { 
-            accountRepo.active_account &&
-            accountRepo.active_account.name === question.author.name && 
-            <div style={{marginLeft: '-1rem', width: '7rem'}}>
-              <LabelAdder onChange={handleSelectionChange}/>
-            </div>        
-          }
+        <div className="inline">
+          {accountRepo.active_account && accountRepo.active_account.name === question.author.name && (
+            <div style={{ marginLeft: '-1rem', width: '7rem' }}>
+              <LabelAdder onChange={handleSelectionChange} presentItems={question.labels}/>
+            </div>
+          )}
           <LabelRenderer selectedItems={question.labels} />
         </div>
 
-        { question && <ContributorsRenderer contributers={question.contributers}/> }
+        {question && <ContributorsRenderer contributers={question.contributers} />}
 
-        {comments && comments.map((comment, index) => (
-          <div key={index}>
-            <div className='profile-container'>
-              <div className='profile-info inline'>
-                <img src={comment.author.picture} alt="Profile Picture" className="profile-picture" />
-                <h3 className='profile-author' style={{ marginLeft: '0.5rem' }}>{comment.author.name}</h3>
+        <div className="vote-pos">
+          <VoteComponent question={question} />
+        </div>
+
+        <div className="comments-container">
+          {comments.map((comment, index) => (
+            <div key={index} className="comment-wrapper">
+              <div className="profile-container">
+                <div className="profile-info inline">
+                  <img src={comment.author.picture} alt="Profile Picture" className="profile-picture" />
+                  <h3 className="profile-author" style={{ marginLeft: '0.5rem' }}>{comment.author.name}</h3>
+                </div>
               </div>
-            </div>
-            <div className='question-container'>
-              <div className='question-content'>
-                <p>{comment.content}</p>
-                {comment && comment.selectedImages && comment.selectedImages.map((image, index) => (
-                <details className='image-details'>
-                  <summary>
-                    {image.name}
-                  </summary>
-                  <img className='question-image' src={image.data as string}/>
-                </details>
-                ))}
+              <div className="question-container">
+                <div className="question-content">
+                  <p>{comment.content}</p>
+                  {comment.selectedImages && comment.selectedImages.map((image, index) => (
+                    <details className="image-details" key={index}>
+                      <summary>{image.name}</summary>
+                      <img className="question-image" src={image.data as string} alt={image.name} />
+                    </details>
+                  ))}
+                </div>
               </div>
+              <div className='h-2'/>
             </div>
-          </div>
-        ))}
+          ))}
+          <QuestionBluePrint enterTitle={false} qTitle="Add a Comment" submit={addComment} cancel={() => navigate(`/threads`)} isMainPage={false} />
+        </div>
         <br />
-        <QuestionBluePrint enterTitle={false} qTitle='Add a Comment' submit={addComment} cancel={() => navigate(`/threads`)} isMainPage={false} />
       </div>
     </Page>
   );
