@@ -42,6 +42,8 @@ export class ImageData {
 
 export class Comment 
 {
+    static s_commentId: number = 1;
+
     author: Account;
     content: string;
     selectedImages: ImageData[];
@@ -53,7 +55,8 @@ export class Comment
         this.author = author;
         this.content = content;
         this.selectedImages = [];
-        this.id = -1;
+        this.id = Comment.s_commentId;
+        Comment.s_commentId++;
     }
 
     getId() : number {
@@ -109,27 +112,22 @@ export class Question {
         }
     }
 
-    async addComment(comment: Comment)
+    async addCommentToDB(comment: Comment, parentcommentId: number)
     {
-        let parentcommentId = -1;
-
-        if(this.m_comments.length !== 0)
-        {
-            parentcommentId = this.m_comments[this.m_comments.length - 1].getId();;
-        }
-
         let sThreadId = this.id;
-        let sParentCommmentId = -1;
+        let sId = parentcommentId + 1;
         let sAuthor = comment.author.name;
         let sContent = comment.content;
-        if(this.m_comments.length !== 0)
+
+        if(parentcommentId === -1)
         {
-            sParentCommmentId = parentcommentId;
+            sId = 1;
         }
+        
         let object = new class {
-            id = 1;
+            id = sId;
             threadId = sThreadId; 
-            parentCommentId = sParentCommmentId;
+            parentCommentId = parentcommentId;
             author = sAuthor;
             content = sContent;
         }
@@ -138,6 +136,18 @@ export class Question {
 
         const server = URL + "/api/questions/comment";
         await bFetch(server, "POST", object);
+    }
+
+    async addComment(comment: Comment)
+    {
+        let parentcommentId = -1;
+
+        if(this.m_comments.length !== 0)
+        {
+            parentcommentId = this.m_comments[this.m_comments.length - 1].getId();;
+        } 
+
+        await this.addCommentToDB(comment, parentcommentId);
 
         if(this.m_comments.length === 0)
         {
@@ -149,7 +159,6 @@ export class Question {
         }
         this.m_comments.push(comment);
         this.addContributer(comment.author);
-
     }   
 
     loadContributers()

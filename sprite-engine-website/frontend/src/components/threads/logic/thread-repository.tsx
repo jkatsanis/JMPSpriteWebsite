@@ -82,9 +82,7 @@ export class ThreadRepository
             const t = threads[i];
 
             let acc:Account = await accountRepo.getAccountByName(t.author);
-            let labels: string = t.labels;
-
-            
+            let labels: string = t.labels;      
 
             if(acc === null)
             {
@@ -100,6 +98,14 @@ export class ThreadRepository
         }
         setInit(true);
         this.m_reading = false;
+    }
+
+    async readComments(thread: Question)
+    {
+        const server = URL + "/api/questions/thread/comments/" + thread.getId();
+        let comments = await bFetch(server, "GET");
+
+        console.log(comments);
     }
 
     async removeThread(id: number)

@@ -125,6 +125,7 @@ export const ThreadPage: React.FC = () => {
                   ))}
                 </div>
               </div>
+              <div className='h-2'/>
             </div>
           ))}
           <QuestionBluePrint enterTitle={false} qTitle="Add a Comment" submit={addComment} cancel={() => navigate(`/threads`)} isMainPage={false} />
