@@ -4,11 +4,12 @@ import './label-adder.css'
 
 interface LabelSelectorProps {
     onChange: (label: string) => void;
+    presentItems: string[];
 }
 
 export const LabelAdder: React.FC<LabelSelectorProps> = (props) => {
     const [selectedValue, setSelectedValue] = useState<string | undefined>();
-    const [selectedItems, setSelectedItems] = useState<string[]>([]);
+    const [selectedItems, setSelectedItems] = useState<string[]>(props.presentItems);
     const [render, reRender] = useState(false);
 
     const labelsList: string[] = Object.keys(LabelColors);

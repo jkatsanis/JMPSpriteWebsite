@@ -115,7 +115,7 @@ export class ThreadRepository {
             return false;
         }
         if (comment.parentCommentId !== null){
-            if (await this.getCommentById(comment.parentCommentId) === undefined){
+            if (await this.getCommentById(comment.parentCommentId) === undefined && comment.parentCommentId !== -1){
                 return false;
             }
         }

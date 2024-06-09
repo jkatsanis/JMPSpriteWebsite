@@ -48,7 +48,7 @@ export const FilterContent: React.FC<FilterContentProps> = ({updateFilter}) => {
             </div>
             <div className='inline'>
                 <p>Labels: </p>
-                <LabelAdder onChange={handleSelectionChange}/>
+                <LabelAdder onChange={handleSelectionChange} presentItems={selectedItems}/>
             </div>
             <div>
                 <LabelRenderer selectedItems={selectedItems}/>

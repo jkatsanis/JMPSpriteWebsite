@@ -34,13 +34,8 @@ export class ThreadRepository
 
         this.m_inited = true;
         
-        console.log("DEM");
-        console.log(this.m_questions);
-
         await this.readQuestionsFromDB(setInit);
         this.getHighestCount();
-
-        console.log(this.m_questions);
     }
 
     getHighestCount()
@@ -135,8 +130,6 @@ export class ThreadRepository
                 labelStr += ";";
             }
         }
-
-        console.log(labelStr);
         
         let object = new class { 
             id = id;
@@ -145,20 +138,11 @@ export class ThreadRepository
             labels = labelStr; 
             author = acc.name;
         };
-
-        console.log(object);
   
         await bFetch(url, 'POST', object);
     }
-
-    addLabelToQuestion(questionNumber: number, label: string): void {
-        const question = this.fetch(questionNumber);
-        if (question) {
-            question.labels.push(label);
-        }
-    }
     
-    fetch(id: number) : Question
+    getByID(id: number) : Question
     {
         for(let i = 0; i < this.m_questions.length; i++)
         {
