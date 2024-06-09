@@ -3,24 +3,24 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { accountRepo } from '../threads/logic/account-repository';
 import './topbar.css';
+import {Account} from "components/threads/logic/model";
+import config from "../../config";
 
 // Define the user data interface
 interface User {
   login: string;
   avatar_url: string;
 }
+export const isLoggedIn = localStorage.getItem("accessToken") != null || localStorage.getItem("SEWAccessToken") != null;
 
 const TopBar: React.FC = () => {
-  const [user, setUser] = useState<User | null>(null);
   const [loading, setLoading] = useState(true);
-
-  const isLoggedIn = localStorage.getItem("accessToken") !== null || accountRepo.active_account !== null;
+  const [user, setUser] = useState<User | null>(null);
 
   useEffect(() => {
     async function fetchUserData() {
-      if (isLoggedIn) {
         try {
-          const response = await fetch("http://localhost:5000/getUserData", {
+          const response = await fetch(config.externalAddress + "/getUserData", {
             method: "GET",
             headers: {
               "Authorization": "Bearer " + localStorage.getItem("accessToken")
@@ -33,26 +33,50 @@ const TopBar: React.FC = () => {
         } finally {
           setLoading(false);
         }
-      } else {
+    }
+    async function autoLogin() {
+      const SEWAccessToken = localStorage.getItem("SEWAccessToken");
+      const username = localStorage.getItem("loggedInUsername");
+      if (SEWAccessToken !== null && username !== null){
+        await fetch(config.externalAddress + "/api/accounts/loginWithToken", {
+          method: "POST",
+          headers: {
+            "SEWAccessToken": SEWAccessToken,
+            "username": username
+          }
+        }).then((response)=> {
+          return response.json();
+        }).then((data) => {
+          accountRepo.active_account = new Account(data.userName, data.password, data.picture, data.email)
+          setUser({login: accountRepo.active_account.name, avatar_url: accountRepo.active_account.picture})
+          console.log(accountRepo.active_account);
+        });
         setLoading(false);
       }
     }
     console.log(isLoggedIn);
+    if (localStorage.getItem("SEWAccessToken") != null){
+      autoLogin();
+    }
     if (localStorage.getItem("accessToken") !== null){
       fetchUserData();
+
     }
   }, [isLoggedIn]);
 
   async function logout() {
     if (isLoggedIn) {
       localStorage.removeItem("accessToken");
+      localStorage.removeItem("SEWAccessToken");
+      localStorage.removeItem("loggedInUsername");
       accountRepo.active_account = null;
       setUser(null);
     }
+
     window.location.reload();
   }
 
-  let name = "Account";
+  let name = "defaultAccount";
   let pic = `icons/default.png`;
 
   if (user) {
@@ -62,6 +86,8 @@ const TopBar: React.FC = () => {
     name = accountRepo.active_account!.name;
     pic = accountRepo.active_account!.picture;
   }
+
+
   return (
       <div>
         <div className="top-bar">
@@ -84,7 +110,6 @@ const TopBar: React.FC = () => {
                         <button className="logout-button" onClick={logout}>Logout</button>
                       </li>
                   )}
-
                 </ul>
               </nav>
             </div>

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./callback.css";
+import config from "../../config";
 
 const Callback: React.FC = () => {
     const [rerender, setRerender] = useState(false);
@@ -13,7 +14,7 @@ const Callback: React.FC = () => {
 
         if (codeParam && (localStorage.getItem("accessToken") === null)) {
             console.log("juhu");
-            fetch("http://localhost:5000/getGithubAccessToken?code=" + codeParam, {
+            fetch(config.externalAddress + "/getGithubAccessToken?code=" + codeParam, {
                 method: "GET"
             }).then((response) => {
                 return response.json();
@@ -21,11 +22,13 @@ const Callback: React.FC = () => {
                 console.log(data);
                 if (data.access_token) {
                     localStorage.setItem("accessToken", data.access_token);
-                    localStorage.removeItem("LoggedInUsername");
+                    localStorage.removeItem("loggedInUsername");
                     localStorage.removeItem("SEWAccessToken");
 
                     setRerender(!rerender);
                 }
+            }).catch((error)=> {
+                alert(error);
             });
         }
     }, [rerender]);
@@ -38,7 +41,7 @@ const Callback: React.FC = () => {
 
         // Redirect when countdown reaches 0
         if (countdown === 0) {
-            window.location.href = "threads";
+            window.location.href = config.address;
         }
 
         // Cleanup interval on component unmount

@@ -2,6 +2,9 @@ import React, {useEffect, useState} from "react";
 import "./login.css";
 import {accountRepo} from "components/threads/logic/account-repository";
 import {Account} from "components/threads/logic/model";
+import {Link} from "react-router-dom";
+import {login} from "components/register/register";
+import config from "../../config";
 
 
 const CLIENT_ID = "Ov23liMuRhXSWfALO4cu";
@@ -14,7 +17,7 @@ const Login: React.FC = () => {
         console.log(codeParam);
 
         if (codeParam && (localStorage.getItem("accessToken") === null)) {
-            fetch("http://localhost:5000/getGithubAccessToken?code=" + codeParam, {
+            fetch(config.externalAddress + "/getGithubAccessToken?code=" + codeParam, {
                 method: "GET"
             }).then((response) => {
                 return response.json();
@@ -36,25 +39,13 @@ const Login: React.FC = () => {
         e.preventDefault();
         const username = (e.target as any).username.value;
         const password = (e.target as any).password.value;
-        console.log("Username:", username, "Password:", password);
-
-        await fetch("http://localhost:5000/loginWithToken", {
-            method: "POST",
-            headers: {
-                "username": username,
-                "password": password
-            }
-        }).then((response) => {
-            if (response.status === 200){
-                console.log("wrong username or password");
-            }
-            return response.json();
-        }).then((data) => {
-            accountRepo.active_account = new Account(data.name, data.password, data.picture, data.email)
-            localStorage.removeItem("accessToken");
-            localStorage.setItem("SEWAccessToken", data.SWEAccessToken)
-            localStorage.setItem("loggedInUsername", data.SWEAccessToken)
-        });
+        console.log("yhuh")
+        if (!await login(username, password)){
+            alert("wrong username or password");
+        }
+        else{
+            window.location.assign(config.address);
+        }
     };
 
     return (
@@ -75,6 +66,10 @@ const Login: React.FC = () => {
                     </div>
                     <button type="submit" className="btn">Login</button>
                 </form>
+                <div className="register-link">
+                    <span>Don't have an account? </span>
+                    <Link to="/register">Register here</Link>
+                </div>
             </div>
         </div>
     );

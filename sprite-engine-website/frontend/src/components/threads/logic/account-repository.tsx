@@ -12,6 +12,34 @@ export class AccountRepository
     constructor() {
         this.url = URL + "/api/accounts";
         this.active_account = null;
+        this.m_inited = false;
+    }
+
+    public async init() : Promise<void>
+    {
+        if(this.m_inited)
+        {
+            Log.log("[REPO] Account repo already inited");
+            return;
+        }
+
+        this.m_inited = true;
+
+        await this.readAccountsFromDB();
+    }
+
+    async readAccountsFromDB()
+    {
+        let accounts: any[] = await bFetch(this.url, "GET");
+
+        for(let i = 0; i < accounts.length; i++)
+        {
+            const an = accounts[i];
+
+            let acc = new Account(an.userName, an.password, an.picture, an.email);
+
+            this.accounts.push(acc);
+        } 
     }
 
     async addAccount(account: Account)

@@ -3,14 +3,31 @@ import multer from "multer";
 import fs from "fs";
 import {multerConf} from "../multerUpload";
 import * as path from "path";
+import {ProjectRepository} from "../repos/projectRepository";
+import {Project} from "../model";
 export const projectRouter = express.Router();
+const projectRepo = new ProjectRepository("../backend/data/projects.sqlite");
 
 projectRouter.use(multerConf.single('file'))
 // Set up a route for file uploads
 projectRouter.post('/upload', (req, res) => {
     // Handle the uploaded file
     console.log("upload");
-    res.json({ message: 'File uploaded successfully!' });
+    const newProject: Project = {
+        id: 3, // Replace with your own logic to generate a unique ID
+        owner: 'sauger', // Replace with your own logic to get the authenticated user's username
+        title: req.body.title,
+        description: req.body.description,
+        filename: req.file!.filename
+    };
+    projectRepo.insertProject(newProject);
+    //res.json({ message: 'File uploaded successfully!' });
+});
+
+projectRouter.get('/', async (req, res) => {
+    const projects = await projectRepo.getAllProjects();
+    console.log(projects);
+    res.json(projects);
 });
 
 projectRouter.get('/:filename', (req, res) => {

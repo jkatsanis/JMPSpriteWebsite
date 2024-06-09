@@ -13,6 +13,7 @@ import Callback from "./components/callback/callback";
 import { accountRepo } from 'components/threads/logic/account-repository';
 import { threadRepo } from 'components/threads/logic/thread-repository';
 import {Account} from "components/threads/logic/model";
+import Register from "components/register/register";
 
 const App: React.FC = () => {
     const [isInitialized, setIsInitialized] = useState(false);
@@ -22,27 +23,10 @@ const App: React.FC = () => {
             await threadRepo.initialize(setIsInitialized);
         };
 
-        const autoLogin = async () => {
-            const SWEAccessToken = localStorage.getItem("SWEAccessToken");
-            const username = localStorage.getItem("loggedInUsername");
-            if (SWEAccessToken !== null && username !== null){
-                await fetch("http://localhost:5000/loginWithToken", {
-                    method: "POST",
-                    headers: {
-                        "SWEAccessToken": SWEAccessToken,
-                        "username": username
-                    }
-                }).then((response)=> {
-                    return response.json();
-                }).then((data) => {
-                    accountRepo.active_account = new Account(data.name, data. password, data.picture, data.email)
-                });
-            }
-        };
+
 
         initRepos();
-        autoLogin();
-    }, []);
+        }, []);
 
     if (!isInitialized) {
         return <div>Loading...</div>;
@@ -61,6 +45,7 @@ const App: React.FC = () => {
                 <Route path="/callback" element={<Callback />} />
                 <Route path="/threads/:id" element={<ThreadPage />} />
                 <Route path="/threads/new" element={<AddQuestionModal />} />
+                <Route path="/register" element={<Register/>} />
             </Routes>
         </BrowserRouter>
     );

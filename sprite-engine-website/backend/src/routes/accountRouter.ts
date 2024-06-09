@@ -45,18 +45,21 @@ accountRouter.get("/picture/:username",  async(req, res) => {
 });
 
 accountRouter.post("/loginWithToken", async(req, res) => {
-    if (req.headers.username && !Array.isArray(req.headers.username) && req.headers.SWEAccessToken && !Array.isArray(req.headers.SWEAccessToken)){
+    console.log(req.headers.username);
+    console.log(req.headers.sewaccesstoken);
+    if (req.headers.username && !Array.isArray(req.headers.username) && req.headers.sewaccesstoken && !Array.isArray(req.headers.sewaccesstoken)){
         const username : string = req.headers.username;
-        const token : string = req.headers.SWEAccessToken;
+        const token : string = req.headers.sewaccesstoken;
         const user = await accountRepo.getAccountByUsername(username);
         if (user) {
-            if (username === user?.userName && token === user.SWEAccessToken) {
+            if (username === user?.userName && token === user.SEWAccessToken) {
                 res.status(StatusCodes.OK)
                 res.send(await accountRepo.getAccountByUsername(username));
                 return;
             }
         }
     }
+
     res.sendStatus(StatusCodes.BAD_REQUEST);
     return;
 });
@@ -68,6 +71,19 @@ accountRouter.delete("/:username", async(req, res) => {
     }
     res.sendStatus(StatusCodes.OK);
     return;
+});
+accountRouter.post("/updatePicture", async (req, res) => {
+    const userName = req.body.userName;
+    const picture = req.body.picture;
+    if (userName === null || picture === null){
+        res.sendStatus(StatusCodes.BAD_REQUEST);
+        return;
+    }
+    if (!await accountRepo.updatePicture(picture, userName)){
+        res.sendStatus(StatusCodes.BAD_REQUEST);
+        return;
+    }
+    res.sendStatus(StatusCodes.CREATED);
 });
 accountRouter.post("/", async (req, res) => {
     const userName = req.body.userName;
@@ -83,7 +99,7 @@ accountRouter.post("/", async (req, res) => {
         email = email;
         password = password;
         picture = picture;
-        SWEAccessToken = null;
+        SEWAccessToken = null;
     })){
         res.sendStatus(StatusCodes.BAD_REQUEST);
         return;
@@ -106,7 +122,7 @@ accountRouter.patch("/", async (req, res) => {
         email = email;
         password = password;
         picture = picture;
-        SWEAccessToken = null;
+        SEWAccessToken = null;
     });
     res.sendStatus(StatusCodes.OK);
 });

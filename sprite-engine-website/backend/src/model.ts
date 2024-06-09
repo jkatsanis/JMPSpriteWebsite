@@ -59,7 +59,7 @@ export interface Account{
     email: string;
     password: string;
     picture: string;
-    SWEAccessToken: string | null
+    SEWAccessToken: string | null
 }
 export interface ThreadComment {
     id: number;
@@ -74,4 +74,19 @@ export interface Thread{
     title: string
     author: string;
     content: string;
+}
+
+export interface Picture{
+    id: number;
+    path: string;
+    user: string;
+    threadId: number;
+}
+
+export interface Project{
+    id:number;
+    owner:string;
+    title:string,
+    description:string;
+    filename:string;
 }
