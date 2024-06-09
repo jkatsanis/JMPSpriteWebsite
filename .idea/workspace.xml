@@ -5,7 +5,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="18d4081c-bdeb-4494-bffc-c42f562230a5" name="Changes" comment="fast alles geht">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/sprite-engine-website/backend/data/projects.sqlite" beforeDir="false" afterPath="$PROJECT_DIR$/sprite-engine-website/backend/data/projects.sqlite" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/sprite-engine-website/frontend/src/components/projects/projectsDisplay.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/sprite-engine-website/frontend/src/components/projects/projectsDisplay.tsx" afterDir="false" />
     </list>
