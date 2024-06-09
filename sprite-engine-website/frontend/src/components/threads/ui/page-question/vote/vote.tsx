@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowUp, faArrowDown } from '@fortawesome/free-solid-svg-icons';
 import './vote.css';
-import { Question } from '@components/threads/logic/model';
+import { Question } from 'components/threads/logic/model';
 
 interface VoteComponentProps {
   question: Question;
