@@ -42,18 +42,37 @@ const Register: React.FC = () => {
         const email = formData.get("email") as string;
         const confirmPassword = formData.get("confirmPassword") as string;
         const picture = formData.get("avatar") as File;
+        let registrationSuccessful = true;
 
         if (password !== confirmPassword) {
             alert("Passwords do not match");
             return;
         }
-            const account : Account = {
-                name,
-                password,
-                email,
-                picture: "http://localhost:5000/avatars/default.webp"
-            };
-            await accountRepo.addAccount(account);
+        const account : Account = {
+            name,
+            password,
+            email,
+            picture: "http://localhost:5000/avatars/default.webp"
+        };
+        await fetch(config.externalAddress + "/api/accounts", {
+            method: "POST",
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                userName: account.name,
+                email: account.email,
+                password: account.password,
+                picture: account.picture,
+            })
+        }).then((response) => {
+            if (response.status !== 201){
+                console.log(response.status)
+                alert("registration failed");
+                registrationSuccessful = false;
+            }
+        });
+        if (registrationSuccessful){
             if (picture !== null){
                 let imageData = new FormData();
                 imageData.append('avatar', picture);
@@ -65,7 +84,9 @@ const Register: React.FC = () => {
             alert("Registration successful");
             setRerender(!rerender);
             await login(name, password);
-            window.location.assign(config.address)
+            window.location.assign(config.address);
+        }
+
     };
 
     return (
@@ -74,7 +95,7 @@ const Register: React.FC = () => {
             <div className="register-options">
                 <form className="register-form" onSubmit={handleRegister}>
                     <div className="form-group">
-                        <label htmlFor="username">Username:</label>
+                        <label htmlFor="username">Unique Username:</label>
                         <input type="text" id="username" name="username" required />
                     </div>
                     <div className="form-group">

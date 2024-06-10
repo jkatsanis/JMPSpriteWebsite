@@ -13,7 +13,7 @@ export class AccountRepository
         this.active_account = null;
     }
 
-    async addAccount(account: Account)
+    async addAccount(account: Account): Promise<Response>
     {
         let obj = new class {
             userName = account.name;
@@ -22,7 +22,7 @@ export class AccountRepository
             picture = account.picture;
         };
 
-        await bFetch(this.url, "POST", obj);
+        return await bFetch(this.url, "POST", obj);
     }
 
     async getAccountByName(name: string) : Promise<Account>

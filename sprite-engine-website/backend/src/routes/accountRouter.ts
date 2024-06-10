@@ -90,7 +90,9 @@ accountRouter.post("/", async (req, res) => {
     const email = req.body.email;
     const password = req.body.password;
     const picture = req.body.picture;
-    if (userName === null || email === null || password === null){
+
+    console.log(userName + email);
+    if (userName == null || email == null || password == null){
         res.sendStatus(StatusCodes.BAD_REQUEST);
         return;
     }
@@ -112,7 +114,7 @@ accountRouter.patch("/", async (req, res) => {
     const password = req.body.password;
     const picture = req.body.picture;
 
-    if (userName === null || email === null || password === null){
+    if (userName == null || email == null || password == null){
         res.sendStatus(StatusCodes.BAD_REQUEST);
         return;
     }
