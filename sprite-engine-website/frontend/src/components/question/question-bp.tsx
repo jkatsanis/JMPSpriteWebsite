@@ -73,10 +73,10 @@ const QuestionBluePrint: React.FC<QuestionBluePrintProps> = (props) => {
     const onSubmit = () => {
         if (checkSubmit()) {
             props.submit(title, content, images, selectedItems);
+            setImages([]);
         }
         setContent("");
         setTitle("");
-        setImages([]);
     };
 
     const onCancel = () => {
