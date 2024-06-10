@@ -13,4 +13,9 @@ CREATE TABLE comments (
     author VARCHAR(40) NOT NULL,
     content VARCHAR(4000) NOT NULL
 );
-
+drop table pictures;
+create table pictures(
+                         id varchar2(100) primary key,
+                         threadId number,
+                         picturePath varchar2(100)
+)
