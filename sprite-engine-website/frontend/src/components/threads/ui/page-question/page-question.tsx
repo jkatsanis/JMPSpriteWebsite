@@ -10,7 +10,6 @@ import 'utils/general.css';
 import './page-question.css';
 import QuestionBluePrint from 'components/question/question-bp';
 import ContributorsRenderer from './contributers';
-import { getOriginalPath } from 'utils/general';
 import LabelRenderer from '../item-question/filter/label/labels-renderer';
 import { LabelAdder } from '../item-question/filter/label/label-adder';
 
@@ -65,7 +64,7 @@ export const ThreadPage: React.FC = () => {
         <div className="inline">
           <div className="profile-container">
             <div className="profile-info inline">
-              <img src={getOriginalPath("icons/" + question.author.picture)} alt="Profile Picture" className="profile-picture" />
+              <img src={question.author.picture} alt="Profile Picture" className="profile-picture" />
               <h3 className="profile-author" style={{ marginLeft: '0.5rem' }}>{question.author.name}</h3>
             </div>
           </div>
@@ -92,13 +91,13 @@ export const ThreadPage: React.FC = () => {
 
         <div className="inline">
           {accountRepo.active_account && accountRepo.active_account.name === question.author.name && (
-            <div style={{ marginLeft: '-1rem', width: '7rem' }}>
+            <div style={{ marginLeft: '-1rem', width: '6rem' }}>
               <LabelAdder onChange={handleSelectionChange} presentItems={question.labels}/>
             </div>
           )}
           <LabelRenderer selectedItems={question.labels} />
         </div>
-
+        <div className='h-1'/>
         {question && <ContributorsRenderer contributers={question.contributers} />}
 
         <div className="vote-pos">

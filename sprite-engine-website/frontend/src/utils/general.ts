@@ -47,8 +47,3 @@ export class Log
         console.log(msg);
     }
 }
-
-export function getOriginalPath(path: string) : string
-{
-    return URL + "/" + path;
-}

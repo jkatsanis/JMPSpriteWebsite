@@ -11,6 +11,12 @@
             "driver": "SQLite",
             "name": "Comments",
             "database": "${workspaceFolder:sprite-engine-website}/backend/data/comments.sqlite"
+        },
+        {
+            "previewLimit": 50,
+            "driver": "SQLite",
+            "name": "Accounts",
+            "database": "${workspaceFolder:sprite-engine-website}/backend/data/accounts.sqlite"
         }
     ],
     "sqltools.useNodeRuntime": true

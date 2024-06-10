@@ -13,13 +13,20 @@ class ContributorsRenderer extends Component<ContributorsRendererProps> {
     render() {
         const contributers:Account[] = this.props.contributers;
 
+        let contributersString = "";
+
+        for (let i = 0; i < contributers.length; i++) {
+            contributersString += contributers[i].name;
+            if (i < contributers.length - 1) {
+                contributersString += ", ";
+            }
+        }
+
         return (
             <div>
                 <div className='contributer-box'>
                     <h6>Contributers to this page</h6>
-                    { contributers && contributers.map((contributer, key) => (
-                        <p key={key}>{contributer.name}</p>
-                    )) }
+                    <p>{contributersString}</p>
                 </div>
             </div>
         );
