@@ -15,7 +15,7 @@ projectRouter.post('/upload', (req, res) => {
     console.log("upload");
     const newProject: Project = {
         id: 3, // Replace with your own logic to generate a unique ID
-        owner: 'sauger', // Replace with your own logic to get the authenticated user's username
+        owner: req.body.owner, // Replace with your own logic to get the authenticated user's username
         title: req.body.title,
         description: req.body.description,
         filename: req.file!.filename

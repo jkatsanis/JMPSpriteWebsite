@@ -2,8 +2,23 @@
     margin-bottom: 1rem;
 }
 .project{
+    margin-top: 1rem;
     margin-bottom: 1rem;
     padding: 1rem;
     border: 1px solid #ccc;
     border-radius: 4px;
+}
+
+.project button {
+    margin: 0.5rem;
+}
+
+.formi-control {
+    height: 30rem;
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #242424;
+    margin:1rem;
 }

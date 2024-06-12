@@ -12,7 +12,7 @@
   api:
     build: "./backend/"
     env_file:
-      - ./backend/.env
+      - ./backend/..env
     volumes:
       - db-data:/app/data/
     networks:

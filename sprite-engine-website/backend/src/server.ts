@@ -16,7 +16,7 @@ dotenv.config();
 const server = express();
 
 
-//process.env.SECRET_KEY
+//process..env.SECRET_KEY
 
 server.use(cors());
 server.use(express.json());

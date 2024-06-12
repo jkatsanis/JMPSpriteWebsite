@@ -63,11 +63,13 @@ const ProjectDetails: React.FC = () => {
     }
 
     return (
-        <div>
-            <h1>{project.title}</h1>
-            <h3>{project.owner}</h3>
-            <p>{project.description}</p>
-            <button onClick={() => handleDownload(project.filename)}>Download File</button>
+        <div className="container">
+            <div className="project">
+            <h1>Title: {project.title}</h1>
+            <h3>Owner: {project.owner}</h3>
+            <p className="formi-control">{project.description}</p>
+            <button onClick={() => handleDownload(project.filename)} className="default-btn">Download File</button>
+            </div>
         </div>
     );
 };

@@ -59,9 +59,10 @@ const ProjectsDisplay: React.FC = () => {
 
     return (
         <Page>
+            <div className="container">
             <h1>File Upload</h1>
             <Link to="/create">
-                <button>Add Project</button>
+                <button className="default-btn">Add Project</button>
             </Link>
             <h1>Projects</h1>
             {isLoading ? (
@@ -72,13 +73,14 @@ const ProjectsDisplay: React.FC = () => {
                         <h6>{project.owner}</h6>
                         <h5>{project.title}</h5>
                         <p>{project.description}</p>
-                        <button onClick={() => handleDownload(project.filename)}>Download</button>
+                        <button onClick={() => handleDownload(project.filename)} className="default-btn">Download</button>
                         <Link to={`/project/${project.id}`}>
-                            <button>View Project</button>
+                            <button className="default-btn">View Project</button>
                         </Link>
                     </div>
                 ))
             )}
+            </div>
         </Page>
     );
 };

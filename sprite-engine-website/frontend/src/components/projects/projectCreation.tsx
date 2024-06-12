@@ -1,6 +1,7 @@
 import React, { useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { URL } from "../../macros";
+import {accountRepo} from "components/threads/logic/account-repository";
 
 const ProjectCreation: React.FC = () => {
     const nameRef = useRef<HTMLInputElement>(null);
@@ -17,6 +18,7 @@ const ProjectCreation: React.FC = () => {
         }
         formData.append("title", titleRef.current?.value || "");
         formData.append("description", descriptionRef.current?.value || "");
+        formData.append("owner", accountRepo.active_account?.name|| "");
 
         try {
             const response = await fetch(`${URL}/api/projects/upload`, {
@@ -33,14 +35,16 @@ const ProjectCreation: React.FC = () => {
     };
 
     return (
-        <div>
+        <div className="container">
+            <div className="project">
             <h1>Create Project</h1>
             <form onSubmit={handleSubmit}>
                 <input type="file" name="file" ref={fileRef} required />
                 <input type="text" name="title" ref={titleRef} placeholder="Title" required />
-                <input type="text" name="description" ref={descriptionRef} placeholder="Description" required />
-                <button type="submit">Upload</button>
+                <input type="text" name="description" ref={descriptionRef} required  className="formi-control"/>
+                <button type="submit" className="default-btn">Upload</button>
             </form>
+            </div>
         </div>
     );
 };
