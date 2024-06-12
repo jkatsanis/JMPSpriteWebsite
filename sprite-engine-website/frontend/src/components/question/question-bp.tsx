@@ -120,14 +120,10 @@ const QuestionBluePrint: React.FC<QuestionBluePrintProps> = (props) => {
                     <LabelAdder onChange={onLabelAdd} presentItems={selectedItems}/>
                 )}
 
-       
-
                 <div style={{marginLeft: 10}}/>
                 {props.isMainPage && (
                     <LabelRenderer selectedItems={selectedItems} />
                 )}
-
-
             </div>
       
             <div className='h-2'/>

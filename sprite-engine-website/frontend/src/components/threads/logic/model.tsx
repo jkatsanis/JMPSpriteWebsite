@@ -30,15 +30,19 @@ export class Account {
     }
 }
 
+
 export class ImageData {
     name: string;
-    data: string | ArrayBuffer | null;
-
-    constructor(name: string, data: string | ArrayBuffer | null) {
+    data: File
+    filePath: string;
+  
+    constructor(name: string, data: File) {
         this.name = name;
         this.data = data;
+        this.filePath = "";
     }
 }
+  
 
 export class Comment 
 {

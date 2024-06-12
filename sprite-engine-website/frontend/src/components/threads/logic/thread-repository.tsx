@@ -67,6 +67,27 @@ export class ThreadRepository
         return this.m_questions;
     }
 
+
+    async writePictures(images: ImageData[], id: number)
+    {
+        console.log("run");
+        let pictureData = new FormData();
+        pictureData.append('picture', images![0].data);
+        await fetch(URL + "/api/pictures/" + id, {
+            method: "PUT",
+            body: pictureData
+        }).then((response) => {
+            console.log(response.json());
+        })
+    }
+
+    async readPictures(question: Question)
+    {
+        const url = URL + "/api/pictures/" + question.getId();
+        let pics: any[] = await bFetch(url, "GET");
+        console.log(pics);
+    }
+
     async readQuestionsFromDB(setInit: (val: boolean) => void)
     {
         if(this.m_reading)
@@ -93,7 +114,9 @@ export class ThreadRepository
             }
              
             const thread:Question = new Question(acc, t.title, t.content, t.id, labels.split(';'));
+        
             await this.readComments(thread, acc);
+            await this.readPictures(thread);
 
             this.m_count++;
             this.m_questions.push(thread);
@@ -161,6 +184,11 @@ export class ThreadRepository
             if (i !== labels.length - 1) {
                 labelStr += ";";
             }
+        }
+
+        if(images !==  null)
+        {
+            await this.writePictures(images, id);
         }
         
         let object = new class { 

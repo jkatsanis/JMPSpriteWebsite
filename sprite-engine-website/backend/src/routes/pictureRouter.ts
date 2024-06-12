@@ -10,6 +10,7 @@ import config from "../config";
 import {threadRepo} from "./threadRouter";
 import {convertToWebp} from "./avatarRouter";
 import {v4 as uuidv4} from 'uuid';
+import { STATUS_CODES } from "http";
 
 export const pictureRouter = Router();
 
@@ -22,6 +23,31 @@ export const getUserPath = (username: string) => {
 export const getThreadPicturePath = () => {
     return path.join(publicPath,`/threads/`);
 }
+
+pictureRouter.get("/:threadId", async(req, res) => {
+    const threadId = req.params.threadId;
+    let pictures: string[] = [];
+
+    const picFolder = "public/threads/" + threadId
+    
+    if (!fs.existsSync(picFolder)) 
+    {
+        res.sendStatus(StatusCodes.OK);
+        return;
+    }
+
+    fs.readdir(picFolder, (err, files) =>
+    {
+        if (err) {
+            console.error('Error reading picFolder folder:', err);
+            res.sendStatus(StatusCodes.NOT_FOUND);
+            return;
+        }
+    
+        res.send(files);
+    });
+    res.status(StatusCodes.OK);
+});
 
 pictureRouter.put("/:threadId", multerConfPicture.single('picture'), async (req, res) => {
     const threadId = req.params.threadId;

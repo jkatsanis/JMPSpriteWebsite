@@ -1,16 +1,7 @@
 import React, { useState } from 'react';
+import { ImageData } from 'components/threads/logic/model';
 
 import "./image-importer.css"
-
-class ImageData {
-  name: string;
-  data: string | ArrayBuffer | null;
-
-  constructor(name: string, data: string | ArrayBuffer | null) {
-      this.name = name;
-      this.data = data;
-  }
-}
 
 interface ImageImporterProps {
   images: ImageData[];
@@ -26,7 +17,7 @@ const ImageImporter: React.FC<ImageImporterProps> = (props) => {
         const file = files[i];
         const reader = new FileReader();
         reader.onload = (e) => {
-          imagesArray.push(new ImageData(file.name, e.target!.result));
+          imagesArray.push(new ImageData(file.name, file)); // Store the File object directly
           if (imagesArray.length === files.length) {
             props.setImages(imagesArray);
           }

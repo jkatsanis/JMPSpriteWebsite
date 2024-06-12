@@ -82,7 +82,7 @@ export const ThreadPage: React.FC = () => {
             {question.selectedImages && question.selectedImages.map((image, index) => (
               <details className="image-details" key={index}>
                 <summary>{image.name}</summary>
-                <img className="question-image" src={image.data as string} />
+                <img className="question-image" src={image.filePath} />
               </details>
             ))}
           </div>
@@ -119,7 +119,7 @@ export const ThreadPage: React.FC = () => {
                   {comment.selectedImages && comment.selectedImages.map((image, index) => (
                     <details className="image-details" key={index}>
                       <summary>{image.name}</summary>
-                      <img className="question-image" src={image.data as string} alt={image.name} />
+                      <img className="question-image" src={image.filePath as string} alt={image.name} />
                     </details>
                   ))}
                 </div>

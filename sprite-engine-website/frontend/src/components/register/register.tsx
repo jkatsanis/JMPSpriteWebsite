@@ -79,8 +79,7 @@ const Register: React.FC = () => {
                 await fetch(config.externalAddress + "/api/avatars/"+ name,{
                     method: "PUT",
                     body: imageData
-                })
-               
+                })        
             }
             alert("Registration successful");
             setRerender(!rerender);
