@@ -15,7 +15,7 @@ projectRouter.post('/upload', (req, res) => {
     console.log("upload");
     const newProject: Project = {
         id: 3, // Replace with your own logic to generate a unique ID
-        owner: 'sauger', // Replace with your own logic to get the authenticated user's username
+        owner: req.body.owner, // Replace with your own logic to get the authenticated user's username
         title: req.body.title,
         description: req.body.description,
         filename: req.file!.filename
@@ -28,6 +28,15 @@ projectRouter.get('/', async (req, res) => {
     const projects = await projectRepo.getAllProjects();
     console.log(projects);
     res.json(projects);
+});
+
+projectRouter.get('/byID/:id', async (req, res) => {
+    const { id } = req.params;
+    const project = await projectRepo.getProject(parseInt(id));
+    if (!project) {
+        return res.status(404).json({ message: 'Project not found' });
+    }
+    res.json(project);
 });
 
 projectRouter.get('/:filename', (req, res) => {

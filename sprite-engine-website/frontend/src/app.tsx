@@ -14,6 +14,8 @@ import { accountRepo } from 'components/threads/logic/account-repository';
 import { threadRepo } from 'components/threads/logic/thread-repository';
 import {Account} from "components/threads/logic/model";
 import Register from "components/register/register";
+import ProjectCreation from "./components/projects/projectCreation";
+import ProjectDetails from "./components/projects/projectDetails";
 
 const App: React.FC = () => {
     const [isInitialized, setIsInitialized] = useState(false);
@@ -46,6 +48,8 @@ const App: React.FC = () => {
                 <Route path="/threads/:id" element={<ThreadPage />} />
                 <Route path="/threads/new" element={<AddQuestionModal />} />
                 <Route path="/register" element={<Register/>} />
+                <Route path="/create" element={<ProjectCreation />} />
+                <Route path="/project/:id" element={<ProjectDetails />} />
             </Routes>
         </BrowserRouter>
     );
