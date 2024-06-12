@@ -87,7 +87,7 @@ threadRouter.get("/thread/comments/:id", async (req, res) => {
 
     const comments = await threadRepo.getCommentsFromThread(id);
     if (comments === undefined || comments.length === 0){
-        res.sendStatus(StatusCodes.NOT_FOUND);
+        res.sendStatus(StatusCodes.OK);
         return;
     }
     res.status(StatusCodes.OK);

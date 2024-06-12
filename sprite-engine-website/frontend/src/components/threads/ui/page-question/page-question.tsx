@@ -58,6 +58,8 @@ export const ThreadPage: React.FC = () => {
     navigate("/threads");
   };
 
+  console.log(question.selectedImages);
+
   return (
     <Page>
       <div className="centered-div-content-left-70">
@@ -79,7 +81,7 @@ export const ThreadPage: React.FC = () => {
           <div className="question-content">
             <h1>{question.title}</h1>
             <p>{question.content}</p>
-            {question.selectedImages && question.selectedImages.map((image, index) => (
+            {question.selectedImages && question.selectedImages.map((image: ImageData, index) => (
               <details className="image-details" key={index}>
                 <summary>{image.name}</summary>
                 <img className="question-image" src={image.filePath} />

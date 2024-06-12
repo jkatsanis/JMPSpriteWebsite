@@ -3,7 +3,7 @@ import { Question } from "./model";
 import { Account } from "./model";
 import { ImageData } from "./model";
 import { Label } from "./model";
-import { URL } from "macros";
+import { SERVER_UL, URL } from "macros";
 import { bFetch } from "utils/general";
 import { Log } from "utils/general";
 import { Comment } from "./model";
@@ -72,20 +72,29 @@ export class ThreadRepository
     {
         console.log("run");
         let pictureData = new FormData();
-        pictureData.append('picture', images![0].data);
-        await fetch(URL + "/api/pictures/" + id, {
-            method: "PUT",
-            body: pictureData
-        }).then((response) => {
-            console.log(response.json());
-        })
+        for(let i = 0; i < images.length; i++)
+        {
+            pictureData.append('picture', images[i].data);
+            await fetch(URL + "/api/pictures/" + id, {
+                method: "PUT",
+                body: pictureData
+            }).then((response) => {
+                console.log(response.json());
+            })
+        }
     }
 
     async readPictures(question: Question)
     {
         const url = URL + "/api/pictures/" + question.getId();
         let pics: any[] = await bFetch(url, "GET");
-        console.log(pics);
+        for(let i = 0; i < pics.length; i++)
+        {
+            let picture = pics[i] as string;
+            let img = new ImageData("pic" + i, null!);
+            img.filePath = SERVER_UL + "/threads/" + question.getId() + "/" + picture;
+            question.selectedImages.push(img);
+        }
     }
 
     async readQuestionsFromDB(setInit: (val: boolean) => void)
@@ -185,12 +194,6 @@ export class ThreadRepository
                 labelStr += ";";
             }
         }
-
-        if(images !==  null)
-        {
-            await this.writePictures(images, id);
-        }
-        
         let object = new class { 
             id = id;
             content = content;
@@ -198,8 +201,16 @@ export class ThreadRepository
             labels = labelStr; 
             author = acc.name;
         };
-  
+
+
         await bFetch(url, 'POST', object);
+
+        if(images !==  null)
+        {
+            await this.writePictures(images, id);
+        }     
+        question.selectedImages = [];
+        await this.readPictures(question);
     }
     
     getByID(id: number) : Question

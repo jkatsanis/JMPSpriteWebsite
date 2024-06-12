@@ -17,6 +17,12 @@
             "driver": "SQLite",
             "name": "Accounts",
             "database": "${workspaceFolder:sprite-engine-website}/backend/data/accounts.sqlite"
+        },
+        {
+            "previewLimit": 50,
+            "driver": "SQLite",
+            "name": "Threads",
+            "database": "${workspaceFolder:sprite-engine-website}/backend/data/threads.sqlite"
         }
     ],
     "sqltools.useNodeRuntime": true

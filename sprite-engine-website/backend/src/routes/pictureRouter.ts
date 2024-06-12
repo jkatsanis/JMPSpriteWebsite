@@ -54,9 +54,10 @@ pictureRouter.put("/:threadId", multerConfPicture.single('picture'), async (req,
 
     //const profilePic = req.body.profilePic ? user!.profilePic : '../public/avatars/Default_pfp.jpg'; // TODO: im service pfp lösen
 
+    console.log(parseInt(threadId));
     const thread = await threadRepo.getThreadById(parseInt(threadId));
     if(!thread){
-        res.sendStatus(StatusCodes.NOT_FOUND);
+        res.sendStatus(StatusCodes.BAD_REQUEST);
         if (req.file)
             await fs.unlinkSync(req.file.path);
         return;

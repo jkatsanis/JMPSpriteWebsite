@@ -49,12 +49,10 @@ const TopBar: React.FC = () => {
         }).then((data) => {
           accountRepo.active_account = new Account(data.userName, data.password, data.picture, data.email)
           setUser({login: accountRepo.active_account.name, avatar_url: accountRepo.active_account.picture})
-          console.log(accountRepo.active_account);
         });
         setLoading(false);
       }
     }
-    console.log(isLoggedIn);
     if (localStorage.getItem("SEWAccessToken") != null){
       autoLogin();
     }

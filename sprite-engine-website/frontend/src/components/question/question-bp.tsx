@@ -3,6 +3,7 @@ import ImageImporter from '../importer/image-importer';
 import { ImageData } from '../threads/logic/model';
 import LabelRenderer from 'components/threads/ui/item-question/filter/label/labels-renderer';
 import { LabelAdder } from 'components/threads/ui/item-question/filter/label/label-adder';
+import { useNavigate } from 'react-router-dom';
 
 interface QuestionBluePrintProps {
     submit: (title: string, content: string, images: ImageData[], label: string[]) => void;
@@ -19,6 +20,7 @@ const QuestionBluePrint: React.FC<QuestionBluePrintProps> = (props) => {
     const [alertContent, setContentAlert] = useState(false);
     const [images, setImages] = useState<ImageData[]>([]);
     const [selectedItems, setSelectedItems] = useState<string[]>([]);
+    const navigate = useNavigate();
 
 
     const onLabelAdd = (label: string) =>
@@ -74,6 +76,7 @@ const QuestionBluePrint: React.FC<QuestionBluePrintProps> = (props) => {
         if (checkSubmit()) {
             props.submit(title, content, images, selectedItems);
             setImages([]);
+            navigate("/threads");
         }
         setContent("");
         setTitle("");
