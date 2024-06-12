@@ -9,6 +9,7 @@ import {projectRouter} from "./routes/projectRouter";
 import config from "./config";
 import dotenv from "dotenv"
 import {avatarRouter} from "./routes/avatarRouter";
+import {pictureRouter} from "./routes/pictureRouter";
 
 const path = require('path');
 dotenv.config();
@@ -26,7 +27,7 @@ server.use("/api/accounts", accountRouter);
 server.use("/api/questions", threadRouter);
 server.use("/api/projects", projectRouter);
 server.use("/api/avatars", avatarRouter)
-
+server.use("/api/pictures", pictureRouter)
 
 server.get("/getGithubAccessToken", async (req, res)=> {
     const params = "?client_id=" + process.env.REACT_APP_GITHUB_CLIENT_ID + "&client_secret=" + process.env.REACT_APP_GITHUB_CLIENT_SECRET + "&code=" + req.query.code;

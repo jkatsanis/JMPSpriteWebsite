@@ -11,7 +11,7 @@ import {threadRepo} from "./threadRouter";
 import {convertToWebp} from "./avatarRouter";
 import {v4 as uuidv4} from 'uuid';
 
-export const avatarRouter = Router();
+export const pictureRouter = Router();
 
 const dbPath = "./data/accounts.sqlite"
 export const publicPath = path.join(__dirname, '../../public/')
@@ -23,7 +23,7 @@ export const getThreadPicturePath = () => {
     return path.join(publicPath,`/threads/`);
 }
 
-avatarRouter.put("/:threadId/picture", multerConfPicture.single('picture'), async (req, res) => {
+pictureRouter.put("/:threadId", multerConfPicture.single('picture'), async (req, res) => {
     const threadId = req.params.threadId;
 
     //const profilePic = req.body.profilePic ? user!.profilePic : '../public/avatars/Default_pfp.jpg'; // TODO: im service pfp lösen

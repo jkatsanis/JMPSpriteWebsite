@@ -80,6 +80,7 @@ const Register: React.FC = () => {
                     method: "PUT",
                     body: imageData
                 })
+               
             }
             alert("Registration successful");
             setRerender(!rerender);
