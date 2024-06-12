@@ -58,7 +58,7 @@ export const ThreadPage: React.FC = () => {
     navigate("/threads");
   };
 
-  console.log(question.selectedImages);
+  console.log(question.author.picture);
 
   return (
     <Page>

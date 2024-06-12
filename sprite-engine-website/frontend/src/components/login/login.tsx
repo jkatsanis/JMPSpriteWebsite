@@ -9,28 +9,6 @@ import config from "../../config";
 
 const CLIENT_ID = "Ov23liMuRhXSWfALO4cu";
 const Login: React.FC = () => {
-    const [rerender, setRerender] = useState(false);
-    /*useEffect(() => {
-        const queryString = window.location.search;
-        const urlParams = new URLSearchParams(queryString);
-        const codeParam = urlParams.get("code");
-        console.log(codeParam);
-
-        if (codeParam && (localStorage.getItem("accessToken") === null)) {
-            fetch(config.externalAddress + "/getGithubAccessToken?code=" + codeParam, {
-                method: "GET"
-            }).then((response) => {
-                return response.json();
-            }).then((data) => {
-                console.log(data);
-                if (data.access_token){
-                    localStorage.setItem("accessToken", data.access_token);
-                    console.log("yes");
-                    setRerender(!rerender)
-                }
-            })
-        }
-    }, []);*/
     const handleGithubLogin = () => {
         window.location.assign("https://github.com/login/oauth/authorize?client_id=" + CLIENT_ID);
     };

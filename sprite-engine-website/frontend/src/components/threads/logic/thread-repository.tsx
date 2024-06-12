@@ -88,12 +88,18 @@ export class ThreadRepository
     {
         const url = URL + "/api/pictures/" + question.getId();
         let pics: any[] = await bFetch(url, "GET");
+
         for(let i = 0; i < pics.length; i++)
         {
+            if(pics[i] === undefined || pics[i] === null || pics[i] === 'O' || pics[i] === 'K')
+            {
+                continue;
+            }
             let picture = pics[i] as string;
             let img = new ImageData("pic" + i, null!);
             img.filePath = SERVER_UL + "/threads/" + question.getId() + "/" + picture;
             question.selectedImages.push(img);
+            console.log(pics[i]);
         }
     }
 
@@ -123,7 +129,7 @@ export class ThreadRepository
             }
              
             const thread:Question = new Question(acc, t.title, t.content, t.id, labels.split(';'));
-        
+
             await this.readComments(thread, acc);
             await this.readPictures(thread);
 

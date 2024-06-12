@@ -26,7 +26,6 @@ export const getThreadPicturePath = () => {
 
 pictureRouter.get("/:threadId", async(req, res) => {
     const threadId = req.params.threadId;
-    let pictures: string[] = [];
 
     const picFolder = "public/threads/" + threadId
     
@@ -43,6 +42,8 @@ pictureRouter.get("/:threadId", async(req, res) => {
             res.sendStatus(StatusCodes.NOT_FOUND);
             return;
         }
+
+        console.log(files);
     
         res.send(files);
     });

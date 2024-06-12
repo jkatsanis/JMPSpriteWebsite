@@ -28,6 +28,7 @@ const TopBar: React.FC = () => {
           });
           const data: User = await response.json();
           setUser(data);
+          accountRepo.active_account = new Account(data.login, "", data.avatar_url, "");
         } catch (error) {
           console.error("Error fetching user data:", error);
         } finally {
