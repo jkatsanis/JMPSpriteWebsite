@@ -1,10 +1,10 @@
-import React, {useEffect, useRef, useState} from "react";
+import React, { useEffect, useState } from "react";
+import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
 import { Page } from "../page";
-import "./projects.css"; // Stil-Datei importieren
+import "./projects.css";
 import { URL } from "../../macros";
-import * as punycode from "punycode";
-import {ReactJSXElementAttributesProperty} from "@emotion/react/types/jsx-namespace";
-//import {ProjectRepository} from "../../../../backend/src/repos/projectRepository";
+import ProjectCreation from './projectCreation';
+import ProjectDetails from './projectDetails';
 
 interface Project {
     id: number;
@@ -15,11 +15,8 @@ interface Project {
 }
 
 const ProjectsDisplay: React.FC = () => {
-    const nameRef = useRef<HTMLInputElement>(null);
-    const descriptionRef = useRef<HTMLInputElement>(null);
-    const fileRef = useRef<HTMLInputElement>(null);
-    const [filename, setFilename] = useState("");
-    const titleRef = useRef<HTMLInputElement>(null);
+    const [projects, setProject] = useState<Project[]>([]);
+    const [isLoading, setIsLoading] = useState(true);
 
     const fetchProjects = async () => {
         setIsLoading(true);
@@ -28,114 +25,44 @@ const ProjectsDisplay: React.FC = () => {
             if (!response.ok) {
                 throw new Error('Error fetching projects');
             }
-            const data:Project[] = await response.json();
+            const data: Project[] = await response.json();
             setProject(data);
-            console.log(data);
-            console.log("projects",projects);
             setIsLoading(false);
         } catch (error) {
             console.error('Error fetching projects:', error);
+            setIsLoading(false);
         }
     };
-    const [render, setRender] = useState(false);
-    const [projects, setProject] = useState([] as Project[]);
-    //projects = [{id: 1, owner: 'admin', title: 'saug', description: 'oger'}];
-    const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
-        fetchProjects().then(() => console.log(projects)).then(() => setIsLoading(false));
+        fetchProjects();
     }, []);
-    const handleDownload = async (e: React.FormEvent<HTMLFormElement>) => {
-        e.preventDefault();
-        try {
-            const response = await fetch(`${URL}/api/projects/${filename}`);
-            if (!response.ok) {
-                throw new Error('File not found');
-            }
-            // Convert response to blob and create a download link
-            const blob = await response.blob();
-            const url = window.URL.createObjectURL(blob);
-            const a = document.createElement('a');
-            a.href = url;
-            a.download = filename; // Set the file name for download
-            document.body.appendChild(a);
-            a.click();
-            document.body.removeChild(a);
-        } catch (error) {
-            console.error('Error downloading file:');
-            // Handle error (e.g., display error message to user)
-        }
-    };
 
-    const handleDownload2 = async (filename: string) => {
+    const handleDownload = async (filename: string) => {
         try {
             const response = await fetch(`${URL}/api/projects/${filename}`);
             if (!response.ok) {
                 throw new Error('File not found');
             }
-            // Convert response to blob and create a download link
             const blob = await response.blob();
             const url = window.URL.createObjectURL(blob);
             const a = document.createElement('a');
             a.href = url;
-            a.download = `project_${filename}`; // Set the file name for download
+            a.download = `project_${filename}`;
             document.body.appendChild(a);
             a.click();
             document.body.removeChild(a);
         } catch (error) {
             console.error('Error downloading file:', error);
-            // Handle error (e.g., display error message to user)
         }
     };
-    const onSub = async (e: React.FormEvent<HTMLFormElement>) => {
-        e.preventDefault(); // Verhindert das Standardverhalten des Formulars
-        //let repo = new ProjectRepository("../../../../backend/data/projects.sqlite");
-        if (fileRef.current?.files?.length) {
-            const file = fileRef.current.files[0];
-            const title = titleRef.current?.value;
-            const description = descriptionRef.current?.value;
-            const pro = {name: title || '', description: description || '', file: file};
-
-            const formData = new FormData();
-            formData.append('title', title || '');
-            formData.append('description', description || '');
-
-            //await repo.insertProject({id: 1, description: description || '', owner: 'admin', title: title || ''});
-
-            try {
-                const response = await fetch(uploadURL, {
-                    method: 'POST',
-                    body: formData,
-                });
-
-                if (!response.ok) {
-                    throw new Error('Error uploading file');
-                }
-
-                // Handle successful upload (e.g., update state, display success message)
-            } catch (error) {
-                console.error('Error uploading file:', error);
-                // Handle error (e.g., display error message to user)
-            }
-        }
-    };
-
-    let uploadURL = `${URL}/api/projects/upload`;
 
     return (
         <Page>
             <h1>File Upload</h1>
-            <form action={uploadURL} method="POST" encType="multipart/form-data">
-                <input type="file" name="file" ref={fileRef} required />
-                <input type="text" name="title" ref={titleRef}/>
-                <input type="text" name="description" ref={descriptionRef}/>
-                <button type="submit">Upload</button>
-            </form>
-
-            <form onSubmit={handleDownload}>
-                <input type="text" name="filename" required onChange={(e) => setFilename(e.target.value)} />
-                <button type="submit">Download</button>
-            </form>
+            <Link to="/create">
+                <button>Add Project</button>
+            </Link>
             <h1>Projects</h1>
             {isLoading ? (
                 <p>Loading...</p>
@@ -144,13 +71,14 @@ const ProjectsDisplay: React.FC = () => {
                     <div key={project.id} className="project">
                         <h6>{project.owner}</h6>
                         <h5>{project.title}</h5>
-                        <a>{project.description}</a>
-                        <button onClick={() => handleDownload2(project.filename)}>Download</button>
+                        <p>{project.description}</p>
+                        <button onClick={() => handleDownload(project.filename)}>Download</button>
+                        <Link to={`/project/${project.id}`}>
+                            <button>View Project</button>
+                        </Link>
                     </div>
                 ))
             )}
-
-
         </Page>
     );
 };
