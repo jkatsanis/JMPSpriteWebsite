@@ -30,6 +30,15 @@ projectRouter.get('/', async (req, res) => {
     res.json(projects);
 });
 
+projectRouter.get('/byID/:id', async (req, res) => {
+    const { id } = req.params;
+    const project = await projectRepo.getProject(parseInt(id));
+    if (!project) {
+        return res.status(404).json({ message: 'Project not found' });
+    }
+    res.json(project);
+});
+
 projectRouter.get('/:filename', (req, res) => {
     const { filename } = req.params;
     const filePath = path.join('uploads/', filename);
