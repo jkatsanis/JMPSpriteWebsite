@@ -5,8 +5,15 @@
     margin-top: 1rem;
     margin-bottom: 1rem;
     padding: 1rem;
-    border: 1px solid #ccc;
     border-radius: 4px;
+    background-color: #242424;
+    border-bottom: 3px solid transparent;
+    transition: border-bottom 0.3s ease, opacity 0.3s ease; /* Transition effect */
+}
+
+.project:hover {
+    border-bottom: 3px solid #ccc; /* Hover state */
+    opacity: 1; /* Increase opacity on hover */
 }
 
 .project button {
@@ -15,7 +22,7 @@
 
 .formi-control {
     height: 30rem;
-    width: 100%;
+    width: 95%;
     padding: 0.5rem;
     border: 1px solid #ccc;
     border-radius: 4px;
