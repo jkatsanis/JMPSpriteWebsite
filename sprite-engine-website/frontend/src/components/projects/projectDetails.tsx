@@ -1,36 +1,17 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { URL } from "../../macros";
-
-interface Project {
-    id: number;
-    owner: string;
-    title: string;
-    description: string;
-    filename: string;
-}
+import IconText from "components/icon/icontext";
+import { accountRepo } from "components/threads/logic/account-repository";
+import { Account } from "components/threads/logic/model";
+import { Project } from "./models";
+import { fetchProject } from "./models";
 
 const ProjectDetails: React.FC = () => {
     const { id } = useParams<{ id: string }>();
     const [project, setProject] = useState<Project | null>(null);
     const [isLoading, setIsLoading] = useState(true);
-
-    const fetchProject = async () => {
-        setIsLoading(true);
-        try {
-            const response = await fetch(`${URL}/api/projects/byID/${id}`);
-            if (!response.ok) {
-                throw new Error('Error fetching project');
-            }
-            const data: Project = await response.json();
-            setProject(data);
-            setIsLoading(false);
-        } catch (error) {
-            console.error('Error fetching project:', error);
-            setIsLoading(false);
-        }
-    };
-
+    
     const handleDownload = async (filename: string) => {
         try {
             const response = await fetch(`${URL}/api/projects/${filename}`);
@@ -51,7 +32,7 @@ const ProjectDetails: React.FC = () => {
     };
 
     useEffect(() => {
-        fetchProject();
+        fetchProject(id, setProject, setIsLoading);
     }, [id]);
 
     if (isLoading) {
@@ -65,8 +46,8 @@ const ProjectDetails: React.FC = () => {
     return (
         <div className="container">
             <div className="project">
+            <IconText iconPath={project.picture} text={project.owner}/>
             <h1>Title: {project.title}</h1>
-            <h3>Owner: {project.owner}</h3>
             <p className="formi-control">{project.description}</p>
             <button onClick={() => handleDownload(project.filename)} className="default-btn">Download File</button>
             </div>

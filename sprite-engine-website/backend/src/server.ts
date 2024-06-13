@@ -3,7 +3,6 @@ import express from "express";
 import {accountRouter} from "./routes/accountRouter";
 import {threadRouter} from "./routes/threadRouter";
 import * as process from "process";
-import {STATUS_CODES} from "http";
 import {StatusCodes} from "./model";
 import {projectRouter} from "./routes/projectRouter";
 import config from "./config";
@@ -14,9 +13,6 @@ import {pictureRouter} from "./routes/pictureRouter";
 const path = require('path');
 dotenv.config();
 const server = express();
-
-
-//process..env.SECRET_KEY
 
 server.use(cors());
 server.use(express.json());

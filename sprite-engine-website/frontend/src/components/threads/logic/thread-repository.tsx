@@ -165,7 +165,8 @@ export class ThreadRepository
             {
                 continue;
             }
-            let threadComment = new Comment(author, comment.content);
+            let acc: Account = await accountRepo.getAccountByName(comment.author);
+            let threadComment = new Comment(acc, comment.content);
             threadComments.push(threadComment);
         }
 

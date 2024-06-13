@@ -3,16 +3,11 @@ import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
 import { Page } from "../page";
 import "./projects.css";
 import { URL } from "../../macros";
-import ProjectCreation from './projectCreation';
-import ProjectDetails from './projectDetails';
-
-interface Project {
-    id: number;
-    owner: string;
-    title: string;
-    description: string;
-    filename: string;
-}
+import IconText from "components/icon/icontext";
+import { Project } from "./models";
+import { Account } from "components/threads/logic/model";
+import { accountRepo } from "components/threads/logic/account-repository";
+import "utils/general.css"
 
 const ProjectsDisplay: React.FC = () => {
     const [projects, setProject] = useState<Project[]>([]);
@@ -26,6 +21,13 @@ const ProjectsDisplay: React.FC = () => {
                 throw new Error('Error fetching projects');
             }
             const data: Project[] = await response.json();
+
+            for(let i = 0; i < data.length; i++)
+            {
+                let acc:Account = (await accountRepo.getAccountByName(data[i].owner));
+                data[i].picture = acc.picture;
+            }
+
             setProject(data);
             setIsLoading(false);
         } catch (error) {
@@ -60,17 +62,19 @@ const ProjectsDisplay: React.FC = () => {
     return (
         <Page>
             <div className="container">
+            <div className="h-2"/>
             <h1>File Upload</h1>
             <Link to="/create">
                 <button className="default-btn">Add Project</button>
             </Link>
+            <div className="h-2"/>
             <h1>Projects</h1>
             {isLoading ? (
                 <p>Loading...</p>
             ) : (
                 projects.map((project) => (
                     <div key={project.id} className="project">
-                        <h6>{project.owner}</h6>
+                        <IconText iconPath={project.picture} text={project.owner}/>
                         <h5>{project.title}</h5>
                         <p className="maxW">{project.description}</p>
                         <button onClick={() => handleDownload(project.filename)} className="default-btn">Download</button>

@@ -76,7 +76,6 @@ const QuestionBluePrint: React.FC<QuestionBluePrintProps> = (props) => {
         if (checkSubmit()) {
             props.submit(title, content, images, selectedItems);
             setImages([]);
-            navigate("/threads");
         }
         setContent("");
         setTitle("");
