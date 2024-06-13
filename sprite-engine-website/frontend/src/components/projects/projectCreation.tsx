@@ -5,7 +5,7 @@ import {accountRepo} from "components/threads/logic/account-repository";
 
 const ProjectCreation: React.FC = () => {
     const nameRef = useRef<HTMLInputElement>(null);
-    const descriptionRef = useRef<HTMLInputElement>(null);
+    const descriptionRef = useRef<HTMLTextAreaElement>(null);
     const fileRef = useRef<HTMLInputElement>(null);
     const titleRef = useRef<HTMLInputElement>(null);
     const navigate = useNavigate();
@@ -41,7 +41,7 @@ const ProjectCreation: React.FC = () => {
             <form onSubmit={handleSubmit}>
                 <input type="file" name="file" ref={fileRef} required />
                 <input type="text" name="title" ref={titleRef} placeholder="Title" required />
-                <input type="text" name="description" ref={descriptionRef} required  className="formi-control"/>
+                <textarea name="description" ref={descriptionRef} required  className="formi-control"/>
                 <button type="submit" className="default-btn">Upload</button>
             </form>
             </div>

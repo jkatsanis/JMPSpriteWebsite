@@ -72,7 +72,7 @@ const ProjectsDisplay: React.FC = () => {
                     <div key={project.id} className="project">
                         <h6>{project.owner}</h6>
                         <h5>{project.title}</h5>
-                        <p>{project.description}</p>
+                        <p className="maxW">{project.description}</p>
                         <button onClick={() => handleDownload(project.filename)} className="default-btn">Download</button>
                         <Link to={`/project/${project.id}`}>
                             <button className="default-btn">View Project</button>
