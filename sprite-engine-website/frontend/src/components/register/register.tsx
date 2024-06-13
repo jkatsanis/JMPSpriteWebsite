@@ -1,11 +1,10 @@
 import React, { useState } from "react";
-import "./register.css";
 import { accountRepo } from "components/threads/logic/account-repository";
 import { Account } from "components/threads/logic/model";
 import {isLoggedIn} from "components/topbar/topbar";
 import config from "../../config";
 
-const CLIENT_ID = "Ov23liMuRhXSWfALO4cu";
+import "./register.css";
 
 export async function login(username: string, password: string): Promise<boolean>{
     if (isLoggedIn){

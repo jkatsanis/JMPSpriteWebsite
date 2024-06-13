@@ -1,8 +1,7 @@
-import { AccountRepository, accountRepo } from "./account-repository";
+import { accountRepo } from "./account-repository";
 import { Question } from "./model";
 import { Account } from "./model";
 import { ImageData } from "./model";
-import { Label } from "./model";
 import { SERVER_UL, URL } from "macros";
 import { bFetch } from "utils/general";
 import { Log } from "utils/general";

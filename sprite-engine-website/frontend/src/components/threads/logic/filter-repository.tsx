@@ -1,5 +1,3 @@
-
-
 export class FilterRepository {
     public account: string;
     public labels: string[];

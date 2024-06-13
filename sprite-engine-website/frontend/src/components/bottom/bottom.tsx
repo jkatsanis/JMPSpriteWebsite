@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import CreateLink, { Link } from "../icon/link";
 
 import { PATH_TO_RESSOURCES } from 'macros';
