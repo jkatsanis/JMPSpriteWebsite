@@ -38,7 +38,7 @@ describe('ThreadRepository', () => {
     test('constructor initializes correctly', () => {
       expect(repo).toBeDefined();
       expect(repo['m_count']).toBe(0);
-      expect(repo['m_questions']).toEqual([]);
+      expect(repo['m_questions']).toEqual([]); 
       expect(repo['m_thread_url']).toContain('/api/questions');
       expect(repo['m_inited']).toBeFalsy();
       expect(repo['m_reading']).toBeFalsy();
