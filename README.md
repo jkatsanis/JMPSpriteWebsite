@@ -3,5 +3,6 @@ A Website
 
 
 ### How to build
-- npm install --force
+(build backend and frontend project)
+- npm install
 - npm start
