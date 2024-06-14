@@ -47,3 +47,5 @@ export class Log
         console.log(msg);
     }
 }
+
+  

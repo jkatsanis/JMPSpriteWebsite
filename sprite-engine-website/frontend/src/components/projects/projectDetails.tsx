@@ -2,8 +2,6 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { URL } from "../../macros";
 import IconText from "components/icon/icontext";
-import { accountRepo } from "components/threads/logic/account-repository";
-import { Account } from "components/threads/logic/model";
 import { Project } from "./models";
 import { fetchProject } from "./models";
 

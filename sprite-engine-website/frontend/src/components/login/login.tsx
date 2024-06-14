@@ -1,7 +1,5 @@
-import React, {useEffect, useState} from "react";
+import React from "react";
 import "./login.css";
-import {accountRepo} from "components/threads/logic/account-repository";
-import {Account} from "components/threads/logic/model";
 import {Link} from "react-router-dom";
 import {login} from "components/register/register";
 import config from "../../config";

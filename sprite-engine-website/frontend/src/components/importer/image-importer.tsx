@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { ImageData } from 'components/threads/logic/model';
 
 import "./image-importer.css"

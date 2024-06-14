@@ -20,8 +20,6 @@ const QuestionBluePrint: React.FC<QuestionBluePrintProps> = (props) => {
     const [alertContent, setContentAlert] = useState(false);
     const [images, setImages] = useState<ImageData[]>([]);
     const [selectedItems, setSelectedItems] = useState<string[]>([]);
-    const navigate = useNavigate();
-
 
     const onLabelAdd = (label: string) =>
     {

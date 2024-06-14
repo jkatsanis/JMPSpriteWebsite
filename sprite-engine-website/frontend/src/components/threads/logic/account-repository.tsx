@@ -7,7 +7,6 @@ export class AccountRepository
     public active_account: Account | null;
     private url: string;
 
-
     constructor() {
         this.url = URL + "/api/accounts";
         this.active_account = null;

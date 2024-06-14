@@ -4,7 +4,6 @@ import { URL } from "../../macros";
 import {accountRepo} from "components/threads/logic/account-repository";
 
 const ProjectCreation: React.FC = () => {
-    const nameRef = useRef<HTMLInputElement>(null);
     const descriptionRef = useRef<HTMLTextAreaElement>(null);
     const fileRef = useRef<HTMLInputElement>(null);
     const titleRef = useRef<HTMLInputElement>(null);
