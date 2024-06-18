@@ -1,5 +1,5 @@
-import { DB } from '../src/backend/model';
-import { Database } from 'sqlite';
+import { DB } from '../src/model'
+import { Database } from 'sqlite3';
 
 jest.mock('sqlite');
 
