@@ -21,7 +21,7 @@ Die verwendeten Technologien sind:
 └── README.md (Projektbeschreibung und Anweisungen)
 ```
 ## 3. Einrichtung und Installation
-/TODO
+Im "backend" und "frontend" "npm i" ausführen.
 ## 4. Konfiguration
 Umgebungsvariablen: Benutzerverwaltung
 ```
