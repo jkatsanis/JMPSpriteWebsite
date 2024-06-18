@@ -42,6 +42,52 @@ Hauptendpunkte:
 ## 6. Typisierung mit TypeScript
 - Client
 - Server
+```
+export const StatusCodes = {
+    OK: 200,
+    CREATED: 201,
+    NO_CONTENT: 204,
+    BAD_REQUEST: 400,
+    NOT_FOUND: 404
+};
+export interface Account{
+    userName: string;
+    email: string;
+    password: string;
+    picture: string;
+    SEWAccessToken: string | null
+}
+export interface ThreadComment {
+    id: number;
+    threadId: number;
+    parentCommentId: number;
+    author: string;
+    content: string;
+}
+export interface Thread{
+    id: number;
+    labels: string;
+    title: string
+    author: string;
+    content: string;
+}
+
+export interface Picture{
+    id: number;
+    path: string;
+    user: string;
+    threadId: number;
+}
+
+export interface Project{
+    id:number;
+    owner:string;
+    title:string,
+    description:string;
+    filename:string;
+}
+```
+
 
 ## 7. Tests
 - **Unit-Tests:** Es werden Unit-Tests verwendet, um die Funktionalität der Klassen und Methoden zu testen.
