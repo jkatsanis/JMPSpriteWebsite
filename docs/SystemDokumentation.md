@@ -31,7 +31,7 @@ REACT_APP_GITHUB_CLIENT_SECRET (Github OAuth Client Secret)
 
 ## 5. Architektur
 ### Client-Seite (React)
-/TODO
+Es gibt für alle Teile der Website Unterodner in welchen die .tsx files sind.
 
 ### Server-Seite (Express)
 Hauptendpunkte:
@@ -94,4 +94,4 @@ export interface Project{
 - **HTTP-Requests:** Es werden .http Request Files verwendet, um die Routen zu den Endpoints zu testen.
 
 ## 8. Deployment
-/TODO
+Nach jedem mal pushen wird das Projekt automatisch zu einem Dockerfile konvertiert welches man auf die LeoCloud spielen kann.
