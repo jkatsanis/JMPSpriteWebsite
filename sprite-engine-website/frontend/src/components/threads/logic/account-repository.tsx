@@ -1,6 +1,7 @@
 import { Account } from "./model";
 import { bFetch } from "utils/general";
 import { URL } from "macros";
+import config from "../../../config";
 
 export class AccountRepository
 {
@@ -26,7 +27,7 @@ export class AccountRepository
 
     async getAccountByName(name: string) : Promise<Account>
     {      
-        const url = "http://localhost:5000/avatars/" + name + ".webp"; // 10 EURO FIXXEN BITTE !=!==!=!
+        const url = config.externalAddress + "/avatars/" + name + ".webp"; // 10 EURO FIXXEN BITTE !=!==!=!
 
         const account: Account = new Account(name, "123", url, "123");
 

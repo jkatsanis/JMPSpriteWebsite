@@ -20,7 +20,7 @@ const TopBar: React.FC = () => {
   useEffect(() => {
     async function fetchUserData() {
         try {
-          const response = await fetch(config.externalAddress + "/getUserData", {
+          const response = await fetch(config.externalAddress + "/auth/getUserData", {
             method: "GET",
             headers: {
               "Authorization": "Bearer " + localStorage.getItem("accessToken")
@@ -76,7 +76,7 @@ const TopBar: React.FC = () => {
   }
 
   let name = "defaultAccount";
-  let pic = `icons/default.png`;
+  let pic = config.externalAddress + "/static/avatars/default.webp";
 
   if (user) {
     name = user.login;

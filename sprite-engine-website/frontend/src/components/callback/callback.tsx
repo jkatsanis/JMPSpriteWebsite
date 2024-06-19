@@ -14,7 +14,7 @@ const Callback: React.FC = () => {
 
         if (codeParam && (localStorage.getItem("accessToken") === null)) {
             console.log("juhu");
-            fetch(config.externalAddress + "/getGithubAccessToken?code=" + codeParam, {
+            fetch(config.externalAddress + "/auth/getGithubAccessToken?code=" + codeParam, {
                 method: "GET"
             }).then((response) => {
                 return response.json();

@@ -8,6 +8,7 @@
     networks:
       - back-tier
       - front-tier
+    image: moritzpassenbrunner/sewebsite:frontend
       
   api:
     build: "./backend/"
@@ -21,7 +22,8 @@
         - "5000"
     depends_on:
       - sqlite
-  
+    image: moritzpassenbrunner/sewebsite:backend
+
   sqlite:
     container_name: sqlite-container
     image: nouchka/sqlite3:latest

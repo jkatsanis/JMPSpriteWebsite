@@ -1,6 +1,6 @@
 const Config = () => {
     const port  =  8080;
-    const externalPort = 5000;
+    const externalPort = 8080;
     const domain = "http://localhost";
     const externalDomain = "http://localhost";
     
