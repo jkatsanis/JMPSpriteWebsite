@@ -27,7 +27,7 @@ export class AccountRepository
 
     async getAccountByName(name: string) : Promise<Account>
     {      
-        const url = config.externalAddress + "/avatars/" + name + ".webp"; // 10 EURO FIXXEN BITTE !=!==!=!
+        const url = config.externalAddress + "/staticressources/avatars/" + name + ".webp"; // 10 EURO FIXXEN BITTE !=!==!=!
 
         const account: Account = new Account(name, "123", url, "123");
 

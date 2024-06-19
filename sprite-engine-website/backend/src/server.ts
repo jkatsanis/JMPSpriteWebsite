@@ -17,7 +17,7 @@ const server = express();
 server.use(cors());
 server.use(express.json());
 
-server.use("/static/", express.static("public"));
+server.use("/staticressources/", express.static("public"));
 
 server.use("/api/accounts", accountRouter);
 server.use("/api/questions", threadRouter);

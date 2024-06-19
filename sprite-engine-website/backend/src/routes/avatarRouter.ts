@@ -46,7 +46,7 @@ avatarRouter.put("/:username", multerConfPicture.single('avatar'), async (req, r
     }
 
     //TODO post picture into database
-    await accountRepo.updatePicture(config.address + "/static/avatars/" + username + ".webp", username);
+    await accountRepo.updatePicture("/staticressources/avatars/" + username + ".webp", username);
 
     res.json(imagePath);
 })

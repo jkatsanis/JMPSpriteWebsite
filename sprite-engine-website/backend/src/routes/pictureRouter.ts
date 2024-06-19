@@ -86,6 +86,6 @@ pictureRouter.put("/:threadId", multerConfPicture.single('picture'), async (req,
 
     await DB.run(insertString, dbPath);
 
-    res.json("/static/"+ imagePath);
+    res.json("/staticressources/"+ imagePath);
 });
 

@@ -96,7 +96,7 @@ export class ThreadRepository
             }
             let picture = pics[i] as string;
             let img = new ImageData("pic" + i, null!);
-            img.filePath = SERVER_UL + "/threads/" + question.getId() + "/" + picture;
+            img.filePath = SERVER_UL + "/staticressources/threads/" + question.getId() + "/" + picture;
             question.selectedImages.push(img);
             console.log(pics[i]);
         }

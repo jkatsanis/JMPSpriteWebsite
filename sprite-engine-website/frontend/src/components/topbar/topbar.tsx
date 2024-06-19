@@ -76,7 +76,7 @@ const TopBar: React.FC = () => {
   }
 
   let name = "defaultAccount";
-  let pic = config.externalAddress + "/static/avatars/default.webp";
+  let pic = config.externalAddress + "/staticressources/avatars/default.webp";
 
   if (user) {
     name = user.login;
