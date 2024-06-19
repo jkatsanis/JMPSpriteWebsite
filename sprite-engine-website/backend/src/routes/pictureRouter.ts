@@ -80,10 +80,12 @@ pictureRouter.put("/:threadId", multerConfPicture.single('picture'), async (req,
         return;
     }
 
+
+
     const insertString  = `INSERT INTO pictures values('${uuid}', '${threadId}', '${imagePath}')`;
 
     await DB.run(insertString, dbPath);
 
-    res.json(imagePath);
+    res.json("/static/"+ imagePath);
 });
 

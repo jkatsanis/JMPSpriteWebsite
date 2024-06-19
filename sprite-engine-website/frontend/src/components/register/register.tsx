@@ -51,7 +51,7 @@ const Register: React.FC = () => {
             name,
             password,
             email,
-            picture: "http://localhost:5000/avatars/default.webp"
+            picture: config.externalAddress + "/static/avatars/default.webp"
         };
         await fetch(config.externalAddress + "/api/accounts", {
             method: "POST",

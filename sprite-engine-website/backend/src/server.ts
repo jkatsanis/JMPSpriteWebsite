@@ -17,7 +17,7 @@ const server = express();
 server.use(cors());
 server.use(express.json());
 
-server.use(express.static("public"));
+server.use("/static/", express.static("public"));
 
 server.use("/api/accounts", accountRouter);
 server.use("/api/questions", threadRouter);
@@ -25,7 +25,7 @@ server.use("/api/projects", projectRouter);
 server.use("/api/avatars", avatarRouter)
 server.use("/api/pictures", pictureRouter)
 
-server.get("/getGithubAccessToken", async (req, res)=> {
+server.get("/auth/getGithubAccessToken", async (req, res)=> {
     const params = "?client_id=" + process.env.REACT_APP_GITHUB_CLIENT_ID + "&client_secret=" + process.env.REACT_APP_GITHUB_CLIENT_SECRET + "&code=" + req.query.code;
     await fetch("https://github.com/login/oauth/access_token" + params, {
         method: "POST",
@@ -35,12 +35,11 @@ server.get("/getGithubAccessToken", async (req, res)=> {
     }).then((response)=> {
         return response.json();
     }).then((data) => {
-        console.log(data);
         res.json(data);
     });
 });
 
-server.get("/getUserData", async (req, res) => {
+server.get("/auth/getUserData", async (req, res) => {
     if (req.get("Authorization") === undefined){
         res.sendStatus(StatusCodes.BAD_REQUEST);
         return;
